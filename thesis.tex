@@ -1,0 +1,52 @@
+% The \includeonly
+% command can be used so you only need to work on one or two chapters at a
+% time (instead of having to either latex the entire book each time or
+% losing cross-references and page numbering)
+
+\documentclass[12pt]{report}
+
+\usepackage{suthesis-2e}
+%% load other packages you need
+
+%% uncomment the following and create mythesis-macros.sty for all your
+%% own macros.  This keeps this top level file looking fairly neat.
+% \usepackage{mythesis-macros}
+
+    \title{Transcribing Real-Valued Sequences \\
+           With Deep Neural Networks}
+    \author{Awni Hannun}
+    \principaladviser{Andrew Ng}
+    \coprincipaladvisor{Dan Jurafsky}
+    \firstreader{James Zou}
+    \secondreader{Anshul Kundaje}
+
+%\includeonly{chapter1,chapter2}
+
+\begin{document}
+
+%% Preface
+\include{preface}
+
+% dedication
+\newpage
+\begin{center}
+    To person.
+\end{center}
+
+\include{acknowledgements}
+
+%% Chapters
+\include{introduction}
+\include{conclusions}
+
+%\appendix
+%\include{appendix1}
+
+% bibliography.tex should include either 
+% \bibliographystyle{...}
+% \bibliography{mythesis}
+% or some other way of doing the bibliography
+%\include{bibliography}
+
+\end{document}
+
