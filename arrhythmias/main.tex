@@ -1,30 +1,22 @@
 \chapter{Application to Arrhythmia Detection}
 
-% use Times
-%\usepackage{times}
-% For figures
-%\usepackage{graphicx} % more modern
-
-% For Tables
 %\usepackage{booktabs}      % professional-quality tables
-
-% For citations
-%\usepackage{natbib}
-
-% For algorithms
-%\usepackage{algorithm}
-%\usepackage{algorithmic}
 %\usepackage[caption = false]{subfig}
 %\usepackage{hyperref}
 %\usepackage{array}
 
-% Packages hyperref and algorithmic misbehave sometimes.  We can fix
-% this with the following command.
-%\newcommand{\theHalgorithm}{\arabic{algorithm}}
+% TODOs
+% Check section labelling
+% Add in figures and tables
+% Update text to reflext Lancet submission
 
-% TODO figure out labelling
 \input{arrhythmias/introduction}
 \input{arrhythmias/related}
+\input{arrhythmias/model}
+\input{arrhythmias/data}
+\input{arrhythmias/results}
+\input{arrhythmias/analysis}
+\input{arrhythmias/conclusion}
 
 %\begin{figure}[ht]
 %  \centering
@@ -34,19 +26,13 @@
 %  }
 %  \label{fig:record}
 %\end{figure}
-%\input{introduction}
 %
-%\section{Model}
-%\label{model}
 %\begin{figure}[ht!]
 %  \centering
 %  \includegraphics[height=15cm]{figs/ecg-nnet.pdf}
 %  \caption{The architecture of the network. The first and last layer are special-cased due to the pre-activation residual blocks. Overall, the network contains 33 layers of convolution followed by a fully-connected layer and a softmax.}
 %  \label{fig:net}
 %\end{figure}
-%
-%
-%\input{model}
 %
 %\begin{figure}
 %  \centering
@@ -57,19 +43,6 @@
 %  \label{fig:model_vs_cardiol}
 %\end{figure}
 %
-%\section{Data}
-%\label{data}
-%\input{data}
-%
-%\input{comparison}
-%\section{Results}
-%\label{results}
-%\input{results}
-%
-%\section{Analysis}
-%\label{analysis}
-%\input{analysis}
-
 %\begin{figure}[t]
 %  \centering
 %  \includegraphics[width=\linewidth]{figs/confusion.pdf}
@@ -78,12 +51,3 @@
 %  }
 %  \label{fig:confusion}
 %\end{figure}
-%\section{Related Work}
-%\label{related}
-%\input{related}
-
-%\section{Conclusion}
-%\label{conclusion}
-
-%\input{conclusion}
-%\input{rhythms}
