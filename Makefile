@@ -18,4 +18,4 @@ spdf:
 
 clean:
 	rm -f *.blg *.bbl *.toc *.lot *.lof *.aux *.log thesis.pdf
-
+	rm -f */*.aux
