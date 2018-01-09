@@ -25,6 +25,14 @@ signal is sampled at 200Hz, and the model outputs a new prediction once every
 second. We arrive at an architecture which is 33 layers of convolution followed
 by a fully connected layer and a softmax. 
 
+\begin{figure}
+\centering
+\includegraphics[width=0.4\textwidth]{arrhythmias/figures/ecg_network_full.pdf}
+\caption{The architecture of the deep neural network consists of 33
+         convolutional layers followed by a fully-connected layer and
+         a softmax layer.}
+\end{figure}
+
 In order to make the optimization of such a network tractable, we employ
 shortcut connections in a similar manner to those found in the Residual Network
 architecture \cite{he2016identity}. The shortcut connections between

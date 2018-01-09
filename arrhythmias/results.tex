@@ -42,3 +42,19 @@ F1 for both  model and cardiologist compared to the ground truth annotations.
 The aggregate scores for the cardiologist are computed by taking the mean of
 the individual cardiologist scores. The model outperforms the cardiologist
 average in both precision and recall.
+
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{arrhythmias/figures/roc_curve.pdf}
+\caption{Receiver operating characteristic curves at sequence-level for atrial
+         fibrillation (AF), trigeminy and atrioventricular block (AVB).}
+\label{fig:arrhythmias:roc_curve}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{arrhythmias/figures/prec_recall_curve.pdf}
+\caption{Precision-Recall curves at sequence-level for atrial fibrillation,
+         trigeminy and atrioventricular block.}
+\label{fig:arrhythmias:prec_recall_curve}
+\end{figure}
