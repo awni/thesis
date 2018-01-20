@@ -4,18 +4,18 @@ We evaluate our approach on the 81 hour Wall Street Journal (WSJ) news article
 dictation corpus (available in the LDC catalog as LDC94S13B and LDC93S6B). Our
 training set consists of 81 hours of speech from 37,318 utterances. The basic
 preparation of transforming the LDC-released corpora into training and test
-subsets follows the Kaldi speech recognition toolkit's s5 recipe
-\cite{povey2011}. However, we did not apply much of the text normalization
-used to prepare transcripts for training an HMM system. Instead we simply drop
-unnecessary transcript notes like lexical stress, keeping transcribed word
-fragments and acronym punctuation marks. We can safely discard much of this
-normalization because our approach does not rely on a lexicon or pronunciation
-dictionary, which cause problems especially for word fragments. Our language
-models are the standard models released with the WSJ corpus without lexical
-expansion. We used the `dev93' evaluation subset as a development set and
-report final test set performance on the `eval92' evaluation subset. Both
-subsets use the same 20k word vocabulary. The language model used for decoding
-is constrained to this same 20k word vocabulary.
+subsets follows the Kaldi speech recognition toolkit's s5
+recipe~\cite{povey2011}. However, we did not apply much of the text
+normalization used to prepare transcripts for training an HMM system. Instead
+we simply drop unnecessary transcript notes like lexical stress, keeping
+transcribed word fragments and acronym punctuation marks. We can safely discard
+much of this normalization because our approach does not rely on a lexicon or
+pronunciation dictionary, which cause problems especially for word fragments.
+Our language models are the standard models released with the WSJ corpus
+without lexical expansion. We used the `dev93' evaluation subset as a
+development set and report final test set performance on the `eval92'
+evaluation subset. Both subsets use the same 20k word vocabulary. The language
+model used for decoding is constrained to this same 20k word vocabulary.
 
 The input audio was converted into log-Mel filterbank features with 23
 frequency bins. A context window of +/- 10 frames were concatenated to form a
@@ -29,9 +29,9 @@ punctuation marks (apostrophe, ., and -) as well as tokens for noise and space.
 We trained a BRDNN with 5 hidden layers, all with 1824 hidden units, for a
 total of 20.9M free parameters. The third hidden layer of the network has
 recurrent connections. Weights in the network are initialized from a uniform
-random distribution scaled by the weight matrix's input and output layer size
-\cite{glorot2011}. We use the Nesterov accelerated gradient optimization
-algorithm \cite{sutskever2013} with initial learning rate $10^{-5}$, and
+random distribution scaled by the weight matrix's input and output layer
+size~\cite{glorot2011}. We use the Nesterov accelerated gradient optimization
+algorithm~\cite{sutskever2013} with initial learning rate $10^{-5}$, and
 maximum momentum 0.95. After each full pass through the training set we divide
 the learning rate by 1.2 to ensure the overall learning rate decreases over
 time. We train the network for a total of 20 passes over the training set,
