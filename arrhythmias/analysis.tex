@@ -1,7 +1,7 @@
 \section{Analysis}
 
 The model outperforms the average cardiologist score on both the sequence and
-the set F1 metrics. Figure~\ref{fig:arrhythmia:model_confusion} shows a
+the set F1 metrics. Figure~\ref{fig:arrhythmias:model_confusion} shows a
 confusion matrix of the model predictions on the test set. Many arrhythmias are
 confused with the sinus rhythm. We expect that part of this is due to the
 sometimes ambiguous location of the exact onset and offset of the arrhythmia in
@@ -12,13 +12,13 @@ the ECG record.
   \centering
   \includegraphics[width=0.9\linewidth]{arrhythmias/figures/model_confusions.pdf}
   \caption{Model}
-  \label{fig:arrhythmia:model_confusion}
+  \label{fig:arrhythmias:model_confusion}
 \end{subfigure}
 \begin{subfigure}{.5\textwidth}
   \centering
   \includegraphics[width=0.9\linewidth]{arrhythmias/figures/human_confusions.pdf}
   \caption{Individual Cardiologists}
-  \label{fig:arrhythmia:human_confusion}
+  \label{fig:arrhythmias:human_confusion}
 \end{subfigure}
 \caption{Confusion matrices for the model and individual cardiologist
          predictions with the committee consensus annotations as ground

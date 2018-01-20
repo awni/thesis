@@ -1,5 +1,5 @@
 \section{Model}
-\label{sec:arrhythmia:model}
+\label{sec:arrhythmias:model}
 
 \subsection*{Problem Formulation}
 The ECG arrhythmia detection task is a sequence-to-sequence task which takes as
@@ -19,11 +19,11 @@ taking on the value $r_i$.
 \subsection*{Model Architecture and Training}
 We use a convolutional neural network for the sequence-to-sequence learning
 task. The high-level architecture of the network is shown in
-Figure~\ref{fig:net}. The network takes as input a time-series of raw ECG
-signal, and outputs a sequence of label predictions. The 30 second long ECG
-signal is sampled at 200Hz, and the model outputs a new prediction once every
-second. We arrive at an architecture which is 33 layers of convolution followed
-by a fully connected layer and a softmax. 
+Figure~\ref{fig:arrhythmias:net}. The network takes as input a time-series of
+raw ECG signal, and outputs a sequence of label predictions. The 30 second long
+ECG signal is sampled at 200Hz, and the model outputs a new prediction once
+every second. We arrive at an architecture which is 33 layers of convolution
+followed by a fully connected layer and a softmax. 
 
 \begin{figure}
 \centering
@@ -31,6 +31,7 @@ by a fully connected layer and a softmax.
 \caption{The architecture of the deep neural network consists of 33
          convolutional layers followed by a fully-connected layer and
          a softmax layer.}
+\label{fig:arrhythmias:net}
 \end{figure}
 
 In order to make the optimization of such a network tractable, we employ
