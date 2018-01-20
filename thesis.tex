@@ -9,10 +9,14 @@
 \usepackage{graphicx}
 \usepackage{subcaption}
 \usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
 
 %% uncomment the following and create mythesis-macros.sty for all your
 %% own macros.  This keeps this top level file looking fairly neat.
 % \usepackage{mythesis-macros}
+\DeclareMathOperator*{\argmax}{arg\,max}
 
     \title{Transcribing Real-Valued Sequences \\
            With Deep Neural Networks}
@@ -22,7 +26,7 @@
     \firstreader{James Zou}
     \secondreader{Anshul Kundaje}
 
-%\includeonly{chapter1,chapter2}
+%\includeonly{first_pass}
 
 \begin{document}
 
@@ -40,6 +44,7 @@
 %% Chapters
 \include{introduction}
 \include{arrhythmias/main}
+\include{first_pass/main}
 \include{conclusions}
 
 %\appendix

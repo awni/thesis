@@ -1,0 +1,119 @@
+\section{Decoding}
+\label{sec:first_pass:decoding}
+
+%%% NOTATION KEY:
+% \Sigma is extended alphabet including blank
+% S and s_t is sequence and sequence item at time t including blank char
+% T is time, 
+% x_t is input at time t, X is full audio input of length T
+% W is full word output
+% \ell is character label prefix not including blanks
+% p(c; x_t) is output of BDRNN at time t
+
+Assuming an input of length $T$, the output of the neural network will be $p(c;
+x_t)$ for $t = 1,\ldots,T$. Again, $p(c; x_t)$ is a distribution over possible
+characters in the alphabet $\Sigma$, which includes the blank symbol, given
+audio input $x_t$. In order to recover a character string from the output of
+the neural network, as a first approximation, we take the \texttt{argmax} at
+each time step. Let $S = (s_1,\ldots,s_T)$ be the character sequence where $s_t
+= \argmax_{c \in \Sigma} p(c; x_t)$. The sequence $S$ is mapped to a
+transcription by collapsing repeat characters and removing blanks. This gives a
+sequence which can be scored against the reference transcription using both CER
+and WER.
+
+This first approximation lacks the ability to include the constraint of either
+a lexicon or a language model. We propose a generic algorithm which is capable
+of incorporating such constraints. Taking $X$ to be the acoustic input of time
+$T$, we seek a transcription $W$ which maximizes the probability,
+\begin{equation}
+  \label{eq:joint} p_{\text{net}}(W ; X) p_{\text{lm}}(W).  
+\end{equation} 
+Here the overall probability of the transcription is modeled as the product of
+two factors: $p_{\text{net}}$ given by the network and $p_{\text{lm}}$ given by
+a language model prior. In practice the prior $p_{\text{lm}}(W)$, when given by
+an $n$-gram language model, is too constraining and thus we down-weight it and
+include a word insertion penalty (or bonus) as
+\begin{equation}\label{eq:amlm}
+    p_{\text{net}}(W ; X) p_{\text{lm}}(W)^\alpha |W|^\beta.
+\end{equation}
+Alogrithm \ref{alg:decode} attempts to find a word string $W$ which maximizes
+equation \ref{eq:amlm}.
+\begin{algorithm}[bt]
+  \caption{Prefix Beam Search: The algorithm initializes the previous set of
+prefixes $A_\text{prev}$ to the empty string. For each time step and every
+prefix $\ell$ currently in $A_\text{prev}$, we propose adding a character from the
+alphabet $\Sigma$ to the prefix. If the character is a blank, we do not extend
+the prefix. If the character is a space, we incorporate the language model
+constraint. Otherwise we extend the prefix and incorporate the output of the
+network. All new active prefixes are added to $A_\text{next}$. We then set
+$A_\text{prev}$ to include only the $k$ most probable prefixes of $A_\text{next}$.
+The output is the $1$ most probable transcript, although the this can easily
+be extended to return an $n$-best list.}\label{alg:decode}
+  \begin{algorithmic}
+    \State $p_b(\emptyset; x_{1:0}) \gets 1,\; p_{nb}(\emptyset; x_{1:0}) \gets 0$
+    \State $A_{\text{prev}} \gets \{\emptyset\}$ 
+    \For {$t = 1, \ldots, T$}
+      \State $A_{\text{next}} \gets \{\}$
+      \For {$\ell \; \text{\bf in} \; A_{\text{prev}}$}
+	\For {$c \; \text{\bf in} \; \Sigma$}
+	  \If {$c = \text{blank}$}
+	    \State $p_b(\ell; x_{1:t}) \gets p(\text{blank}; x_t) 
+		(p_b(\ell ; x_{1:t-1}) + p_{nb}(\ell ; x_{1:t-1}))$
+	    \State $\mbox{add } \ell \mbox{ to } A_{\text{next}}$
+	  \Else
+	    \State $\ell^+ \gets \mbox{concatenate }\ell \mbox{ and } c$
+	    \If {$c = \ell_\text{end}$}
+	      \State $p_{nb}(\ell^+; x_{1:t}) \gets p(c; x_t)p_b(\ell ; x_{1:t-1})$
+	      \State $p_{nb}(\ell; x_{1:t}) \gets p(c; x_t)p_b(\ell ; x_{1:t-1})$
+	    \ElsIf {$c = \text{space}$}
+	    \State $p_{nb}(\ell^+; x_{1:t}) \gets p(W(\ell^+)| W(\ell))^\alpha 
+		p(c; x_t)(p_b(\ell ; x_{1:t-1}) + p_{nb}(\ell ; x_{1:t-1}))$
+	    \Else
+	      \State $p_{nb}(\ell^+; x_{1:t}) \gets p(c; x_t)
+		(p_b(\ell; x_{1:t-1}) + p_{nb}(\ell; x_{1:t-1}))$
+	    \EndIf
+	    \If {$\ell^+ \; \text{\bf not in} \; A_\text{prev}$}
+	      \State $p_{b}(\ell^+; x_{1:t}) \gets p(\text{blank}; x_t)
+		(p_b(\ell^+; x_{1:t-1}) + p_{nb}(\ell^+; x_{1:t-1}))$
+	      \State $p_{nb}(\ell^+; x_{1:t}) \gets p(c; x_t)p_{nb}(\ell^+; x_{1:t-1})$
+	    \EndIf
+	    \State $\mbox{add } \ell^+ \mbox{ to } A_{\text{next}}$
+	  \EndIf
+	\EndFor
+      \EndFor
+      \State $A_{\text{prev}} \gets k 
+	\text{ most probable prefixes in } A_{\text{next}}$
+    \EndFor
+    \State \Return $1 \text{ most probable prefix in } A_{\text{prev}}$
+  \end{algorithmic}
+\end{algorithm}
+The algorithm maintains two separate probabilities for each prefix,
+$p_{b}(\ell; x_{1:t})$ and $p_{nb}(\ell; x_{1:t})$. Respectively, these are the
+probability of the prefix $\ell$ ending in blank or not ending in blank given
+the first $t$ time steps of the audio input $X$.
+
+The sets $A_{\text{prev}}$ and $A_{\text{next}}$ maintain a list of active
+prefixes at the previous time step and proposed prefixes at the next time step
+respectively. Note that the size of $A_{\text{prev}}$ is never larger than the
+beam width $k$. The overall probability of a prefix is the product of a word
+insertion term and the sum of the blank and non-blank ending probabilities,
+\begin{equation}\label{eq:prefixprob}
+  p(\ell; x_{1:t}) = (p_b(\ell; x_{1:t}) + p_{nb}(\ell; x_{1:t})) |W(\ell)|^\beta,
+\end{equation}
+where $W(\ell)$ is the set of words in the sequence $\ell$. When taking the $k$
+most probable prefixes of $A_{\text{next}}$, we sort each prefix using the
+probability given by equation \ref{eq:prefixprob}.
+
+The variable $\ell_{\text{end}}$ is the last character in the label sequence
+$\ell$. The function $W(\cdot)$, which converts $\ell$ into a string of words,
+segments the sequence $\ell$ at each space character and truncates any
+characters trailing the last space. 
+
+We incorporate a lexicon or language model constraint by including the
+probability $p(W(\ell^+) | W(\ell))$ whenever the algorithm proposes appending
+a space character to $\ell$. By setting $p(W(\ell^+) | W(\ell))$ to $1$ if the
+last word of $W(\ell^+)$ is in the lexicon and $0$ otherwise, the probability
+acts as a constraint forcing all character strings $\ell$ to consist of only
+words in the lexicon.  Furthermore, $p(W(\ell^+) | W(\ell))$ can represent a
+$n$-gram language model by considering only the last $n-1$ words in $W(\ell)$.  
+
