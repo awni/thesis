@@ -1,0 +1,109 @@
+\section{Introduction}
+\label{sec:scaling_asr:introduction}
+
+Decades worth of hand-engineered domain knowledge has gone into current
+state-of-the-art automatic speech recognition (ASR) pipelines.  A simple but
+powerful alternative solution is to train such ASR models end-to-end, using
+deep learning to replace most modules with a single
+model~\cite{hannun2014deepspeech}. We present the second generation of our
+speech system that exemplifies the major advantages of end-to-end learning. The
+{Deep Speech 2} ASR pipeline approaches or exceeds the accuracy of Amazon
+Mechanical Turk human workers on several benchmarks, works in multiple
+languages with little modification, and is deployable in a production setting.
+It thus represents a significant step towards a single ASR system that
+addresses the entire range of speech recognition contexts handled by humans.
+Since our system is built on end-to-end deep learning, we can employ a spectrum
+of deep learning techniques: capturing large training sets, training larger
+models with high performance computing, and methodically exploring the space of
+neural network architectures. We show that through these techniques we are able
+to reduce error rates of our previous end-to-end
+system~\cite{hannun2014deepspeech} in English by up to 43\%, and can also
+recognize Mandarin speech with high accuracy.
+
+One of the challenges of speech recognition is the wide range of variability in
+speech and acoustics. As a result, modern ASR pipelines are made up of numerous
+components including complex feature extraction, acoustic models, language and
+pronunciation models, speaker adaptation, etc. Building and tuning these
+individual components makes developing a new speech recognizer very hard,
+especially for a new language.  Indeed, many parts do not generalize well
+across environments or languages and it is often necessary to support multiple
+application-specific systems in order to provide acceptable accuracy. This
+state of affairs is different from human speech recognition: people have the
+innate ability to learn any language during childhood, using general skills to
+learn language. After learning to read and write, most humans can transcribe
+speech with robustness to variation in environment, speaker accent and noise,
+without additional training for the transcription task.  To meet the
+expectations of speech recognition users, we believe that a single engine must
+learn to be similarly competent; able to handle most applications with only
+minor modifications and able to learn new languages from scratch without
+dramatic changes.  Our end-to-end system puts this goal within reach, allowing
+us to approach or exceed the performance of human workers on several tests in
+two very different languages: Mandarin and English.
+
+Since {Deep Speech 2} (DS2) is an end-to-end deep learning system, we can
+achieve performance gains by focusing on three crucial components:  the model
+architecture, large labeled training datasets, and computational scale. This
+approach has also yielded great advances in other application areas such as
+computer vision and natural language.  This paper details our contribution to
+these three areas for speech recognition, including an extensive investigation
+of model architectures and the effect of data and model size on recognition
+performance.  In particular, we describe numerous experiments with neural
+networks trained with the Connectionist Temporal Classification (CTC) loss
+function~\cite{graves2006} to predict speech transcriptions from audio.  We
+consider networks composed of many layers of recurrent connections,
+convolutional filters, and nonlinearities, as well as the impact of a specific
+instance of Batch Normalization~\cite{ioffe2015batch} (BatchNorm) applied to
+RNNs.  We not only find networks that produce much better predictions than
+those in previous work~\cite{hannun2014deepspeech}, but also find instances of
+recurrent models that can be deployed in a production setting with no
+significant loss in accuracy.
+
+Beyond the search for better model architecture, deep learning systems benefit
+greatly from large quantities of training data.  We detail our data capturing
+pipeline that has enabled us to create larger datasets than what is typically
+used to train speech recognition systems.  Our English speech system is trained
+on 11,940 hours of speech, while the Mandarin system is trained on 9,400 hours.
+We use data synthesis to further augment the data during training.
+
+Training on large quantities of data usually requires the use of larger models.
+Indeed, our models have many more parameters than those used in our previous
+system. Training a single model at these scales requires tens of
+exaFLOPs\footnote{1 exaFLOP = $10^{18}$ FLoating-point OPerations.} that would
+require 3-6 weeks to execute on a single GPU. This makes model exploration a
+very time consuming exercise, so we have built a highly optimized training
+system that uses 8 or 16 GPUs to train one model. In contrast to previous
+large-scale training approaches that use parameter servers and asynchronous
+updates~\cite{dean2012, chilimbi2014}, we use synchronous SGD, which is easier
+to debug while testing new ideas, and also converges faster for the same degree
+of data parallelism. To make the entire system efficient, we describe
+optimizations for a single GPU as well as improvements to scalability for
+multiple GPUs. We employ optimization techniques typically found in High
+Performance Computing to improve scalability. These optimizations include a
+fast implementation of the CTC loss function on the GPU, and a custom memory
+allocator. We also use carefully integrated compute nodes and a custom
+implementation of all-reduce to accelerate inter-GPU communication. Overall the
+system sustains approximately 50 teraFLOP/second when training on 16 GPUs. This
+amounts to 3 teraFLOP/second per GPU which is about 50\% of peak theoretical
+performance. This scalability and efficiency cuts training times down to 3 to 5
+days, allowing us to iterate more quickly on our models and datasets.
+
+We benchmark our system on several publicly available test sets and compare the
+results to our previous end-to-end system~\cite{hannun2014deepspeech}.  Our
+goal is to eventually reach human-level performance not only on specific
+benchmarks, where it is possible to improve through dataset-specific tuning,
+but on a range of benchmarks that reflects a diverse set of scenarios. To that
+end, we have also measured the performance of human workers on each benchmark
+for comparison.  We find that our system outperforms humans in some
+commonly-studied benchmarks and has significantly closed the gap in much harder
+cases.  In addition to public benchmarks, we show the performance of our
+Mandarin system on internal datasets that reflect real-world product scenarios.
+
+Deep learning systems can be challenging to deploy at scale.  Large neural
+networks are computationally expensive to evaluate for each user utterance, and
+some network architectures are more easily deployed than others. Through model
+exploration, we find high-accuracy, deployable network architectures, which we
+detail here. We also employ a batching scheme suitable for GPU hardware called
+Batch Dispatch that leads to an efficient, real-time implementation of our
+Mandarin engine on production servers.  Our implementation achieves a 98th
+percentile compute latency of 67 milliseconds, while the server is loaded with
+10 simultaneous audio streams.

@@ -1,0 +1,74 @@
+\section{Related Work}
+ \label{sec:scaling_asr:related}
+
+This work is inspired by previous work in both deep learning and speech
+recognition. Feed-forward neural network acoustic models were explored more
+than 20 years ago~\cite{bourlard93, renals1994, ellis1999}. Recurrent neural
+networks and networks with convolution were also used in speech recognition
+around the same time~\cite{robinson1996, waibel1989}. More recently DNNs have
+become a fixture in the ASR pipeline with almost all state of the art speech
+work containing some form of deep neural network~\cite{mohamed2011, hinton2012,
+dahl2011a, dahl2011, jaitly2012, seide2011}. Convolutional networks have also
+been found beneficial for acoustic models~\cite{abdelhamid2012,
+sainath2013deep}. Recurrent neural networks, typically LSTMs, are just
+beginning to be deployed in state-of-the art recognizers~\cite{graves2013,
+sak2014, sak2014b} and work well together with convolutional layers for the
+feature extraction~\cite{sainath2015}. Models with both
+bidirectional~\cite{graves2013} and unidirectional recurrence have been
+explored as well.
+
+End-to-end speech recognition is an active area of research, showing compelling
+results when used to re-score the outputs of a DNN-HMM~\cite{graves2014} and
+standalone~\cite{hannun2014deepspeech}. Two methods are currently used to map
+variable length audio sequences directly to variable length transcriptions. The
+RNN encoder-decoder paradigm uses an encoder RNN to map the input to a fixed
+length vector and a decoder network to expand the fixed length vector into a
+sequence of output predictions~\cite{cho2014, sutskever2014}. Adding an
+attentional mechanism to the decoder greatly improves performance of the
+system, particularly with long inputs or outputs~\cite{bahdanau2014}. In
+speech, the RNN encoder-decoder with attention performs well both in predicting
+phonemes~\cite{chorowski2014} or graphemes~\cite{bahdanau2016, chan2016}. 
+
+The other commonly used technique for mapping variable length audio input to
+variable length output is the CTC loss function~\cite{graves2006} coupled with
+an RNN to model temporal information. The CTC-RNN model performs well in
+end-to-end speech recognition with grapheme outputs~\cite{graves2014,
+hannun2014firstpass, hannun2014deepspeech, maas2015}. The CTC-RNN model has
+also been shown to work well in predicting phonemes~\cite{miao2015, sak2015},
+though a lexicon is still needed in this case.  Furthermore it has been
+necessary to pre-train the CTC-RNN network with a DNN cross-entropy network
+that is fed frame-wise alignments from a GMM-HMM system~\cite{sak2015}. In
+contrast, we train the CTC-RNN networks from scratch without the need of
+frame-wise alignments for pre-training.
+
+Exploiting scale in deep learning has been central to the success of the field
+thus far~\cite{krizhevsky2012imagenet, le2013}. Training on a single GPU
+resulted in substantial performance gains~\cite{raina2009}, which were
+subsequently scaled linearly to two~\cite{krizhevsky2012imagenet} or more
+GPUs~\cite{coates2013cotshpc}. We take advantage of work in increasing
+individual GPU efficiency for low-level deep learning
+primitives~\cite{chetlur14}. We build on the past work in using
+model-parallelism~\cite{coates2013cotshpc}, data-parallelism~\cite{dean2012} or
+a combination of the two~\cite{szegedy2015, hannun2014deepspeech} to create a
+fast and highly scalable system for training deep RNNs in speech recognition.
+
+Data has also been central to the success of end-to-end speech recognition,
+with over 7000 hours of labeled speech used in Deep Speech 1
+(DS1)~\cite{hannun2014deepspeech}. Data augmentation has been highly effective
+in improving the performance of deep learning in computer
+vision~\cite{lecun2004, sapp2008, coates2011}. This has also been shown to
+improve speech systems~\cite{gales2009, hannun2014deepspeech}. Techniques used
+for data augmentation in speech range from simple noise
+addition~\cite{hannun2014deepspeech} to complex perturbations such as
+simulating changes to the vocal tract length and rate of speech of the
+speaker~\cite{jaitly2013, ko2015}.
+
+Existing speech systems can also be used to bootstrap new data collection. In
+one approach, the authors use one speech engine to align and filter a thousand
+hours of read speech~\cite{panayotov2015}. In another approach, a heavy-weight
+offline speech recognizer is used to generate transcriptions for tens of
+thousands of hours of speech~\cite{kapralova2014}. This is then passed through
+a filter and used to re-train the recognizer, resulting in significant
+performance gains. We draw inspiration from these past approaches in
+bootstrapping larger datasets and data augmentation to increase the effective
+amount of labeled data for our system.
