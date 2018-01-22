@@ -127,6 +127,7 @@ decoding step as described in Section~\ref{sec:scaling_asr:languagemodel}.
 
 
 \subsection{Batch Normalization for Deep RNNs}
+\label{sec:scaling_asr:bn}
 
 To efficiently scale our model as we scale the training set, we increase the
 depth of the networks by adding more hidden layers, rather than making each
@@ -381,6 +382,7 @@ better.  Given this, most of the remaining experiments use the simple RNN
 layers rather than the GRUs.
 
 \subsection{Frequency Convolutions}
+\label{sec:scaling_asr:2dconv}
 
 Temporal convolution is commonly used in speech recognition to efficiently
 model temporal translation invariance for variable length utterances. This type

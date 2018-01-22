@@ -1,2 +1,141 @@
 \section{Data}
 \label{sec:scaling_asr:data}
+
+Large-scale deep learning systems require an abundance of labeled training
+data. We have collected an extensive training dataset for both English and
+Mandarin speech models, in addition to augmenting our training with publicly
+available datasets. In English we use 11,940 hours of labeled speech data
+containing 8 million utterances summarized in
+Table~\ref{table:scaling_asr:englishdata}.  For the Mandarin system we use
+9,400 hours of labeled audio containing 11 million utterances. The Mandarin
+speech data consists of internal Baidu corpora, representing a mix of read
+speech and spontaneous speech, in both standard Mandarin and accented Mandarin.
+
+\begin{table}
+\centering
+\begin{tabular}{l l r}
+ \toprule
+ Dataset & Speech Type & Hours \\
+ \midrule
+ WSJ          & read           &   80  \\
+ Switchboard  & conversational &  300  \\
+ Fisher       & conversational & 2000  \\
+ LibriSpeech  & read           &  960  \\
+ Baidu        & read           & 5000  \\
+ Baidu        & mixed          & 3600  \\
+ \midrule
+ Total       &                &  11940 \\
+ \bottomrule
+\end{tabular}
+\caption{Summary of the datasets used to train DS2 in English. The Wall Street
+        Journal (WSJ), Switchboard and Fisher~\cite{cieri2004fisher} corpora are
+        all published by the Linguistic Data Consortium. The LibriSpeech
+        dataset~\cite{panayotov2015} is available free on-line. The other datasets
+        are internal Baidu corpora.}
+\label{table:scaling_asr:englishdata}
+\end{table}
+
+
+\subsection{Dataset Construction}
+
+Some of the internal English (3,600 hours) and Mandarin (1,400 hours) datasets
+were created from raw data captured as long audio clips with noisy
+transcriptions. The length of these clips ranged from several minutes to more
+than hour, making it impractical to unroll them in time in the RNN during
+training. To solve this problem, we developed an alignment, segmentation and
+filtering pipeline that can generate a training set with shorter utterances and
+few erroneous transcriptions.
+
+The first step in the pipeline is to use an existing bidirectional RNN model
+trained with CTC to align the transcription to the frames of audio. For a given
+audio-transcript pair, $(x, y)$, we find the alignment that maximizes
+\begin{equation*}
+\ell^* = \argmax_{\ell \in \text{Align}(x,y)} \prod_t^T p_{\text{ctc}}(\ell_t | x; \theta).
+\end{equation*}
+This is essentially a Viterbi alignment found using a RNN model trained with
+CTC. Since Equation~\ref{eq:scaling_asr:ctc} integrates over the alignment, the
+CTC loss function is never explicitly asked to produce an accurate alignment.
+In principle, CTC could choose to emit all the characters of the transcription
+after some fixed delay and this can happen with unidirectional
+RNNs~\cite{sak2015}. However, we found that CTC produces an accurate alignment
+when trained with a bidirectional RNN.
+
+Following the alignment is a segmentation step that splices the audio and the
+corresponding aligned transcription whenever it encounters a long series of
+consecutive \emph{blank} labels occurs, since this usually denotes a stretch of
+silence. By tuning the number of consecutive \emph{blank}s, we can tune the
+length of the utterances generated. For the English speech data, we also
+require a \emph{space} token to be within the stretch of \emph{blank}s in order
+to segment only on word boundaries. We tune the segmentation to generate
+utterances that are on average 7 seconds long.
+
+The final step in the pipeline removes erroneous examples that arise from a
+failed alignment. We crowd source the ground truth transcriptions for several
+thousand examples. The word level edit distance between the ground truth and
+the aligned transcription is used to produce a \emph{good} or \emph{bad} label.
+The threshold for the word level edit distance is chosen such that the
+resulting WER of the \emph{good} portion of the development set is less than
+5\%. We then train a linear classifier to accurately predict bad examples given
+the input features generated from the speech recognizer. We find the following
+features useful: the raw CTC cost, the CTC cost normalized by the sequence
+length, the CTC cost normalized by the transcript length, the ratio of the
+sequence length to the transcript length, the number of words in the
+transcription and the number of characters in the transcription. For the
+English dataset, we find that the filtering pipeline reduces the WER from 17\%
+to 5\% while retaining more than 50\% of the examples.
+
+\subsection{Data Augmentation}
+
+We augment our training data by adding noise to increase the effective size of
+our training data and to improve our robustness to noisy
+speech~\cite{hannun2014deepspeech}. Although the training data contains some
+intrinsic noise, we can increase the quantity and variety of noise through
+augmentation. Too much noise augmentation tends to make optimization difficult
+and can lead to worse results, and too little noise augmentation makes the
+system less robust to low signal-to-noise speech.  We find that a good balance
+is to add noise to 40\% of the utterances that are chosen at random. The noise
+source consists of several thousand hours of randomly selected audio clips
+combined to produce hundreds of hours of noise.
+
+\subsection{Scaling Data}
+
+Our English and Mandarin corpora are substantially larger than those commonly
+reported in speech recognition literature. In
+Table~\ref{table:scaling_asr:datascale}, we show the effect of increasing the
+amount of labeled training data on WER. This is done by randomly sampling the
+full dataset before training. For each dataset, the model was trained for up to
+20 epochs though usually early-stopped based on the error on a held out
+development set. We note that the WER decreases with a power law for both the
+regular and noisy development sets. The WER decreases by $\sim$40\% relative
+for each factor of 10 increase in training set size. We also observe a
+consistent gap in WER ($\sim$60\% relative) between the regular and noisy
+datasets, implying that more data benefits both cases equally. 
+
+This implies that a speech system will continue to improve with more labeled
+training data. We hypothesize that equally as important as increasing raw
+number of hours is increasing the number of speech \emph{contexts} that are
+captured in the dataset. A context can be any property that makes speech unique
+including different speakers, background noise, environment, and microphone
+hardware. While we do not have the labels needed to validate this claim, we
+suspect that measuring WER as a function of speakers in the dataset would lead
+to much larger relative gains than simple random sampling.
+
+\begin{table}
+\centering
+\begin{tabular}{r r r  r  r r r  r r r}
+\toprule
+\multicolumn{3}{c}{Fraction of Data} & Hours & \multicolumn{3}{c}{Regular Dev} & \multicolumn{3}{c}{Noisy Dev} \\
+\midrule
+& 1\%   & & 120   & & 29.23 & & & 50.97 & \\
+& 10\%  & & 1200  & & 13.80 & & & 22.99 & \\
+& 20\%  & & 2400  & & 11.65 & & & 20.41 & \\
+& 50\%  & & 6000  & & 9.51  & & & 15.90 & \\
+& 100\% & & 12000 & & 8.46  & & & 13.59 & \\
+\bottomrule
+\end{tabular}
+\caption{Comparison of English WER for Regular and Noisy development sets on
+         increasing training dataset size. The architecture is a 9-layer model with
+         2 layers of 2D-invariant convolution and 7 recurrent layers with 68M
+         parameters.}
+\label{table:scaling_asr:datascale}
+\end{table}

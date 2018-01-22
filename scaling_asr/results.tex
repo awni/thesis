@@ -1,5 +1,276 @@
 \section{Results}
 \label{sec:scaling_asr:results}
 
+To better assess the real-world applicability of our speech system, we evaluate
+on a wide range of test sets. We use several publicly available benchmarks and
+several test sets collected internally. Together these test sets represent a
+wide range of challenging speech environments including low signal-to-noise
+ratios (noisy and far-field), accented, read, spontaneous and conversational
+speech. 
+
+All models are trained for 20 epochs on either the full English dataset,
+described in Table~\ref{table:scaling_asr:englishdata}, or the full Mandarin
+dataset described in Section~\ref{sec:scaling_asr:data}. We use stochastic
+gradient descent with Nesterov momentum~\cite{sutskever2013} along with a
+minibatch of 512 utterances. If the norm of the gradient exceeds a threshold of
+400, it is rescaled to 400~\cite{pascanu2013}. The model which performs the
+best on a held-out development set during training is chosen for evaluation.
+The learning rate is chosen from $[1\times10^{-4}, 6\times10^{-4}]$ to yield
+fastest convergence and annealed by a constant factor of 1.2 after each epoch.
+We use a momentum of 0.99 for all models.
+
+The language models used are those described in
+Section~\ref{subsection:scaling_asr:languagemodel}. The decoding parameters
+from Equation~\ref{eq:scaling_asr:decoding} are tuned on a held-out development
+set. We use a beam size of 500 for the English decoder and a beam size of 200
+for the Mandarin decoder.
+
+\subsection{English}
+
+The best DS2 model has 11 layers with 3 layers of 2D convolution, 7
+bidirectional recurrent layers, a fully-connected output layer along with Batch
+Normalization. The first layer outputs to bigrams with a temporal stride of 3.
+By comparison the DS1 model has 5 layers with a single bidirectional recurrent
+layer and it outputs to unigrams with a temporal stride of 2 in the first
+layer. We report results on several test sets for both the DS2 and DS1 model.
+We do not tune or adapt either model to any of the speech conditions in the
+test sets. Language model decoding parameters are set once on a held-out
+development set.
+
+To put the performance of our system in context, we benchmark most of our
+results against human workers, since speech recognition is an audio perception
+and language understanding problem that humans excel at. We obtain a measure of
+human level performance by paying workers from Amazon Mechanical Turk to
+hand-transcribe all of our test sets. Two workers transcribe the same audio
+clip, that is typically about 5 seconds long, and we use the better of the two
+transcriptions for the final WER calculation. They are free to listen to the
+audio clip as many times as they like. These workers are mostly based in the
+United States, and on average spend about 27 seconds per transcription. The
+hand-transcribed results are compared to the existing ground truth to produce a
+WER. While the existing ground truth transcriptions do have some label error,
+this is rarely more than 1\%. This implies that disagreement between the ground
+truth transcripts and the human level transcripts is a good heuristic for human
+level performance.
+
+\subsubsection{Model Size}
+
+Our English speech training set is substantially larger than the size of
+commonly used speech datasets. Furthermore, the data is augmented with noise
+synthesis. To get the best generalization error, we expect that the model size
+must increase to fully exploit the patterns in the data. In
+Section~\ref{sec:scaling_asr:bn} we explored the effect of model depth while
+fixing the number of parameters. In contrast, here we show the effect of
+varying model size on the performance of the speech system. We only vary the
+size of each layer, while keeping the depth and other architectural parameters
+constant. We evaluate the models on the same Regular and Noisy development sets
+that we use in Section~\ref{sec:scaling_asr:2dconv}.
+
+\begin{table}
+\centering
+\begin{tabular}{r  c  r r r  r r r}
+\toprule
+Model size & Model type & \multicolumn{3}{c}{Regular Dev} & \multicolumn{3}{c}{Noisy Dev} \\
+\midrule
+$18  \times 10^6$    & GRU &   & 10.59 & &  & 21.38 & \\
+$38  \times 10^6$    & GRU &   & 9.06  & &  & 17.07 & \\
+$70  \times 10^6$    & GRU &   & 8.54  & &  & 15.98 & \\
+$70  \times 10^6$    & RNN &   & 8.44  & &  & 15.09 & \\
+$100 \times 10^6$    & GRU &   & 7.78  & &  & 14.17 & \\
+$100 \times 10^6$    & RNN &   & 7.73  & &  & 13.06 & \\
+\bottomrule
+\end{tabular}
+\caption{Comparing the effect of model size on the WER of the English speech
+    system on both the regular and noisy development sets. We vary the number
+    of hidden units in all but the convolutional layers. The GRU model has 3
+    layers of bidirectional GRUs with 1 layer of 2D-invariant convolution. The
+    RNN model has 7 layers of bidirectional simple recurrence with 3 layers of
+    2D-invariant convolution. Both models output bigrams with a temporal stride
+    of 3. All models contain approximately 35 million parameters and are
+    trained with BatchNorm and SortaGrad.}
+\label{table:scaling_asr:modelsize}
+\end{table}
+
+The models in Table~\ref{table:scaling_asr:modelsize} differ from those in
+Table~\ref{table:scaling_asr:rnns} in that we increase the the stride to 3 and
+output to bigrams. Because we increase the model size to as many as 100 million
+parameters, we find that an increase in stride is necessary for fast
+computation and memory constraints. However, in this regime we note that the
+performance advantage of the GRU networks appears to diminish over the simple
+RNN. In fact, for the 100 million parameter networks the simple RNN performs
+better than the GRU network and is faster to train despite the 2 extra layers
+of convolution.
+
+Table~\ref{table:scaling_asr:modelsize} shows that the performance of the
+system improves consistently up to 100 million parameters. All further English
+DS2 results are reported with this same 100 million parameter RNN model since
+it achieves the lowest generalization errors.
+
+Table~\ref{table:scaling_asr:test} shows that the 100 million parameter RNN
+model (DS2) gives a 43.4\% relative improvement over the 5-layer model with 1
+recurrent layer (DS1) on an internal Baidu dataset of 3,300 utterances that
+contains a wide variety of speech including challenging accents, low
+signal-to-noise ratios from far-field or background noise, spontaneous and
+conversational speech. 
+
+\begin{table}
+\centering
+\begin{tabular}{l  c  c  c}
+\toprule
+Test set   & DS1 & DS2 \\
+\midrule
+Baidu Test & 24.01  & 13.59 \\
+\bottomrule
+\end{tabular}
+\caption{Comparison of DS1 and DS2 WER on an internal test set of 3,300
+    examples. The test set contains a wide variety of speech including accents,
+    low signal-to-noise speech, spontaneous and conversational speech.}
+\label{table:scaling_asr:test}
+\end{table}
+
+\subsubsection{Read Speech}
+
+Read speech with high signal-to-noise ratio is arguably the easiest large
+vocabulary for a continuous speech recognition task. We benchmark our system on
+two test sets from the Wall Street Journal (WSJ) corpus of read news articles.
+These are available in the LDC catalog as LDC94S13B and LDC93S6B. We also take
+advantage of the recently developed LibriSpeech corpus constructed using audio
+books from the LibriVox project~\cite{panayotov2015}.
+
+Table~\ref{table:scaling_asr:readspeech} shows that the DS2 system outperforms
+humans in 3 out of the 4 test sets and is competitive on the fourth. Given this
+result, we suspect that there is little room for a generic speech system to
+further improve on clean read speech without further domain adaptation.
+
+\begin{table}
+\centering
+\begin{tabular}{l  r  r r}
+\toprule
+\multicolumn{4}{c}{Read Speech}\\
+\midrule
+Test set               & DS1   & DS2 &  Human \\ 
+\midrule
+WSJ eval'92            & 4.94  & 3.60  & 5.03 \\ 
+WSJ eval'93            & 6.94  & 4.98  & 8.08 \\ 
+LibriSpeech test-clean & 7.89  & 5.33  & 5.83 \\ 
+LibriSpeech test-other & 21.74 & 13.25 & 12.69 \\ 
+\bottomrule
+\end{tabular}
+\caption{Comparison of WER for two speech systems and human level performance
+         on read speech.}
+\label{table:scaling_asr:readspeech}
+\end{table}
+
+\subsubsection{Accented Speech}
+
+Our source for accented speech is the publicly available
+VoxForge\footnote{\url{http://www.voxforge.org}} dataset, which has clean
+speech read from speakers with many different accents. We group these accents
+into four categories. The American-Canadian and Indian groups are
+self-explanatory. The Commonwealth accent denotes speakers with British, Irish,
+South African, Australian and New Zealand accents. The European group contains
+speakers with accents from countries in Europe that do not have English as a
+first language.  We construct a test set from the VoxForge data with 1024
+examples from each accent group for a total of 4096 examples.
+
+Performance on these test sets is to some extent a measure of the breadth and
+quality of our training data. Table~\ref{table:scaling_asr:voxforge} shows that
+our performance improved on all the accents when we include more accented
+training data and use an architecture that can effectively train on that data.
+However human level performance is still notably better than that of DS2 for
+all but the Indian accent. 
+
+\begin{table}
+\centering
+\begin{tabular}{l  r  r  r}
+\toprule
+\multicolumn{4}{c}{Accented Speech}\\
+\midrule
+Test set                   & DS1   & DS2 & Human \\
+\midrule
+VoxForge American-Canadian & 15.01 & 7.55  & 4.85 \\
+VoxForge Commonwealth      & 28.46 & 13.56 & 8.15 \\
+VoxForge European          & 31.20 & 17.55 & 12.76 \\
+VoxForge Indian            & 45.35 & 22.44 & 22.15 \\
+\bottomrule
+\end{tabular}
+\caption{Comparing WER of the DS1 system to the DS2 system on accented speech.}
+\label{table:scaling_asr:voxforge}
+\end{table}
+
+\subsubsection{Noisy Speech}
+
+We test our performance on noisy speech using the publicly available test sets
+from the recently completed third CHiME challenge~\cite{barker2015chime}. This
+dataset has 1320 utterances from the WSJ test set read in various noisy
+environments, including a bus, a cafe, a street and a pedestrian area. The
+CHiME set also includes 1320 utterances with simulated noise from the same
+environments as well as the control set containing the same utterances
+delivered by the same speakers in a noise-free environment. Differences between
+results on the control set and the noisy sets provide a measure of the
+network's ability to handle a variety of real and synthetic noise conditions.
+The CHiME audio has 6 channels and using all of them can provide substantial
+performance improvements~\cite{yoshioka2015}. We use a {\it single} channel for
+all our results, since multi-channel audio is not pervasive on most devices.
+Table~\ref{table:scaling_asr:chime} shows that DS2 substantially improves upon
+DS1, however DS2 is worse than human level performance on noisy data. The
+relative gap between DS2 and human level performance is larger when the data
+comes from a real noisy environment instead of synthetically adding noise to
+clean speech.
+
+\begin{table}
+\centering
+\begin{tabular}{l  r  r r}
+\toprule
+\multicolumn{4}{c}{Noisy Speech}\\
+\midrule
+Test set & DS1 & DS2  &  Human \\
+\midrule
+CHiME eval clean & 6.30  & 3.34  & 3.46 \\
+CHiME eval real  & 67.94 & 21.79 & 11.84 \\
+CHiME eval sim   & 80.27 & 45.05 & 31.33 \\
+\bottomrule
+\end{tabular}
+\caption{Comparison of DS1 and DS2 system on noisy speech. ``CHiME eval clean''
+         is a noise-free baseline. The ``CHiME eval real'' dataset is collected in
+         real noisy environments and the ``CHiME eval sim'' dataset has similar
+         noise synthetically added to clean speech.}
+\label{table:scaling_asr:chime}
+\end{table}
+
 \subsection{Mandarin}
 \label{sec:scaling_asr:results_mandarin}
+
+In Table~\ref{table:scaling_asr:results_mandarin} we compare several
+architectures trained on the Mandarin Chinese speech, on a development set of
+2000 utterances as well as a test set of 1882 examples of noisy speech. This
+development set was also used to tune the decoding parameters We see that the
+deepest model with 2D-invariant convolution and BatchNorm outperforms the
+shallow RNN by 48\% relative, thus continuing the trend that we saw with the
+English system---multiple layers of bidirectional recurrence improves
+performance substantially. 
+
+\begin{table}[ht!]
+\centering
+\begin{tabular}{l  r  r  }
+\toprule
+Architecture & Dev & Test \\
+\midrule
+5-layer, 1 RNN                & 7.13  & 15.41 \\
+5-layer, 3 RNN                & 6.49  & 11.85 \\
+5-layer, 3 RNN + BatchNorm           & 6.22  & 9.39 \\
+9-layer, 7 RNN + BatchNorm + 2D conv & 5.81  & 7.93 \\
+\bottomrule
+\end{tabular}
+\caption{The effect of the DS2 architecture on Mandarin WER. The development
+         and test sets are Baidu internal corpora.}
+\label{table:scaling_asr:results_mandarin}
+\end{table}
+
+We find that our best Mandarin Chinese speech system transcribes short
+voice-query like utterances better than a typical Mandarin Chinese speaker. To
+benchmark against humans we ran a test with 100 randomly selected utterances
+and had a group of 5 humans label all of them together. The group of humans had
+an error rate of 4.0\% as compared to the speech systems performance of 3.7\%.
+We also compared a single human transcriber to the speech system on 250
+randomly selected utterances. In this case the speech system performs much
+better: 9.7\% for the human compared to 5.7\% for the speech model.
