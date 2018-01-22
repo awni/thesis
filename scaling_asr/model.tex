@@ -397,7 +397,7 @@ time-steps~\cite{hannun2014deepspeech}.
 
 Convolutions in frequency and time domains, when applied to the spectral input
 features prior to any other processing, can slightly improve ASR
-performance~\cite{abdelhamid2012, sainath2013cnn, soltau2014}. Convolution in
+performance~\cite{abdelhamid2012, sainath2013deep, soltau2014}. Convolution in
 frequency attempts to model spectral variance due to speaker variability more
 concisely than what is possible with large fully connected networks. Since
 spectral ordering of features is removed by fully-connected and recurrent
@@ -410,7 +410,8 @@ preserving the number of input features in both frequency and time. In some
 cases, we specify a stride across either dimension which reduces the size of
 the output. We do not explicitly control for the number of parameters, since
 convolutional layers add a small fraction of parameters to our networks. All
-networks shown in Table~\ref{table:2dconv} have about 35 million parameters.
+networks shown in Table~\ref{table:scaling_asr:2dconv} have about 35 million
+parameters.
 
 We report results on two datasets---a development set of 2048 utterances
 (``Regular Dev'') and a much noisier dataset of 2048 utterances (``Noisy Dev'')
@@ -422,23 +423,26 @@ clean data. The change from one layer of 1D-invariant convolution to three
 layers of 2D-invariant convolution improves WER by 23.9\% on the noisy
 development set.
 
-%\begin{table}
-%\centering
-%\begin{tabular}{l l l l c c c}
-%\toprule
-%Architecture & Channels      & Filter dimension    & Stride        & Regular Dev & Noisy Dev \\
-%\midrule
-%1-layer 1D   & 1280          & 11                  & 2             & 9.52        & 19.36 \\
-%2-layer 1D   & 640, 640      & 5, 5                & 1, 2          & 9.67        & 19.21 \\
-%3-layer 1D   & 512, 512, 512 & 5, 5, 5             & 1, 1, 2       & 9.20        & 20.22 \\
-%1-layer 2D   & 32            & 41x11               & 2x2           & 8.94        & 16.22 \\
-%2-layer 2D   & 32, 32        & 41x11, 21x11        & 2x2, 2x1      & 9.06        & 15.71 \\
-%3-layer 2D   & 32, 32, 96    & 41x11, 21x11, 21x11 & 2x2, 2x1, 2x1 & 8.61        & 14.74 \\
-%\bottomrule
-%\end{tabular}
-%\caption{Comparison of WER for various arrangements of convolutional layers. In all cases, the convolutions are followed by 7 recurrent layers and 1 fully connected layer. For 2D-invariant convolutions the first dimension is frequency and the second dimension is time. All models have BatchNorm, SortaGrad, and 35 million parameters.}
-%\label{table:2dconv}
-%\end{table}
+\begin{table}
+\centering
+\begin{tabular}{l l l l c c c}
+\toprule
+Layers & Channels & Filter dimension    & Stride       & Dev         & Noisy Dev \\
+\midrule
+1 & 1280          & 11                  & 2             & 9.52        & 19.36 \\
+2 & 640, 640      & 5, 5                & 1, 2          & 9.67        & 19.21 \\
+3 & 512, 512, 512 & 5, 5, 5             & 1, 1, 2       & 9.20        & 20.22 \\
+1 & 32            & 41x11               & 2x2           & 8.94        & 16.22 \\
+2 & 32, 32        & 41x11, 21x11        & 2x2, 2x1      & 9.06        & 15.71 \\
+3 & 32, 32, 96    & 41x11, 21x11, 21x11 & 2x2, 2x1, 2x1 & 8.61        & 14.74 \\
+\bottomrule
+\end{tabular}
+\caption{Comparison of WER for various arrangements of convolutional layers. In
+         all cases, the convolutions are followed by 7 recurrent layers and 1 fully
+         connected layer. For 2D-invariant convolutions the first dimension is
+         frequency and the second dimension is time.}
+\label{table:scaling_asr:2dconv}
+\end{table}
 
 \subsection{Striding}
 
@@ -477,29 +481,30 @@ isomorphism ensures that the same words are always composed of the same bigram
 and unigram tokens. The output set of bigrams consists of all bigrams that
 occur in the training set. 
 
-In Table~\ref{table:bigrams} we show results for both the bigram and unigram
-systems for various levels of striding, with or without a language model. We
-observe that bigrams allow for larger strides without any sacrifice in in the
-word error rate. This allows us to reduce the number of time-steps of the
-unrolled RNN benefiting both computation and memory usage.
+In Table~\ref{table:scaling_asr:bigrams} we show results for both the bigram
+and unigram systems for various levels of striding, with or without a language
+model. We observe that bigrams allow for larger strides without any sacrifice
+in in the word error rate. This allows us to reduce the number of time-steps of
+the unrolled RNN benefiting both computation and memory usage.
 
-%\begin{table}
-%\centering
-%\begin{tabular}{c  r r r  r r r  r r r  r r r}
-%\toprule
-%& \multicolumn{6}{c}{Dev no LM} & \multicolumn{6}{c}{Dev LM}\\
-%\midrule
-%Stride  & \multicolumn{3}{c}{Unigrams} & \multicolumn{3}{c}{Bigrams} & \multicolumn{3}{c}{Unigrams} & \multicolumn{3}{c}{Bigrams} \\
-%\midrule
-%2 & & 14.93 & & & 14.56 & & & 9.52  & & & 9.66  & \\
-%3 & & 15.01 & & & 15.60 & & & 9.65  & & & 10.06 & \\
-%4 & & 18.86 & & & 14.84 & & & 11.92 & & & 9.93  & \\
-%\bottomrule
-%\end{tabular}
-%\rule{0pt}{2.6ex}
-%\caption{Comparison of WER with different amounts of striding for unigram and bigram outputs on a model with 1 layer of 1D-invariant convolution, 7 recurrent layers, and 1 fully connected layer. All models have BatchNorm, SortaGrad, and 35 million parameters. The models are compared on a development set with and without the use of a 5-gram language model.}
-%\label{table:bigrams}
-%\end{table}
+\begin{table}
+\centering
+\begin{tabular}{c r r r r}
+\toprule
+& \multicolumn{2}{c}{Dev no LM} & \multicolumn{2}{c}{Dev LM}\\
+\midrule
+Stride  & Unigrams & Bigrams & Unigrams & Bigrams \\
+\midrule
+2 & 14.93 & 14.56 & 9.52  & 9.66  \\
+3 & 15.01 & 15.60 & 9.65  & 10.06 \\
+4 & 18.86 & 14.84 & 11.92 & 9.93  \\
+\bottomrule
+\end{tabular}
+\caption{Comparison of WER with different amounts of striding for unigram and
+         bigram outputs. The models are compared on a development set with and
+         without the use of a 5-gram language model.}
+\label{table:scaling_asr:bigrams}
+\end{table}
 
 \subsection{Row Convolution and Unidirectional Models}
 
@@ -510,29 +515,29 @@ the user. We have found an unidirectional architecture that performs as well as
 our bidirectional models. This allows us to use unidirectional, forward-only
 RNN layers in our deployment system. 
 
-%\begin{figure}
-%\centering
-%\includegraphics[width=0.6\textwidth]{row-conv}
-%\caption{Row convolution architecture with future context size of 2}
-%\label{fig:row-conv}
-%\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=0.6\textwidth]{scaling_asr/figures/row_conv}
+\caption{The row convolution architecture with two time-steps of future context.}
+\label{fig:scaling_asr:row_conv}
+\end{figure}
 
 To accomplish this, we employ a special layer that we call row convolution,
-shown in Figure~\ref{fig:row-conv}. The intuition behind this layer is that we
-only need a small portion of future information to make an accurate prediction
-at the current time-step. Suppose at time-step $t$, we use a future context of
-$\tau$ steps. We now have a feature matrix $h_{t:t+\tau} = [h_t, h_{t+1}, ...,
-h_{t+\tau}]$ of size $d\times(\tau+1)$. We define a parameter matrix $W$ of the
-same size as $h_{t:t+\tau}$. The activations $r_t$ for the new layer at
-time-step $t$ are 
+shown in Figure~\ref{fig:scaling_asr:row_conv}. The intuition behind this layer
+is that we only need a small portion of future information to make an accurate
+prediction at the current time-step. Suppose at time-step $t$, we use a future
+context of $\tau$ steps. We now have a feature matrix $h_{t:t+\tau} = [h_t,
+h_{t+1}, ..., h_{t+\tau}]$ of size $d\times(\tau+1)$. We define a parameter
+matrix $W$ of the same size as $h_{t:t+\tau}$. The activations $r_t$ for the
+new layer at time-step $t$ are 
 
 \begin{align}
-\label{eq:rowconv}
+\label{eq:scaling_asr:rowconv}
 r_{t,i} = \sum_{j=1}^{\tau+1} W_{i,j} h_{t+j-1, i}, {\rm \ for\ } 1 \leq i \leq d.
 \end{align}
 
-Since the convolution-like operation in Eq.~\ref{eq:rowconv} is row oriented
-for both $W$ and $h_{t:t+\tau}$, we call this layer row convolution.
+Since the convolution-like operation in Eq.~\ref{eq:scaling_asr:rowconv} is row
+oriented for both $W$ and $h_{t:t+\tau}$, we call this layer row convolution.
 
 We place the row convolution layer above all recurrent layers. This has two
 advantages. First, this allows us to stream all computation below the row
@@ -540,9 +545,12 @@ convolution layer on a finer granularity given little future context is needed.
 Second, this results in better CER compared to the best bidirectional model for
 Mandarin. We conjecture that the recurrent layers have learned good feature
 representations, so the row convolution layer simply gathers the appropriate
-information to feed to the classifier. Results for a unidirectional Mandarin
-speech system with row convolution and a comparison to a bidirectional model
-are given in Section~\ref{section:deployment} on deployment. 
+information to feed to the classifier. 
+
+%% TODO, decide where to put these results
+%Results for a unidirectional Mandarin
+%speech system with row convolution and a comparison to a bidirectional model
+%are given in Section~\ref{section:deployment} on deployment. 
 
 \subsection{Language Model}
 \label{sec:scaling_asr:languagemodel}
@@ -560,7 +568,7 @@ we supplement our system with a language model trained from external text.
 We use an \emph{n}-gram language model since they scale well to large amounts
 of unlabeled text~\cite{hannun2014deepspeech}. For English, our language model
 is a Kneser-Ney smoothed 5-gram model with pruning that is trained using the
-KenLM toolkit~\cite{heafield2013kenlm} on cleaned text from the Common Crawl
+KenLM toolkit~\cite{heafield2013} on cleaned text from the Common Crawl
 Repository\footnote{\url{http://commoncrawl.org}}. The vocabulary is the most
 frequently used 400,000 words from 250 million lines of text, which produces a
 language model with about 850 million \emph{n}-grams. For Mandarin, the
@@ -569,12 +577,12 @@ pruning that is trained on an internal text corpus of 8 billion lines of text.
 This produces a language model with about 2 billion \emph{n}-grams.
 
 During inference we search for the transcription $y$ that maximizes $Q(y)$
-shown in Equation~\ref{eq:decoding}. This is a linear combination of $\log$
-probabilities from the CTC trained network and language model, along with a
-word insertion term~\cite{hannun2014deepspeech}. 
+shown in Equation~\ref{eq:scaling_asr:decoding}. This is a linear combination
+of $\log$ probabilities from the CTC trained network and language model, along
+with a word insertion term~\cite{hannun2014deepspeech}. 
 
 \begin{equation}
-\label{eq:decoding}
+\label{eq:scaling_asr:decoding}
 Q(y) = \log (p_{\textrm{ctc}}(y|x)) + \alpha \log(p_{\textrm{lm}}(y))  + \beta \: \textrm{word\_count}(y)
 \end{equation}
 
@@ -583,28 +591,29 @@ and the CTC network. The weight $\beta$ encourages more words in the
 transcription. These parameters are tuned on a development set. We use a beam
 search to find the optimal transcription~\cite{hannun2014firstpass}.
 
-%\begin{table}
-%\centering
-%\begin{tabular}{l  l  r r r r r r}
-%\toprule
-%Language & Architecture & \multicolumn{3}{c}{Dev no LM} & \multicolumn{3}{c}{Dev LM} \\
-%\midrule
-%English  & 5-layer, 1 RNN & & 27.79 & & & 14.39 & \\
-%English  & 9-layer, 7 RNN & & 14.93 & & & 9.52 & \\
-%Mandarin & 5-layer, 1 RNN & & 9.80  & & & 7.13 & \\
-%Mandarin & 9-layer, 7 RNN & & 7.55  & & & 5.81 & \\
-%\bottomrule
-%\end{tabular}
-%\caption{Comparison of WER for English and CER for Mandarin with and without a language model. These are simple RNN models with only one layer of 1D invariant convolution.}
-%\label{table:languagemodels}
-%\end{table}
+\begin{table}
+\centering
+\begin{tabular}{l  l  r r r r r r}
+\toprule
+Language & Architecture & \multicolumn{3}{c}{Dev no LM} & \multicolumn{3}{c}{Dev LM} \\
+\midrule
+English  & 5-layer, 1 RNN & & 27.79 & & & 14.39 & \\
+English  & 9-layer, 7 RNN & & 14.93 & & & 9.52 & \\
+Mandarin & 5-layer, 1 RNN & & 9.80  & & & 7.13 & \\
+Mandarin & 9-layer, 7 RNN & & 7.55  & & & 5.81 & \\
+\bottomrule
+\end{tabular}
+\caption{Comparison of WER for English and CER for Mandarin with and without a
+         language model.}
+\label{table:scaling_asr:languagemodels}
+\end{table}
 
-Table~\ref{table:languagemodels} shows that an external language model helps
-both English and Mandarin speech systems. The relative improvement given by the
-language model drops from 48\% to 36\% in English and 27\% to 23\% in Mandarin,
-as we go from a model with 5 layers and 1 recurrent layer to a model with 9
-layers and 7 recurrent layers. We hypothesize that the network builds a
-stronger implicit language model with more recurrent layers. 
+Table~\ref{table:scaling_asr:languagemodels} shows that an external language
+model helps both English and Mandarin speech systems. The relative improvement
+given by the language model drops from 48\% to 36\% in English and 27\% to 23\%
+in Mandarin, as we go from a model with 5 layers and 1 recurrent layer to a
+model with 9 layers and 7 recurrent layers. We hypothesize that the network
+builds a stronger implicit language model with more recurrent layers. 
 
 The relative performance improvement from a language model is higher in English
 than in Mandarin. We attribute this to the fact that a Chinese character
@@ -633,10 +642,11 @@ error at evaluation time if a character is not contained in this set. This is
 not a major concern, as our test set has only 0.74\% out of vocab characters.
 
 We use a character level language model in Mandarin as words are not usually
-segmented in text. The word insertion term of Equation~\ref{eq:decoding}
-becomes a character insertion term. In addition, we find that the performance
-of the beam search during decoding levels off at a smaller beam size. This
-allows us to use a beam size of 200 with a negligible degradation in CER. In
-Section~\ref{subsection:results-mandarin}, we show that our Mandarin speech
-models show roughly the same improvements to architectural changes as our
-English speech models.
+segmented in text. The word insertion term of
+Equation~\ref{eq:scaling_asr:decoding} becomes a character insertion term. In
+addition, we find that the performance of the beam search during decoding
+levels off at a smaller beam size. This allows us to use a beam size of 200
+with a negligible degradation in CER. In
+Section~\ref{sec:scaling_asr:results_mandarin}, we show that our Mandarin
+speech models show roughly the same improvements to architectural changes as
+our English speech models.

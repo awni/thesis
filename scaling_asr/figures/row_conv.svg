@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="389px" height="176px" viewBox="0 0 389 176" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>row_conv</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="row_conv" transform="translate(-1.000000, 0.000000)">
+            <g id="nodes" stroke-linecap="round" stroke-linejoin="round" transform="translate(119.000000, 33.000000)" stroke="#000000">
+                <path d="M103.2972,76.7721 C110.3267,83.8015 110.3267,95.1985 103.2972,102.2279 C96.2678,109.2574 84.8708,109.2574 77.8414,102.2279 C70.8119,95.1985 70.8119,83.8015 77.8414,76.7721 C84.8708,69.7426 96.2678,69.7426 103.2972,76.7721" id="Stroke-4"></path>
+                <path d="M175.2972,76.7721 C182.3267,83.8015 182.3267,95.1985 175.2972,102.2279 C168.2678,109.2574 156.8708,109.2574 149.8414,102.2279 C142.8119,95.1985 142.8119,83.8015 149.8414,76.7721 C156.8708,69.7426 168.2678,69.7426 175.2972,76.7721" id="Stroke-6"></path>
+                <path d="M247.2972,76.7721 C254.3267,83.8015 254.3267,95.1985 247.2972,102.2279 C240.2678,109.2574 228.8708,109.2574 221.8414,102.2279 C214.8119,95.1985 214.8119,83.8015 221.8414,76.7721 C228.8708,69.7426 240.2678,69.7426 247.2972,76.7721" id="Stroke-8"></path>
+                <path d="M31.2972,76.7721 C38.3267,83.8015 38.3267,95.1985 31.2972,102.2279 C24.2678,109.2574 12.8708,109.2574 5.8414,102.2279 C-1.1881,95.1985 -1.1881,83.8015 5.8414,76.7721 C12.8708,69.7426 24.2678,69.7426 31.2972,76.7721" id="Stroke-10"></path>
+                <path d="M31.2972,6.0533 C38.3267,13.0828 38.3267,24.4797 31.2972,31.5092 C24.2678,38.5386 12.8708,38.5386 5.8414,31.5092 C-1.1881,24.4797 -1.1881,13.0828 5.8414,6.0533 C12.8708,-0.9761 24.2678,-0.9761 31.2972,6.0533" id="Stroke-36"></path>
+                <path d="M103.2972,6.0533 C110.3267,13.0828 110.3267,24.4797 103.2972,31.5092 C96.2678,38.5386 84.8708,38.5386 77.8414,31.5092 C70.8119,24.4797 70.8119,13.0828 77.8414,6.0533 C84.8708,-0.9761 96.2678,-0.9761 103.2972,6.0533" id="Stroke-47"></path>
+                <path d="M175.2972,6.0533 C182.3267,13.0828 182.3267,24.4797 175.2972,31.5092 C168.2678,38.5386 156.8708,38.5386 149.8414,31.5092 C142.8119,24.4797 142.8119,13.0828 149.8414,6.0533 C156.8708,-0.9761 168.2678,-0.9761 175.2972,6.0533" id="Stroke-58"></path>
+                <path d="M247.2972,6.0533 C254.3267,13.0828 254.3267,24.4797 247.2972,31.5092 C240.2678,38.5386 228.8709,38.5386 221.8414,31.5092 C214.812,24.4797 214.812,13.0828 221.8414,6.0533 C228.8709,-0.9761 240.2678,-0.9761 247.2972,6.0533" id="Stroke-66"></path>
+            </g>
+            <g id="arrows" transform="translate(99.000000, 0.000000)">
+                <path d="M254.5693,104 L254.5693,76.1813" id="Stroke-67" stroke="#000000" stroke-linecap="round" stroke-linejoin="round"></path>
+                <polygon id="Fill-68" fill="#000000" fill-rule="nonzero" points="254.5693 72.1813 253.0693 76.1813 256.0693 76.1813"></polygon>
+                <polygon id="Stroke-69" stroke="#000000" points="254.5693 72.1813 253.0693 76.1813 256.0693 76.1813"></polygon>
+                <path d="M272.5693,122 L288.395508,122" id="Stroke-70" stroke="#000000" stroke-linecap="round" stroke-linejoin="round"></path>
+                <polygon id="Fill-71" fill="#000000" fill-rule="nonzero" points="290.6693 122 286.6693 120.5 286.6693 123.5"></polygon>
+                <polygon id="Stroke-72" stroke="#000000" points="290.6693 122 286.6693 120.5 286.6693 123.5"></polygon>
+                <path d="M38.0693,33.5 L38.0693,4.4" id="Stroke-73" stroke="#000000" stroke-linecap="round" stroke-linejoin="round"></path>
+                <polygon id="Fill-74" fill="#000000" fill-rule="nonzero" points="38.0693 0.4 36.5693 4.4 39.5693 4.4"></polygon>
+                <polygon id="Stroke-75" stroke="#000000" points="38.0693 0.4 36.5693 4.4 39.5693 4.4"></polygon>
+                <path d="M110.0693,33.5 L110.0693,4.4" id="Stroke-76" stroke="#000000" stroke-linecap="round" stroke-linejoin="round"></path>
+                <polygon id="Fill-77" fill="#000000" fill-rule="nonzero" points="110.0693 0.4 108.5693 4.4 111.5693 4.4"></polygon>
+                <polygon id="Stroke-78" stroke="#000000" points="110.0693 0.4 108.5693 4.4 111.5693 4.4"></polygon>
+                <path d="M182.0693,33.5 L182.0693,4.4" id="Stroke-79" stroke="#000000" stroke-linecap="round" stroke-linejoin="round"></path>
+                <polygon id="Fill-80" fill="#000000" fill-rule="nonzero" points="182.0693 0.4 180.5693 4.4 183.5693 4.4"></polygon>
+                <polygon id="Stroke-81" stroke="#000000" points="182.0693 0.4 180.5693 4.4 183.5693 4.4"></polygon>
+                <path d="M254.0693,33.7812 L254.0693,4.6813" id="Stroke-82" stroke="#000000" stroke-linecap="round" stroke-linejoin="round"></path>
+                <polygon id="Fill-83" fill="#000000" fill-rule="nonzero" points="254.0693 0.6813 252.5693 4.6813 255.5693 4.6813"></polygon>
+                <polygon id="Stroke-84" stroke="#000000" points="254.0693 0.6813 252.5693 4.6813 255.5693 4.6813"></polygon>
+                <path d="M57.0693,122.5 L86.1693,122.5" id="Stroke-11" stroke="#000000" stroke-linecap="round" stroke-linejoin="round"></path>
+                <polygon id="Fill-12" fill="#000000" fill-rule="nonzero" points="90.1693 122.50001 86.1693 121.00001 86.1693 124.00001"></polygon>
+                <polygon id="Stroke-13" stroke="#000000" points="90.1693 122.5 86.1693 121 86.1693 124"></polygon>
+                <path d="M129.0693,122.5 L158.1693,122.5" id="Stroke-14" stroke="#000000" stroke-linecap="round" stroke-linejoin="round"></path>
+                <polygon id="Fill-15" fill="#000000" fill-rule="nonzero" points="162.1693 122.5 158.1693 121 158.1693 124"></polygon>
+                <polygon id="Stroke-16" stroke="#000000" points="162.1693 122.5 158.1693 121 158.1693 124"></polygon>
+                <path d="M201.0693,122.5 L230.1693,122.5" id="Stroke-17" stroke="#000000" stroke-linecap="round" stroke-linejoin="round"></path>
+                <polygon id="Fill-18" fill="#000000" fill-rule="nonzero" points="234.1693 122.5 230.1693 121 230.1693 124"></polygon>
+                <polygon id="Stroke-19" stroke="#000000" points="234.1693 122.5 230.1693 121 230.1693 124"></polygon>
+                <path d="M0.11931,122 L14.6693,122" id="Stroke-20" stroke="#000000" stroke-linecap="round" stroke-linejoin="round"></path>
+                <polygon id="Fill-21" fill="#000000" fill-rule="nonzero" points="18.6693 122 14.6693 120.5 14.6693 123.5"></polygon>
+                <polygon id="Stroke-22" stroke="#000000" points="18.6693 122 14.6693 120.5 14.6693 123.5"></polygon>
+                <path d="M38.0693,175.5 L38.0693,146.4" id="Stroke-23" stroke="#000000" stroke-linecap="round" stroke-linejoin="round"></path>
+                <polygon id="Fill-24" fill="#000000" fill-rule="nonzero" points="38.0693 142.4 36.5693 146.4 39.5693 146.4"></polygon>
+                <polygon id="Stroke-25" stroke="#000000" points="38.0693 142.4 36.5693 146.4 39.5693 146.4"></polygon>
+                <path d="M110.0693,175.5 L110.0693,146.4" id="Stroke-26" stroke="#000000" stroke-linecap="round" stroke-linejoin="round"></path>
+                <polygon id="Fill-27" fill="#000000" fill-rule="nonzero" points="110.0693 142.39998 108.5693 146.39998 111.5693 146.39998"></polygon>
+                <polygon id="Stroke-28" stroke="#000000" points="110.0693 142.4 108.5693 146.4 111.5693 146.4"></polygon>
+                <path d="M182.0693,175.5 L182.0693,146.4" id="Stroke-29" stroke="#000000" stroke-linecap="round" stroke-linejoin="round"></path>
+                <polygon id="Fill-30" fill="#000000" fill-rule="nonzero" points="182.0693 142.40002 180.5693 146.40002 183.5693 146.40002"></polygon>
+                <polygon id="Stroke-31" stroke="#000000" points="182.0693 142.4 180.5693 146.4 183.5693 146.4"></polygon>
+                <path d="M254.0693,175.5 L254.0693,146.4" id="Stroke-32" stroke="#000000" stroke-linecap="round" stroke-linejoin="round"></path>
+                <polygon id="Fill-33" fill="#000000" fill-rule="nonzero" points="254.0693 142.40003 252.5693 146.40003 255.5693 146.40003"></polygon>
+                <polygon id="Stroke-34" stroke="#000000" points="254.0693 142.4 252.5693 146.4 255.5693 146.4"></polygon>
+                <path d="M38.0693,104.5 L38.0693,75.4" id="Stroke-37" stroke="#000000" stroke-linecap="round" stroke-linejoin="round"></path>
+                <polygon id="Fill-38" fill="#000000" fill-rule="nonzero" points="38.0693 71.4 36.5693 75.4 39.5693 75.4"></polygon>
+                <polygon id="Stroke-39" stroke="#000000" points="38.0693 71.4 36.5693 75.4 39.5693 75.4"></polygon>
+                <path d="M97.3709,109.5365 L55.9769,68.8791" id="Stroke-40" stroke="#000000" stroke-linecap="round" stroke-linejoin="round"></path>
+                <polygon id="Fill-41" fill="#000000" fill-rule="nonzero" points="53.1232 66.0762 54.9258 69.9492 57.028 67.8089"></polygon>
+                <polygon id="Stroke-42" stroke="#000000" points="53.1232 66.0762 54.9258 69.9492 57.028 67.8089"></polygon>
+                <path d="M165.9593,114.3428 L60.4751,62.5392" id="Stroke-43" stroke="#000000" stroke-linecap="round" stroke-linejoin="round"></path>
+                <polygon id="Fill-44" fill="#000000" fill-rule="nonzero" points="56.8847 60.776 59.8139 63.8856 61.1363 61.1928"></polygon>
+                <polygon id="Stroke-45" stroke="#000000" points="56.8847 60.776 59.8139 63.8856 61.1363 61.1928"></polygon>
+                <path d="M110.5693,104 L110.5693,76.1813" id="Stroke-48" stroke="#000000" stroke-linecap="round" stroke-linejoin="round"></path>
+                <polygon id="Fill-49" fill="#000000" fill-rule="nonzero" points="110.5693 72.1813 109.0693 76.1813 112.0693 76.1813"></polygon>
+                <polygon id="Stroke-50" stroke="#000000" points="110.5693 72.1813 109.0693 76.1813 112.0693 76.1813"></polygon>
+                <path d="M169.3709,109.5365 L127.9769,68.8791" id="Stroke-51" stroke="#000000" stroke-linecap="round" stroke-linejoin="round"></path>
+                <polygon id="Fill-52" fill="#000000" fill-rule="nonzero" points="125.1232 66.0761 126.9258 69.9492 129.028 67.8089"></polygon>
+                <polygon id="Stroke-53" stroke="#000000" points="125.1232 66.0761 126.9258 69.9492 129.028 67.8089"></polygon>
+                <path d="M237.9593,114.3428 L132.4751,62.5392" id="Stroke-54" stroke="#000000" stroke-linecap="round" stroke-linejoin="round"></path>
+                <polygon id="Fill-55" fill="#000000" fill-rule="nonzero" points="128.8847 60.776 131.8139 63.8856 133.1363 61.1928"></polygon>
+                <polygon id="Stroke-56" stroke="#000000" points="128.8847 60.776 131.8139 63.8856 133.1363 61.1928"></polygon>
+                <path d="M182.5693,104 L182.5693,76.1813" id="Stroke-59" stroke="#000000" stroke-linecap="round" stroke-linejoin="round"></path>
+                <polygon id="Fill-60" fill="#000000" fill-rule="nonzero" points="182.5693 72.1813 181.0693 76.1813 184.0693 76.1813"></polygon>
+                <polygon id="Stroke-61" stroke="#000000" points="182.5693 72.1813 181.0693 76.1813 184.0693 76.1813"></polygon>
+                <path d="M241.3709,109.5365 L199.9769,68.8791" id="Stroke-62" stroke="#000000" stroke-linecap="round" stroke-linejoin="round"></path>
+                <polygon id="Fill-63" fill="#000000" fill-rule="nonzero" points="197.1232 66.0761 198.9258 69.9492 201.028 67.8089"></polygon>
+                <polygon id="Stroke-64" stroke="#000000" points="197.1232 66.0761 198.9258 69.9492 201.028 67.8089"></polygon>
+            </g>
+            <g id="text" transform="translate(0.000000, 35.000000)" fill="#000000" font-weight="normal">
+                <g id="Recurrent-layer" opacity="0.606374547" transform="translate(0.000000, 79.000000)" font-family="Helvetica" font-size="12">
+                    <text>
+                        <tspan x="0.48438" y="11">Recurrent layer</tspan>
+                    </text>
+                </g>
+                <g id="ht+1" transform="translate(196.000000, 71.000000)">
+                    <text id="h" font-family="STIXGeneral-Italic, STIXGeneral" font-size="18" font-style="italic">
+                        <tspan x="0" y="19">h</tspan>
+                    </text>
+                    <text id="t" font-family="STIXGeneral-Regular, STIXGeneral" font-size="14">
+                        <tspan x="9.0024" y="23">t</tspan>
+                    </text>
+                    <text id="+1" font-family="STIXGeneral-Regular, STIXGeneral" font-size="14">
+                        <tspan x="12.8968" y="23">+1</tspan>
+                    </text>
+                </g>
+                <g id="ht" transform="translate(130.000000, 71.000000)">
+                    <text id="h" font-family="STIXGeneral-Italic, STIXGeneral" font-size="18" font-style="italic">
+                        <tspan x="0" y="19">h</tspan>
+                    </text>
+                    <text id="t" font-family="STIXGeneral-Regular, STIXGeneral" font-size="14">
+                        <tspan x="9.0024" y="23">t</tspan>
+                    </text>
+                </g>
+                <g id="ht+2" transform="translate(268.000000, 71.000000)">
+                    <text id="h" font-family="STIXGeneral-Italic, STIXGeneral" font-size="18" font-style="italic">
+                        <tspan x="0" y="19">h</tspan>
+                    </text>
+                    <text id="t" font-family="STIXGeneral-Regular, STIXGeneral" font-size="14">
+                        <tspan x="9.0024" y="23">t</tspan>
+                    </text>
+                    <text id="+2" font-family="STIXGeneral-Regular, STIXGeneral" font-size="14">
+                        <tspan x="12.8968" y="23">+2</tspan>
+                    </text>
+                </g>
+                <g id="ht+3" transform="translate(340.000000, 71.000000)">
+                    <text id="h" font-family="STIXGeneral-Italic, STIXGeneral" font-size="18" font-style="italic">
+                        <tspan x="0" y="19">h</tspan>
+                    </text>
+                    <text id="t" font-family="STIXGeneral-Regular, STIXGeneral" font-size="14">
+                        <tspan x="9.0024" y="23">t</tspan>
+                    </text>
+                    <text id="+3" font-family="STIXGeneral-Regular, STIXGeneral" font-size="14">
+                        <tspan x="12.8968" y="23">+3</tspan>
+                    </text>
+                </g>
+                <g id="rt+1" transform="translate(197.000000, 0.000000)">
+                    <text id="r" font-family="STIXGeneral-Italic, STIXGeneral" font-size="18" font-style="italic">
+                        <tspan x="0" y="19">r</tspan>
+                    </text>
+                    <text id="t" font-family="STIXGeneral-Regular, STIXGeneral" font-size="14">
+                        <tspan x="7.0044" y="23">t</tspan>
+                    </text>
+                    <text id="+1" font-family="STIXGeneral-Regular, STIXGeneral" font-size="14">
+                        <tspan x="10.8988" y="23">+1</tspan>
+                    </text>
+                </g>
+                <g id="rt" transform="translate(132.000000, 0.000000)">
+                    <text id="r" font-family="STIXGeneral-Italic, STIXGeneral" font-size="18" font-style="italic">
+                        <tspan x="0" y="19">r</tspan>
+                    </text>
+                    <text id="t" font-family="STIXGeneral-Regular, STIXGeneral" font-size="14">
+                        <tspan x="7.0044" y="23">t</tspan>
+                    </text>
+                </g>
+                <g id="rt+2" transform="translate(269.000000, 0.000000)">
+                    <text id="r" font-family="STIXGeneral-Italic, STIXGeneral" font-size="18" font-style="italic">
+                        <tspan x="0" y="19">r</tspan>
+                    </text>
+                    <text id="t" font-family="STIXGeneral-Regular, STIXGeneral" font-size="14">
+                        <tspan x="7.0044" y="23">t</tspan>
+                    </text>
+                    <text id="+2" font-family="STIXGeneral-Regular, STIXGeneral" font-size="14">
+                        <tspan x="10.8988" y="23">+2</tspan>
+                    </text>
+                </g>
+                <g id="rt+3" transform="translate(341.000000, 0.000000)">
+                    <text id="r" font-family="STIXGeneral-Italic, STIXGeneral" font-size="18" font-style="italic">
+                        <tspan x="0" y="19">r</tspan>
+                    </text>
+                    <text id="t" font-family="STIXGeneral-Regular, STIXGeneral" font-size="14">
+                        <tspan x="7.0044" y="23">t</tspan>
+                    </text>
+                    <text id="+3" font-family="STIXGeneral-Regular, STIXGeneral" font-size="14">
+                        <tspan x="10.8988" y="23">+3</tspan>
+                    </text>
+                </g>
+                <g id="Row-conv-layer" opacity="0.606374547" transform="translate(0.000000, 8.000000)" font-family="Helvetica" font-size="12">
+                    <text>
+                        <tspan x="0.48438" y="11.2813">Row conv layer</tspan>
+                    </text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
