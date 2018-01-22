@@ -36,7 +36,7 @@ followed by a fully connected layer and a softmax.
 
 In order to make the optimization of such a network tractable, we employ
 shortcut connections in a similar manner to those found in the Residual Network
-architecture \cite{he2016identity}. The shortcut connections between
+architecture~\cite{he2016identity}. The shortcut connections between
 neural-network layers optimize training by allowing information to propagate
 well in very deep neural networks. Before the input is fed into the network, it
 is normalized using a robust normalization strategy. The network consists of
@@ -49,17 +49,18 @@ block subsamples the input, the corresponding shortcut connections also
 subsample their input using a Max Pooling operation with the same subsample
 factor. 
 
-Before each convolutional layer we apply Batch Normalization
-\cite{ioffe2015batch} and a rectified linear activation, adopting the
-pre-activation block design \cite{he2016deep}. The first and last layers of the
-network are special-cased due to this pre-activation block structure. We also
-apply Dropout \cite{srivastava2014dropout} between the convolutional layers and
-after the non-linearity. The final fully connected layer and softmax activation
-produce a distribution over the 14 output classes for each time-step.
+Before each convolutional layer we apply Batch
+Normalization~\cite{ioffe2015batch} and a rectified linear activation, adopting
+the pre-activation block design~\cite{he2016deep}. The first and last layers of
+the network are special-cased due to this pre-activation block structure. We
+also apply Dropout~\cite{srivastava2014dropout} between the convolutional
+layers and after the non-linearity. The final fully connected layer and softmax
+activation produce a distribution over the 14 output classes for each
+time-step.
 
 We train the networks from scratch, initializing the weights of the
-convolutional layers as in \cite{he2015delving}. We use the Adam
-\cite{kingma2014adam} optimizer with the default parameters and reduce the
+convolutional layers as in~\cite{he2015delving}. We use the
+Adam~\cite{kingma2014adam} optimizer with the default parameters and reduce the
 learning rate by a factor of 10 when the validation loss stops improving. We
 save the best model as evaluated on the validation set during the optimization
 process.

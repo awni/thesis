@@ -2,9 +2,9 @@
 \label{sec:arrhythmias:related}
 
 Automatic high-accuracy methods for R-peak extraction have existed at least
-since the mid 1980's \cite{pan1985real}. Current algorithms for R-peak
+since the mid 1980's~\cite{pan1985real}. Current algorithms for R-peak
 extraction tend to use wavelet transformations to compute features from the raw
-ECG followed by finely-tuned threshold based classifiers \cite{li1995detection,
+ECG followed by finely-tuned threshold based classifiers~\cite{li1995detection,
 martinez2004wavelet}. Because accurate estimates of heart rate and heart rate
 variability can be extracted from R-peak features, feature-engineered
 algorithms are often used for coarse-grained heart rhythm classification,
@@ -18,40 +18,41 @@ Much work has been done to automate the extraction of other features from the
 ECG. For example, beat classification is a common sub-problem of
 heart-arrhythmia classification. Drawing inspiration from automatic speech
 recognition, Hidden Markov models with Gaussian observation probability
-distributions have been applied to the task of beat detection
-\cite{coast1990approach}. Artificial neural networks have also been used for
-the task of beat detection \cite{melo2000arrhythmia}. While these models have
-achieved high-accuracy for some beat types, they are not yet sufficient for
-high-accuracy heart arrhythmia classification and segmentation. For example,
-\cite{artis1991detection} train a neural network to distinguish between Atrial
-Fibrillation and Sinus Rhythm on the MIT-BIH dataset. While the network can
-distinguish between these two classes with high-accuracy, it does not
-generalize to noisier single-lead recordings or classify among the full range
-of 15 rhythms available in MIT-BIH. This is in part due to insufficient
+distributions have been applied to the task of beat
+detection~\cite{coast1990approach}. Artificial neural networks have also been
+used for the task of beat detection~\cite{melo2000arrhythmia}. While these
+models have achieved high-accuracy for some beat types, they are not yet
+sufficient for high-accuracy heart arrhythmia classification and segmentation.
+For example,~\cite{artis1991detection} train a neural network to distinguish
+between Atrial Fibrillation and Sinus Rhythm on the MIT-BIH dataset. While the
+network can distinguish between these two classes with high-accuracy, it does
+not generalize to noisier single-lead recordings or classify among the full
+range of 15 rhythms available in MIT-BIH. This is in part due to insufficient
 training data, and because the model also discards critical information in the
 feature extraction stage.
 
 The most common dataset used to design and evaluate ECG algorithms is the
-MIT-BIH arrhythmia database \cite{moody2001impact} which consists of 48
+MIT-BIH arrhythmia database~\cite{moody2001impact} which consists of 48
 half-hour strips of ECG data. Other commonly used datasets include the MIT-BIH
-Atrial Fibrillation dataset \cite{moody1983new} and the QT dataset
-\cite{laguna1997database}. While useful benchmarks for R-peak extraction and
-beat-level annotations, these datasets are too small for fine-grained
-arrhythmia classification. The number of unique patients is in the single digit
-hundreds or fewer for these benchmarks. A recently released dataset captured
-from the AliveCor ECG monitor contains about 7000 records \cite{clifford2017}.
-These records only have annotations for Atrial Fibrillation; all other
-arrhythmias are grouped into a single bucket. The dataset we develop contains
-29,163 unique patients and 14 classes with hundreds of unique examples for
-the rarest arrhythmias.
+Atrial Fibrillation dataset~\cite{moody1983new} and the QT
+dataset~\cite{laguna1997database}. While useful benchmarks for R-peak
+extraction and beat-level annotations, these datasets are too small for
+fine-grained arrhythmia classification. The number of unique patients is in the
+single digit hundreds or fewer for these benchmarks. A recently released
+dataset captured from the AliveCor ECG monitor contains about 7000
+records~\cite{clifford2017}.  These records only have annotations for Atrial
+Fibrillation; all other arrhythmias are grouped into a single bucket. The
+dataset we develop contains 29,163 unique patients and 14 classes with hundreds
+of unique examples for the rarest arrhythmias.
 
 Machine learning models based on deep neural networks have consistently been
 able to approach and often exceed human agreement rates when large annotated
-datasets are available \cite{amodei2016deep, xiong2016achieving,he2015delving}.
+datasets are available~\cite{amodei2016deep, xiong2016achieving,he2015delving}.
 These approaches have also proven to be effective in healthcare applications,
-particularly in medical imaging where pretrained ImageNet models can be applied
-\cite{esteva2017dermatologist, gulshan2016development}. We draw on work in
-automatic speech recognition for processing time-series with deep convolutional
-neural networks and recurrent neural networks \cite{hannun2014deepspeech,
-sainath2013deep}, and techniques in deep learning to make the optimization of
-these models tractable \cite{he2016deep, he2016identity, ioffe2015batch}.
+particularly in medical imaging where pretrained ImageNet models can be
+applied~\cite{esteva2017dermatologist, gulshan2016development}. We draw on work
+in automatic speech recognition for processing time-series with deep
+convolutional neural networks and recurrent neural
+networks~\cite{hannun2014deepspeech, sainath2013deep}, and techniques in deep
+learning to make the optimization of these models tractable~\cite{he2016deep,
+he2016identity, ioffe2015batch}.

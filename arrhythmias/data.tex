@@ -5,7 +5,7 @@
 We collect and annotate a dataset of 64,121 ECG records from 29,163 patients.
 The ECG data is sampled at a frequency of 200 Hz and is collected from a
 single-lead, noninvasive and  continuous monitoring device called the Zio Patch
-which has a wear period up to 14 days \cite{turakhia2013diagnostic}. Each ECG
+which has a wear period up to 14 days~\cite{turakhia2013diagnostic}. Each ECG
 record in the training set is 30 seconds long and can contain more than one
 rhythm type. Each record is annotated by a clinical ECG expert: the expert
 highlights segments of the signal and marks it as corresponding to one of the
@@ -27,7 +27,6 @@ overlap between the training and validation sets (as well as the test set
 described below).
 
 \subsection*{Testing}
-
 We collect a test set of 336 records from 328 unique patients. For the test
 set, ground truth annotations for each record were obtained by a committee of
 three board-certified cardiologists; there are three committees responsible for
@@ -51,7 +50,7 @@ cases the distinction between the rhythms can be subtle yet critical for
 treatment. For example two forms of second degree AV Block, Mobitz I
 (Wenckebach) and Mobitz II (here referred to as AVB\_TYPE2) can be difficult to
 distinguish. Wenckebach is considered benign and Mobitz II is considered
-pathological, requiring immediate attention \cite{dubin1996rapid}. 
+pathological, requiring immediate attention~\cite{dubin1996rapid}. 
 
 Table~\ref{tab:rhythms} in the Appendix also shows the number of unique
 patients in the training (including validation) set and test set for each

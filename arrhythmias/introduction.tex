@@ -10,7 +10,7 @@ kind.
 
 Many heart diseases, including Myocardial Infarction, AV Block, Ventricular
 Tachycardia and Atrial Fibrillation can all be diagnosed from ECG signals with
-an estimated 300 million ECGs recorded annually \cite{heden1996detection}. We
+an estimated 300 million ECGs recorded annually~\cite{heden1996detection}. We
 investigate the task of arrhythmia detection from the ECG record. This is known
 to be a challenging task for computers but can usually be determined by an
 expert from a single, well-placed lead.
@@ -18,9 +18,9 @@ expert from a single, well-placed lead.
 Arrhythmia detection from ECG recordings is usually performed by expert
 technicians and cardiologists given the high error rates of computerized
 interpretation.  One study found that of all the computer predictions for
-non-sinus rhythms, only about 50\% were correct \cite{shah2007errors}; in
+non-sinus rhythms, only about 50\% were correct~\cite{shah2007errors}; in
 another study, only 1 out of every 7 presentations of second degree AV block
-were correctly recognized by the algorithm \cite{guglin2006common}. To
+were correctly recognized by the algorithm~\cite{guglin2006common}. To
 automatically detect heart arrhythmias in an ECG, an algorithm must implicitly
 recognize the distinct wave types and discern the complex relationships between
 them over time. This is difficult due to the variability in wave morphology
@@ -33,19 +33,19 @@ the network learns to classify and segment twelve arrhythmia types present in
 the time-series. The model is trained end-to-end on a single-lead ECG signal
 sampled at 200Hz and a sequence of annotations for every second of the ECG as
 supervision. To make the optimization of such a deep model tractable, we use
-residual connections and batch-normalization \cite{he2016deep, ioffe2015batch}.
+residual connections and batch-normalization~\cite{he2016deep, ioffe2015batch}.
 The depth increases both the non-linearity of the computation as well as the
 size of the context window for each classification decision.
 
-We construct a dataset 500 times larger than other datasets of its kind
-\cite{moody2001impact, goldberger2000physiobank}. One of the most popular
+We construct a dataset 500 times larger than other datasets of its
+kind~\cite{moody2001impact, goldberger2000physiobank}. One of the most popular
 previous datasets, the MIT-BIH corpus contains ECG recordings from 47 unique
 patients. In contrast, we collect and annotate a dataset of about 30,000 unique
 patients from a pool of nearly 300,000 patients who have used the Zio Patch
-monitor\footnote[1]{iRhythm Technologies, San Francisco, California}
-\cite{turakhia2013diagnostic}. We intentionally select patients exhibiting
-abnormal rhythms in order to make the class balance of the dataset more even
-and thus the likelihood of observing unusual heart-activity high.
+monitor\footnote[1]{iRhythm Technologies, San Francisco,
+California}~\cite{turakhia2013diagnostic}. We intentionally select patients
+exhibiting abnormal rhythms in order to make the class balance of the dataset
+more even and thus the likelihood of observing unusual heart-activity high.
 
 We test our model against board-certified cardiologists. A committee of three
 cardiologists serve as gold-standard annotators for the 336 examples in the
