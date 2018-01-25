@@ -1,0 +1,63 @@
+\section{Introduction}
+\label{sec:deepspeech:introduction}
+
+Top speech recognition systems rely on sophisticated pipelines composed of
+multiple algorithms and hand-engineered processing stages. In this paper, we
+describe an end-to-end speech system, called ``Deep Speech'', where deep
+learning supersedes these processing stages. Combined with a language model,
+this approach achieves higher performance than traditional methods on hard
+speech recognition tasks while also being much simpler. These results are made
+possible by training a large recurrent neural network (RNN) using multiple GPUs
+and thousands of hours of data. Because this system learns directly from data,
+we do not require specialized components for speaker adaptation or noise
+filtering. In fact, in settings where robustness to speaker variation and noise
+are critical, our system excels: Deep Speech outperforms previously published
+methods on the Switchboard Hub5'00 corpus, achieving 16.0\% error, and performs
+better than commercial systems in noisy speech recognition tests.
+
+Traditional speech systems use many heavily engineered processing stages,
+including specialized input features, acoustic models, and Hidden Markov Models
+(HMMs). To improve these pipelines, domain experts must invest a great deal of
+effort tuning their features and models. The introduction of deep learning
+algorithms~\cite{lee2009, mohamed2011, hinton2012, dahl2011a} has improved
+speech system performance, usually by improving acoustic models.  While this
+improvement has been significant, deep learning still plays only a limited role
+in traditional speech pipelines. As a result, to improve performance on a task
+such as recognizing speech in a noisy environment, one must laboriously
+engineer the rest of the system for robustness. In contrast, our system applies
+deep learning end-to-end using recurrent neural networks.  We take advantage of
+the capacity provided by deep learning systems to learn from large datasets to
+improve our overall performance. Our model is trained end-to-end to produce
+transcriptions and thus, with sufficient data and computing power, can learn
+robustness to noise or speaker variation on its own.
+
+Tapping the benefits of end-to-end deep learning, however, poses several
+challenges: (i) we must find innovative ways to build large, labeled training
+sets and (ii) we must be able to train networks that are large enough to
+effectively utilize all of this data. One challenge for handling labeled data
+in speech systems is finding the alignment of text transcripts with input
+speech. This problem has been addressed by Graves, Fern\'{a}ndez, Gomez and
+Schmidhuber~\cite{graves2006}, thus enabling neural networks to easily consume
+unaligned, transcribed audio during training. Meanwhile, rapid training of
+large neural networks has been tackled by Coates et
+al.~\cite{coates2013cotshpc}, demonstrating the speed advantages of multi-GPU
+computation. We aim to leverage these insights to fulfill the vision of a
+generic learning system, based on large speech datasets and scalable RNN
+training, that can surpass more complicated traditional methods. This vision
+is inspired partly by the work of Lee~et.~al.~\cite{lee2009} who
+applied early unsupervised feature learning techniques to replace hand-built
+speech features.
+
+We have chosen our RNN model specifically to map well to GPUs and we use a
+novel model partition scheme to improve parallelization. Additionally, we
+propose a process for assembling large quantities of labeled speech data
+exhibiting the distortions that our system should learn to handle. Using a
+combination of collected and synthesized data, our system learns robustness to
+realistic noise and speaker variation (including Lombard
+Effect~\cite{junqua1993lombard}). Taken together, these ideas suffice to build
+an end-to-end speech system that is at once simpler than traditional pipelines
+yet also performs better on difficult speech tasks. Deep Speech achieves an
+error rate of 16.0\% on the full Switchboard Hub5'00 test set---the best
+published result. Further, on a new noisy speech recognition dataset of our own
+construction, our system achieves a word error rate of 19.1\% where the best
+commercial systems achieve 30.5\% error.

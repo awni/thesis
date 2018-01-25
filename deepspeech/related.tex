@@ -1,0 +1,53 @@
+\section{Related Work}
+\label{sec:deepspeech:related}
+
+Several parts of our work are inspired by previous results. Neural network
+acoustic models and other connectionist approaches were first introduced to
+speech pipelines in the early 1990s~\cite{bourlard93, renals1994, ellis1999}.
+These systems, similar to DNN acoustic models~\cite{mohamed2011, hinton2012,
+dahl2011a}, replace only one stage of the speech recognition pipeline.
+Mechanically, our system is similar to other efforts to build end-to-end speech
+systems from deep learning algorithms. For example,
+Graves~et~al.~\cite{graves2006} have previously introduced the ``Connectionist
+Temporal Classification'' (CTC) loss function for scoring transcriptions
+produced by RNNs and, with LSTM networks, have previously applied this approach
+to speech~\cite{graves2014}. We similarly adopt the CTC loss for part of our
+training procedure but use much simpler recurrent networks with
+rectified-linear activations~\cite{glorot2011, maas2013, nair2010}. Our
+recurrent network is similar to the bidirectional RNN used by Hannun et
+al.~\cite{hannun2014firstpass}, but with multiple changes to enhance its
+scalability. By focusing on scalability, we have shown that these simpler
+networks can be effective even without the more complex LSTM machinery.
+
+Our work is certainly not the first to exploit scalability to improve
+performance of DL algorithms. The value of scalability in deep learning is
+well-studied~\cite{coates2011b, le2013} and the use of parallel processors
+(including GPUs) has been instrumental to recent large-scale DL
+results~\cite{szegedy2015, le2013}. Early ports of DL algorithms to GPUs
+revealed significant speed gains~\cite{raina2009}. Researchers have also begun
+choosing designs that map well to GPU hardware to gain even more efficiency,
+including convolutional~\cite{krizhevsky2012imagenet, ciresan2011,
+sainath2013deep} and locally connected~\cite{coates2013cotshpc, ciresan2012}
+networks, especially when optimized libraries like
+cuDNN~\cite{chetlur2014cudnn} and BLAS are available. Indeed, using
+high-performance computing infrastructure, it is possible today to train neural
+networks with more than 10 billion connections~\cite{coates2013cotshpc} using
+clusters of GPUs. These results inspired us to focus first on making scalable
+design choices to efficiently utilize many GPUs before trying to engineer the
+algorithms and models themselves.
+
+With the potential to train large models, there is a need for large training
+sets as well. In other fields, such as computer vision, large labeled training
+sets have enabled significant leaps in performance as they are used to feed
+larger and larger DL systems~\cite{szegedy2105, krizhevsky2012imagenet}. In
+speech recognition, however, such large training sets are less common, with
+typical benchmarks having training sets ranging from tens of hours (e.g. the
+Wall Street Journal corpus with 80 hours) to several hundreds of hours (e.g.
+Switchboard and Broadcast News). Larger benchmark datasets, such as the Fisher
+corpus~\cite{cieri2004fisher} with 2000 hours of transcribed speech, are rare
+and only recently being studied. To fully utilize the expressive power of the
+recurrent networks available to us, we rely not only on large sets of labeled
+utterances, but also on synthesis techniques to generate novel examples. This
+approach is well known in computer vision~\cite{sapp2008, lecun2004,
+coates2011} but we have found this especially convenient and effective for
+speech when done properly.
