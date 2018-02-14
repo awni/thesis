@@ -1,0 +1,167 @@
+\section{Experiments}
+\label{sec:deepspeech:experiments}
+
+We performed two sets of experiments to evaluate our system. In both cases we
+use the model described in Section~\ref{sec:deepspeech:model} trained from a
+selection of the datasets in Table~\ref{table:deepspeech:datasets} to predict
+character-level transcriptions. The predicted probability vectors and language
+model are then fed into our decoder to yield a word-level transcription, which
+is compared with the ground truth transcription to yield the word error rate
+(WER).
+
+\subsection{Conversational speech: Switchboard Hub5'00 (full)}
+
+To compare our system to prior research we use an accepted but highly
+challenging test set, Hub5'00 (LDC2002S23). Some researchers split this set
+into ``easy'' (Switchboard) and ``hard'' (CallHome) instances, often reporting
+new results on the easier portion alone. We use the full set, which is the most
+challenging case and report the overall word error rate.
+
+We evaluate our system trained on only the 300 hour Switchboard conversational
+telephone speech dataset and trained on both Switchboard (SWB) and Fisher
+(FSH)~\cite{cieri2004fisher}, a 2000 hour corpus collected in a similar manner
+as Switchboard. Many researchers evaluate models trained only with 300 hours
+from Switchboard conversational telephone speech when testing on Hub5'00. In
+part this is because training on the full 2000 hour Fisher corpus is
+computationally difficult. Using the techniques mentioned in
+Section~\ref{sec:deepspeech:optimization} our system is able perform a full
+pass over the 2300 hours of data in just a few hours.
+
+Since the Switchboard and Fisher corpora are distributed at a sample rate of
+8kHz, we compute spectrograms of 80 linearly spaced log filter banks and an
+energy term.  The filter banks are computed over windows of 20ms strided by
+10ms. We did not evaluate more sophisticated features such as the mel-scale log
+filter banks or the mel-frequency cepstral coefficients.
+
+Speaker adaptation is critical to the success of current ASR
+systems~\cite{vesely2013, sainath2013deep}, particularly when trained on 300
+hour Switchboard. For the models we test on Hub5'00, we apply a simple form of
+speaker adaptation by normalizing the spectral features on a per speaker basis.
+Other than this, we do not modify the input features in any way.
+
+For decoding, we use a 4-gram language model with a 30,000 word vocabulary
+trained on the Fisher and Switchboard transcriptions. Again, hyperparameters
+for the decoding objective are chosen via cross-validation on a held-out
+development set.
+
+The Deep Speech SWB model is a network of 5 hidden layers each with 2048
+neurons trained on only 300 hour switchboard. The Deep Speech SWB + FSH model
+is an ensemble of 4 RNNs each with 5 hidden layers of 2304 neurons trained on
+the full 2300 hour combined corpus. All networks are trained on inputs of +/- 9
+frames of context.
+
+We report results in Table~\ref{table:deepspeech:hub5}. The model from Vesely
+et al.  (DNN-GMM sMBR)~\cite{vesely2013} uses a sequence based loss function on
+top of a DNN after using a typical hybrid DNN-HMM system to realign the
+training set.  The performance of this model on the combined Hub5'00 test set
+is the best previously published result. When trained on the combined 2300
+hours of data the Deep Speech system improves upon this baseline by 2.4\%
+absolute WER and 13.0\% relative. The model from Maas et al. (DNN-HMM
+FSH)~\cite{maas2014} achieves 19.9\% WER when trained on the Fisher 2000 hour
+corpus. That system was built using Kaldi~\cite{povey2011}, state-of-the-art
+open source speech recognition software. We include this result to demonstrate
+that Deep Speech, when trained on a comparable amount of data is competitive
+with the best existing ASR systems.
+
+\begin{table}[ht!]
+\centering
+\begin{tabular}{l  c  c  c }
+\toprule
+Model & SWB & CH & Full \\
+\midrule
+Vesely et al. (GMM-HMM BMMI)~\cite{vesely2013}   & 18.6 & 33.0 & 25.8 \\
+Vesely et al. (DNN-HMM sMBR)~\cite{vesely2013}    & 12.6 & 24.1  & 18.4 \\
+Maas et al. (DNN-HMM SWB)~\cite{maas2014}  & 14.6 & 26.3  & 20.5 \\
+Maas et al. (DNN-HMM FSH)~\cite{maas2014}  & 16.0 & 23.7  & 19.9 \\
+Seide et al. (CD-DNN)~\cite{seide2011}     & 16.1 & n/a & n/a \\
+Kingsbury et al. (DNN-HMM sMBR HF)~\cite{kingsbury2012}  & 13.3 & n/a & n/a \\
+Sainath et al. (CNN-HMM)~\cite{sainath2013deep} & 11.5 & n/a & n/a \\
+Soltau et al. (MLP/CNN+I-Vector)~\cite{soltau2014} & {\bf 10.4 } & n/a & n/a \\
+{\bf Deep Speech SWB} & 20.0 & 31.8 & 25.9 \\
+{\bf Deep Speech SWB + FSH} & 12.6 & {\bf 19.3} & {\bf 16.0} \\
+\bottomrule
+\end{tabular}
+\caption{Published error rates (\%WER) on Switchboard dataset splits. The
+         columns labeled ``SWB'' and ``CH'' are respectively the easy and hard
+         subsets of Hub5'00.}
+\label{table:deepspeech:hub5}
+\end{table}
+
+\subsection{Noisy speech}
+\label{sec:deepspeech:expnoise}
+
+Few standards exist for testing noisy speech performance, so we constructed our
+own evaluation set of 100 noisy and 100 noise-free utterances from 10 speakers.
+The noise environments included a background radio or TV; washing dishes in a
+sink; a crowded cafeteria; a restaurant; and inside a car driving in the rain.
+The utterance text came primarily from web search queries and text messages, as
+well as news clippings, phone conversations, Internet comments, public
+speeches, and movie scripts. We did not have precise control over the
+signal-to-noise ratio (SNR) of the noisy samples, but we aimed for an SNR
+between 2 and 6 dB. 
+
+For the following experiments, we train our RNNs on all the datasets (more than
+7000 hours) listed in Table~\ref{table:deepspeech:datasets}. Since we train for
+15 to 20 epochs with newly synthesized noise in each pass, our model learns
+from over 100,000 hours of novel data. We use an ensemble of 6 networks each
+with 5 hidden layers of 2560 neurons. No form of speaker adaptation is applied
+to the training or evaluation sets. We normalize training examples on a per
+utterance basis in order to make the total power of each example consistent.
+The features are 160 linearly spaced log filter banks computed over windows of
+20ms strided by 10ms and an energy term. Audio files are resampled to 16kHz
+prior to the featurization. Finally, from each frequency bin we remove the
+global mean over the training set and divide by the global standard deviation,
+primarily so the inputs are well scaled during the early stages of training.
+
+As described in Section~\ref{sec:deepspeech:languagemodel}, we use a 5-gram
+language model for the decoding. We train the language model on 220 million
+phrases of the Common Crawl\footnote{commoncrawl.org}, selected such that at
+least 95\% of the characters of each phrase are in the alphabet. Only the most
+common 495,000 words are kept, the rest remapped to an \texttt{UNKNOWN} token.
+
+We compared the Deep Speech system to several commercial speech systems: (1)
+wit.ai, (2) Google Speech API, (3) Bing Speech and (4) Apple
+Dictation.\footnote{wit.ai and Google Speech each have HTTP-based APIs. To test
+Apple Dictation and Bing Speech, we used a kernel extension to loop audio
+output back to audio input in conjunction with the OS X Dictation service and
+the Windows 8 Bing speech recognition API.}
+
+Our test is designed to benchmark performance in noisy environments. This
+situation creates challenges for evaluating the web speech APIs: these systems
+will give no result at all when the SNR is too low or in some cases when the
+utterance is too long. Therefore we restrict our comparison to the subset of
+utterances for which all systems returned a non-empty result.\footnote{This
+leads to much higher accuracies than would be reported if we attributed 100\%
+error in cases where an API failed to respond.} The results of evaluating each
+system on our test files appear in Table~\ref{table:deepspeech:originalaudio}.  
+
+To evaluate the efficacy of the noise synthesis techniques described in
+Section~\ref{sec:deepspeech:noisesynth}, we trained two RNNs, one on 5000 hours
+of raw data and the other trained on the same 5000 hours plus noise. On the 100
+clean utterances both models perform about the same, 9.2\% WER and 9.0\% WER
+for the clean trained model and the noise trained model respectively. However,
+on the 100 noisy utterances the noisy model achieves 22.6\% WER over the clean
+model's 28.7\% WER, a 6.1\% absolute and 21.3\% relative improvement.
+
+\begin{table}[ht!]
+\centering
+\begin{tabular}{l  c  c  c}
+\toprule
+System      &  Clean (94) &  Noisy (82) & Combined (176) \\
+\midrule
+Apple Dictation  & 14.24   & 43.76  & 26.73 \\
+Bing Speech      &  11.73     &   36.12   &  22.05   \\
+Google API       &  6.64   & 30.47  & 16.72 \\
+wit.ai           &  7.94   & 35.06  & 19.41 \\
+{\bf Deep Speech}       &  {\bf 6.56}   & {\bf 19.06}  & {\bf 11.85} \\
+\bottomrule
+\end{tabular}
+\caption{Results (\%WER) for 5 systems evaluated on the original audio. Scores
+         are reported {\it only} for utterances with predictions given by all
+         systems. The number in parentheses next to each dataset, e.g. Clean (94),
+         is the number of utterances scored.}
+\label{table:deepspeech:originalaudio}
+\end{table}
+
+
+

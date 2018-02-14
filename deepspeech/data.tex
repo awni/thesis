@@ -1,0 +1,84 @@
+\section{Training Data}
+\label{sec:deepspeech:data}
+
+Large-scale deep learning systems require an abundance of labeled data. For our
+system we need many recorded utterances and corresponding English
+transcriptions, but there are few public datasets of sufficient scale. To train
+our largest models we have thus collected an extensive dataset consisting of
+5000 hours of read speech from 9600 speakers. For comparison, we have
+summarized the labeled datasets available to us in
+Table~\ref{table:deepspeech:datasets}.
+
+\begin{table}[]
+\centering
+\begin{tabular}{l c c c}
+ \toprule
+ Dataset & Type & Hours & Speakers  \\
+ \midrule
+ WSJ         & read           &   80 & 280 \\
+ Switchboard & conversational &  300 & 4000 \\
+ Fisher      & conversational & 2000 & 23000 \\
+ Baidu       & read           & 5000 & 9600 \\
+ \bottomrule
+\end{tabular}
+\caption{A summary of the datasets used to train Deep Speech. The Wall Street
+         Journal, Switchboard and Fisher~\cite{cieri2004fisher} corpora are all
+         published by the Linguistic Data Consortium.}
+\label{table:deepspeech:datasets}
+\end{table}
+
+\subsection{Synthesis by superposition}
+\label{sec:deepspeech:noisesynth}
+
+To expand our potential training data even further we use data synthesis, which
+has been successfully applied in other contexts to amplify the effective number
+of training samples~\cite{sapp2008, lecun2004, coates2011}. In our work, the
+goal is primarily to improve performance in noisy environments where existing
+systems break down. Capturing labeled data (e.g., read speech) from noisy
+environments is not practical, however, and thus we must find other ways to
+generate such data.
+
+To a first order, audio signals are generated through a process of
+superposition of source signals. We can use this fact to synthesize noisy
+training data. For example, if we have a speech audio track $x^{(i)}$ and a
+``noise'' audio track $\xi^{(i)}$, then we can form the ``noisy speech'' track
+$\hat{x}^{(i)} = x^{(i)}+\xi^{(i)}$ to simulate audio captured in a noisy
+environment. If necessary, we can add reverberations, echoes or other forms of
+damping to the power spectrum of $\xi^{(i)}$ or $x^{(i)}$ and then simply add
+them together to make fairly realistic audio scenes.
+
+There are, however, some risks in this approach. For example, in order to take
+1000 hours of clean speech and create 1000 hours of noisy speech, we will need
+unique noise tracks spanning roughly 1000 hours. We cannot settle for, say, 10
+hours of repeating noise, since it may become possible for the recurrent
+network to memorize the noise track and ``subtract'' it out of the synthesized
+data. Thus, instead of using a single noise source $\xi^{(i)}$ with a length of
+1000 hours, we use a large number of shorter clips (which are easier to collect
+from public video sources) and treat them as separate sources of noise before
+superimposing all of them: $\hat{x}^{(i)} = x^{(i)} + \xi_1^{(i)} +\xi_2^{(i)}
++ \ldots$.
+
+When superimposing many signals collected from video clips, we can end up with
+``noise'' sounds that are different from the kinds of noise recorded in real
+environments. To ensure a good match between our synthetic data and real data,
+we rejected any candidate noise clips where the average power in each frequency
+band differed significantly from the average power observed in real noisy
+recordings.
+
+\subsection{Capturing Lombard Effect}
+\label{sec:deepspeech:lombard}
+
+One challenging effect encountered by speech recognition systems in noisy
+environments is the ``Lombard Effect''~\cite{junqua1993lombard}: speakers
+actively change the pitch or inflections of their voice to overcome noise
+around them. This (involuntary) effect does not show up in recorded speech
+datasets since they are collected in quiet environments. To ensure that the
+effect is represented in our training data we induce the Lombard effect
+intentionally during data collection by playing loud background noise through
+headphones worn by a person as they record an utterance. The noise induces them
+to inflect their voice, thus allowing us to capture the Lombard effect in our
+training data.\footnote{We have experimented with noise played through
+headphones as well as through computer speakers. Using headphones has the
+advantage that we obtain ``clean'' recordings without the background noise
+included and can add our own synthetic noise afterward.}
+

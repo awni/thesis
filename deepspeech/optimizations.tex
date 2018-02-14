@@ -1,0 +1,83 @@
+\section{Optimizations}
+\label{sec:deepspeech:optimization}
+
+As noted above, we have made several design decisions to make our networks
+amenable to high-speed execution (and thus fast training). For example, we have
+opted for homogeneous rectified-linear networks that are simple to implement
+and depend on just a few highly-optimized BLAS calls. When fully unrolled, our
+networks include almost 5 billion connections for a typical utterance and thus
+efficient computation is critical to make our experiments feasible. We use
+multi-GPU training~\cite{coates2013cotshpc, krizhevsky2012imagenet} to
+accelerate our experiments, but doing this effectively requires some additional
+work, as we explain.
+
+\subsection{Data parallelism}
+\label{sec:deepspeech:datapar}
+
+In order to process data efficiently, we use two levels of data parallelism.
+First, each GPU processes many examples in parallel. This is done in the usual
+way by concatenating many examples into a single matrix. For instance, rather
+than performing a single matrix-vector multiplication $W_r h_t$ in the
+recurrent layer, we prefer to do many in parallel by computing $W_r H_t$ where
+$H_t = [ h^{(i)}_{t}, h^{(i+1)}_{t}, \ldots ]$ (where $h_t^{(i)}$ corresponds
+to the $i$'th example $x^{(i)}$ at time $t$). The GPU is most efficient when
+$H_t$ is relatively wide (e.g., 1000 examples or more) and thus we prefer to
+process as many examples on one GPU as possible (up to the limit of GPU
+memory).
+
+When we wish to use larger minibatches than a single GPU can support on its own
+we use data parallelism across multiple GPUs, with each GPU processing a
+separate minibatch of examples and then combining its computed gradient with
+its peers during each iteration. We typically use $2\times$ or $4\times$ data
+parallelism across GPUs.
+
+Data parallelism is not easily implemented, however, when utterances have
+different lengths since they cannot be combined into a single matrix
+multiplication. We resolve the problem by sorting our training examples by
+length and combining only similarly-sized utterances into minibatches, padding
+with silence when necessary so that all utterances in a batch have the same
+length. This solution is inspired by the ITPACK/ELLPACK sparse matrix
+format~\cite{kincaid1989}; a similar solution was used by the Sutskever et
+al.~\cite{sutskever2014} to accelerate RNNs for text.
+
+\subsection{Model parallelism}
+
+Data parallelism yields training speedups for modest multiples of the minibatch
+size (e.g., 2 to 4), but faces diminishing returns as batching more examples
+into a single gradient update fails to improve the training convergence rate.
+That is, processing $2\times$ as many examples on $2\times$ as many GPUs fails
+to yield a $2\times$ speedup in training. It is also inefficient to fix the
+total minibatch size but spread out the examples to $2\times$ as many GPUs:  as
+the minibatch \emph{within} each GPU shrinks, most operations become
+memory-bandwidth limited. To scale further, we parallelize by partitioning the
+model (``model parallelism''~\cite{coates2013cotshpc, dean2012}).
+
+Our model is challenging to parallelize due to the sequential nature of the
+recurrent layers. Since the bidirectional layer is comprised of a forward
+computation and a backward computation that are independent, we can perform the
+two computations in parallel. Unfortunately, naively splitting the RNN to place
+$h^{(f)}$ and $h^{(b)}$ on separate GPUs commits us to significant data
+transfers when we go to compute $h^{(5)}$ (which depends on both $h^{(f)}$ and
+$h^{(b)}$). Thus, we have chosen a different partitioning of work that requires
+less communication for our models: we divide the model in half along the
+\emph{time} dimension.
+
+All layers except the recurrent layer can be trivially decomposed along the
+time dimension, with the first half of the time-series, from $t=1$ to
+$t=T^{(i)}/2$, assigned to one GPU and the second half to another GPU. When
+computing the recurrent layer activations, the first GPU begins computing the
+forward activations $h^{(f)}$, while the second begins computing the backward
+activations $h^{(b)}$. At the mid-point ($t=T^{(i)}/2$), the two GPUs exchange
+the intermediate activations, $h^{(f)}_{T/2}$ and $h^{(b)}_{T/2}$ and swap
+roles. The first GPU then finishes the backward computation of $h^{(b)}$ and
+the second GPU finishes the forward computation of $h^{(f)}$.
+
+\subsection{Striding}
+
+We have worked to minimize the running time of the recurrent layers of our RNN,
+since these are the hardest to parallelize. As a final optimization, we
+shorten the recurrent layers by taking ``steps'' (or strides) of size 2 in the
+original input so that the unrolled RNN has half as many steps. This is
+similar to a convolutional network~\cite{lecun1989} with a step-size of 2 in
+the first layer. We use the cuDNN library~\cite{chetlur2014cudnn} to implement
+this first layer of convolution efficiently.
