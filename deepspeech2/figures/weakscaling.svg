@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="362px" height="216px" viewBox="0 0 362 216" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>speechdl-weakscaling</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="speechdl-weakscaling" transform="translate(-2.000000, -3.000000)">
+            <g id="lines" transform="translate(40.000000, 23.000000)" stroke-linecap="square" stroke-linejoin="round" stroke-width="0.8">
+                <polyline id="Stroke-5" stroke="#006BA4" points="0.10344 16.4053 45.47672 37.7404 90.85 58.6313 136.2233 78.2576 181.5966 102.5488 226.9699 120.13077 272.3431 141.07625 317.7164 160.56456"></polyline>
+                <polyline id="Stroke-7" stroke="#FF800E" points="0.10344 0.4237 45.47672 20.6664 90.85 40.974 136.2233 61.2046 181.5966 76.1955 226.9699 100.1783 272.3431 120.58656 317.7164 141.48294"></polyline>
+            </g>
+            <g id="xlabels" transform="translate(35.000000, 189.391900)" fill="#000000" font-family="Helvetica" font-weight="normal">
+                <text id="2" font-size="11.95517">
+                    <tspan x="0.05985" y="11.8664653">2</tspan>
+                </text>
+                <text id="0" font-size="7.970112">
+                    <tspan x="6.91285" y="8.22136513">0</tspan>
+                </text>
+                <text id="2" font-size="11.95517">
+                    <tspan x="45.43314" y="11.8664653">2</tspan>
+                </text>
+                <text id="1" font-size="7.970112">
+                    <tspan x="52.28613" y="8.22136513">1</tspan>
+                </text>
+                <text id="2" font-size="11.95517">
+                    <tspan x="90.8064" y="11.8664653">2</tspan>
+                </text>
+                <text id="2" font-size="7.970112">
+                    <tspan x="97.6594" y="8.22136513">2</tspan>
+                </text>
+                <text id="2" font-size="11.95517">
+                    <tspan x="136.1797" y="11.8664653">2</tspan>
+                </text>
+                <text id="3" font-size="7.970112">
+                    <tspan x="143.0327" y="8.22136513">3</tspan>
+                </text>
+                <text id="2" font-size="11.95517">
+                    <tspan x="181.553" y="11.8664653">2</tspan>
+                </text>
+                <text id="4" font-size="7.970112">
+                    <tspan x="188.406" y="8.22136513">4</tspan>
+                </text>
+                <text id="2" font-size="11.95517">
+                    <tspan x="226.9263" y="11.8664653">2</tspan>
+                </text>
+                <text id="5" font-size="7.970112">
+                    <tspan x="233.7793" y="8.22136513">5</tspan>
+                </text>
+                <text id="2" font-size="11.95517">
+                    <tspan x="272.2995" y="11.8664653">2</tspan>
+                </text>
+                <text id="6" font-size="7.970112">
+                    <tspan x="279.1525" y="8.22136513">6</tspan>
+                </text>
+                <text id="2" font-size="11.95517">
+                    <tspan x="317.6728" y="11.8664653">2</tspan>
+                </text>
+                <text id="7" font-size="7.970112">
+                    <tspan x="324.5258" y="8.22136513">7</tspan>
+                </text>
+                <text id="GPUs" font-size="11.95517" letter-spacing="-0.00100000005">
+                    <tspan x="147.6332" y="28.0085453">GPUs</tspan>
+                </text>
+            </g>
+            <g id="frame" transform="translate(40.000000, 11.000000)" stroke="#000000" stroke-linecap="square">
+                <path d="M0.10344,177.46773 L0.10344,0.211" id="Stroke-9"></path>
+                <path d="M0.10344,177.46773 L317.7164,177.46773" id="Stroke-11"></path>
+            </g>
+            <g id="dashed" transform="translate(40.000000, 11.000000)" stroke="#000000" stroke-dasharray="6,6" stroke-linejoin="round" stroke-opacity="0.2" stroke-width="0.5">
+                <path d="M0.10344,155.31064 L317.7164,155.31064" id="Stroke-18"></path>
+                <path d="M0.10344,133.15355 L317.7164,133.15355" id="Stroke-22"></path>
+                <path d="M0.10344,110.9965 L317.7164,110.9965" id="Stroke-26"></path>
+                <path d="M0.10344,88.8394 L317.7164,88.8394" id="Stroke-30"></path>
+                <path d="M0.10344,66.6823 L317.7164,66.6823" id="Stroke-34"></path>
+                <path d="M0.10344,44.5252 L317.7164,44.5252" id="Stroke-38"></path>
+                <path d="M0.10344,22.3681 L317.7164,22.3681" id="Stroke-42"></path>
+                <path d="M0.10344,0.211 L317.7164,0.211" id="Stroke-46"></path>
+            </g>
+            <g id="ylabels" fill="#000000" font-family="Helvetica" font-weight="normal">
+                <text id="2" font-size="11.95517">
+                    <tspan x="21.78209" y="189.687325">2</tspan>
+                </text>
+                <text id="11" font-size="7.970112">
+                    <tspan x="27.63508" y="186.042225">11</tspan>
+                </text>
+                <text id="2" font-size="11.95517">
+                    <tspan x="21.78209" y="167.530235">2</tspan>
+                </text>
+                <text id="12" font-size="7.970112">
+                    <tspan x="27.63508" y="163.885135">12</tspan>
+                </text>
+                <text id="2" font-size="11.95517">
+                    <tspan x="21.78209" y="145.373145">2</tspan>
+                </text>
+                <text id="13" font-size="7.970112">
+                    <tspan x="27.63508" y="141.728045">13</tspan>
+                </text>
+                <text id="2" font-size="11.95517">
+                    <tspan x="21.78209" y="123.216085">2</tspan>
+                </text>
+                <text id="14" font-size="7.970112">
+                    <tspan x="27.63508" y="119.570925">14</tspan>
+                </text>
+                <text id="2" font-size="11.95517">
+                    <tspan x="21.78209" y="101.058985">2</tspan>
+                </text>
+                <text id="15" font-size="7.970112">
+                    <tspan x="27.63508" y="97.4138251">15</tspan>
+                </text>
+                <text id="2" font-size="11.95517">
+                    <tspan x="21.78209" y="78.9018853">2</tspan>
+                </text>
+                <text id="16" font-size="7.970112">
+                    <tspan x="27.63508" y="75.2568251">16</tspan>
+                </text>
+                <text id="2" font-size="11.95517">
+                    <tspan x="21.78209" y="56.7447853">2</tspan>
+                </text>
+                <text id="17" font-size="7.970112">
+                    <tspan x="27.63508" y="53.0997251">17</tspan>
+                </text>
+                <text id="2" font-size="11.95517">
+                    <tspan x="21.78209" y="34.5876853">2</tspan>
+                </text>
+                <text id="18" font-size="7.970112">
+                    <tspan x="27.63508" y="30.9426251">18</tspan>
+                </text>
+                <text id="Time-(seconds)" transform="translate(7.010650, 99.824885) rotate(-90.000000) translate(-7.010650, -99.824885) " font-size="11.95517">
+                    <tspan x="-34.48935" y="103.824885">Time (seconds)</tspan>
+                </text>
+                <text id="2" font-size="11.95517">
+                    <tspan x="21.78209" y="12.4305853">2</tspan>
+                </text>
+                <text id="19" font-size="7.970112">
+                    <tspan x="27.63508" y="8.78552512">19</tspan>
+                </text>
+            </g>
+            <g id="legend" transform="translate(253.000000, 18.391900)">
+                <polygon id="Stroke-51" stroke="#000000" stroke-width="0.8" fill="#FFFFFF" points="0.3679 38.7033 98.7164 38.7033 98.7164 0.8191 0.3679 0.8191"></polygon>
+                <path d="M8.7679,10.2898 L25.5679,10.2898" id="Stroke-52" stroke="#006BA4" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round"></path>
+                <text id="5-3-(2560)" font-family="Helvetica" font-size="11.95517" font-weight="normal" letter-spacing="-0.00100000005" fill="#000000">
+                    <tspan x="37.7679" y="14.4097853">5-3 (2560)</tspan>
+                </text>
+                <path d="M8.7679,27.4319 L25.5679,27.4319" id="Stroke-53" stroke="#FF800E" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round"></path>
+                <text id="9-7-(1760)" font-family="Helvetica" font-size="11.95517" font-weight="normal" letter-spacing="-0.00100000005" fill="#000000">
+                    <tspan x="37.7679" y="31.5518853">9-7 (1760)</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

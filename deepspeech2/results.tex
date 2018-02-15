@@ -20,12 +20,13 @@ fastest convergence and annealed by a constant factor of 1.2 after each epoch.
 We use a momentum of 0.99 for all models.
 
 The language models used are those described in
-Section~\ref{subsection:deepspeech2:languagemodel}. The decoding parameters
-from Equation~\ref{eq:deepspeech2:decoding} are tuned on a held-out development
-set. We use a beam size of 500 for the English decoder and a beam size of 200
-for the Mandarin decoder.
+Section~\ref{sec:deepspeech2:languagemodel}. The decoding parameters from
+Equation~\ref{eq:deepspeech2:decoding} are tuned on a held-out development set.
+We use a beam size of 500 for the English decoder and a beam size of 200 for
+the Mandarin decoder.
 
 \subsection{English}
+\label{sec:deepspeech2:english_results}
 
 The best DS2 model has 11 layers with 3 layers of 2D convolution, 7
 bidirectional recurrent layers, a fully-connected output layer along with Batch

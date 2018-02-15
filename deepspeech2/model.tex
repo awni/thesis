@@ -1,5 +1,5 @@
 \section{Model Architecture}
-\label{sec:scale_asr:model}
+\label{sec:deepspeech2:model}
 
 A simple multi-layer model with a single recurrent layer cannot exploit
 thousands of hours of labelled speech. In order to learn from datasets this
@@ -509,6 +509,7 @@ Stride  & Unigrams & Bigrams & Unigrams & Bigrams \\
 \end{table}
 
 \subsection{Row Convolution and Unidirectional Models}
+\label{sec:deepspeech2:fom}
 
 Bidirectional RNN models are challenging to deploy in an online, low-latency
 setting, because they are built to operate on an entire sample, and so it is
@@ -549,10 +550,9 @@ Mandarin. We conjecture that the recurrent layers have learned good feature
 representations, so the row convolution layer simply gathers the appropriate
 information to feed to the classifier. 
 
-%% TODO, decide where to put these results
-%Results for a unidirectional Mandarin
-%speech system with row convolution and a comparison to a bidirectional model
-%are given in Section~\ref{section:deployment} on deployment. 
+Results for a unidirectional Mandarin speech system with row convolution and a
+comparison to a bidirectional model are given in
+Section~\ref{sec:deepspeech2:deployment} on deployment. 
 
 \subsection{Language Model}
 \label{sec:deepspeech2:languagemodel}

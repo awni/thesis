@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="361px" height="212px" viewBox="0 0 361 212" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>hgemm</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="hgemm" transform="translate(-2.000000, -3.000000)">
+            <g id="lines" transform="translate(39.000000, 61.000000)" stroke-linecap="square" stroke-linejoin="round" stroke-width="0.8">
+                <polyline id="Stroke-5" stroke="#006BA4" points="0.73973 113.7777 35.86943 103.04891 70.9991 92.53748 106.1288 81.88854 141.2585 71.26838 176.3882 60.6372 211.5179 50.0079 246.6476 39.4037 281.7773 28.7562 316.907 18.1272"></polyline>
+                <polyline id="Stroke-8" stroke="#FF800E" points="0.73973 101.94861 35.86943 79.91142 70.9991 59.9119 106.1288 43.9255 141.2585 30.0371 176.3882 18.8341 211.5179 10.3183 246.6476 5.0024 281.7773 0.214 316.907 15.8168"></polyline>
+            </g>
+            <g id="fig_lines" transform="translate(39.000000, 8.000000)" stroke="#000000">
+                <path d="M0.73973,177.46773 L0.73973,0.211" id="Stroke-11" stroke-linecap="square"></path>
+                <path d="M0.73973,177.46773 L316.907,177.46773" id="Stroke-13" stroke-linecap="square"></path>
+                <path d="M0.73973,142.01639 L316.907,142.01639" id="Stroke-20" stroke-opacity="0.2" stroke-width="0.5" stroke-linejoin="round" stroke-dasharray="6,6"></path>
+                <path d="M0.73973,106.565 L316.907,106.565" id="Stroke-25" stroke-opacity="0.2" stroke-width="0.5" stroke-linejoin="round" stroke-dasharray="6,6"></path>
+                <path d="M0.73973,71.1137 L316.907,71.1137" id="Stroke-30" stroke-opacity="0.2" stroke-width="0.5" stroke-linejoin="round" stroke-dasharray="6,6"></path>
+                <path d="M0.73973,35.6624 L316.907,35.6624" id="Stroke-35" stroke-opacity="0.2" stroke-width="0.5" stroke-linejoin="round" stroke-dasharray="6,6"></path>
+                <path d="M0.73973,0.211 L316.907,0.211" id="Stroke-40" stroke-opacity="0.2" stroke-width="0.5" stroke-linejoin="round" stroke-dasharray="6,6"></path>
+            </g>
+            <g id="xlabels" transform="translate(36.000000, 186.000000)" fill="#000000" font-family="Helvetica" font-size="11.95517" font-weight="normal">
+                <text id="1">
+                    <tspan x="0.81323" y="11.2583653">1</tspan>
+                </text>
+                <text id="2">
+                    <tspan x="35.94293" y="11.2583653">2</tspan>
+                </text>
+                <text id="3">
+                    <tspan x="71.0726" y="11.2583653">3</tspan>
+                </text>
+                <text id="4">
+                    <tspan x="106.2023" y="11.2583653">4</tspan>
+                </text>
+                <text id="5">
+                    <tspan x="141.332" y="11.2583653">5</tspan>
+                </text>
+                <text id="6">
+                    <tspan x="176.4617" y="11.2583653">6</tspan>
+                </text>
+                <text id="7">
+                    <tspan x="211.5914" y="11.2583653">7</tspan>
+                </text>
+                <text id="8">
+                    <tspan x="246.7211" y="11.2583653">8</tspan>
+                </text>
+                <text id="9">
+                    <tspan x="281.8508" y="11.2583653">9</tspan>
+                </text>
+                <text id="10">
+                    <tspan x="314.054" y="11.2583653">10</tspan>
+                </text>
+                <text id="Batch-size">
+                    <tspan x="133.4183" y="27.4004453">Batch size</tspan>
+                </text>
+            </g>
+            <g id="ylabels" fill="#000000" font-family="Helvetica" font-size="11.95517" font-weight="normal">
+                <text id="0">
+                    <tspan x="20.78209" y="188.687325">0</tspan>
+                </text>
+                <text id=".">
+                    <tspan x="26.63508" y="188.687325">.</tspan>
+                </text>
+                <text id="0">
+                    <tspan x="29.88674" y="188.687325">0</tspan>
+                </text>
+                <text id="0">
+                    <tspan x="20.78209" y="153.235975">0</tspan>
+                </text>
+                <text id=".">
+                    <tspan x="26.63508" y="153.235975">.</tspan>
+                </text>
+                <text id="1">
+                    <tspan x="29.88674" y="153.235975">1</tspan>
+                </text>
+                <text id="0">
+                    <tspan x="20.78209" y="117.784685">0</tspan>
+                </text>
+                <text id=".">
+                    <tspan x="26.63508" y="117.784685">.</tspan>
+                </text>
+                <text id="2">
+                    <tspan x="29.88674" y="117.784685">2</tspan>
+                </text>
+                <text id="0">
+                    <tspan x="20.78209" y="82.3332853">0</tspan>
+                </text>
+                <text id=".">
+                    <tspan x="26.63508" y="82.3332853">.</tspan>
+                </text>
+                <text id="3">
+                    <tspan x="29.88674" y="82.3332853">3</tspan>
+                </text>
+                <text id="0">
+                    <tspan x="20.78209" y="46.8819853">0</tspan>
+                </text>
+                <text id=".">
+                    <tspan x="26.63508" y="46.8819853">.</tspan>
+                </text>
+                <text id="4">
+                    <tspan x="29.88674" y="46.8819853">4</tspan>
+                </text>
+                <text id="0">
+                    <tspan x="20.78209" y="11.4305853">0</tspan>
+                </text>
+                <text id=".">
+                    <tspan x="26.63508" y="11.4305853">.</tspan>
+                </text>
+                <text id="5">
+                    <tspan x="29.88674" y="11.4305853">5</tspan>
+                </text>
+                <text id="TeraFLOP/s" transform="translate(7.510650, 105.424695) rotate(-90.000000) translate(-7.510650, -105.424695) ">
+                    <tspan x="-24.48935" y="109.424695">TeraFLOP/s</tspan>
+                </text>
+            </g>
+            <g id="legend" transform="translate(261.000000, 14.000000)">
+                <polygon id="Stroke-45" stroke="#000000" stroke-width="0.8" fill="#FFFFFF" points="0.0983 38.0952 82 38.0952 82 0.211 0.0983 0.211"></polygon>
+                <path d="M8.4983,9.6817 L25.2983,9.6817" id="Stroke-46" stroke="#006BA4" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round"></path>
+                <text id="nervana" font-family="Helvetica" font-size="11.95517" font-weight="normal" fill="#000000">
+                    <tspan x="31.4983" y="12.8016853">nervana</tspan>
+                </text>
+                <path d="M8.4983,26.8238 L25.2983,26.8238" id="Stroke-47" stroke="#FF800E" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round"></path>
+                <text id="baidu" font-family="Helvetica" font-size="11.95517" font-weight="normal" fill="#000000">
+                    <tspan x="31.4983" y="29.9437853">baidu</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

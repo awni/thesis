@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="346px" height="203px" viewBox="0 0 346 203" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>batching</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="batching" transform="translate(-3.000000, 0.000000)">
+            <g id="lines" transform="translate(41.000000, 0.000000)" stroke="#000000" stroke-linejoin="round">
+                <path d="M0.05973,136.43934 L307.587,136.43934" id="Stroke-132" stroke-opacity="0.2" stroke-width="0.5" stroke-dasharray="6,6"></path>
+                <path d="M0.05973,97.7309 L307.587,97.7309" id="Stroke-136" stroke-opacity="0.2" stroke-width="0.5" stroke-dasharray="6,6"></path>
+                <path d="M0.05973,59.0226 L307.587,59.0226" id="Stroke-140" stroke-opacity="0.2" stroke-width="0.5" stroke-dasharray="6,6"></path>
+                <path d="M0.05973,20.3142 L307.587,20.3142" id="Stroke-144" stroke-opacity="0.2" stroke-width="0.5" stroke-dasharray="6,6"></path>
+                <path d="M0.05973,175.14773 L307.587,175.14773" id="Stroke-147"></path>
+                <path d="M0.05973,175.14773 L0.05973,0.96" id="Stroke-148"></path>
+            </g>
+            <g id="10_streams" transform="translate(59.000000, 7.000000)" fill="#FF800E" stroke="#000000">
+                <polygon id="Fill-5" points="0.23179 168.14773 6.7551 168.14773 6.7551 0.3082 0.23179 0.3082"></polygon>
+                <polygon id="Fill-9" points="28.18882 168.14773 34.7121 168.14773 34.7121 40.3326 28.18882 40.3326"></polygon>
+                <polygon id="Fill-13" points="56.1458 168.14773 62.6692 168.14773 62.6692 105.3627 56.1458 105.3627"></polygon>
+                <polygon id="Fill-17" points="84.1029 168.14773 90.6262 168.14773 90.6262 147.90324 84.1029 147.90324"></polygon>
+                <polygon id="Fill-21" points="112.0599 168.14773 118.5832 168.14773 118.5832 162.4576 112.0599 162.4576"></polygon>
+                <polygon id="Fill-25" points="140.0169 168.14773 146.5402 168.14773 146.5402 166.09618 140.0169 166.09618"></polygon>
+                <polygon id="Fill-29" points="167.9739 168.14773 174.4973 168.14773 174.4973 167.83806 167.9739 167.83806"></polygon>
+                <polygon id="Fill-33" points="195.931 168.14773 202.4543 168.14773 202.4543 167.95419 195.931 167.95419"></polygon>
+                <polygon id="Fill-37" points="223.888 168.14773 230.4113 168.14773 230.4113 168.07031 223.888 168.07031"></polygon>
+                <polygon id="Fill-41" points="251.845 168.14773 258.3683 168.14773 258.3683 168.07031 251.845 168.07031"></polygon>
+            </g>
+            <g id="20_streams" transform="translate(65.000000, 100.000000)" fill="#006BA4" stroke="#000000">
+                <polygon id="Fill-45" points="0.7551 75.14773 7.27841 75.14773 7.27841 0.0922 0.7551 0.0922"></polygon>
+                <polygon id="Fill-49" points="28.7121 75.14773 35.2354 75.14773 35.2354 5.4339 28.7121 5.4339"></polygon>
+                <polygon id="Fill-53" points="56.6692 75.14773 63.1925 75.14773 63.1925 2.8792 56.6692 2.8792"></polygon>
+                <polygon id="Fill-57" points="84.6262 75.14773 91.1495 75.14773 91.1495 13.5627 84.6262 13.5627"></polygon>
+                <polygon id="Fill-61" points="112.5832 75.14773 119.1065 75.14773 119.1065 32.45237 112.5832 32.45237"></polygon>
+                <polygon id="Fill-65" points="140.5402 75.14773 147.0635 75.14773 147.0635 44.68423 140.5402 44.68423"></polygon>
+                <polygon id="Fill-69" points="168.4973 75.14773 175.0206 75.14773 175.0206 60.09017 168.4973 60.09017"></polygon>
+                <polygon id="Fill-73" points="196.4543 75.14773 202.9776 75.14773 202.9776 66.20609 196.4543 66.20609"></polygon>
+                <polygon id="Fill-77" points="224.4113 75.14773 230.9346 75.14773 230.9346 70.03822 224.4113 70.03822"></polygon>
+                <polygon id="Fill-81" points="252.3683 75.14773 258.8916 75.14773 258.8916 68.95439 252.3683 68.95439"></polygon>
+            </g>
+            <g id="30_streams" transform="translate(72.000000, 121.000000)" fill="#A2C8EC" stroke="#000000">
+                <polygon id="Fill-85" points="0.27841 54.14773 6.80171 54.14773 6.80171 46.28993 0.27841 46.28993"></polygon>
+                <polygon id="Fill-89" points="28.2354 54.14773 34.7587 54.14773 34.7587 37.15475 28.2354 37.15475"></polygon>
+                <polygon id="Fill-93" points="56.1925 54.14773 62.7158 54.14773 62.7158 25.69706 56.1925 25.69706"></polygon>
+                <polygon id="Fill-97" points="84.1495 54.14773 90.6728 54.14773 90.6728 12.72975 84.1495 12.72975"></polygon>
+                <polygon id="Fill-101" points="112.1065 54.14773 118.6298 54.14773 118.6298 4.33003 112.1065 4.33003"></polygon>
+                <polygon id="Fill-105" points="140.0635 54.14773 146.5868 54.14773 146.5868 0.57532 140.0635 0.57532"></polygon>
+                <polygon id="Fill-109" points="168.0206 54.14773 174.5439 54.14773 174.5439 4.33003 168.0206 4.33003"></polygon>
+                <polygon id="Fill-113" points="195.9776 54.14773 202.5009 54.14773 202.5009 15.36192 195.9776 15.36192"></polygon>
+                <polygon id="Fill-117" points="223.9346 54.14773 230.4579 54.14773 230.4579 23.33585 223.9346 23.33585"></polygon>
+                <polygon id="Fill-121" points="251.8916 54.14773 258.4149 54.14773 258.4149 33.28391 251.8916 33.28391"></polygon>
+            </g>
+            <g id="xlabels" transform="translate(66.000000, 174.000000)" fill="#000000" font-family="Helvetica" font-size="11.95517" font-weight="normal">
+                <text id="1">
+                    <tspan x="0.09026" y="11.9383653">1</tspan>
+                </text>
+                <text id="2">
+                    <tspan x="28.0473" y="11.9383653">2</tspan>
+                </text>
+                <text id="3">
+                    <tspan x="56.0043" y="11.9383653">3</tspan>
+                </text>
+                <text id="4">
+                    <tspan x="83.9613" y="11.9383653">4</tspan>
+                </text>
+                <text id="5">
+                    <tspan x="111.9184" y="11.9383653">5</tspan>
+                </text>
+                <text id="6">
+                    <tspan x="139.8754" y="11.9383653">6</tspan>
+                </text>
+                <text id="7">
+                    <tspan x="167.8324" y="11.9383653">7</tspan>
+                </text>
+                <text id="8">
+                    <tspan x="195.7894" y="11.9383653">8</tspan>
+                </text>
+                <text id="9">
+                    <tspan x="223.7465" y="11.9383653">9</tspan>
+                </text>
+                <text id="10">
+                    <tspan x="248.777" y="11.9383653">10</tspan>
+                </text>
+                <text id="Batch-size">
+                    <tspan x="100.4183" y="27.0804453">Batch size</tspan>
+                </text>
+            </g>
+            <g id="ylabels" transform="translate(0.000000, 12.000000)" fill="#000000" font-family="Helvetica" font-size="11.95517" font-weight="normal">
+                <text id="0">
+                    <tspan x="22.10209" y="166.367325">0</tspan>
+                </text>
+                <text id=".">
+                    <tspan x="27.95508" y="166.367325">.</tspan>
+                </text>
+                <text id="0">
+                    <tspan x="31.20674" y="166.367325">0</tspan>
+                </text>
+                <text id="0">
+                    <tspan x="22.10209" y="127.658935">0</tspan>
+                </text>
+                <text id=".">
+                    <tspan x="27.95508" y="127.658935">.</tspan>
+                </text>
+                <text id="1">
+                    <tspan x="31.20674" y="127.658935">1</tspan>
+                </text>
+                <text id="0">
+                    <tspan x="22.10209" y="88.9505853">0</tspan>
+                </text>
+                <text id=".">
+                    <tspan x="27.95508" y="88.9505853">.</tspan>
+                </text>
+                <text id="2">
+                    <tspan x="31.20674" y="88.9505853">2</tspan>
+                </text>
+                <text id="0">
+                    <tspan x="22.10209" y="50.2421853">0</tspan>
+                </text>
+                <text id=".">
+                    <tspan x="27.95508" y="50.2421853">.</tspan>
+                </text>
+                <text id="3">
+                    <tspan x="31.20674" y="50.2421853">3</tspan>
+                </text>
+                <text id="0">
+                    <tspan x="22.10209" y="11.5337853">0</tspan>
+                </text>
+                <text id=".">
+                    <tspan x="27.95508" y="11.5337853">.</tspan>
+                </text>
+                <text id="4">
+                    <tspan x="31.20674" y="11.5337853">4</tspan>
+                </text>
+                <text id="Probability" transform="translate(7.830650, 83.757985) rotate(-90.000000) translate(-7.830650, -83.757985) ">
+                    <tspan x="-20.16935" y="87.7579853">Probability</tspan>
+                </text>
+            </g>
+            <g id="Group-157" transform="translate(238.000000, 6.391900)">
+                <polygon id="Stroke-150" stroke="#000000" stroke-width="0.8" fill="#FFFFFF" stroke-linejoin="round" points="0.4884 55.5943 104.587 55.5943 104.587 0.5681 0.4884 0.5681"></polygon>
+                <polygon id="Fill-151" stroke="#000000" fill="#FF800E" points="5.2884 14.2387 29.2884 14.2387 29.2884 5.8387 5.2884 5.8387"></polygon>
+                <text id="10-streams" font-family="Helvetica" font-size="11.95517" font-weight="normal" fill="#000000">
+                    <tspan x="36.8884" y="14.1586853">10 streams</tspan>
+                </text>
+                <polygon id="Fill-153" stroke="#000000" fill="#006BA4" points="5.2884 31.3808 29.2884 31.3808 29.2884 22.9808 5.2884 22.9808"></polygon>
+                <text id="20-streams" font-family="Helvetica" font-size="11.95517" font-weight="normal" fill="#000000">
+                    <tspan x="37.8884" y="31.3007853">20 streams</tspan>
+                </text>
+                <polygon id="Fill-155" stroke="#000000" fill="#A2C8EC" points="5.2884 48.5229 29.2884 48.5229 29.2884 40.1229 5.2884 40.1229"></polygon>
+                <text id="30-streams" font-family="Helvetica" font-size="11.95517" font-weight="normal" fill="#000000">
+                    <tspan x="37.8884" y="48.4428853">30 streams</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>
