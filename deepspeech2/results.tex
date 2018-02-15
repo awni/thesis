@@ -1,5 +1,5 @@
 \section{Results}
-\label{sec:scaling_asr:results}
+\label{sec:deepspeech2:results}
 
 To better assess the real-world applicability of our speech system, we evaluate
 on a wide range of test sets. We use several publicly available benchmarks and
@@ -9,8 +9,8 @@ ratios (noisy and far-field), accented, read, spontaneous and conversational
 speech. 
 
 All models are trained for 20 epochs on either the full English dataset,
-described in Table~\ref{table:scaling_asr:englishdata}, or the full Mandarin
-dataset described in Section~\ref{sec:scaling_asr:data}. We use stochastic
+described in Table~\ref{table:deepspeech2:englishdata}, or the full Mandarin
+dataset described in Section~\ref{sec:deepspeech2:data}. We use stochastic
 gradient descent with Nesterov momentum~\cite{sutskever2013} along with a
 minibatch of 512 utterances. If the norm of the gradient exceeds a threshold of
 400, it is rescaled to 400~\cite{pascanu2013}. The model which performs the
@@ -20,8 +20,8 @@ fastest convergence and annealed by a constant factor of 1.2 after each epoch.
 We use a momentum of 0.99 for all models.
 
 The language models used are those described in
-Section~\ref{subsection:scaling_asr:languagemodel}. The decoding parameters
-from Equation~\ref{eq:scaling_asr:decoding} are tuned on a held-out development
+Section~\ref{subsection:deepspeech2:languagemodel}. The decoding parameters
+from Equation~\ref{eq:deepspeech2:decoding} are tuned on a held-out development
 set. We use a beam size of 500 for the English decoder and a beam size of 200
 for the Mandarin decoder.
 
@@ -58,12 +58,12 @@ Our English speech training set is substantially larger than the size of
 commonly used speech datasets. Furthermore, the data is augmented with noise
 synthesis. To get the best generalization error, we expect that the model size
 must increase to fully exploit the patterns in the data. In
-Section~\ref{sec:scaling_asr:bn} we explored the effect of model depth while
+Section~\ref{sec:deepspeech2:bn} we explored the effect of model depth while
 fixing the number of parameters. In contrast, here we show the effect of
 varying model size on the performance of the speech system. We only vary the
 size of each layer, while keeping the depth and other architectural parameters
 constant. We evaluate the models on the same Regular and Noisy development sets
-that we use in Section~\ref{sec:scaling_asr:2dconv}.
+that we use in Section~\ref{sec:deepspeech2:2dconv}.
 
 \begin{table}
 \centering
@@ -87,11 +87,11 @@ $100 \times 10^6$    & RNN &   & 7.73  & &  & 13.06 & \\
     2D-invariant convolution. Both models output bigrams with a temporal stride
     of 3. All models contain approximately 35 million parameters and are
     trained with BatchNorm and SortaGrad.}
-\label{table:scaling_asr:modelsize}
+\label{table:deepspeech2:modelsize}
 \end{table}
 
-The models in Table~\ref{table:scaling_asr:modelsize} differ from those in
-Table~\ref{table:scaling_asr:rnns} in that we increase the the stride to 3 and
+The models in Table~\ref{table:deepspeech2:modelsize} differ from those in
+Table~\ref{table:deepspeech2:rnns} in that we increase the the stride to 3 and
 output to bigrams. Because we increase the model size to as many as 100 million
 parameters, we find that an increase in stride is necessary for fast
 computation and memory constraints. However, in this regime we note that the
@@ -100,12 +100,12 @@ RNN. In fact, for the 100 million parameter networks the simple RNN performs
 better than the GRU network and is faster to train despite the 2 extra layers
 of convolution.
 
-Table~\ref{table:scaling_asr:modelsize} shows that the performance of the
+Table~\ref{table:deepspeech2:modelsize} shows that the performance of the
 system improves consistently up to 100 million parameters. All further English
 DS2 results are reported with this same 100 million parameter RNN model since
 it achieves the lowest generalization errors.
 
-Table~\ref{table:scaling_asr:test} shows that the 100 million parameter RNN
+Table~\ref{table:deepspeech2:test} shows that the 100 million parameter RNN
 model (DS2) gives a 43.4\% relative improvement over the 5-layer model with 1
 recurrent layer (DS1) on an internal Baidu dataset of 3,300 utterances that
 contains a wide variety of speech including challenging accents, low
@@ -124,7 +124,7 @@ Baidu Test & 24.01  & 13.59 \\
 \caption{Comparison of DS1 and DS2 WER on an internal test set of 3,300
     examples. The test set contains a wide variety of speech including accents,
     low signal-to-noise speech, spontaneous and conversational speech.}
-\label{table:scaling_asr:test}
+\label{table:deepspeech2:test}
 \end{table}
 
 \subsubsection{Read Speech}
@@ -136,7 +136,7 @@ These are available in the LDC catalog as LDC94S13B and LDC93S6B. We also take
 advantage of the recently developed LibriSpeech corpus constructed using audio
 books from the LibriVox project~\cite{panayotov2015}.
 
-Table~\ref{table:scaling_asr:readspeech} shows that the DS2 system outperforms
+Table~\ref{table:deepspeech2:readspeech} shows that the DS2 system outperforms
 humans in 3 out of the 4 test sets and is competitive on the fourth. Given this
 result, we suspect that there is little room for a generic speech system to
 further improve on clean read speech without further domain adaptation.
@@ -157,7 +157,7 @@ LibriSpeech test-other & 21.74 & 13.25 & 12.69 \\
 \end{tabular}
 \caption{Comparison of WER for two speech systems and human level performance
          on read speech.}
-\label{table:scaling_asr:readspeech}
+\label{table:deepspeech2:readspeech}
 \end{table}
 
 \subsubsection{Accented Speech}
@@ -173,7 +173,7 @@ first language.  We construct a test set from the VoxForge data with 1024
 examples from each accent group for a total of 4096 examples.
 
 Performance on these test sets is to some extent a measure of the breadth and
-quality of our training data. Table~\ref{table:scaling_asr:voxforge} shows that
+quality of our training data. Table~\ref{table:deepspeech2:voxforge} shows that
 our performance improved on all the accents when we include more accented
 training data and use an architecture that can effectively train on that data.
 However human level performance is still notably better than that of DS2 for
@@ -194,7 +194,7 @@ VoxForge Indian            & 45.35 & 22.44 & 22.15 \\
 \bottomrule
 \end{tabular}
 \caption{Comparing WER of the DS1 system to the DS2 system on accented speech.}
-\label{table:scaling_asr:voxforge}
+\label{table:deepspeech2:voxforge}
 \end{table}
 
 \subsubsection{Noisy Speech}
@@ -211,7 +211,7 @@ network's ability to handle a variety of real and synthetic noise conditions.
 The CHiME audio has 6 channels and using all of them can provide substantial
 performance improvements~\cite{yoshioka2015}. We use a {\it single} channel for
 all our results, since multi-channel audio is not pervasive on most devices.
-Table~\ref{table:scaling_asr:chime} shows that DS2 substantially improves upon
+Table~\ref{table:deepspeech2:chime} shows that DS2 substantially improves upon
 DS1, however DS2 is worse than human level performance on noisy data. The
 relative gap between DS2 and human level performance is larger when the data
 comes from a real noisy environment instead of synthetically adding noise to
@@ -234,13 +234,13 @@ CHiME eval sim   & 80.27 & 45.05 & 31.33 \\
          is a noise-free baseline. The ``CHiME eval real'' dataset is collected in
          real noisy environments and the ``CHiME eval sim'' dataset has similar
          noise synthetically added to clean speech.}
-\label{table:scaling_asr:chime}
+\label{table:deepspeech2:chime}
 \end{table}
 
 \subsection{Mandarin}
-\label{sec:scaling_asr:results_mandarin}
+\label{sec:deepspeech2:results_mandarin}
 
-In Table~\ref{table:scaling_asr:results_mandarin} we compare several
+In Table~\ref{table:deepspeech2:results_mandarin} we compare several
 architectures trained on the Mandarin Chinese speech, on a development set of
 2000 utterances as well as a test set of 1882 examples of noisy speech. This
 development set was also used to tune the decoding parameters We see that the
@@ -263,7 +263,7 @@ Architecture & Dev & Test \\
 \end{tabular}
 \caption{The effect of the DS2 architecture on Mandarin WER. The development
          and test sets are Baidu internal corpora.}
-\label{table:scaling_asr:results_mandarin}
+\label{table:deepspeech2:results_mandarin}
 \end{table}
 
 We find that our best Mandarin Chinese speech system transcribes short

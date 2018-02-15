@@ -21,7 +21,7 @@ smaller baseline models.
 
 \subsection{Preliminaries}
 
-Figure~\ref{fig:scaling_asr:ds2_network} shows the architecture of the DS2
+Figure~\ref{fig:deepspeech2:ds2_network} shows the architecture of the DS2
 system which at its core is similar to the previous DS1
 system~\cite{hannun2014deepspeech}: a recurrent neural network (RNN) trained to
 ingest speech spectrograms and generate text transcriptions. 
@@ -45,14 +45,14 @@ English we have $\ell_t \in \{\textrm{a, b, c, }\ldots, \textrm{z},
 \textit{apostrophe} as well as a \textit{space} symbol to denote word
 boundaries. For the Mandarin system the network outputs simplified Chinese
 characters.  We describe this in more detail in
-Section~\ref{sec:scaling_asr:chinesemodel}.
+Section~\ref{sec:deepspeech2:chinesemodel}.
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.6\textwidth]{scaling_asr/figures/ds2_architecture.pdf}
+    \includegraphics[width=0.6\textwidth]{deepspeech2/figures/ds2_architecture.pdf}
     \caption{The architecture of the DS2 network used for both English and
              Mandarin speech.}
-    \label{fig:scaling_asr:ds2_network}
+    \label{fig:deepspeech2:ds2_network}
 \end{figure}
 
 The RNN model is composed of several layers of hidden units. The architectures
@@ -90,7 +90,7 @@ $g(\cdot)$ can be the standard recurrent operation
 \begin{equation}
     \overrightarrow{h}_t^l = g( h_t^{l-1}, \overrightarrow{h}_{t-1}^l )
         = f( W^l h_t^{l-1} + \overrightarrow{U}^l \overrightarrow{h}_{t-1}^l + b^l )
-    \label{eq:scaling_asr:plainrnn}
+    \label{eq:deepspeech2:plainrnn}
 \end{equation}
 where $W^l$ is the input-hidden weight matrix, $\overrightarrow{U}^l$ is the
 recurrent weight matrix and $b^l$ is a bias term. In this case the input-hidden
@@ -120,14 +120,14 @@ improvements made relative to DS1~\cite{hannun2014deepspeech}.  Unless
 otherwise stated these improvements are language agnostic. We report results on
 an English speaker held out development set which is an internal dataset
 containing 2048 utterances of primarily read speech. All models are trained on
-datasets described in Section~\ref{sec:scaling_asr:data}. We report Word Error
+datasets described in Section~\ref{sec:deepspeech2:data}. We report Word Error
 Rate (WER) for the English system and Character Error Rate (CER) for the
 Mandarin system. In both cases we integrate a language model in a beam search
-decoding step as described in Section~\ref{sec:scaling_asr:languagemodel}.
+decoding step as described in Section~\ref{sec:deepspeech2:languagemodel}.
 
 
 \subsection{Batch Normalization for Deep RNNs}
-\label{sec:scaling_asr:bn}
+\label{sec:deepspeech2:bn}
 
 To efficiently scale our model as we scale the training set, we increase the
 depth of the networks by adding more hidden layers, rather than making each
@@ -165,7 +165,7 @@ of the layer's input.
 We consider two methods of extending BatchNorm to bidirectional
 RNNs~\cite{laurent2016}. A natural extension is to insert a BatchNorm
 transformation immediately before every non-linearity.
-Equation~\ref{eq:scaling_asr:plainrnn} then becomes 
+Equation~\ref{eq:deepspeech2:plainrnn} then becomes 
 \begin{equation*}
     \overrightarrow{h}^l_t =
         f( \mathcal{B}( W^l h^{l-1}_t + \overrightarrow{U}^l \overrightarrow{h}^l_{t-1} )).  
@@ -205,13 +205,13 @@ Architecture & Hidden Units & \multicolumn{4}{c}{Train} & \multicolumn{4}{c}{Dev
          RNN, N total'' implies 1 layer of 1D convolution at the input, M
          consecutive bidirectional RNN layers, and the rest as fully-connected
          layers with N total layers in the network.}
-\label{table:scaling_asr:batch_norm}
+\label{table:deepspeech2:batch_norm}
 \end{table}
 
 For each hidden unit, we compute the mean and variance statistics over all
 items in the minibatch over the length of the sequence.
-Figure~\ref{fig:scaling_asr:bn} shows that deep networks converge faster with
-sequence-wise normalization.  Table~\ref{table:scaling_asr:batch_norm} shows
+Figure~\ref{fig:deepspeech2:bn} shows that deep networks converge faster with
+sequence-wise normalization.  Table~\ref{table:deepspeech2:batch_norm} shows
 that the performance improvement from sequence-wise normalization increases
 with the depth of the network, with a 12\% performance difference for the
 deepest network. When comparing depth, in order to control for model size we
@@ -233,11 +233,11 @@ batch.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.6\textwidth]{scaling_asr/figures/bn_nobn.pdf}
+\includegraphics[width=0.6\textwidth]{deepspeech2/figures/bn_nobn.pdf}
 \caption{Training curves of two models trained with and without BatchNorm. We
          start the plot after the first epoch of training as the curve is more
          difficult to interpret due to the SortaGrad curriculum.}
-\label{fig:scaling_asr:bn}
+\label{fig:deepspeech2:bn}
 \end{figure}
 
 \subsection{SortaGrad}
@@ -255,13 +255,13 @@ is that longer examples tend to be more challenging~\cite{cho2014}.
 The CTC cost function that we use implicitly depends on the length of the
 utterance,
 \begin{equation}
-\label{eq:scaling_asr:ctc}
+\label{eq:deepspeech2:ctc}
     \mathcal{L}(x, y; \theta) = -\log \sum_{\ell \in \textrm{Align}(x, y)}
         \prod_t^{T} p_{\textrm{ctc}}(\ell_t \mid x; \theta).
 \end{equation}
 where $\textrm{Align}(x, y)$ is the set of all possible alignments of the
 characters of the transcription $y$ to frames of input $x$ under the CTC
-operator. In equation~\ref{eq:scaling_asr:ctc}, the inner term is a product
+operator. In equation~\ref{eq:deepspeech2:ctc}, the inner term is a product
 over time-steps of the sequence, which shrinks with the length of the sequence
 since $p_{\textrm{ctc}}(\ell_t \mid x;\theta)<1$. This motivates a curriculum
 learning strategy we title SortaGrad. SortaGrad uses the length of the
@@ -282,13 +282,13 @@ Sorted     & & 8.76 & & 7.68 & & 10.83 & & 9.52 \\
 \end{tabular}
 \caption{Comparison of WER on a training and development set with and without
          SortaGrad, and with and without BatchNorm.}
-\label{table:scaling_asr:sorting}
+\label{table:deepspeech2:sorting}
 \end{table}
 
 In the first training epoch, we iterate through the training set in increasing
 order of the length of the longest utterance in the minibatch. After the first
 epoch, training reverts back to a random order over minibatches.
-Table~\ref{table:scaling_asr:sorting} shows a comparison of training cost with
+Table~\ref{table:deepspeech2:sorting} shows a comparison of training cost with
 and without SortaGrad on the 9 layer model with 7 recurrent layers. This effect
 is particularly pronounced for networks without BatchNorm, since they are
 numerically less stable. In some sense the two techniques substitute for one
@@ -308,7 +308,7 @@ internal state of the RNNs to explode at an early stage in training.
 
 The models we have shown so far are \emph{simple} RNNs that have bidirectional
 recurrent layers with the recurrence for both the forward in time and backward
-in time directions modeled by Equation~\ref{eq:scaling_asr:plainrnn}. Current
+in time directions modeled by Equation~\ref{eq:deepspeech2:plainrnn}. Current
 research in speech and language processing has shown that having a more complex
 recurrence can allow the network to remember state over more time-steps while
 making them more computationally expensive to train~\cite{sainath2015,
@@ -358,16 +358,16 @@ Architecture &  Simple RNN & GRU \\
 \end{tabular}
 \caption{Comparison of development set WER for networks with either simple RNN
          or GRU, for various depths.}
-\label{table:scaling_asr:rnns}
+\label{table:deepspeech2:rnns}
 \end{table}
 
 Both GRU and simple RNN architectures benefit from batch normalization and show
-strong results with deep networks. However, Table~\ref{table:scaling_asr:rnns}
+strong results with deep networks. However, Table~\ref{table:deepspeech2:rnns}
 shows that for a fixed number of parameters, the GRU architectures achieve
 better WER for all network depths. This is clear evidence of the long term
 dependencies inherent in the speech recognition task present both within
 individual words and between words. As we discuss in
-Section~\ref{sec:scaling_asr:languagemodel}, even simple RNNs are able to
+Section~\ref{sec:deepspeech2:languagemodel}, even simple RNNs are able to
 implicitly learn a language model due to the large amount of training data.
 Interestingly, the GRU networks with 5 or more recurrent layers do not
 significantly improve performance. We attribute this to the thinning from 1728
@@ -375,14 +375,14 @@ hidden units per layer for 1 recurrent layer to 768 hidden units per layer for
 7 recurrent layers, to keep the total number of parameters constant.
 
 The GRU networks outperform the simple RNNs in
-Table~\ref{table:scaling_asr:rnns}. However, in later results
-(Section~\ref{sec:scaling_asr:results}) we find that as we scale up the model
+Table~\ref{table:deepspeech2:rnns}. However, in later results
+(Section~\ref{sec:deepspeech2:results}) we find that as we scale up the model
 size, for a fixed computational budget the simple RNN networks perform slightly
 better.  Given this, most of the remaining experiments use the simple RNN
 layers rather than the GRUs.
 
 \subsection{Frequency Convolutions}
-\label{sec:scaling_asr:2dconv}
+\label{sec:deepspeech2:2dconv}
 
 Temporal convolution is commonly used in speech recognition to efficiently
 model temporal translation invariance for variable length utterances. This type
@@ -412,7 +412,7 @@ preserving the number of input features in both frequency and time. In some
 cases, we specify a stride across either dimension which reduces the size of
 the output. We do not explicitly control for the number of parameters, since
 convolutional layers add a small fraction of parameters to our networks. All
-networks shown in Table~\ref{table:scaling_asr:2dconv} have about 35 million
+networks shown in Table~\ref{table:deepspeech2:2dconv} have about 35 million
 parameters.
 
 We report results on two datasets---a development set of 2048 utterances
@@ -443,7 +443,7 @@ Layers & Channels & Filter dimension    & Stride       & Dev         & Noisy Dev
          all cases, the convolutions are followed by 7 recurrent layers and 1 fully
          connected layer. For 2D-invariant convolutions the first dimension is
          frequency and the second dimension is time.}
-\label{table:scaling_asr:2dconv}
+\label{table:deepspeech2:2dconv}
 \end{table}
 
 \subsection{Striding}
@@ -483,7 +483,7 @@ isomorphism ensures that the same words are always composed of the same bigram
 and unigram tokens. The output set of bigrams consists of all bigrams that
 occur in the training set. 
 
-In Table~\ref{table:scaling_asr:bigrams} we show results for both the bigram
+In Table~\ref{table:deepspeech2:bigrams} we show results for both the bigram
 and unigram systems for various levels of striding, with or without a language
 model. We observe that bigrams allow for larger strides without any sacrifice
 in in the word error rate. This allows us to reduce the number of time-steps of
@@ -505,7 +505,7 @@ Stride  & Unigrams & Bigrams & Unigrams & Bigrams \\
 \caption{Comparison of WER with different amounts of striding for unigram and
          bigram outputs. The models are compared on a development set with and
          without the use of a 5-gram language model.}
-\label{table:scaling_asr:bigrams}
+\label{table:deepspeech2:bigrams}
 \end{table}
 
 \subsection{Row Convolution and Unidirectional Models}
@@ -519,13 +519,13 @@ RNN layers in our deployment system.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.6\textwidth]{scaling_asr/figures/row_conv}
+\includegraphics[width=0.6\textwidth]{deepspeech2/figures/row_conv}
 \caption{The row convolution architecture with two time-steps of future context.}
-\label{fig:scaling_asr:row_conv}
+\label{fig:deepspeech2:row_conv}
 \end{figure}
 
 To accomplish this, we employ a special layer that we call row convolution,
-shown in Figure~\ref{fig:scaling_asr:row_conv}. The intuition behind this layer
+shown in Figure~\ref{fig:deepspeech2:row_conv}. The intuition behind this layer
 is that we only need a small portion of future information to make an accurate
 prediction at the current time-step. Suppose at time-step $t$, we use a future
 context of $\tau$ steps. We now have a feature matrix $h_{t:t+\tau} = [h_t,
@@ -534,11 +534,11 @@ matrix $W$ of the same size as $h_{t:t+\tau}$. The activations $r_t$ for the
 new layer at time-step $t$ are 
 
 \begin{align}
-\label{eq:scaling_asr:rowconv}
+\label{eq:deepspeech2:rowconv}
 r_{t,i} = \sum_{j=1}^{\tau+1} W_{i,j} h_{t+j-1, i}, {\rm \ for\ } 1 \leq i \leq d.
 \end{align}
 
-Since the convolution-like operation in Eq.~\ref{eq:scaling_asr:rowconv} is row
+Since the convolution-like operation in Eq.~\ref{eq:deepspeech2:rowconv} is row
 oriented for both $W$ and $h_{t:t+\tau}$, we call this layer row convolution.
 
 We place the row convolution layer above all recurrent layers. This has two
@@ -555,7 +555,7 @@ information to feed to the classifier.
 %are given in Section~\ref{section:deployment} on deployment. 
 
 \subsection{Language Model}
-\label{sec:scaling_asr:languagemodel}
+\label{sec:deepspeech2:languagemodel}
 
 We train our RNN Models over millions of unique utterances, which enables the
 network to learn a powerful implicit language model. Our best models are quite
@@ -579,12 +579,12 @@ pruning that is trained on an internal text corpus of 8 billion lines of text.
 This produces a language model with about 2 billion \emph{n}-grams.
 
 During inference we search for the transcription $y$ that maximizes $Q(y)$
-shown in Equation~\ref{eq:scaling_asr:decoding}. This is a linear combination
+shown in Equation~\ref{eq:deepspeech2:decoding}. This is a linear combination
 of $\log$ probabilities from the CTC trained network and language model, along
 with a word insertion term~\cite{hannun2014deepspeech}. 
 
 \begin{equation}
-\label{eq:scaling_asr:decoding}
+\label{eq:deepspeech2:decoding}
 Q(y) = \log (p_{\textrm{ctc}}(y|x)) + \alpha \log(p_{\textrm{lm}}(y))  + \beta \: \textrm{word\_count}(y)
 \end{equation}
 
@@ -607,10 +607,10 @@ Mandarin & 9-layer, 7 RNN & & 7.55  & & & 5.81 & \\
 \end{tabular}
 \caption{Comparison of WER for English and CER for Mandarin with and without a
          language model.}
-\label{table:scaling_asr:languagemodels}
+\label{table:deepspeech2:languagemodels}
 \end{table}
 
-Table~\ref{table:scaling_asr:languagemodels} shows that an external language
+Table~\ref{table:deepspeech2:languagemodels} shows that an external language
 model helps both English and Mandarin speech systems. The relative improvement
 given by the language model drops from 48\% to 36\% in English and 27\% to 23\%
 in Mandarin, as we go from a model with 5 layers and 1 recurrent layer to a
@@ -625,7 +625,7 @@ would make fewer spelling mistakes and the language model would likely help
 less.
 
 \subsection{Adaptation to Mandarin}
-\label{sec:scaling_asr:chinesemodel}
+\label{sec:deepspeech2:chinesemodel}
 
 The techniques that we have described so far can be used to build an end-to-end
 Mandarin speech recognition system that outputs Chinese characters directly.
@@ -645,10 +645,10 @@ not a major concern, as our test set has only 0.74\% out of vocab characters.
 
 We use a character level language model in Mandarin as words are not usually
 segmented in text. The word insertion term of
-Equation~\ref{eq:scaling_asr:decoding} becomes a character insertion term. In
+Equation~\ref{eq:deepspeech2:decoding} becomes a character insertion term. In
 addition, we find that the performance of the beam search during decoding
 levels off at a smaller beam size. This allows us to use a beam size of 200
 with a negligible degradation in CER. In
-Section~\ref{sec:scaling_asr:results_mandarin}, we show that our Mandarin
+Section~\ref{sec:deepspeech2:results_mandarin}, we show that our Mandarin
 speech models show roughly the same improvements to architectural changes as
 our English speech models.

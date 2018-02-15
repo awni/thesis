@@ -1,12 +1,12 @@
 \section{Data}
-\label{sec:scaling_asr:data}
+\label{sec:deepspeech2:data}
 
 Large-scale deep learning systems require an abundance of labeled training
 data. We have collected an extensive training dataset for both English and
 Mandarin speech models, in addition to augmenting our training with publicly
 available datasets. In English we use 11,940 hours of labeled speech data
 containing 8 million utterances summarized in
-Table~\ref{table:scaling_asr:englishdata}.  For the Mandarin system we use
+Table~\ref{table:deepspeech2:englishdata}.  For the Mandarin system we use
 9,400 hours of labeled audio containing 11 million utterances. The Mandarin
 speech data consists of internal Baidu corpora, representing a mix of read
 speech and spontaneous speech, in both standard Mandarin and accented Mandarin.
@@ -32,7 +32,7 @@ speech and spontaneous speech, in both standard Mandarin and accented Mandarin.
         all published by the Linguistic Data Consortium. The LibriSpeech
         dataset~\cite{panayotov2015} is available free on-line. The other datasets
         are internal Baidu corpora.}
-\label{table:scaling_asr:englishdata}
+\label{table:deepspeech2:englishdata}
 \end{table}
 
 
@@ -53,7 +53,7 @@ audio-transcript pair, $(x, y)$, we find the alignment that maximizes
 \ell^* = \argmax_{\ell \in \text{Align}(x,y)} \prod_t^T p_{\text{ctc}}(\ell_t | x; \theta).
 \end{equation*}
 This is essentially a Viterbi alignment found using a RNN model trained with
-CTC. Since Equation~\ref{eq:scaling_asr:ctc} integrates over the alignment, the
+CTC. Since Equation~\ref{eq:deepspeech2:ctc} integrates over the alignment, the
 CTC loss function is never explicitly asked to produce an accurate alignment.
 In principle, CTC could choose to emit all the characters of the transcription
 after some fixed delay and this can happen with unidirectional
@@ -101,7 +101,7 @@ combined to produce hundreds of hours of noise.
 
 Our English and Mandarin corpora are substantially larger than those commonly
 reported in speech recognition literature. In
-Table~\ref{table:scaling_asr:datascale}, we show the effect of increasing the
+Table~\ref{table:deepspeech2:datascale}, we show the effect of increasing the
 amount of labeled training data on WER. This is done by randomly sampling the
 full dataset before training. For each dataset, the model was trained for up to
 20 epochs though usually early-stopped based on the error on a held out
@@ -137,5 +137,5 @@ to much larger relative gains than simple random sampling.
          increasing training dataset size. The architecture is a 9-layer model with
          2 layers of 2D-invariant convolution and 7 recurrent layers with 68M
          parameters.}
-\label{table:scaling_asr:datascale}
+\label{table:deepspeech2:datascale}
 \end{table}
