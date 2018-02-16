@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="311px" height="58px" viewBox="0 0 311 58" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>kws_hmm</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="kws_hmm" transform="translate(0.000000, 1.000000)">
+            <g id="arrow" transform="translate(238.000000, 17.000000)">
+                <path d="M0.5,7 C15.1666667,-1 28.5,-1.33333333 40.5,6" id="path43" stroke="#000000"></path>
+                <polygon id="Triangle" fill="#000000" transform="translate(41.287783, 6.174310) rotate(118.000000) translate(-41.287783, -6.174310) " points="41.2877829 3.17430987 43.2877829 9.17430987 39.2877829 9.17430987"></polygon>
+            </g>
+            <g id="arrow" transform="translate(28.000000, 17.000000)">
+                <path d="M0.5,7 C15.1666667,-1 28.5,-1.33333333 40.5,6" id="path31" stroke="#000000"></path>
+                <polygon id="Triangle" fill="#000000" transform="translate(41.287783, 6.174310) rotate(118.000000) translate(-41.287783, -6.174310) " points="41.2877829 3.17430987 43.2877829 9.17430987 39.2877829 9.17430987"></polygon>
+            </g>
+            <g id="arrow" transform="translate(98.000000, 37.000000)">
+                <path d="M0.5,3 C38.5,24.3333333 75.1666667,24.6666667 110.5,4" id="path47" stroke="#000000"></path>
+                <polygon id="Triangle" fill="#000000" transform="translate(111.087786, 3.574311) scale(1, -1) rotate(118.000000) translate(-111.087786, -3.574311) " points="111.087786 0.5743114 113.087786 6.5743114 109.087786 6.5743114"></polygon>
+            </g>
+            <g id="arrow" transform="translate(98.000000, 17.000000)">
+                <path d="M0.5,7 C15.1666667,-1 28.5,-1.33333333 40.5,6" id="path35" stroke="#000000"></path>
+                <polygon id="Triangle" fill="#000000" transform="translate(41.287783, 6.174310) rotate(118.000000) translate(-41.287783, -6.174310) " points="41.2877829 3.17430987 43.2877829 9.17430987 39.2877829 9.17430987"></polygon>
+            </g>
+            <g id="arrow" transform="translate(168.000000, 17.000000)">
+                <path d="M0.5,7 C15.1666667,-1 28.5,-1.33333333 40.5,6" id="path39" stroke="#000000"></path>
+                <polygon id="Triangle" fill="#000000" transform="translate(41.287783, 6.174310) rotate(118.000000) translate(-41.287783, -6.174310) " points="41.2877829 3.17430987 43.2877829 9.17430987 39.2877829 9.17430987"></polygon>
+            </g>
+            <g id="eps" transform="translate(280.000000, 0.000000)">
+                <circle id="circle17" stroke="#000000" fill="#D3D3D3" fill-rule="nonzero" cx="15.5" cy="32" r="15"></circle>
+                <path d="M5.5,21 C-4.5,-8 35.5,-4 25.5,16" id="path45" stroke="#000000"></path>
+                <text id="¬i" fill="#000000" font-family="STIXGeneral-Regular, STIXGeneral" font-size="16" font-weight="normal" letter-spacing="1">
+                    <tspan x="5.5" y="35">¬</tspan>
+                    <tspan x="16.1" y="35" font-size="18">i</tspan>
+                </text>
+                <polygon id="Triangle" fill="#000000" transform="translate(24.660449, 16.174310) rotate(-140.000000) translate(-24.660449, -16.174310) " points="24.6604487 13.1743099 26.6604487 19.1743099 22.6604487 19.1743099"></polygon>
+            </g>
+            <g id="i" transform="translate(210.000000, 0.000000)">
+                <circle id="circle15" stroke="#000000" fill="#D3D3D3" fill-rule="nonzero" cx="15.5" cy="32" r="15"></circle>
+                <text fill="#000000" font-family="STIXGeneral-Regular, STIXGeneral" font-size="18" font-weight="normal">
+                    <tspan x="13.5" y="37">i</tspan>
+                </text>
+                <path d="M5.5,21 C-4.5,-8 35.5,-4 25.5,16" id="path41" stroke="#000000"></path>
+                <polygon id="Triangle" fill="#000000" transform="translate(24.660449, 16.174310) rotate(-140.000000) translate(-24.660449, -16.174310) " points="24.6604487 13.1743099 26.6604487 19.1743099 22.6604487 19.1743099"></polygon>
+            </g>
+            <g id="eps" transform="translate(140.000000, 0.000000)">
+                <circle id="circle13" stroke="#000000" fill="#D3D3D3" fill-rule="nonzero" cx="15.5" cy="32" r="15"></circle>
+                <text id="text23" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" font-weight="normal">
+                    <tspan x="11.5" y="37">ϵ</tspan>
+                </text>
+                <path d="M5.5,21 C-4.5,-8 35.5,-4 25.5,16" id="path37" stroke="#000000"></path>
+                <polygon id="Triangle" fill="#000000" transform="translate(24.660449, 16.174310) rotate(-140.000000) translate(-24.660449, -16.174310) " points="24.6604487 13.1743099 26.6604487 19.1743099 22.6604487 19.1743099"></polygon>
+            </g>
+            <g id="h" transform="translate(70.000000, 0.000000)">
+                <circle id="circle11" stroke="#000000" fill="#D3D3D3" fill-rule="nonzero" cx="15.5" cy="32" r="15"></circle>
+                <text fill="#000000" font-family="STIXGeneral-Regular, STIXGeneral" font-size="18" font-weight="normal">
+                    <tspan x="11.5" y="37">h</tspan>
+                </text>
+                <path d="M5.5,21 C-4.5,-8 35.5,-4 25.5,16" id="path33" stroke="#000000"></path>
+                <polygon id="Triangle" fill="#000000" transform="translate(24.660449, 16.174310) rotate(-140.000000) translate(-24.660449, -16.174310) " points="24.6604487 13.1743099 26.6604487 19.1743099 22.6604487 19.1743099"></polygon>
+            </g>
+            <g id="noth">
+                <circle id="circle9" stroke="#000000" fill="#D3D3D3" fill-rule="nonzero" cx="15.5" cy="32" r="15"></circle>
+                <text id="¬h" fill="#000000" font-family="STIXGeneral-Regular, STIXGeneral" font-size="16" font-weight="normal" letter-spacing="0.699999988">
+                    <tspan x="3.5" y="35">¬</tspan>
+                    <tspan x="13.8" y="35" font-size="18">h</tspan>
+                </text>
+                <path d="M5.5,21 C-4.5,-8 35.5,-4 25.5,16" id="path29" stroke="#000000"></path>
+                <polygon id="Triangle" fill="#000000" transform="translate(24.660449, 16.174310) rotate(-140.000000) translate(-24.660449, -16.174310) " points="24.6604487 13.1743099 26.6604487 19.1743099 22.6604487 19.1743099"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,5 +1,3 @@
-%\usepackage{algpseudocode, algorithm}
-
 \chapter{Keyword Spotting and Voice Activity Detection}
 
 \section{Introduction}
@@ -176,39 +174,43 @@ regular expression [\^{}$k_0$]*$k$[\^{}$k_{n-1}$]*, where $k_0$ and $k_{n-1}$
 are the first and last characters of $k$. An implementation for computing this
 modified CTC score is shown in Algorithm \ref{alg:kws:scorekeyword}.
 
-%\begin{algorithm}
-%\caption{An algorithm for computing the score of a keyword, $k$, given the output probabilities of the RNN. The algorithm accepts $l$ and $P$ as parameters. The variable $l$ is the keyword with $\epsilon$ inserted at the beginning, end and between every pair of characters of $k$. The matrix $P$ contains the distributions over output characters in its columns for each time-step.}
-%\label{alg:scorekeyword}
-%\begin{algorithmic}
-%\Function{ScoreKeyword}{$l$, $P$}
-%\State $S$ $\gets$ size($l$)
-%\State $T$ $\gets$ numberOfColumns($P$)
-%\State $\alpha \gets$ zeros(S, T)
-%\State $\alpha_{1, 1} \gets 1 - P_{l_2, 1}$
-%\State $\alpha_{2, 1} \gets P_{l_{2}, 1}$
-%    \For{$t=2:T$}
-%        \For{$s=1:S$}
-%            \If{$s = 1$}
-%                \State $p \gets 1 - P_{l_2, t}$
-%            \ElsIf{$s = S$}
-%                \State $p \gets 1 - P_{l_{S - 1}, t}$
-%            \Else
-%                \State $p \gets P_{l_{s}, t}$
-%            \EndIf
-%            
-%            \If{$s > 2$ and $l_s \ne l_{s-2}$ and $l_s \ne \epsilon$}
-%                \State $\alpha_{s, t} \gets p * (\alpha_{s, t-1} + \alpha_{s-1, t-1} + \alpha_{s-2, t-1})$
-%            \ElsIf {$s > 1$}
-%                \State $\alpha_{s, t} \gets p * (\alpha_{s, t-1} + \alpha_{s-1, t-1})$
-%            \Else
-%                \State $\alpha_{s, t} \gets p * \alpha_{s, t-1}$
-%            \EndIf
-%        \EndFor
-%    \EndFor
-%    \State \Return $\alpha_{S, T} + \alpha_{S-1, T}$
-%\EndFunction
-%\end{algorithmic}
-%\end{algorithm}
+\begin{algorithm}
+\caption{Computing the score of a keyword, $k$, given the output probabilities
+         of the RNN. The algorithm accepts $l$ and $P$ as parameters. The variable
+         $l$ is the keyword with $\epsilon$ inserted at the beginning, end and
+         between every pair of characters of $k$. The matrix $P$ contains the
+         distributions over output characters in its columns for each time-step.}
+\label{alg:scorekeyword}
+\begin{algorithmic}
+\Function{ScoreKeyword}{$l$, $P$}
+\State $S$ $\gets$ size($l$)
+\State $T$ $\gets$ numberOfColumns($P$)
+\State $\alpha \gets$ zeros(S, T)
+\State $\alpha_{1, 1} \gets 1 - P_{l_2, 1}$
+\State $\alpha_{2, 1} \gets P_{l_{2}, 1}$
+    \For{$t=2:T$}
+        \For{$s=1:S$}
+            \If{$s = 1$}
+                \State $p \gets 1 - P_{l_2, t}$
+            \ElsIf{$s = S$}
+                \State $p \gets 1 - P_{l_{S - 1}, t}$
+            \Else
+                \State $p \gets P_{l_{s}, t}$
+            \EndIf
+            
+            \If{$s > 2$ and $l_s \ne l_{s-2}$ and $l_s \ne \epsilon$}
+                \State $\alpha_{s, t} \gets p * (\alpha_{s, t-1} + \alpha_{s-1, t-1} + \alpha_{s-2, t-1})$
+            \ElsIf {$s > 1$}
+                \State $\alpha_{s, t} \gets p * (\alpha_{s, t-1} + \alpha_{s-1, t-1})$
+            \Else
+                \State $\alpha_{s, t} \gets p * \alpha_{s, t-1}$
+            \EndIf
+        \EndFor
+    \EndFor
+    \State \Return $\alpha_{S, T} + \alpha_{S-1, T}$
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
 
 Algorithm \ref{alg:kws:scorekeyword} allows us to choose a window size long
 enough such that all occurrences of the keyword are shorter than it and not
@@ -282,35 +284,39 @@ After the layers are larger than 128 units, the performance saturates. For most
 of the VAD models achieve near 99.9\% true positive rate or higher at a fixed
 false positive rate of 5.0\%.
 
-%\begin{figure}
-%\centering
-%\begin{subfigure}{0.49\textwidth}
-%    \includegraphics[width=\textwidth]{layers.pdf}
-%    \caption{KWS}
-%\end{subfigure}
-%\hfill
-%\begin{subfigure}{0.49\textwidth}
-%    \includegraphics[width=\textwidth]{layers_vad.pdf}
-%    \caption{VAD}
-%\end{subfigure}
-%\caption{Here we show the performance of the model on both the KWS and VAD tasks varying the number of hidden layers from 1 to 4. The layer size for all models is fixed at 256 hidden units.}
-%\label{fig:kws:layers} 
-%\end{figure}
-%
-%\begin{figure}
-%\centering
-%\begin{subfigure}{0.49\textwidth}
-%    \includegraphics[width=\textwidth]{sizes.pdf}
-%    \caption{KWS}
-%\end{subfigure}
-%\hfill
-%\begin{subfigure}{0.49\textwidth}
-%    \includegraphics[width=\textwidth]{sizes_vad.pdf}
-%    \caption{VAD}
-%\end{subfigure}
-%\caption{Here we show the performance of the model on both the KWS and VAD tasks varying the layer size from 64 to 512. The number of hidden layers for all models is fixed at 3.}
-%\label{fig:kws:sizes} 
-%\end{figure}
+\begin{figure}
+\centering
+\begin{subfigure}{0.47\textwidth}
+    \includegraphics[width=\textwidth]{kws/figures/layers.pdf}
+    \caption{KWS}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.47\textwidth}
+    \includegraphics[width=\textwidth]{kws/figures/layers_vad.pdf}
+    \caption{VAD}
+\end{subfigure}
+\caption{The performance of the model on both the KWS and VAD
+         tasks varying the number of hidden layers from 1 to 4. The layer size for
+         all models is fixed at 256 hidden units.}
+\label{fig:kws:layers} 
+\end{figure}
+
+\begin{figure}
+\centering
+\begin{subfigure}{0.47\textwidth}
+    \includegraphics[width=\textwidth]{kws/figures/sizes.pdf}
+    \caption{KWS}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.47\textwidth}
+    \includegraphics[width=\textwidth]{kws/figures/sizes_vad.pdf}
+    \caption{VAD}
+\end{subfigure}
+\caption{The performance of the model on both the KWS and VAD tasks varying the
+         layer size from 64 to 512. The number of hidden layers for all models is
+         fixed at 3.}
+\label{fig:kws:sizes} 
+\end{figure}
 
 In Figure~\ref{fig:kws:data} we see that adding noise to the keywords during
 training results in substantial improvements. At a false positive rate of 1\%
@@ -320,20 +326,24 @@ not help much; in fact the results are slightly worse. On the VAD task we also
 notice an improvement in the ROC curve as we add noise. However, the
 improvement in VAD is not nearly as significant as in KWS.
 
-%\begin{figure}
-%\centering
-%\begin{subfigure}{0.49\textwidth}
-%    \includegraphics[width=\textwidth]{data.pdf}
-%    \caption{KWS}
-%\end{subfigure}
-%\hfill
-%\begin{subfigure}{0.49\textwidth}
-%    \includegraphics[width=\textwidth]{data_vad.pdf}
-%    \caption{VAD}
-%\end{subfigure}
-%\caption{Here we show the performance of the model on both the KWS and VAD tasks as we add training data. The `KW' model does not have any noise synthesis but does contain the 550K filler examples. The `KW + KW noise` model also includes the keyword data replicated 10 times with random noise. The `KW + KW noise + noise` also include 57K random noise clips as filler.}
-%\label{fig:kws:data} 
-%\end{figure}
+\begin{figure}
+\centering
+\begin{subfigure}{0.47\textwidth}
+    \includegraphics[width=\textwidth]{kws/figures/data.pdf}
+    \caption{KWS}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.47\textwidth}
+    \includegraphics[width=\textwidth]{kws/figures/data_vad.pdf}
+    \caption{VAD}
+\end{subfigure}
+\caption{The performance of the model on both the KWS and VAD tasks as we add
+         training data. The `KW' model does not have any noise synthesis but does
+         contain the 550K filler examples. The `KW + KW noise` model includes
+         the keyword data replicated 10 times with random noise. The `KW + KW noise
+         + noise` includes 57K random noise clips as filler.}
+\label{fig:kws:data} 
+\end{figure}
 
 \section{Conclusion}
 \label{sec:kws:conclusion}

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="230px" height="132px" viewBox="0 0 230 132" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>layers_vad</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="0.674625 0.212597 170.1275 0.212597 170.1275 104.36 0.674625 104.36"></polygon>
+        <polygon id="path-3" points="0.306198 0.790264026 173.1275 0.790264026 173.1275 105.36 0.306198 105.36"></polygon>
+        <polygon id="path-5" points="0.791331 0.790264026 168.1275 0.790264026 168.1275 105.36 0.791331 105.36"></polygon>
+        <polygon id="path-7" points="0.666214 0.790264026 170.1275 0.790264026 170.1275 105.36 0.666214 105.36"></polygon>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="layers_vad" transform="translate(-2.000000, -2.000000)">
+            <g id="Group-5" transform="translate(54.000000, 6.849736)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="Clip-4"></g>
+                <polyline id="Stroke-3" stroke="#0000FF" stroke-linecap="square" stroke-linejoin="round" mask="url(#mask-2)" points="186.08 0.212597 185.575761 0.212597 177.003144 0.212597 172.514629 0.212597 165.916247 0.212597 159.622872 0.212597 153.006297 1.057264 145.913309 1.057264 139.484798 1.057264 131.930611 1.057264 123.589161 1.057264 116.644292 1.057264 111.126552 1.057264 105.577692 1.057264 99.624307 1.057264 92.558744 1.901931 82.75731 2.324264 76.684148 2.746597 74.432684 3.591264 68.731288 4.858264 61.02819 5.702931 55.664955 7.814598 46.334385 10.348598 40.085307 12.882598 33.067881 17.950598 28.901574 25.974931 20.717824 38.222598 13.224336 51.314932 9.592186 73.276266 5.438072 95.2376 1.126951 135.359267 0.674625 139"></polyline>
+            </g>
+            <g id="Group-8" transform="translate(51.000000, 5.849736)">
+                <mask id="mask-4" fill="white">
+                    <use xlink:href="#path-3"></use>
+                </mask>
+                <g id="Clip-7"></g>
+                <polyline id="Stroke-6" stroke="#008000" stroke-linecap="square" stroke-linejoin="round" mask="url(#mask-4)" points="189.08 0.790264 184.087359 0.790264 179.27444 0.790264 174.78339 0.790264 167.483654 0.790264 163.28723 0.790264 158.368088 0.790264 151.296822 0.790264 145.959156 0.790264 140.591892 0.790264 133.38907 0.790264 126.496702 0.790264 121.020818 0.790264 116.617977 0.790264 113.302849 0.790264 107.409101 1.212597 103.316812 1.212597 99.581801 1.212597 95.456966 1.212597 89.804446 1.212597 85.662464 1.634931 80.357228 2.057264 74.275382 2.901931 69.269205 2.901931 65.033653 3.324264 60.369821 3.324264 55.311142 3.746597 48.649275 4.168931 43.130828 4.591264 37.624892 6.280597 34.471495 7.547598 33.354457 10.081598 27.851581 14.304931 23.172201 20.639931 20.013024 24.440931 16.988458 34.154598 11.428817 43.868265 8.893269 60.761599 6.560887 89.057933 2.570281 124.956267 0.306198 140"></polyline>
+            </g>
+            <g id="Group-11" transform="translate(56.000000, 5.849736)">
+                <mask id="mask-6" fill="white">
+                    <use xlink:href="#path-5"></use>
+                </mask>
+                <g id="Clip-10"></g>
+                <polyline id="Stroke-9" stroke="#FF0000" stroke-linecap="square" stroke-linejoin="round" mask="url(#mask-6)" points="184.08 0.790264 179.430208 0.790264 172.549619 0.790264 162.483654 0.790264 155.479377 0.790264 149.131559 0.790264 145.266445 1.212597 140.636292 1.212597 135.625084 1.212597 129.50506 1.212597 123.346324 1.212597 118.610353 1.212597 113.117154 1.212597 107.962289 1.212597 100.922956 1.212597 93.458546 1.212597 87.848085 1.634931 82.93721 1.634931 79.166507 2.057264 74.975501 2.057264 66.540509 2.057264 60.788738 2.901931 57.374222 4.591264 55.075624 5.435931 50.438807 6.702931 47.027285 9.659264 40.803155 12.193264 36.601267 16.838931 33.106067 19.795265 27.626785 24.440931 24.630401 32.042931 18.007113 43.023598 13.571323 62.028599 7.611814 92.014266 1.331811 136.781601 0.791331 140"></polyline>
+            </g>
+            <g id="Group-14" transform="translate(54.000000, 5.849736)">
+                <mask id="mask-8" fill="white">
+                    <use xlink:href="#path-7"></use>
+                </mask>
+                <g id="Clip-13"></g>
+                <polyline id="Stroke-12" stroke="#00BFBF" stroke-linecap="square" stroke-linejoin="round" mask="url(#mask-8)" points="186.08 0.790264 177.307834 0.790264 172.4757 0.790264 169.009112 0.790264 163.785525 0.790264 158.182111 0.790264 152.899045 0.790264 146.165292 0.790264 141.173369 0.790264 136.514866 0.790264 132.555523 0.790264 125.709681 1.212597 122.799036 1.212597 118.05069 1.212597 113.279233 1.212597 108.854152 1.212597 105.151336 1.212597 101.434573 1.212597 96.581801 1.212597 92.106493 1.634931 90.249884 2.057264 88.364333 2.057264 86.12126 2.479597 82.330104 2.479597 79.690873 2.901931 75.89691 3.324264 72.448995 3.324264 69.374201 3.324264 65.130937 3.324264 61.277697 3.746597 55.867004 4.591264 51.618105 5.858264 44.600192 7.547598 41.894662 9.236931 36.510052 14.304931 31.875738 19.372931 24.815216 26.130265 19.858732 37.955598 14.518658 54.004265 9.623777 75.543266 5.995777 101.727933 0.741524 138.893268 0.666214 140"></polyline>
+            </g>
+            <g id="box" transform="translate(33.000000, 6.000000)" stroke="#929292" stroke-linecap="square" stroke-width="0.5">
+                <path d="M0.265,0.639999974 L191.1275,0.639999974" id="Stroke-15"></path>
+                <path d="M191.1275,105.209736 L191.1275,0.639999974" id="Stroke-16"></path>
+                <path d="M0.265,105.209736 L191.1275,105.209736" id="Stroke-17"></path>
+                <path d="M0.265,105.209736 L0.265,0.639999974" id="Stroke-18"></path>
+            </g>
+            <g id="xlabels" transform="translate(46.000000, 107.000000)">
+                <path d="M8.471944,4.20973597 L8.471944,0.209735974" id="Stroke-20" stroke="#929292" stroke-width="0.5" stroke-linejoin="round"></path>
+                <text id="0.02" font-family="Helvetica" font-size="8" font-weight="normal" fill="#000000">
+                    <tspan x="0.557881944" y="12.865986">0.02</tspan>
+                </text>
+                <path d="M50.885833,4.20973597 L50.885833,0.209735974" id="Stroke-22" stroke="#929292" stroke-width="0.5" stroke-linejoin="round"></path>
+                <text id="0.04" font-family="Helvetica" font-size="8" font-weight="normal" fill="#000000">
+                    <tspan x="42.9717708" y="12.865986">0.04</tspan>
+                </text>
+                <path d="M93.299722,4.20973597 L93.299722,0.209735974" id="Stroke-24" stroke="#929292" stroke-width="0.5" stroke-linejoin="round"></path>
+                <text id="0.06" font-family="Helvetica" font-size="8" font-weight="normal" fill="#000000">
+                    <tspan x="85.3856597" y="12.865986">0.06</tspan>
+                </text>
+                <path d="M135.713611,4.20973597 L135.713611,0.209735974" id="Stroke-26" stroke="#929292" stroke-width="0.5" stroke-linejoin="round"></path>
+                <text id="0.08" font-family="Helvetica" font-size="8" font-weight="normal" fill="#000000">
+                    <tspan x="127.799549" y="12.865986">0.08</tspan>
+                </text>
+                <path d="M178.1275,4.20973597 L178.1275,0.209735974" id="Stroke-28" stroke="#929292" stroke-width="0.5" stroke-linejoin="round"></path>
+                <text id="0.10" font-family="Helvetica" font-size="8" font-weight="normal" fill="#000000">
+                    <tspan x="170.213437" y="12.865986">0.10</tspan>
+                </text>
+                <text id="False-Positives" font-family="Helvetica" font-size="8" font-weight="normal" fill="#000000">
+                    <tspan x="53.555625" y="25.615986">False Positives</tspan>
+                </text>
+            </g>
+            <g id="ylabels">
+                <path d="M33.265,111.209736 L37.265,111.209736" id="Stroke-30" stroke="#929292" stroke-width="0.5" stroke-linejoin="round"></path>
+                <text id="0.95" font-family="Helvetica" font-size="8" font-weight="normal" fill="#000000">
+                    <tspan x="15.436875" y="112.990986">0.95</tspan>
+                </text>
+                <path d="M33.265,90.295789 L37.265,90.295789" id="Stroke-32" stroke="#929292" stroke-width="0.5" stroke-linejoin="round"></path>
+                <text id="0.96" font-family="Helvetica" font-size="8" font-weight="normal" fill="#000000">
+                    <tspan x="15.436875" y="92.0770388">0.96</tspan>
+                </text>
+                <path d="M33.265,69.381842 L37.265,69.381842" id="Stroke-34" stroke="#929292" stroke-width="0.5" stroke-linejoin="round"></path>
+                <text id="0.97" font-family="Helvetica" font-size="8" font-weight="normal" fill="#000000">
+                    <tspan x="15.436875" y="71.1630916">0.97</tspan>
+                </text>
+                <path d="M33.265,48.467894 L37.265,48.467894" id="Stroke-36" stroke="#929292" stroke-width="0.5" stroke-linejoin="round"></path>
+                <text id="0.98" font-family="Helvetica" font-size="8" font-weight="normal" fill="#000000">
+                    <tspan x="15.436875" y="50.2491444">0.98</tspan>
+                </text>
+                <path d="M33.265,27.553947 L37.265,27.553947" id="Stroke-38" stroke="#929292" stroke-width="0.5" stroke-linejoin="round"></path>
+                <text id="0.99" font-family="Helvetica" font-size="8" font-weight="normal" fill="#000000">
+                    <tspan x="15.436875" y="29.3351972">0.99</tspan>
+                </text>
+                <path d="M33.265,6.63999997 L37.265,6.63999997" id="Stroke-40" stroke="#929292" stroke-width="0.5" stroke-linejoin="round"></path>
+                <text id="1.00" font-family="Helvetica" font-size="8" font-weight="normal" fill="#000000">
+                    <tspan x="15.436875" y="8.42125">1.00</tspan>
+                </text>
+                <text id="True-Positives" transform="translate(5.000000, 62.500000) rotate(-90.000000) translate(-5.000000, -62.500000) " font-family="Helvetica" font-size="8" font-weight="normal" fill="#000000">
+                    <tspan x="-20.5" y="65.5">True Positives</tspan>
+                </text>
+            </g>
+            <g id="legend" transform="translate(170.000000, 57.000000)">
+                <polygon id="Stroke-42" stroke="#929292" stroke-width="0.5" points="0.280625 50.209736 50 50.209736 50 0.372235974 0.280625 0.372235974"></polygon>
+                <path d="M4.880625,6.85036097 L16.080625,6.85036097" id="Stroke-43" stroke="#0000FF" stroke-linecap="square" stroke-linejoin="round"></path>
+                <text id="1-layer" font-family="Helvetica" font-size="8" font-weight="normal" fill="#000000">
+                    <tspan x="19.880625" y="9.22848597">1 layer</tspan>
+                </text>
+                <path d="M4.880625,18.709736 L16.080625,18.709736" id="Stroke-44" stroke="#008000" stroke-linecap="square" stroke-linejoin="round"></path>
+                <text id="2-layer" font-family="Helvetica" font-size="8" font-weight="normal" fill="#000000">
+                    <tspan x="19.880625" y="21.087861">2 layer</tspan>
+                </text>
+                <path d="M4.880625,30.569111 L16.080625,30.569111" id="Stroke-45" stroke="#FF0000" stroke-linecap="square" stroke-linejoin="round"></path>
+                <text id="3-layer" font-family="Helvetica" font-size="8" font-weight="normal" fill="#000000">
+                    <tspan x="19.880625" y="32.947236">3 layer</tspan>
+                </text>
+                <path d="M4.880625,42.428486 L16.080625,42.428486" id="Stroke-46" stroke="#00BFBF" stroke-linecap="square" stroke-linejoin="round"></path>
+                <text id="4-layer" font-family="Helvetica" font-size="8" font-weight="normal" fill="#000000">
+                    <tspan x="19.880625" y="44.806611">4 layer</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>
