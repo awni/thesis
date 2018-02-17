@@ -1,8 +1,4 @@
-% The \includeonly
-% command can be used so you only need to work on one or two chapters at a
-% time (instead of having to either latex the entire book each time or
-% losing cross-references and page numbering)
-
+%\includeonly{background/main}
 \documentclass[12pt]{report}
 
 \usepackage{algorithm}
@@ -16,9 +12,6 @@
 \usepackage{url}
 \usepackage[parfill]{parskip}
 
-%% uncomment the following and create mythesis-macros.sty for all your
-%% own macros.  This keeps this top level file looking fairly neat.
-% \usepackage{mythesis-macros}
 \DeclareMathOperator*{\argmax}{arg\,max}
 
 \def\C++{
@@ -33,18 +26,10 @@
     \firstreader{James Zou}
     \secondreader{Anshul Kundaje}
 
-%\includeonly{background/main}
-
 \begin{document}
 
 %% Preface
 \include{preface}
-
-% dedication
-\newpage
-\begin{center}
-    To person.
-\end{center}
 
 \include{acknowledgements}
 
@@ -57,9 +42,6 @@
 \include{deepspeech2/main}
 \include{kws/main}
 \include{conclusions}
-
-%\appendix
-%\include{appendix1}
 
 \bibliographystyle{plain}
 \bibliography{refs}
