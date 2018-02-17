@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="521px" height="220px" viewBox="0 0 521 220" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>alignment_steps</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="alignment_steps" transform="translate(-1.000000, -3.000000)">
+            <text id="First,-merge-repeat" fill="#000000" opacity="0.6" font-family="Helvetica" font-size="14" font-weight="normal">
+                <tspan x="363" y="43">First, merge repeat</tspan>
+                <tspan x="363" y="60">characters.</tspan>
+            </text>
+            <text id="Then,-remove-any-ϵ-t" fill="#000000" opacity="0.6" font-family="Helvetica" font-size="14" font-weight="normal">
+                <tspan x="363" y="107">Then, remove any </tspan>
+                <tspan x="479.723633" y="107" font-family="TimesNewRomanPS-ItalicMT, Times New Roman" font-size="17" font-style="italic">ϵ</tspan>
+                <tspan x="486.571777" y="107"></tspan>
+                <tspan x="363" y="126.722168">tokens.</tspan>
+            </text>
+            <text id="The-remaining-charac" fill="#000000" opacity="0.6" font-family="Helvetica" font-size="14" font-weight="normal">
+                <tspan x="363" y="178">The remaining characters</tspan>
+                <tspan x="363" y="195">are the output.</tspan>
+            </text>
+            <g id="g1077" transform="translate(0.651682, 0.000000)">
+                <g id="g994" transform="translate(0.374988, 196.745760)">
+                    <g id="g911" transform="translate(0.000000, 1.000000)">
+                        <rect id="rect907" fill="#D3D3D3" fill-rule="nonzero" opacity="0.5" x="0" y="2" width="22.516821" height="22.516821"></rect>
+                        <text id="text909" fill="#000000" font-family="Helvetica-Light, Helvetica" font-size="20" font-weight="300">
+                            <tspan x="5.44498" y="19.766972">h</tspan>
+                        </text>
+                    </g>
+                    <g id="g917" transform="translate(24.000000, 0.000000)">
+                        <rect id="rect913" fill="#D3D3D3" fill-rule="nonzero" opacity="0.5" x="0" y="3" width="22.516821" height="22.516821"></rect>
+                        <text id="text915" fill="#000000" font-family="Helvetica-Light, Helvetica" font-size="20" font-weight="300">
+                            <tspan x="5.74159" y="19.58053">e</tspan>
+                        </text>
+                    </g>
+                    <g id="g923" transform="translate(48.000000, 2.000000)">
+                        <rect id="rect919" fill="#D3D3D3" fill-rule="nonzero" opacity="0.5" x="0" y="1" width="22.516821" height="22.516821"></rect>
+                        <text id="text921" fill="#000000" font-family="Helvetica-Light, Helvetica" font-size="20" font-weight="300">
+                            <tspan x="8.74159" y="19.0542431">l</tspan>
+                        </text>
+                    </g>
+                    <g id="g944" transform="translate(72.000000, 2.000000)">
+                        <rect id="rect938" fill="#D3D3D3" fill-rule="nonzero" opacity="0.5" x="0" y="1" width="22.516821" height="22.516821"></rect>
+                        <text id="tspan940" fill="#000000" font-family="Helvetica-Light, Helvetica" font-size="20" font-weight="300">
+                            <tspan x="9.41947" y="19.0542431">l</tspan>
+                        </text>
+                    </g>
+                    <g id="g952" transform="translate(96.000000, 1.000000)">
+                        <rect id="rect946" fill="#D3D3D3" fill-rule="nonzero" opacity="0.5" x="0" y="2" width="22.516821" height="22.516821"></rect>
+                        <g id="text950" transform="translate(5.000000, 0.000000)" fill="#000000" font-family="Helvetica-Light, Helvetica" font-size="20" font-weight="300">
+                            <text id="tspan948">
+                                <tspan x="0.41947" y="19.148371">o</tspan>
+                            </text>
+                        </g>
+                    </g>
+                </g>
+                <g id="g949" transform="translate(1.000000, 132.000000)">
+                    <g id="g867" transform="translate(0.000000, 2.000000)">
+                        <rect id="rect862" fill="#D3D3D3" fill-rule="nonzero" opacity="0.5" x="0" y="1" width="46.418732" height="22.516821"></rect>
+                        <text id="text864" fill="#000000" font-family="Helvetica-Light, Helvetica" font-size="20" font-weight="300">
+                            <tspan x="16.483179" y="19.063581">h</tspan>
+                        </text>
+                    </g>
+                    <g id="g879" transform="translate(48.000000, 0.000000)">
+                        <rect id="rect875" fill="#D3D3D3" fill-rule="nonzero" opacity="0.5" x="0" y="3" width="22.516821" height="22.516821"></rect>
+                        <text id="text877" fill="#000000" font-family="Helvetica-Light, Helvetica" font-size="20" font-weight="300">
+                            <tspan x="5.74159" y="19.58053">e</tspan>
+                        </text>
+                    </g>
+                    <rect id="rect887" fill="#D3D3D3" fill-rule="nonzero" opacity="0.12900002" x="71.796677" y="3" width="46.720146" height="22.516821"></rect>
+                    <g id="g907" transform="translate(119.000000, 1.000000)">
+                        <rect id="rect901" fill="#D3D3D3" fill-rule="nonzero" opacity="0.5" x="0.826" y="2" width="70.680717" height="22.516821"></rect>
+                        <g id="text905" transform="translate(33.548315, 0.000000)" fill="#000000" font-family="Helvetica-Light, Helvetica" font-size="20" font-weight="300">
+                            <text id="tspan903">
+                                <tspan x="0.41947" y="19.74159">l</tspan>
+                            </text>
+                        </g>
+                    </g>
+                    <rect id="rect917" fill="#D3D3D3" fill-rule="nonzero" opacity="0.12900002" x="192" y="3" width="22.516821" height="22.516821"></rect>
+                    <g id="g931" transform="translate(216.000000, 1.000000)">
+                        <rect id="rect925" fill="#D3D3D3" fill-rule="nonzero" opacity="0.5" x="0" y="2" width="46.655575" height="22.516821"></rect>
+                        <g id="text929" transform="translate(21.248312, 0.000000)" fill="#000000" font-family="Helvetica-Light, Helvetica" font-size="20" font-weight="300">
+                            <text id="tspan927">
+                                <tspan x="0.41947" y="19.74159">l</tspan>
+                            </text>
+                        </g>
+                    </g>
+                    <g id="g947" transform="translate(264.000000, 0.000000)">
+                        <rect id="rect941" fill="#D3D3D3" fill-rule="nonzero" opacity="0.5" x="0" y="3" width="22.516821" height="22.516821"></rect>
+                        <g id="text945" transform="translate(5.148306, 0.000000)" fill="#000000" font-family="Helvetica-Light, Helvetica" font-size="20" font-weight="300">
+                            <text id="tspan943">
+                                <tspan x="0.233028" y="19.851761">o</tspan>
+                            </text>
+                        </g>
+                    </g>
+                </g>
+                <g id="g1001" transform="translate(1.000000, 66.000000)">
+                    <rect id="rect951" fill="#D3D3D3" fill-rule="nonzero" opacity="0.5" x="0" y="3" width="46.418732" height="22.516821"></rect>
+                    <text id="text953" fill="#000000" font-family="Helvetica-Light, Helvetica" font-size="20" font-weight="300">
+                        <tspan x="16.483179" y="20.47036">h</tspan>
+                    </text>
+                    <rect id="rect957" fill="#D3D3D3" fill-rule="nonzero" opacity="0.5" x="48" y="3" width="22.516821" height="22.516821"></rect>
+                    <text id="text959" fill="#000000" font-family="Helvetica-Light, Helvetica" font-size="20" font-weight="300">
+                        <tspan x="53.74159" y="19.58053">e</tspan>
+                    </text>
+                    <rect id="rect963" fill="#D3D3D3" fill-rule="nonzero" x="71.796674" y="3" width="46.720146" height="22.516821"></rect>
+                    <text id="text965" fill="#000000" font-family="TimesNewRomanPS-ItalicMT, Times New Roman" font-size="23" font-style="italic" font-weight="normal">
+                        <tspan x="89.7415895" y="19.58053">ϵ</tspan>
+                    </text>
+                    <rect id="rect969" fill="#D3D3D3" fill-rule="nonzero" opacity="0.5" x="119.826" y="3" width="70.680717" height="22.516821"></rect>
+                    <text id="tspan971" fill="#000000" font-family="Helvetica-Light, Helvetica" font-size="20" font-weight="300">
+                        <tspan x="152.83894" y="20.48318">l</tspan>
+                    </text>
+                    <rect id="rect977" fill="#D3D3D3" fill-rule="nonzero" x="192" y="3" width="22.516821" height="22.516821"></rect>
+                    <text id="ϵ" fill="#000000" font-family="TimesNewRomanPS-ItalicMT, Times New Roman" font-size="23" font-style="italic" font-weight="normal">
+                        <tspan x="197.83894" y="19.48318">ϵ</tspan>
+                    </text>
+                    <rect id="rect985" fill="#D3D3D3" fill-rule="nonzero" opacity="0.5" x="216" y="3" width="46.655575" height="22.516821"></rect>
+                    <text id="tspan987" fill="#000000" font-family="Helvetica-Light, Helvetica" font-size="20" font-weight="300">
+                        <tspan x="237.83894" y="21.48318">l</tspan>
+                    </text>
+                    <rect id="rect993" fill="#D3D3D3" fill-rule="nonzero" opacity="0.5" x="264" y="3" width="22.516821" height="22.516821"></rect>
+                    <text id="tspan995" fill="#000000" font-family="Helvetica-Light, Helvetica" font-size="20" font-weight="300">
+                        <tspan x="269.466056" y="19.703522">o</tspan>
+                    </text>
+                </g>
+                <g id="g866" transform="translate(1.000000, 0.000000)">
+                    <rect id="rect6" fill="#D3D3D3" fill-rule="nonzero" opacity="0.5" x="0" y="3" width="22.516821" height="22.516821"></rect>
+                    <text id="text8" fill="#000000" font-family="Helvetica-Light, Helvetica" font-size="20" font-weight="300">
+                        <tspan x="5.74159" y="20.47036">h</tspan>
+                    </text>
+                    <rect id="rect815" fill="#D3D3D3" fill-rule="nonzero" opacity="0.5" x="24" y="3" width="22.516821" height="22.516821"></rect>
+                    <text id="text817" fill="#000000" font-family="Helvetica-Light, Helvetica" font-size="20" font-weight="300">
+                        <tspan x="29.74159" y="20.47036">h</tspan>
+                    </text>
+                    <rect id="rect821" fill="#D3D3D3" fill-rule="nonzero" opacity="0.5" x="48" y="3" width="22.516821" height="22.516821"></rect>
+                    <text id="text823" fill="#000000" font-family="Helvetica-Light, Helvetica" font-size="20" font-weight="300">
+                        <tspan x="53.74159" y="19.58053">e</tspan>
+                    </text>
+                    <rect id="rect827" fill="#D3D3D3" fill-rule="nonzero" x="72" y="3" width="22.516821" height="22.516821"></rect>
+                    <text id="text17" fill="#000000" font-family="TimesNewRomanPS-ItalicMT, Times New Roman" font-size="23" font-style="italic" font-weight="normal">
+                        <tspan x="77.74159" y="19.58053">ϵ</tspan>
+                    </text>
+                    <rect id="rect833" fill="#D3D3D3" fill-rule="nonzero" x="96" y="3" width="22.516821" height="22.516821"></rect>
+                    <text id="text835" fill="#000000" font-family="TimesNewRomanPS-ItalicMT, Times New Roman" font-size="23" font-style="italic" font-weight="normal">
+                        <tspan x="101.74159" y="19.58053">ϵ</tspan>
+                    </text>
+                    <rect id="rect839" fill="#D3D3D3" fill-rule="nonzero" opacity="0.5" x="120" y="3" width="22.516821" height="22.516821"></rect>
+                    <text id="tspan845" fill="#000000" font-family="Helvetica-Light, Helvetica" font-size="20" font-weight="300">
+                        <tspan x="128.83894" y="20.48318">l</tspan>
+                    </text>
+                    <rect id="rect870" fill="#D3D3D3" fill-rule="nonzero" opacity="0.5" x="144" y="3" width="22.516821" height="22.516821"></rect>
+                    <text id="tspan872" fill="#000000" font-family="Helvetica-Light, Helvetica" font-size="20" font-weight="300">
+                        <tspan x="152.83894" y="20.48318">l</tspan>
+                    </text>
+                    <rect id="rect878" fill="#D3D3D3" fill-rule="nonzero" opacity="0.5" x="168" y="3" width="22.516821" height="22.516821"></rect>
+                    <text id="tspan880" fill="#000000" font-family="Helvetica-Light, Helvetica" font-size="20" font-weight="300">
+                        <tspan x="176.83894" y="20.48318">l</tspan>
+                    </text>
+                    <rect id="rect886" fill="#D3D3D3" fill-rule="nonzero" x="192" y="3" width="22.516821" height="22.516821"></rect>
+                    <text id="tspan888" fill="#000000" font-family="TimesNewRomanPS-ItalicMT, Times New Roman" font-size="23" font-style="italic" font-weight="normal">
+                        <tspan x="197.83894" y="19.48318">ϵ</tspan>
+                    </text>
+                    <rect id="rect894" fill="#D3D3D3" fill-rule="nonzero" opacity="0.5" x="216" y="3" width="22.516821" height="22.516821"></rect>
+                    <text id="tspan896" fill="#000000" font-family="Helvetica-Light, Helvetica" font-size="20" font-weight="300">
+                        <tspan x="224.83894" y="20.48318">l</tspan>
+                    </text>
+                    <rect id="rect902" fill="#D3D3D3" fill-rule="nonzero" opacity="0.5" x="240" y="3" width="22.516821" height="22.516821"></rect>
+                    <text id="tspan904" fill="#000000" font-family="Helvetica-Light, Helvetica" font-size="20" font-weight="300">
+                        <tspan x="248.83894" y="20.48318">l</tspan>
+                    </text>
+                    <rect id="rect910" fill="#D3D3D3" fill-rule="nonzero" opacity="0.5" x="264" y="3" width="22.516821" height="22.516821"></rect>
+                    <text id="o" fill="#000000" font-family="Helvetica-Light, Helvetica" font-size="20" font-weight="300">
+                        <tspan x="269.872838" y="20.110298">o</tspan>
+                    </text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

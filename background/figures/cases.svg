@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="453px" height="205px" viewBox="0 0 453 205" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>cases</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="cases" transform="translate(0.000000, -6.000000)">
+            <g id="cost_no_skip">
+                <text id="text26" fill="#000000" font-family="Times-Italic, Times" font-size="18" font-style="italic" font-weight="normal">
+                    <tspan x="58.1790357" y="18.748047">t - 1</tspan>
+                </text>
+                <text id="text28" fill="#000000" font-family="Times-Italic, Times" font-size="18" font-style="italic" font-weight="normal">
+                    <tspan x="166.039521" y="18.53174">t</tspan>
+                </text>
+                <g id="g845" transform="translate(49.585164, 28.630969)">
+                    <circle id="circle54" stroke="#000000" fill="#FFFFFF" fill-rule="nonzero" cx="21" cy="20" r="20"></circle>
+                    <circle id="circle56" stroke="#000000" fill="#FFFFFF" fill-rule="nonzero" cx="119.22034" cy="20" r="20"></circle>
+                    <circle id="circle58" stroke="#000000" fill="#6FA8DC" fill-rule="nonzero" cx="20.33078" cy="160.47839" r="20"></circle>
+                    <circle id="circle68" stroke="#000000" fill="#6FA8DC" fill-rule="nonzero" cx="21" cy="90" r="20"></circle>
+                    <circle id="circle70" stroke="#000000" fill="#FFFFFF" fill-rule="nonzero" cx="119.22034" cy="89.99998" r="20"></circle>
+                    <circle id="circle72" stroke="#000000" fill="#E77471" fill-rule="nonzero" cx="119.34123" cy="160.99536" r="20"></circle>
+                    <path d="M37.52955,101.78896 L100.41006,147.5105" id="path842" stroke="#000000" stroke-width="1.5"></path>
+                    <polygon id="Triangle" fill="#000000" transform="translate(92.500000, 160.569028) rotate(90.000000) translate(-92.500000, -160.569028) " points="92.5 153.569028 97 167.569028 88 167.569028"></polygon>
+                    <polygon id="Triangle" fill="#000000" transform="translate(96.929992, 144.870253) rotate(125.000000) translate(-96.929992, -144.870253) " points="96.9299915 137.870253 101.429992 151.870253 92.4299915 151.870253"></polygon>
+                    <path d="M40.58002,160.58474 L97.06307,160.58474" id="path2262" stroke="#000000" stroke-width="1.5"></path>
+                </g>
+                <text id="text2836" fill="#000000" font-family="TimesNewRomanPS-ItalicMT, Times New Roman" font-size="21" font-style="italic" font-weight="normal">
+                    <tspan x="20.8626977" y="192.264923">ϵ</tspan>
+                </text>
+                <text id="text2840" fill="#000000" font-family="Helvetica" font-size="18" font-weight="normal">
+                    <tspan x="19.1327977" y="120.665053">a</tspan>
+                </text>
+                <text id="text2842" fill="#000000" font-family="TimesNewRomanPS-ItalicMT, Times New Roman" font-size="21" font-style="italic" font-weight="normal">
+                    <tspan x="20.4071887" y="51.968313">ϵ</tspan>
+                </text>
+                <text id="text947" fill="#000000" font-family="Helvetica" font-size="18" font-weight="normal">
+                    <tspan x="0.2792969" y="51.997995">a</tspan>
+                </text>
+                <text id="text949" fill="#000000" font-family="Helvetica" font-size="18" font-weight="normal">
+                    <tspan x="0.399067" y="192.169723">a</tspan>
+                </text>
+                <text id="text951" fill="#000000" font-family="TimesNewRomanPS-ItalicMT, Times New Roman" font-size="21" font-style="italic" font-weight="normal">
+                    <tspan x="1.5522213" y="120.849163">ϵ</tspan>
+                </text>
+                <path d="M14.2378257,28.9755 L14.2378257,203.050113" id="path951" stroke="#000000" stroke-width="0.93300003" opacity="0.46296297"></path>
+            </g>
+            <g id="cost_regular" transform="translate(291.000000, 0.000000)">
+                <text id="text12" fill="#000000" font-family="Helvetica" font-size="18" font-weight="normal">
+                    <tspan x="0.267681" y="51.9242176">a</tspan>
+                </text>
+                <text id="text16" fill="#000000" font-family="TimesNewRomanPS-ItalicMT, Times New Roman" font-size="21" font-style="italic" font-weight="normal">
+                    <tspan x="0.267681" y="120.189361">ϵ</tspan>
+                </text>
+                <text id="text26" fill="#000000" font-family="Times-Italic, Times" font-size="18" font-style="italic" font-weight="normal">
+                    <tspan x="29.870026" y="18.3334946">t - 1</tspan>
+                </text>
+                <text id="text28" fill="#000000" font-family="Times-Italic, Times" font-size="18" font-style="italic" font-weight="normal">
+                    <tspan x="137.730511" y="18.1171876">t</tspan>
+                </text>
+                <g id="g845" transform="translate(21.276154, 28.216417)" stroke="#000000">
+                    <circle id="circle54" fill="#6FA8DC" fill-rule="nonzero" cx="21" cy="20" r="20"></circle>
+                    <circle id="circle56" fill="#FFFFFF" fill-rule="nonzero" cx="119.22034" cy="20" r="20"></circle>
+                    <circle id="circle58" fill="#6FA8DC" fill-rule="nonzero" cx="20.33078" cy="160.47839" r="20"></circle>
+                    <circle id="circle68" fill="#6FA8DC" fill-rule="nonzero" cx="21" cy="90" r="20"></circle>
+                    <circle id="circle70" fill="#FFFFFF" fill-rule="nonzero" cx="119.22034" cy="89.99998" r="20"></circle>
+                    <circle id="circle72" fill="#E77471" fill-rule="nonzero" cx="119.34123" cy="160.99536" r="20"></circle>
+                    <path d="M37.52955,101.78896 L100.41006,147.5105" id="path842" stroke-width="1.5"></path>
+                    <path d="M40.58002,160.58474 L94.2648616,160.58474" id="path2262" stroke-width="1.5"></path>
+                    <path d="M37.20163,32.37994 L109.56033,140.32182" id="path1536" stroke-width="1.48476076"></path>
+                </g>
+                <text id="text1659" fill="#000000" font-family="Helvetica" font-size="18" font-weight="normal">
+                    <tspan x="0.267681" y="191.943281">b</tspan>
+                </text>
+                <polygon id="Triangle" fill="#000000" transform="translate(113.000000, 188.800003) rotate(90.000000) translate(-113.000000, -188.800003) " points="113 181.800003 117.5 195.800003 108.5 195.800003"></polygon>
+                <polygon id="Triangle" fill="#000000" transform="translate(118.315158, 173.144500) rotate(125.000000) translate(-118.315158, -173.144500) " points="118.315158 166.1445 122.815158 180.1445 113.815158 180.1445"></polygon>
+                <polygon id="Triangle" fill="#000000" transform="translate(128.315158, 165.144500) rotate(145.000000) translate(-128.315158, -165.144500) " points="128.315158 158.1445 132.815158 172.1445 123.815158 172.1445"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -19,23 +19,13 @@ This problem is not specific to speech recognition. We see it in many other
 places. Handwriting recognition from images or sequences of pen strokes is one
 example. Action labelling in videos is another.
 
-%<figure class="column-to-row-captioned">
-%  <div>
-%    <img src="assets/handwriting_recognition.svg" />
-%    <figcaption>
-%    <strong>Handwriting recognition:</strong> The input can be
-%    $(x,y)$ coordinates of a pen stroke or
-%    pixels in an image.
-%    </figcaption>
-%  </div>
-%  <div>
-%    <img src="assets/speech_recognition.svg" />
-%    <figcaption>
-%    <strong>Speech recognition:</strong> The input can be a spectrogram or some
-%    other frequency based feature extractor.
-%    </figcaption>
-%  </div>
-%</figure>
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{background/figures/asr_hrr.pdf}
+\caption{An example of two sequence transcription problems: handwriting
+    recognition (left) and speech recognition (right).}
+\label{fig:bg:asr_hrr} 
+\end{figure}
 
 Connectionist Temporal Classification (CTC) is a way to get around not knowing
 the alignment between the input and the output. As we will see, it is
@@ -95,9 +85,9 @@ approach. As an example, assume the input has length six and $Y = \textrm{[c,
 a, t]}$. One way to align $X$ and $Y$ is to assign an output character to each
 input step and collapse repeats.
 
-%<figure style="width:100%;">
-%  <img src="assets/naive_alignment.svg" style="max-width:350px" />
-%</figure>
+\begin{center}
+\includegraphics[width=0.5\textwidth]{background/figures/naive_alignment.pdf}
+\end{center}
 
 This approach has two problems.
 \begin{itemize}
@@ -118,9 +108,9 @@ The alignments allowed by CTC are the same length as the input. We allow any
 alignment which maps to $Y$ after merging repeats and removing $\epsilon$
 tokens:
 
-%<figure style="width:100%;">
-%    <img src="assets/ctc_alignment_steps.svg" style="max-width:550px"/>
-%</figure>
+\begin{center}
+\includegraphics[width=0.7\textwidth]{background/figures/alignment_steps.pdf}
+\end{center}
 
 If $Y$ has two of the same character in a row, then a valid alignment must have
 an $\epsilon$ between them. With this rule in place, we can differentiate
@@ -130,9 +120,9 @@ between alignments which collapse to ``hello" and those which collapse to
 Let's go back to the output [c, a, t] with an input of length six. Here are
 a few more examples of valid and invalid alignments.
 
-%<figure style="width:100%;">
-%  <img src="assets/valid_invalid_alignments.svg" style="max-width:550px" />
-%</figure>
+\begin{center}
+\includegraphics[width=0.7\textwidth]{background/figures/valid_invalid_alignments.pdf}
+\end{center}
 
 The CTC alignments have a few notable properties. First, the allowed alignments
 between $X$ and $Y$ are monotonic.  If we advance to the next input, we can
@@ -144,13 +134,8 @@ a third property: the length of $Y$ cannot be greater than the length of $X$.
 \subsection{Loss Function}
 
 The CTC alignments give us a natural way to go from probabilities at each
-time-step to the probability of an output sequence.
-
-%<figure style="width:100%;">
-%  <img src="assets/full_collapse_from_audio.svg" style="max-width:600px"/>
-%</figure>
-
-To be precise, the CTC objective for a single $(X, Y)$ pair is:
+time-step to the probability of an output sequence. To be precise, the CTC
+objective for a single $(X, Y)$ pair is:
 \begin{align*}
 p(Y \mid X) \;\; = \sum_{A \in \mathcal{A}_{X,Y}}
       \prod_{t=1}^T \; p_t(a_t \mid X)
@@ -176,21 +161,6 @@ Thankfully, we can compute the loss much faster with a dynamic programming
 algorithm. The key insight is that if two alignments have reached the same
 output at the same step, then we can merge them.
 
-%<figure class="column-to-row-captioned">
-%  <div>
-%    <img style="max-width:350px;margin-bottom: 1em;" src="assets/all_alignments.svg"/>
-%    <figcaption>
-%    Summing over all alignments can be very expensive.
-%    </figcaption>
-%  </div>
-%  <div>
-%    <img style="max-width:350px;margin-bottom: 1em;" src="assets/merged_alignments.svg"/>
-%    <figcaption>
-%    Dynamic programming merges alignments, so it's much faster.
-%    </figcaption>
-%  </div>
-%</figure>
-
 Since we can have an $\epsilon$ before or after any token in $Y$, it is easier
 to describe the algorithm using a sequence which includes them. We will work
 with the sequence
@@ -206,10 +176,13 @@ $t$ input steps.  The final CTC score, $P(Y \mid X)$, is computed from from the
 $\alpha$'s at the last time-step. As long as we know the values of $\alpha$ at
 the previous time-step, we can compute $\alpha_{s, t}$. There are two cases.
 
-%<div>
-%<figure style="width:165px;float:right;margin-top:0px;margin-bottom:10px; margin-left:12%;">
-%  <img src="assets/cost_no_skip.svg" />
-%</figure>
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=0.5\textwidth]{background/figures/cases.pdf}
+\caption{In Case 1 (left) we cannot skip the previous token whereas Case 2
+    (right) we can.}
+\end{figure}
+
 {\bf Case 1:} In this case, we cannot jump over $z_{s-1}$, the previous token
 in $Z$. The first reason is that the previous token can be an element of $Y$,
 and we cannot skip elements of $Y$. Since every element of $Y$ in $Z$ is
@@ -227,10 +200,6 @@ In words, the probability of the subsequence $Z_{1:s}$ after $t$ input steps is
 the sum of the probabilities of the two valid subsequences after $t-1$ input
 steps times the probability of the current character at input step $t$.
 
-%<figure style="width:150px;float:right;margin-top:20px;margin-bottom:0px;margin-left:15%;">
-%  <img src="assets/cost_regular.svg" />
-%</figure>
-
 {\bf Case 2:} In the second case, we are allowed to skip the previous token in
 $Z$. We have this case whenever $z_{s-1}$ is an $\epsilon$ between unique
 characters. As a result there are three positions we could have come from at
@@ -240,27 +209,14 @@ the previous step.
     p_t(z_{s} \mid X).
 \end{align*}
 
-Below is an example of the computation performed by the dynamic programming
-algorithm. Every valid alignment has a path in this graph.
-
-%<figure style="width:100%;">
-%  <figcaption style="position:absolute; left:0px; top:100px;">
-%    output<br />
-%    $Y =$ [a, b]
-%  </figcaption>
-%  <figcaption style="position:absolute; left:170px; top: 0px;">
-%    input, $X$
-%  </figcaption>
-%  <div style="position:relative;left:80px;top:30px;margin-bottom: 30px;" >
-%    <img src="assets/ctc_cost.svg" style="width:85%"/>
-%    <figcaption style="max-width:350px;width:85%;">
-%    Node $(s, t)$ in the diagram represents
-%    $\alpha_{s, t}$ – the CTC score of
-%    the subsequence $Z_{1:s}$ after
-%    $t$ input steps.
-%    </figcaption>
-%  </div>
-%</figure>
+\begin{figure}
+\centering
+    \includegraphics[width=\textwidth]{background/figures/ctc_cost.pdf}
+\caption{An example of the computation performed by the dynamic programming
+    algorithm. Every valid alignment has a path in this graph. Node $(s, t)$ in
+    the diagram represents $\alpha_{s, t}$ – the CTC score of the subsequence
+    $Z_{1:s}$ after $t$ input steps.}
+\end{figure}
 
 There are two valid starting nodes and two valid final nodes since the
 $\epsilon$ at the beginning and end of the sequence is optional. The complete
@@ -312,19 +268,17 @@ modified beam search will not necessarily find the most likely $Y$. It does, at
 least, have the nice property that we can trade-off more computation (a larger
 beam-size) for an asymptotically better solution.
 
-A regular beam search computes a new set of hypotheses at each input step.  The
+A regular beam search computes a new set of hypotheses at each input step. The
 new set of hypotheses is generated from the previous set by extending each
 hypothesis with all possible output characters and keeping only the top
 candidates.
 
-%<figure style="width:100%;">
-%  <img src="assets/beam_search.svg"/>
-%  <figcaption style="max-width:300px;">
-%  A standard beam search algorithm with an alphabet of
-%  $\{\epsilon, a, b\}$ and a beam size
-%  of three.
-%  </figcaption>
-%</figure>
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{background/figures/beam_search.pdf}
+\caption{A standard beam search algorithm with an alphabet of $\{\epsilon, a,
+    b\}$ and a beam size of three.}
+\end{figure}
 
 We can modify the vanilla beam search to handle multiple alignments mapping to
 the same output. In this case instead of keeping a list of alignments in the
@@ -332,14 +286,12 @@ beam, we store the output prefixes after collapsing repeats and removing
 $\epsilon$ characters. At each step of the search we accumulate scores for a
 given prefix based on all the alignments which map to it.
 
-%<figure style="margin-left:auto; margin-right: auto; grid-column:page; width:100%; max-width:900px;">
-%  <object data="assets/prefix_beam_search.svg" type="image/svg+xml" style="width:100%"></object>
-%  <figcaption style="max-width:300px;">
-%  The CTC beam search algorithm with an output alphabet
-%  $\{\epsilon, a, b\}$
-%  and a beam size of three.
-%  </figcaption>
-%</figure>
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{background/figures/prefix_beam_search.pdf}
+\caption{The CTC beam search algorithm with an output alphabet $\{\epsilon, a,
+    b\}$ and a beam size of three.}
+\end{figure}
 
 A proposed extension can map to two output prefixes if the character is a
 repeat. This is shown at $T=3$ in the figure above where `a’ is proposed as an
@@ -357,10 +309,6 @@ beam. The probability of all alignments which end in $\epsilon$ and the
 probability of all alignments which do not end in $\epsilon$. When we rank the
 hypotheses at each step before pruning the beam, we will use their combined
 scores.
-
-%<figure style="margin-left:auto; margin-right: auto; grid-column:page; width:100%; max-width:900px;">
-%  <object data="assets/prefix_beam_search_single.svg" type="image/svg+xml" style="width:100%"></object>
-%</figure>
 
 The implementation of this algorithm does not require much code, but it is
 dense and tricky to get right. See Algorithm~\ref{alg:background:decoder} for a
@@ -404,30 +352,11 @@ independence assumption it makes. The model assumes that every output is
 conditionally independent of the other outputs given the input. This is a bad
 assumption for many sequence to sequence problems.
 
-%<div>
-%<figure style="max-width:200px;float:right;margin-top:0px;margin-bottom:10px;margin-left:10%;margin-right:10%;">
-%  <img src="assets/conditional_independence.svg" style="width:90%" />
-%  <figcaption>
-%  Graphical model for CTC.
-%  </figcaption>
-%</figure>
-
 Say we had an audio clip of someone saying ``triple A"~\cite{chan2016}. Another
 valid transcription could be ``AAA". If the first letter of the predicted
 transcription is `A', then the next letter should be `A' with high probability
 and `r' with low probability. The conditional independence assumption does not
 allow for this.
-
-%<figure style="width:100%;">
-%  <div style="max-width:600px;">
-%    <img src="assets/triple_a.svg" style="width:100%;"/>
-%    <figcaption style="max-width:500px;padding-top:1em;">
-%    If we predict an 'A' as the first letter then the suffix 'AA' should get much
-%    more probability than 'riple A'. If we predict 't' first, the opposite
-%    should be true.
-%    </figcaption>
-%  </div>
-%</figure>
 
 In fact speech recognizers using CTC do not learn a language model over the
 output nearly as well as models which are conditionally
@@ -518,12 +447,11 @@ is conditionally independent of all historic states given the previous state
 $a_{t-1}$. The second is that the observation $x_t$ is conditionally
 independent of everything given the current state $a_t$.
 
-%<figure style="width:300px;">
-%  <img style="margin-bottom: 0.5em;" src="assets/hmm.svg" />
-%  <figcaption>
-%  The graphical model for an HMM.
-%  </figcaption>
-%</figure>
+\begin{figure}
+\centering
+\includegraphics[width=0.4\textwidth]{background/figures/hmm.pdf}
+\caption{The graphical model for an HMM.}
+\end{figure}
 
 Now we can take just a few steps to transform the HMM into CTC and see how
 the two models relate. First, assume that the transition probabilities
@@ -566,28 +494,11 @@ before and $Y =$ [a, b]. Another commonly used model is the {\it Bakis} or
 left-right HMM. In this model any transition which proceeds from the left to
 the right is allowed.
 
-%<figure class="hmm-grid" style="width:100%;">
-%  <div>
-%    <img src="assets/ergodic_hmm.svg"/>
-%    <figcaption>
-%    <strong>Ergodic HMM:</strong> Any node can be either a starting or
-%    final state.
-%    </figcaption>
-%  </div>
-%  <div>
-%    <img src="assets/linear_hmm.svg"/>
-%    <figcaption>
-%    <strong>Linear HMM:</strong> Start on the left, end on the right.
-%    </figcaption>
-%  </div>
-%  <div>
-%    <img src="assets/ctc_hmm.svg" />
-%    <figcaption style="max-width:250px;">
-%    <strong>CTC HMM:</strong> The first two nodes are the starting
-%    states and the last two nodes are the final states.
-%    </figcaption>
-%  </div>
-%</figure>
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{background/figures/hmm_types.pdf}
+    \caption{Different HMM architectures.}
+\end{figure}
 
 In CTC we augment the alphabet with $\epsilon$ and the HMM model allows a
 subset of the left-right transitions. The CTC HMM has two start states and two

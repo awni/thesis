@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="623px" height="136px" viewBox="0 0 623 136" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>hmm_types</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="hmm_types">
+            <g id="ctc_hmm" transform="translate(312.000000, 34.000000)">
+                <circle id="circle9" stroke="#000000" fill="#D3D3D3" fill-rule="nonzero" cx="15.5" cy="32" r="15"></circle>
+                <circle id="circle11" stroke="#000000" fill="#D3D3D3" fill-rule="nonzero" cx="85.5" cy="32" r="15"></circle>
+                <circle id="circle13" stroke="#000000" fill="#D3D3D3" fill-rule="nonzero" cx="155.5" cy="32" r="15"></circle>
+                <circle id="circle15" stroke="#000000" fill="#D3D3D3" fill-rule="nonzero" cx="225.5" cy="32" r="15"></circle>
+                <circle id="circle17" stroke="#000000" fill="#D3D3D3" fill-rule="nonzero" cx="295.5" cy="32" r="15"></circle>
+                <text id="text19" fill="#000000" font-family="TimesNewRomanPS-ItalicMT, Times New Roman" font-size="20" font-style="italic" font-weight="normal">
+                    <tspan x="11.5" y="37">ϵ</tspan>
+                </text>
+                <text id="text21" fill="#000000" font-family="Helvetica" font-size="13" font-weight="normal">
+                    <tspan x="81.5" y="37">a</tspan>
+                </text>
+                <text id="text23" fill="#000000" font-family="TimesNewRomanPS-ItalicMT, Times New Roman" font-size="20" font-style="italic" font-weight="normal">
+                    <tspan x="151.5" y="37">ϵ</tspan>
+                </text>
+                <text id="text25" fill="#000000" font-family="Helvetica" font-size="13" font-weight="normal">
+                    <tspan x="221.5" y="37">b</tspan>
+                </text>
+                <text id="text27" fill="#000000" font-family="TimesNewRomanPS-ItalicMT, Times New Roman" font-size="20" font-style="italic" font-weight="normal">
+                    <tspan x="291.5" y="37">ϵ</tspan>
+                </text>
+                <path d="M5.5,21 C-4.5,-8 35.5,-4 25.5,16" id="path29" stroke="#000000"></path>
+                <path d="M28.5,24 C43.1666667,16 56.5,15.6666667 68.5,23" id="path31" stroke="#000000"></path>
+                <path d="M75.5,21 C65.5,-8 105.5,-4 95.5,16" id="path33" stroke="#000000"></path>
+                <path d="M98.5,24 C113.166667,16 126.5,15.6666667 138.5,23" id="path35" stroke="#000000"></path>
+                <path d="M145.5,21 C135.5,-8 175.5,-4 165.5,16" id="path37" stroke="#000000"></path>
+                <path d="M168.5,24 C183.166667,16 196.5,15.6666667 208.5,23" id="path39" stroke="#000000"></path>
+                <path d="M215.5,21 C205.5,-8 245.5,-4 235.5,16" id="path41" stroke="#000000"></path>
+                <path d="M238.5,24 C253.166667,16 266.5,15.6666667 278.5,23" id="path43" stroke="#000000"></path>
+                <path d="M285.5,21 C275.5,-8 315.5,-4 305.5,16" id="path45" stroke="#000000"></path>
+                <path d="M98.5,40 C136.5,61.3333333 173.166667,61.6666667 208.5,41" id="path47" stroke="#000000"></path>
+                <polygon id="Triangle" fill="#000000" transform="translate(25.717312, 15.613821) rotate(200.000000) translate(-25.717312, -15.613821) " points="25.7173121 11.6138208 28.2173121 19.6138208 23.2173121 19.6138208"></polygon>
+                <polygon id="Triangle" fill="#000000" transform="translate(95.717312, 15.613821) rotate(200.000000) translate(-95.717312, -15.613821) " points="95.7173121 11.6138208 98.2173121 19.6138208 93.2173121 19.6138208"></polygon>
+                <polygon id="Triangle" fill="#000000" transform="translate(165.717312, 15.613821) rotate(200.000000) translate(-165.717312, -15.613821) " points="165.717312 11.6138208 168.217312 19.6138208 163.217312 19.6138208"></polygon>
+                <polygon id="Triangle" fill="#000000" transform="translate(235.717312, 15.613821) rotate(200.000000) translate(-235.717312, -15.613821) " points="235.717312 11.6138208 238.217312 19.6138208 233.217312 19.6138208"></polygon>
+                <polygon id="Triangle" fill="#000000" transform="translate(305.717312, 15.613821) rotate(200.000000) translate(-305.717312, -15.613821) " points="305.717312 11.6138208 308.217312 19.6138208 303.217312 19.6138208"></polygon>
+                <polygon id="Triangle" fill="#000000" transform="translate(68.214102, 22.665064) rotate(120.000000) translate(-68.214102, -22.665064) " points="68.2141016 18.6650635 70.7141016 26.6650635 65.7141016 26.6650635"></polygon>
+                <polygon id="Triangle" fill="#000000" transform="translate(138.214102, 22.665064) rotate(120.000000) translate(-138.214102, -22.665064) " points="138.214102 18.6650635 140.714102 26.6650635 135.714102 26.6650635"></polygon>
+                <polygon id="Triangle" fill="#000000" transform="translate(208.214102, 22.665064) rotate(120.000000) translate(-208.214102, -22.665064) " points="208.214102 18.6650635 210.714102 26.6650635 205.714102 26.6650635"></polygon>
+                <polygon id="Triangle" fill="#000000" transform="translate(207.714102, 41.165064) scale(1, -1) rotate(120.000000) translate(-207.714102, -41.165064) " points="207.714102 37.1650635 210.214102 45.1650635 205.214102 45.1650635"></polygon>
+                <polygon id="Triangle" fill="#000000" transform="translate(278.214102, 22.665064) rotate(120.000000) translate(-278.214102, -22.665064) " points="278.214102 18.6650635 280.714102 26.6650635 275.714102 26.6650635"></polygon>
+            </g>
+            <g id="ergodic_hmm">
+                <circle id="circle9" stroke="#000000" fill="#D3D3D3" fill-rule="nonzero" cx="15.5" cy="32.376931" r="15"></circle>
+                <circle id="circle11" stroke="#000000" fill="#D3D3D3" fill-rule="nonzero" cx="85.5" cy="32.376931" r="15"></circle>
+                <circle id="circle13" stroke="#000000" fill="#D3D3D3" fill-rule="nonzero" cx="50.5" cy="82.376931" r="15"></circle>
+                <text id="text15" fill="#000000" font-family="Helvetica" font-size="13" font-weight="normal">
+                    <tspan x="11.5" y="37.376931">a</tspan>
+                </text>
+                <text id="text17" fill="#000000" font-family="Helvetica" font-size="13" font-weight="normal">
+                    <tspan x="81.5" y="37.376931">b</tspan>
+                </text>
+                <text id="text19" fill="#000000" font-family="Helvetica" font-size="13" font-weight="normal">
+                    <tspan x="46.5" y="87.376931">c</tspan>
+                </text>
+                <path d="M5.5,21.376931 C-4.5,-7.623069 35.5,-3.623069 25.5,16.376931" id="path21" stroke="#000000"></path>
+                <path d="M28.5,24.376931 C43.1666667,16.376931 56.5,16.0435977 68.5,23.376931" id="path23" stroke="#000000"></path>
+                <path d="M72.5,40.376931 C57.8333333,48.376931 44.5,48.7102643 32.5,41.376931" id="path25" stroke="#000000"></path>
+                <path d="M75.5,21.376931 C65.5,-7.623069 105.5,-3.623069 95.5,16.376931" id="path27" stroke="#000000"></path>
+                <path d="M40.5,93.376931 C30.5,122.376931 70.5,118.376931 60.5,98.376931" id="path29" stroke="#000000"></path>
+                <path d="M24.5,44.376931 C35.1666667,49.7102643 41.5,56.376931 43.5,64.376931" id="path31" stroke="#000000"></path>
+                <path d="M37.5,74.376931 C26.1666667,66.376931 19.5,58.7102643 17.5,51.376931" id="path33" stroke="#000000"></path>
+                <path d="M76.5,44.376931 C65.8333333,49.7102643 59.5,56.376931 57.5,64.376931" id="path35" stroke="#000000"></path>
+                <path d="M63.5,74.376931 C74.8333333,66.376931 81.6171875,59.4077148 82.78125,52.3032227" id="path37" stroke="#000000"></path>
+                <polygon id="Triangle" fill="#000000" transform="translate(67.714102, 23.165064) rotate(120.000000) translate(-67.714102, -23.165064) " points="67.7141016 19.1650635 70.2141016 27.1650635 65.2141016 27.1650635"></polygon>
+                <polygon id="Triangle" fill="#000000" transform="translate(43.517315, 64.113821) rotate(160.000000) translate(-43.517315, -64.113821) " points="43.5173152 60.1138208 46.0173152 68.1138208 41.0173152 68.1138208"></polygon>
+                <polygon id="Triangle" fill="#000000" transform="translate(17.717312, 51.613821) rotate(-20.000000) translate(-17.717312, -51.613821) " points="17.7173121 47.6138208 20.2173121 55.6138208 15.2173121 55.6138208"></polygon>
+                <polygon id="Triangle" fill="#000000" transform="translate(57.717312, 64.113821) rotate(200.000000) translate(-57.717312, -64.113821) " points="57.7173121 60.1138208 60.2173121 68.1138208 55.2173121 68.1138208"></polygon>
+                <polygon id="Triangle" fill="#000000" transform="translate(25.717312, 15.613821) rotate(200.000000) translate(-25.717312, -15.613821) " points="25.7173121 11.6138208 28.2173121 19.6138208 23.2173121 19.6138208"></polygon>
+                <polygon id="Triangle" fill="#000000" transform="translate(60.717312, 99.113821) rotate(-20.000000) translate(-60.717312, -99.113821) " points="60.7173121 95.1138208 63.2173121 103.113821 58.2173121 103.113821"></polygon>
+                <polygon id="Triangle" fill="#000000" transform="translate(95.717312, 15.613821) rotate(200.000000) translate(-95.717312, -15.613821) " points="95.7173121 11.6138208 98.2173121 19.6138208 93.2173121 19.6138208"></polygon>
+                <polygon id="Triangle" fill="#000000" transform="translate(82.656612, 51.373351) rotate(10.000000) translate(-82.656612, -51.373351) " points="82.6566121 47.3733515 85.1566121 55.3733515 80.1566121 55.3733515"></polygon>
+                <polygon id="Triangle" fill="#000000" transform="translate(32.714102, 41.165064) rotate(-60.000000) translate(-32.714102, -41.165064) " points="32.7141016 37.1650635 35.2141016 45.1650635 30.2141016 45.1650635"></polygon>
+            </g>
+            <g id="linear_hmm" transform="translate(151.000000, 34.000000)">
+                <circle id="circle9" stroke="#000000" fill="#D3D3D3" fill-rule="nonzero" cx="15.5" cy="32" r="15"></circle>
+                <circle id="circle11" stroke="#000000" fill="#D3D3D3" fill-rule="nonzero" cx="85.5" cy="32" r="15"></circle>
+                <text id="text13" fill="#000000" font-family="Helvetica" font-size="13" font-weight="normal">
+                    <tspan x="11.5" y="37">a</tspan>
+                </text>
+                <text id="text15" fill="#000000" font-family="Helvetica" font-size="13" font-weight="normal">
+                    <tspan x="81.5" y="37">b</tspan>
+                </text>
+                <path d="M5.5,21 C-4.5,-8 35.5,-4 25.5,16" id="path17" stroke="#000000"></path>
+                <path d="M28.5,24 C43.1666667,16 56.5,15.6666667 68.5,23" id="path19" stroke="#000000"></path>
+                <path d="M75.5,21 C65.5,-8 105.5,-4 95.5,16" id="path21" stroke="#000000"></path>
+                <polygon id="Triangle" fill="#000000" transform="translate(25.717312, 14.613821) rotate(200.000000) translate(-25.717312, -14.613821) " points="25.7173121 10.6138208 28.2173121 18.6138208 23.2173121 18.6138208"></polygon>
+                <polygon id="Triangle" fill="#000000" transform="translate(95.717312, 14.613821) rotate(200.000000) translate(-95.717312, -14.613821) " points="95.7173121 10.6138208 98.2173121 18.6138208 93.2173121 18.6138208"></polygon>
+                <polygon id="Triangle" fill="#000000" transform="translate(68.214102, 22.665064) rotate(120.000000) translate(-68.214102, -22.665064) " points="68.2141016 18.6650635 70.7141016 26.6650635 65.7141016 26.6650635"></polygon>
+            </g>
+            <text id="(a)-Ergodic" font-family="Helvetica" font-size="14" font-weight="normal" fill="#000000">
+                <tspan x="13" y="132">(a) Ergodic</tspan>
+            </text>
+            <text id="(b)-Linear" font-family="Helvetica" font-size="14" font-weight="normal" fill="#000000">
+                <tspan x="170" y="132">(b) Linear</tspan>
+            </text>
+            <text id="(c)-CTC" font-family="Helvetica" font-size="14" font-weight="normal" fill="#000000">
+                <tspan x="441" y="132">(c) CTC</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

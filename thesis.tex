@@ -14,6 +14,7 @@
 \usepackage{subcaption}
 \usepackage{suthesis-2e}
 \usepackage{url}
+\usepackage[parfill]{parskip}
 
 %% uncomment the following and create mythesis-macros.sty for all your
 %% own macros.  This keeps this top level file looking fairly neat.
@@ -32,7 +33,7 @@
     \firstreader{James Zou}
     \secondreader{Anshul Kundaje}
 
-%\includeonly{deepspeech2/main}
+%\includeonly{background/main}
 
 \begin{document}
 
@@ -49,10 +50,12 @@
 
 %% Chapters
 \include{introduction}
+\include{background/main}
 \include{arrhythmias/main}
 \include{first_pass/main}
 \include{deepspeech/main}
 \include{deepspeech2/main}
+\include{kws/main}
 \include{conclusions}
 
 %\appendix

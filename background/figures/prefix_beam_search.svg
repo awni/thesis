@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="906px" height="408px" viewBox="0 0 906 408" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>prefix_beam_search</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="prefix_beam_search" transform="translate(-1.000000, -6.000000)">
+            <polyline id="path1291" stroke="#A3A3A3" stroke-width="1.5" stroke-dasharray="7.5,7.5" points="108.88692 113.168479 263.88692 113.168479 263.88692 113.168479"></polyline>
+            <polyline id="path1293" stroke="#A3A3A3" stroke-width="1.52611816" stroke-dasharray="7.6305903,7.6305903" points="108.89305 147.676281 262.092345 228.757066 262.092345 228.757066"></polyline>
+            <polyline id="path1295" stroke="#A3A3A3" stroke-width="1.53485644" stroke-dasharray="7.67428091,7.67428091" points="108.9037 182.370336 266.377847 347.260606 266.377847 347.260606"></polyline>
+            <polyline id="path1297" stroke="#A3A3A3" stroke-width="1.50386596" stroke-dasharray="7.51932993,7.51932993" points="366.18692 113.168479 521.98692 113.168479 521.98692 113.168479"></polyline>
+            <polyline id="path1299" stroke="#A3A3A3" stroke-width="1.52323353" stroke-dasharray="7.6161675,7.6161675" points="366.29219 193.558146 524.19112 112.575161 524.19112 112.575161"></polyline>
+            <polyline id="path1301" stroke="#A3A3A3" stroke-width="1.54252923" stroke-dasharray="7.71264584,7.71264584" points="366.59753 229.249856 526.79071 111.578501 526.79071 111.578501"></polyline>
+            <polyline id="path1303" stroke="#A3A3A3" stroke-width="1.51203179" stroke-dasharray="7.56015857,7.56015857" points="366.7884 263.162546 523.88948 228.074416 523.88948 228.074416"></polyline>
+            <polyline id="path1305" stroke="#A3A3A3" stroke-width="1.51301169" stroke-dasharray="7.56505867,7.56505867" points="366.18616 343.168476 523.88692 343.168476 523.88692 343.168476"></polyline>
+            <polyline id="path1307" stroke="#A3A3A3" stroke-width="1.51744342" stroke-dasharray="7.58721638,7.58721638" points="676.18897 76.977569 834.89212 111.960545 834.89212 111.960545"></polyline>
+            <polyline id="path1311" stroke="#A3A3A3" stroke-width="1.58322561" stroke-dasharray="7.91612976,7.91612976" points="673.89518 307.309206 842.87983 344.227746 842.87983 344.227746"></polyline>
+            <polyline id="path1313" stroke="#A3A3A3" stroke-width="1.50934589" stroke-dasharray="7.54672942,7.54672942" points="673.88692 343.168476 835.88692 343.168476 835.88692 343.168476"></polyline>
+            <polyline id="path1315" stroke="#A3A3A3" stroke-width="1.50138021" stroke-dasharray="7.5069009,7.5069009" points="676.27738 112.779614 831.82049 112.48091 831.82049 112.48091"></polyline>
+            <polyline id="path1317" stroke="#A3A3A3" stroke-width="1.55220485" stroke-dasharray="7.76102421,7.76102421" points="675.99179 113.799285 837.0073 230.890546 837.0073 230.890546"></polyline>
+            <g id="g1018" transform="translate(832.288160, 99.581879)">
+                <g id="g970">
+                    <circle id="circle106" stroke="#000000" fill="#6FA8DC" fill-rule="nonzero" cx="12" cy="13" r="12"></circle>
+                    <text id="text108" fill="#000000" font-family="Helvetica" font-size="18" font-weight="normal">
+                        <tspan x="7" y="18">a</tspan>
+                    </text>
+                </g>
+                <g id="g977" transform="translate(0.000000, 115.000000)">
+                    <circle id="circle110" stroke="#000000" fill="#6FA8DC" fill-rule="nonzero" cx="12" cy="13" r="12"></circle>
+                    <text id="text112" fill="#000000" font-family="Helvetica" font-size="18" font-weight="normal">
+                        <tspan x="7" y="18">a</tspan>
+                    </text>
+                    <circle id="circle114" stroke="#000000" fill="#6FA8DC" fill-rule="nonzero" cx="62" cy="13" r="12"></circle>
+                    <text id="text116" fill="#000000" font-family="Helvetica" font-size="18" font-weight="normal">
+                        <tspan x="57" y="18">a</tspan>
+                    </text>
+                    <path d="M24,13 L50,13" id="line172" stroke="#000000" stroke-width="1.5" fill="#000000" fill-rule="nonzero"></path>
+                </g>
+                <g id="g984" transform="translate(0.000000, 230.000000)">
+                    <circle id="circle118" stroke="#000000" fill="#6FA8DC" fill-rule="nonzero" cx="12" cy="13" r="12"></circle>
+                    <text id="text120" fill="#000000" font-family="Helvetica" font-size="18" font-weight="normal">
+                        <tspan x="7" y="20">b</tspan>
+                    </text>
+                    <circle id="circle122" stroke="#000000" fill="#6FA8DC" fill-rule="nonzero" cx="62" cy="13" r="12"></circle>
+                    <text id="text124" fill="#000000" font-family="Helvetica" font-size="18" font-weight="normal">
+                        <tspan x="57" y="18">a</tspan>
+                    </text>
+                    <path d="M24,13 L50,13" id="line174" stroke="#000000" stroke-width="1.5" fill="#000000" fill-rule="nonzero"></path>
+                </g>
+            </g>
+            <g id="g1048" transform="translate(522.084451, 65.825706)">
+                <g id="g973" transform="translate(0.000000, 34.000000)">
+                    <circle id="circle50" stroke="#000000" fill="#6FA8DC" fill-rule="nonzero" cx="12" cy="13" r="12"></circle>
+                    <text id="text52" fill="#000000" font-family="Helvetica" font-size="18" font-weight="normal">
+                        <tspan x="7" y="18">a</tspan>
+                    </text>
+                </g>
+                <g id="g980" transform="translate(0.000000, 149.000000)">
+                    <circle id="circle54" stroke="#000000" fill="#6FA8DC" fill-rule="nonzero" cx="12" cy="13" r="12"></circle>
+                    <text id="text56" fill="#000000" font-family="Helvetica" font-size="18" font-weight="normal">
+                        <tspan x="7" y="18">a</tspan>
+                    </text>
+                    <circle id="circle58" stroke="#000000" fill="#6FA8DC" fill-rule="nonzero" cx="62" cy="13" r="12"></circle>
+                    <text id="text60" fill="#000000" font-family="Helvetica" font-size="18" font-weight="normal">
+                        <tspan x="57" y="20">b</tspan>
+                    </text>
+                    <path d="M24,13 L50,13" id="line150" stroke="#000000" stroke-width="1.5" fill="#000000" fill-rule="nonzero"></path>
+                </g>
+                <g id="g987" transform="translate(0.000000, 264.000000)">
+                    <circle id="circle62" stroke="#000000" fill="#6FA8DC" fill-rule="nonzero" cx="12" cy="13" r="12"></circle>
+                    <text id="text64" fill="#000000" font-family="Helvetica" font-size="18" font-weight="normal">
+                        <tspan x="7" y="20">b</tspan>
+                    </text>
+                    <circle id="circle66" stroke="#000000" fill="#6FA8DC" fill-rule="nonzero" cx="62" cy="13" r="12"></circle>
+                    <text id="text68" fill="#000000" font-family="Helvetica" font-size="18" font-weight="normal">
+                        <tspan x="57" y="18">a</tspan>
+                    </text>
+                    <path d="M24,13 L50,13" id="line158" stroke="#000000" stroke-width="1.5" fill="#000000" fill-rule="nonzero"></path>
+                </g>
+                <circle id="circle70" stroke="#000000" fill="#E77471" fill-rule="nonzero" cx="142" cy="12" r="12"></circle>
+                <text id="text72" fill="#000000" font-family="TimesNewRomanPS-ItalicMT, Times New Roman" font-size="20" font-style="italic" font-weight="normal">
+                    <tspan x="137" y="16">ϵ</tspan>
+                </text>
+                <circle id="circle74" stroke="#000000" fill="#E77471" fill-rule="nonzero" cx="142" cy="47" r="12"></circle>
+                <text id="text76" fill="#000000" font-family="Helvetica" font-size="18" font-weight="normal">
+                    <tspan x="137" y="52">a</tspan>
+                </text>
+                <circle id="circle78" stroke="#000000" fill="#D3D3D3" fill-rule="nonzero" cx="142" cy="82" r="12"></circle>
+                <text id="text80" fill="#000000" font-family="Helvetica" font-size="18" font-weight="normal">
+                    <tspan x="137" y="89">b</tspan>
+                </text>
+                <circle id="circle82" stroke="#000000" fill="#D3D3D3" fill-rule="nonzero" cx="142" cy="127" r="12"></circle>
+                <text id="text84" fill="#000000" font-family="TimesNewRomanPS-ItalicMT, Times New Roman" font-size="20" font-style="italic" font-weight="normal">
+                    <tspan x="137" y="131">ϵ</tspan>
+                </text>
+                <circle id="circle86" stroke="#000000" fill="#D3D3D3" fill-rule="nonzero" cx="142" cy="162" r="12"></circle>
+                <text id="text88" fill="#000000" font-family="Helvetica" font-size="18" font-weight="normal">
+                    <tspan x="137" y="167">a</tspan>
+                </text>
+                <circle id="circle90" stroke="#000000" fill="#D3D3D3" fill-rule="nonzero" cx="142" cy="197" r="12"></circle>
+                <text id="text92" fill="#000000" font-family="Helvetica" font-size="18" font-weight="normal">
+                    <tspan x="137" y="204">b</tspan>
+                </text>
+                <circle id="circle94" stroke="#000000" fill="#E77471" fill-rule="nonzero" cx="142" cy="242" r="12"></circle>
+                <text id="text96" fill="#000000" font-family="TimesNewRomanPS-ItalicMT, Times New Roman" font-size="20" font-style="italic" font-weight="normal">
+                    <tspan x="137" y="246">ϵ</tspan>
+                </text>
+                <circle id="circle98" stroke="#000000" fill="#E77471" fill-rule="nonzero" cx="142" cy="277" r="12"></circle>
+                <text id="text100" fill="#000000" font-family="Helvetica" font-size="18" font-weight="normal">
+                    <tspan x="137" y="282">a</tspan>
+                </text>
+                <circle id="circle102" stroke="#000000" fill="#D3D3D3" fill-rule="nonzero" cx="142" cy="312" r="12"></circle>
+                <text id="text104" fill="#000000" font-family="Helvetica" font-size="18" font-weight="normal">
+                    <tspan x="137" y="319">b</tspan>
+                </text>
+                <path d="M71,285 L130,312" id="line170" stroke="#000000" stroke-width="1.5" fill="#000000" fill-rule="nonzero"></path>
+                <path d="M74,277 L130,277" id="line168" stroke="#000000" stroke-width="1.5" fill="#000000" fill-rule="nonzero"></path>
+                <path d="M71,269 L130,242" id="line166" stroke="#000000" stroke-width="1.5" fill="#000000" fill-rule="nonzero"></path>
+                <path d="M71,170 L130,197" id="line164" stroke="#000000" stroke-width="1.5" fill="#000000" fill-rule="nonzero"></path>
+                <path d="M74,162 L130,162" id="line162" stroke="#000000" stroke-width="1.5" fill="#000000" fill-rule="nonzero"></path>
+                <path d="M71,154 L130,127" id="line160" stroke="#000000" stroke-width="1.5" fill="#000000" fill-rule="nonzero"></path>
+                <path d="M21,55 L130,82" id="line156" stroke="#000000" stroke-width="1.5" fill="#000000" fill-rule="nonzero"></path>
+                <path d="M24,47 L130,47" id="line154" stroke="#000000" stroke-width="1.5" fill="#000000" fill-rule="nonzero"></path>
+                <path d="M21,39 L130,12" id="line152" stroke="#000000" stroke-width="1.5" fill="#000000" fill-rule="nonzero"></path>
+            </g>
+            <g id="g1074" transform="translate(262.386920, 65.825706)">
+                <g id="g991" transform="translate(0.000000, 35.000000)">
+                    <circle id="circle2" stroke="#000000" fill="#6FA8DC" fill-rule="nonzero" cx="12" cy="12" r="12"></circle>
+                    <text id="text4" fill="#000000" font-family="TimesNewRomanPS-ItalicMT, Times New Roman" font-size="20" font-style="italic" font-weight="normal">
+                        <tspan x="7" y="17">λ</tspan>
+                    </text>
+                </g>
+                <g id="g995" transform="translate(0.000000, 149.000000)">
+                    <circle id="circle6" stroke="#000000" fill="#6FA8DC" fill-rule="nonzero" cx="12" cy="13" r="12"></circle>
+                    <text id="text8" fill="#000000" font-family="Helvetica" font-size="18" font-weight="normal">
+                        <tspan x="7" y="18">a</tspan>
+                    </text>
+                </g>
+                <g id="g999" transform="translate(0.000000, 265.000000)">
+                    <circle id="circle10" stroke="#000000" fill="#6FA8DC" fill-rule="nonzero" cx="12" cy="12" r="12"></circle>
+                    <text id="text12" fill="#000000" font-family="Helvetica" font-size="18" font-weight="normal">
+                        <tspan x="7" y="19">b</tspan>
+                    </text>
+                </g>
+                <circle id="circle14" stroke="#000000" fill="#D3D3D3" fill-rule="nonzero" cx="92" cy="12" r="12"></circle>
+                <text id="text16" fill="#000000" font-family="TimesNewRomanPS-ItalicMT, Times New Roman" font-size="20" font-style="italic" font-weight="normal">
+                    <tspan x="87" y="16">ϵ</tspan>
+                </text>
+                <circle id="circle18" stroke="#000000" fill="#E77471" fill-rule="nonzero" cx="92" cy="47" r="12"></circle>
+                <text id="text20" fill="#000000" font-family="Helvetica" font-size="18" font-weight="normal">
+                    <tspan x="87" y="52">a</tspan>
+                </text>
+                <circle id="circle22" stroke="#000000" fill="#D3D3D3" fill-rule="nonzero" cx="92" cy="82" r="12"></circle>
+                <text id="text24" fill="#000000" font-family="Helvetica" font-size="18" font-weight="normal">
+                    <tspan x="87" y="89">b</tspan>
+                </text>
+                <circle id="circle26" stroke="#000000" fill="#E77471" fill-rule="nonzero" cx="92" cy="127" r="12"></circle>
+                <text id="text28" fill="#000000" font-family="TimesNewRomanPS-ItalicMT, Times New Roman" font-size="20" font-style="italic" font-weight="normal">
+                    <tspan x="87" y="131">ϵ</tspan>
+                </text>
+                <circle id="circle30" stroke="#000000" fill="#E77471" fill-rule="nonzero" cx="92" cy="162" r="12"></circle>
+                <text id="text32" fill="#000000" font-family="Helvetica" font-size="18" font-weight="normal">
+                    <tspan x="87" y="167">a</tspan>
+                </text>
+                <circle id="circle34" stroke="#000000" fill="#E77471" fill-rule="nonzero" cx="92" cy="197" r="12"></circle>
+                <text id="text36" fill="#000000" font-family="Helvetica" font-size="18" font-weight="normal">
+                    <tspan x="87" y="204">b</tspan>
+                </text>
+                <circle id="circle38" stroke="#000000" fill="#D3D3D3" fill-rule="nonzero" cx="92" cy="242" r="12"></circle>
+                <text id="text40" fill="#000000" font-family="TimesNewRomanPS-ItalicMT, Times New Roman" font-size="20" font-style="italic" font-weight="normal">
+                    <tspan x="87" y="246">ϵ</tspan>
+                </text>
+                <circle id="circle42" stroke="#000000" fill="#E77471" fill-rule="nonzero" cx="92" cy="277" r="12"></circle>
+                <text id="text44" fill="#000000" font-family="Helvetica" font-size="18" font-weight="normal">
+                    <tspan x="87" y="282">a</tspan>
+                </text>
+                <circle id="circle46" stroke="#000000" fill="#D3D3D3" fill-rule="nonzero" cx="92" cy="312" r="12"></circle>
+                <text id="text48" fill="#000000" font-family="Helvetica" font-size="18" font-weight="normal">
+                    <tspan x="87" y="319">b</tspan>
+                </text>
+                <path d="M21,285 L80,312" id="line148" stroke="#000000" stroke-width="1.5" fill="#000000" fill-rule="nonzero"></path>
+                <path d="M24,277 L80,277" id="line146" stroke="#000000" stroke-width="1.5" fill="#000000" fill-rule="nonzero"></path>
+                <path d="M21,269 L80,242" id="line144" stroke="#000000" stroke-width="1.5" fill="#000000" fill-rule="nonzero"></path>
+                <path d="M21,170 L80,197" id="line142" stroke="#000000" stroke-width="1.5" fill="#000000" fill-rule="nonzero"></path>
+                <path d="M24,162 L80,162" id="line140" stroke="#000000" stroke-width="1.5" fill="#000000" fill-rule="nonzero"></path>
+                <path d="M21,154 L80,127" id="line138" stroke="#000000" stroke-width="1.5" fill="#000000" fill-rule="nonzero"></path>
+                <path d="M21,55 L80,82" id="line136" stroke="#000000" stroke-width="1.5" fill="#000000" fill-rule="nonzero"></path>
+                <path d="M24,47 L80,47" id="line134" stroke="#000000" stroke-width="1.5" fill="#000000" fill-rule="nonzero"></path>
+                <path d="M21,39 L80,12" id="line132" stroke="#000000" stroke-width="1.5" fill="#000000" fill-rule="nonzero"></path>
+            </g>
+            <g id="g1177" transform="translate(5.587260, 101.235606)">
+                <circle id="circle1111" stroke="#000000" fill="#6FA8DC" fill-rule="nonzero" cx="12" cy="47" r="12"></circle>
+                <text id="text1113" fill="#000000" font-family="TimesNewRomanPS-ItalicMT, Times New Roman" font-size="20" font-style="italic" font-weight="normal">
+                    <tspan x="7" y="52">λ</tspan>
+                </text>
+                <circle id="circle1123" stroke="#000000" fill="#E77471" fill-rule="nonzero" cx="92" cy="12" r="12"></circle>
+                <text id="text1125" fill="#000000" font-family="TimesNewRomanPS-ItalicMT, Times New Roman" font-size="20" font-style="italic" font-weight="normal">
+                    <tspan x="87" y="16">ϵ</tspan>
+                </text>
+                <circle id="circle1127" stroke="#000000" fill="#E77471" fill-rule="nonzero" cx="92" cy="47" r="12"></circle>
+                <text id="text1129" fill="#000000" font-family="Helvetica" font-size="18" font-weight="normal">
+                    <tspan x="87" y="52">a</tspan>
+                </text>
+                <circle id="circle1131" stroke="#000000" fill="#E77471" fill-rule="nonzero" cx="92" cy="82" r="12"></circle>
+                <text id="text1133" fill="#000000" font-family="Helvetica" font-size="18" font-weight="normal">
+                    <tspan x="87" y="89">b</tspan>
+                </text>
+                <path d="M21,55 L80,82" id="line1171" stroke="#000000" stroke-width="1.5" fill="#000000" fill-rule="nonzero"></path>
+                <path d="M24,47 L80,47" id="line1173" stroke="#000000" stroke-width="1.5" fill="#000000" fill-rule="nonzero"></path>
+                <path d="M21,39 L80,12" id="line1175" stroke="#000000" stroke-width="1.5" fill="#000000" fill-rule="nonzero"></path>
+            </g>
+            <text id="text130" fill="#000000" font-family="Helvetica" font-size="18" font-weight="normal">
+                <tspan x="831.4811" y="18.959541">T = 4</tspan>
+            </text>
+            <text id="text128" fill="#000000" font-family="Helvetica" font-size="18" font-weight="normal">
+                <tspan x="521.65038" y="18.359375">T = 3</tspan>
+            </text>
+            <text id="text931" fill="#000000" font-family="Helvetica" font-size="18" font-weight="normal">
+                <tspan x="261.903762" y="18.359375">T = 2</tspan>
+            </text>
+            <text id="text126" fill="#000000" font-family="Helvetica" font-size="18" font-weight="normal">
+                <tspan x="5.22502" y="18.359375">T = 1</tspan>
+            </text>
+            <g id="g962" transform="translate(3.886920, 25.325706)" fill="#000000" fill-opacity="0.600000024" font-family="Helvetica" font-size="12" font-weight="normal">
+                <text id="tspan940">
+                    <tspan x="0.45097" y="12.097087">current</tspan>
+                </text>
+                <text id="tspan942">
+                    <tspan x="0.45097" y="27.0970869">hypotheses</tspan>
+                </text>
+                <text id="tspan952">
+                    <tspan x="80.27328" y="11.49692">proposed</tspan>
+                </text>
+                <text id="tspan954">
+                    <tspan x="80.27328" y="26.4969196">extensions</tspan>
+                </text>
+            </g>
+            <g id="g976" transform="translate(519.000000, 24.000000)" fill="#000000" fill-opacity="0.600000024" font-family="Helvetica" font-size="12" font-weight="normal">
+                <g id="text968" transform="translate(0.450970, 2.097087)">
+                    <text id="tspan964">
+                        <tspan x="0.45097" y="11.097087">current</tspan>
+                    </text>
+                    <text id="tspan966">
+                        <tspan x="0.45097" y="26.0970869">hypotheses</tspan>
+                    </text>
+                </g>
+                <g id="text974" transform="translate(132.273280, 0.496920)">
+                    <text id="tspan970">
+                        <tspan x="0.27328" y="11.49692">proposed</tspan>
+                    </text>
+                    <text id="tspan972">
+                        <tspan x="0.27328" y="26.4969196">extensions</tspan>
+                    </text>
+                </g>
+            </g>
+            <g id="g990" transform="translate(260.631390, 25.725538)" fill="#000000" fill-opacity="0.600000024" font-family="Helvetica" font-size="12" font-weight="normal">
+                <g id="text982" transform="translate(0.000000, 1.000000)">
+                    <text id="tspan978">
+                        <tspan x="0.45097" y="11.097087">current</tspan>
+                    </text>
+                    <text id="tspan980">
+                        <tspan x="0.45097" y="26.0970869">hypotheses</tspan>
+                    </text>
+                </g>
+                <g id="text988" transform="translate(82.000000, 0.000000)">
+                    <text id="tspan984">
+                        <tspan x="0.87344" y="11.49692">proposed</tspan>
+                    </text>
+                    <text id="tspan986">
+                        <tspan x="0.87344" y="26.4969196">extensions</tspan>
+                    </text>
+                </g>
+                <g id="text996" transform="translate(569.000000, 1.000000)">
+                    <text id="tspan992">
+                        <tspan x="0.137554" y="11.097087">current</tspan>
+                    </text>
+                    <text id="tspan994">
+                        <tspan x="0.137554" y="26.0970869">hypotheses</tspan>
+                    </text>
+                </g>
+            </g>
+            <g id="g1027" transform="translate(737.886920, 352.325706)">
+                <text id="tspan1013" fill-opacity="0.600000024" fill="#000000" font-family="Helvetica" font-size="12" font-weight="normal">
+                    <tspan x="0.85181" y="42.99661">Multiple extensions merge</tspan>
+                </text>
+                <text id="tspan1015" fill-opacity="0.600000024" fill="#000000" font-family="Helvetica" font-size="12" font-weight="normal">
+                    <tspan x="0.85181" y="57.99661">to the same prefix</tspan>
+                </text>
+                <path d="M73.35639,0.69618 C73.35639,25.37808 73.35639,25.90322 73.35639,25.90322" id="path998" stroke="#A3A3A3" stroke-width="1.5"></path>
+            </g>
+            <g id="g1037" transform="translate(0.264760, 166.273686)">
+                <g id="text1033" transform="translate(0.000000, 50.000000)" fill="#000000" fill-opacity="0.600000024" font-family="Helvetica" font-size="12" font-weight="normal">
+                    <text id="tspan1039">
+                        <tspan x="0.85181" y="11.99661">empty</tspan>
+                    </text>
+                    <text id="tspan1041">
+                        <tspan x="0.85181" y="26.99661">string</tspan>
+                    </text>
+                </g>
+                <path d="M16.35639,0.69618 C16.35639,48.88466 16.35639,49.90993 16.35639,49.90993" id="path1035" stroke="#A3A3A3" stroke-width="2.0959146"></path>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="683px" height="307px" viewBox="0 0 683 307" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>ctc_cost</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ctc_cost" transform="translate(0.000000, -7.000000)">
+            <g id="circles" transform="translate(103.000000, 56.000000)" fill-rule="nonzero" stroke="#000000" stroke-width="0.80000001">
+                <circle id="circle32" fill="#6FA8DC" cx="16.310875" cy="16.2898806" r="16"></circle>
+                <circle id="circle34" fill="#6FA8DC" opacity="0.5" cx="106.550417" cy="16.5567146" r="16"></circle>
+                <circle id="circle36" fill="#6FA8DC" opacity="0.5" cx="196.789967" cy="16.1793576" r="16"></circle>
+                <circle id="circle38" fill="#6FA8DC" opacity="0.25" cx="286.573987" cy="16.3680326" r="16"></circle>
+                <circle id="circle40" fill="#FFFFFF" opacity="0.14814812" cx="376.169357" cy="16.1793576" r="16"></circle>
+                <circle id="circle42" fill="#FFFFFF" opacity="0.14814812" cx="467.053057" cy="16.1793576" r="16"></circle>
+                <circle id="circle46" fill="#6FA8DC" opacity="0.25" cx="16.310875" cy="72.2898926" r="16"></circle>
+                <circle id="circle48" fill="#6FA8DC" cx="106.550417" cy="72.5567326" r="16"></circle>
+                <circle id="circle50" fill="#6FA8DC" opacity="0.5" cx="196.789967" cy="72.1793626" r="16"></circle>
+                <circle id="circle52" fill="#6FA8DC" opacity="0.65" cx="286.573987" cy="72.3680426" r="16"></circle>
+                <circle id="circle54" fill="#6FA8DC" opacity="0.25" cx="376.169357" cy="72.1793726" r="16"></circle>
+                <circle id="circle56" fill="#FFFFFF" opacity="0.14814812" cx="467.053057" cy="72.1793726" r="16"></circle>
+                <circle id="circle60" fill="#FFFFFF" opacity="0.14814812" cx="16.310875" cy="128.289893" r="16"></circle>
+                <circle id="circle62" fill="#6FA8DC" opacity="0.25" cx="106.550417" cy="128.556703" r="16"></circle>
+                <circle id="circle64" fill="#6FA8DC" cx="196.789967" cy="128.179353" r="16"></circle>
+                <circle id="circle66" fill="#6FA8DC" cx="286.573987" cy="128.368043" r="16"></circle>
+                <circle id="circle68" fill="#6FA8DC" opacity="0.4" cx="376.169357" cy="128.179353" r="16"></circle>
+                <circle id="circle70" fill="#FFFFFF" opacity="0.14814812" cx="467.053057" cy="128.179353" r="16"></circle>
+                <circle id="circle74" fill="#FFFFFF" opacity="0.14814812" cx="16.310875" cy="184.289893" r="16"></circle>
+                <circle id="circle76" fill="#6FA8DC" opacity="0.25" cx="106.550417" cy="184.556703" r="16"></circle>
+                <circle id="circle78" fill="#6FA8DC" opacity="0.65" cx="196.789967" cy="184.179353" r="16"></circle>
+                <circle id="circle80" fill="#6FA8DC" opacity="0.65" cx="286.573987" cy="184.368043" r="16"></circle>
+                <circle id="circle82" fill="#6FA8DC" cx="376.169357" cy="184.179353" r="16"></circle>
+                <circle id="circle84" fill="#6FA8DC" opacity="0.4" cx="467.053057" cy="184.179353" r="16"></circle>
+                <circle id="circle88" fill="#FFFFFF" opacity="0.14814812" cx="16.310875" cy="240.289873" r="16"></circle>
+                <circle id="circle90" fill="#FFFFFF" opacity="0.14814812" cx="106.550417" cy="240.556723" r="16"></circle>
+                <circle id="circle92" fill="#6FA8DC" opacity="0.4" cx="196.789967" cy="240.179343" r="16"></circle>
+                <circle id="circle94" fill="#6FA8DC" opacity="0.65" cx="286.573987" cy="240.368033" r="16"></circle>
+                <circle id="circle96" fill="#6FA8DC" opacity="0.65" cx="376.169357" cy="240.179343" r="16"></circle>
+                <circle id="circle98" fill="#6FA8DC" cx="467.053057" cy="240.179343" r="16"></circle>
+            </g>
+            <g id="arrows" stroke-linecap="round" transform="translate(138.000000, 65.000000)" stroke="#979797" stroke-width="1.5">
+                <path d="M91,72.0196906 C110.049316,71.9124332 104.895508,176.942383 129.098633,176.942383" id="Path-3"></path>
+                <path d="M181,72.0196906 C200.049316,71.9124332 194.895508,176.942383 219.098633,176.942383" id="Path-3"></path>
+                <path d="M181,65.7597656 C203.84375,65.8691406 188.412109,119.904297 219.59375,119.988281" id="Path-2"></path>
+                <path d="M181,7.75976562 C203.84375,7.86914063 188.412109,61.9042969 219.59375,61.9882812" id="Path-2"></path>
+                <path d="M181,122.759766 C203.84375,122.869141 188.412109,176.904297 219.59375,176.988281" id="Path-2"></path>
+                <path d="M181,180.759766 C203.84375,180.869141 188.412109,234.904297 219.59375,234.988281" id="Path-2"></path>
+                <path d="M91,65.7597656 C113.84375,65.8691406 98.4121094,119.904297 129.59375,119.988281" id="Path-2"></path>
+                <path d="M91,7.75976562 C113.84375,7.86914063 98.4121094,61.9042969 129.59375,61.9882812" id="Path-2"></path>
+                <path d="M91,122.759766 C113.84375,122.869141 98.4121094,176.904297 129.59375,176.988281" id="Path-2"></path>
+                <path d="M91,180.759766 C113.84375,180.869141 98.4121094,234.904297 129.59375,234.988281" id="Path-2"></path>
+                <path d="M1,65.7597656 C23.84375,65.8691406 8.41210938,119.904297 39.59375,119.988281" id="Path-2"></path>
+                <path d="M1,7.75976562 C23.84375,7.86914063 8.41210938,61.9042969 39.59375,61.9882812" id="Path-2"></path>
+                <path d="M271,65.7597656 C293.84375,65.8691406 278.412109,119.904297 309.59375,119.988281" id="Path-2"></path>
+                <path d="M271,7.75976562 C293.84375,7.86914063 278.412109,61.9042969 309.59375,61.9882812" id="Path-2"></path>
+                <path d="M271,122.759766 C293.84375,122.869141 278.412109,176.904297 309.59375,176.988281" id="Path-2"></path>
+                <path d="M271,180.759766 C293.84375,180.869141 278.412109,234.904297 309.59375,234.988281" id="Path-2"></path>
+                <path d="M362,122.759766 C384.84375,122.869141 369.412109,176.904297 400.59375,176.988281" id="Path-2"></path>
+                <path d="M362,180.759766 C384.84375,180.869141 369.412109,234.904297 400.59375,234.988281" id="Path-2"></path>
+                <path d="M271,72.0196906 C290.049316,71.9124332 284.895508,176.942383 309.098633,176.942383" id="Path-3"></path>
+                <path d="M131.083984,235.685547 L140.5,235.685547" id="Line" fill="#979797" fill-rule="nonzero"></path>
+                <polygon id="Line-decoration-1" fill="#979797" fill-rule="nonzero" points="140.5 235.685547 129.7 232.685547 129.7 238.685547"></polygon>
+                <path d="M362,73.2052375 C381.049316,73.09798 375.895508,178.12793 400.098633,178.12793" id="Path-3"></path>
+                <path d="M42.2695312,177.5 L50.5,177.5" id="Line" fill="#979797" fill-rule="nonzero"></path>
+                <polygon id="Line-decoration-1" fill="#979797" fill-rule="nonzero" points="50.5 177.5 39.7 174.5 39.7 180.5"></polygon>
+                <path d="M1,72.0196906 C20.0493164,71.9124332 14.8955078,176.942383 39.0986328,176.942383" id="Path-3"></path>
+                <path d="M41.1191406,120.5 L50.5,120.5" id="Line" fill="#979797" fill-rule="nonzero"></path>
+                <polygon id="Line-decoration-1" fill="#979797" fill-rule="nonzero" points="50.5 120.5 39.7 117.5 39.7 123.5"></polygon>
+                <path d="M0.875488281,0.924804687 C12.6791992,0.871582031 22.8427734,4.13818359 50.5,4.5" id="Line" fill="#979797" fill-rule="nonzero"></path>
+                <polygon id="Line-decoration-1" fill="#979797" fill-rule="nonzero" points="50.5 4.5 39.7401672 1.35898139 39.6616809 7.35846802"></polygon>
+                <path d="M91,0.924804687 C102.803711,0.871582031 112.967285,4.13818359 140.624512,4.5" id="Line" fill="#979797" fill-rule="nonzero"></path>
+                <polygon id="Line-decoration-1" fill="#979797" fill-rule="nonzero" points="140.624512 4.5 129.864679 1.35898139 129.786193 7.35846802"></polygon>
+                <path d="M91,58.9248047 C102.803711,58.871582 112.967285,62.1381836 140.624512,62.5" id="Line" fill="#979797" fill-rule="nonzero"></path>
+                <polygon id="Line-decoration-1" fill="#979797" fill-rule="nonzero" points="140.624512 62.5 129.864679 59.3589814 129.786193 65.358468"></polygon>
+                <path d="M1,58.9248047 C12.8037109,58.871582 22.9672852,62.1381836 50.6245117,62.5" id="Line" fill="#979797" fill-rule="nonzero"></path>
+                <polygon id="Line-decoration-1" fill="#979797" fill-rule="nonzero" points="50.6245117 62.5 39.8646789 59.3589814 39.7861926 65.358468"></polygon>
+                <path d="M91,116.924805 C102.803711,116.871582 112.967285,120.138184 140.624512,120.5" id="Line" fill="#979797" fill-rule="nonzero"></path>
+                <polygon id="Line-decoration-1" fill="#979797" fill-rule="nonzero" points="140.624512 120.5 129.864679 117.358981 129.786193 123.358468"></polygon>
+                <path d="M91,173.924805 C102.803711,173.871582 112.967285,177.138184 140.624512,177.5" id="Line" fill="#979797" fill-rule="nonzero"></path>
+                <polygon id="Line-decoration-1" fill="#979797" fill-rule="nonzero" points="140.624512 177.5 129.864679 174.358981 129.786193 180.358468"></polygon>
+                <path d="M181,0.924804687 C192.803711,0.871582031 202.967285,4.13818359 230.624512,4.5" id="Line" fill="#979797" fill-rule="nonzero"></path>
+                <polygon id="Line-decoration-1" fill="#979797" fill-rule="nonzero" points="230.624512 4.5 219.864679 1.35898139 219.786193 7.35846802"></polygon>
+                <path d="M181,58.9248047 C192.803711,58.871582 202.967285,62.1381836 230.624512,62.5" id="Line" fill="#979797" fill-rule="nonzero"></path>
+                <polygon id="Line-decoration-1" fill="#979797" fill-rule="nonzero" points="230.624512 62.5 219.864679 59.3589814 219.786193 65.358468"></polygon>
+                <path d="M181,116.924805 C192.803711,116.871582 202.967285,120.138184 230.624512,120.5" id="Line" fill="#979797" fill-rule="nonzero"></path>
+                <polygon id="Line-decoration-1" fill="#979797" fill-rule="nonzero" points="230.624512 120.5 219.864679 117.358981 219.786193 123.358468"></polygon>
+                <path d="M181,173.924805 C192.803711,173.871582 202.967285,177.138184 230.624512,177.5" id="Line" fill="#979797" fill-rule="nonzero"></path>
+                <polygon id="Line-decoration-1" fill="#979797" fill-rule="nonzero" points="230.624512 177.5 219.864679 174.358981 219.786193 180.358468"></polygon>
+                <path d="M271,58.9248047 C282.803711,58.871582 292.967285,62.1381836 320.624512,62.5" id="Line" fill="#979797" fill-rule="nonzero"></path>
+                <polygon id="Line-decoration-1" fill="#979797" fill-rule="nonzero" points="320.624512 62.5 309.864679 59.3589814 309.786193 65.358468"></polygon>
+                <path d="M271,116.924805 C282.803711,116.871582 292.967285,120.138184 320.624512,120.5" id="Line" fill="#979797" fill-rule="nonzero"></path>
+                <polygon id="Line-decoration-1" fill="#979797" fill-rule="nonzero" points="320.624512 120.5 309.864679 117.358981 309.786193 123.358468"></polygon>
+                <path d="M271,173.924805 C282.803711,173.871582 292.967285,177.138184 320.624512,177.5" id="Line" fill="#979797" fill-rule="nonzero"></path>
+                <polygon id="Line-decoration-1" fill="#979797" fill-rule="nonzero" points="320.624512 177.5 309.864679 174.358981 309.786193 180.358468"></polygon>
+                <path d="M271,231.924805 C282.803711,231.871582 292.967285,235.138184 320.624512,235.5" id="Line" fill="#979797" fill-rule="nonzero"></path>
+                <polygon id="Line-decoration-1" fill="#979797" fill-rule="nonzero" points="320.624512 235.5 309.864679 232.358981 309.786193 238.358468"></polygon>
+                <path d="M181,231.924805 C192.803711,231.871582 202.967285,235.138184 230.624512,235.5" id="Line" fill="#979797" fill-rule="nonzero"></path>
+                <polygon id="Line-decoration-1" fill="#979797" fill-rule="nonzero" points="230.624512 235.5 219.864679 232.358981 219.786193 238.358468"></polygon>
+                <path d="M362,174.924805 C373.803711,174.871582 383.967285,178.138184 411.624512,178.5" id="Line" fill="#979797" fill-rule="nonzero"></path>
+                <polygon id="Line-decoration-1" fill="#979797" fill-rule="nonzero" points="411.624512 178.5 400.864679 175.358981 400.786193 181.358468"></polygon>
+                <path d="M362,231.924805 C373.803711,231.871582 383.967285,235.138184 411.624512,235.5" id="Line" fill="#979797" fill-rule="nonzero"></path>
+                <polygon id="Line-decoration-1" fill="#979797" fill-rule="nonzero" points="411.624512 235.5 400.864679 232.358981 400.786193 238.358468"></polygon>
+            </g>
+            <g id="x1" transform="translate(112.000000, 28.000000)" fill="#000000" font-weight="normal">
+                <g id="x" font-family="Times-Italic, Times" font-size="14" font-style="italic">
+                    <text>
+                        <tspan x="0.85453" y="14.5624996">x</tspan>
+                    </text>
+                </g>
+                <g id="1" transform="translate(7.000000, 8.000000)" font-family="Times-Roman, Times" font-size="10">
+                    <text>
+                        <tspan x="0.07053" y="10.5624996">1</tspan>
+                    </text>
+                </g>
+            </g>
+            <g id="x2" transform="translate(203.000000, 28.000000)" fill="#000000" font-weight="normal">
+                <g id="x" font-family="Times-Italic, Times" font-size="14" font-style="italic">
+                    <text>
+                        <tspan x="0.85453" y="14.5624996">x</tspan>
+                    </text>
+                </g>
+                <g id="2" transform="translate(7.000000, 8.000000)" font-family="Times-Roman, Times" font-size="10">
+                    <text>
+                        <tspan x="0.07053" y="10.5624996">2</tspan>
+                    </text>
+                </g>
+            </g>
+            <g id="x3" transform="translate(293.000000, 28.000000)" fill="#000000" font-weight="normal">
+                <g id="x" font-family="Times-Italic, Times" font-size="14" font-style="italic">
+                    <text>
+                        <tspan x="0.85453" y="14.5624996">x</tspan>
+                    </text>
+                </g>
+                <g id="3" transform="translate(7.000000, 8.000000)" font-family="Times-Roman, Times" font-size="10">
+                    <text>
+                        <tspan x="0.07053" y="10.5624996">3</tspan>
+                    </text>
+                </g>
+            </g>
+            <g id="x4" transform="translate(382.000000, 28.000000)" fill="#000000" font-weight="normal">
+                <g id="x" font-family="Times-Italic, Times" font-size="14" font-style="italic">
+                    <text>
+                        <tspan x="0.85453" y="14.5624996">x</tspan>
+                    </text>
+                </g>
+                <g id="4" transform="translate(7.000000, 8.000000)" font-family="Times-Roman, Times" font-size="10">
+                    <text>
+                        <tspan x="0.07053" y="10.5624996">4</tspan>
+                    </text>
+                </g>
+            </g>
+            <g id="x5" transform="translate(473.000000, 28.000000)" fill="#000000" font-weight="normal">
+                <g id="x" font-family="Times-Italic, Times" font-size="14" font-style="italic">
+                    <text>
+                        <tspan x="0.85453" y="14.5624996">x</tspan>
+                    </text>
+                </g>
+                <g id="5" transform="translate(7.000000, 8.000000)" font-family="Times-Roman, Times" font-size="10">
+                    <text>
+                        <tspan x="0.07053" y="10.5624996">5</tspan>
+                    </text>
+                </g>
+            </g>
+            <g id="x1" transform="translate(563.000000, 27.000000)" fill="#000000" font-weight="normal">
+                <g id="x" font-family="Times-Italic, Times" font-size="14" font-style="italic">
+                    <text>
+                        <tspan x="0.85453" y="14.5624996">x</tspan>
+                    </text>
+                </g>
+                <g id="6" transform="translate(7.000000, 9.000000)" font-family="Times-Roman, Times" font-size="10">
+                    <text>
+                        <tspan x="0.07053" y="10.5624996">6</tspan>
+                    </text>
+                </g>
+            </g>
+            <text id="ϵ" fill="#000000" font-family="TimesNewRomanPS-ItalicMT, Times New Roman" font-size="16" font-style="italic" font-weight="normal">
+                <tspan x="86.923805" y="74.7689266">ϵ</tspan>
+            </text>
+            <text id="ϵ" fill="#000000" font-family="TimesNewRomanPS-ItalicMT, Times New Roman" font-size="16" font-style="italic" font-weight="normal">
+                <tspan x="86" y="186">ϵ</tspan>
+            </text>
+            <text id="ϵ" fill="#000000" font-family="TimesNewRomanPS-ItalicMT, Times New Roman" font-size="16" font-style="italic" font-weight="normal">
+                <tspan x="86" y="299">ϵ</tspan>
+            </text>
+            <g id="a" transform="translate(86.000000, 118.000000)" fill="#000000" font-family="Helvetica-Light, Helvetica" font-size="14" font-weight="300">
+                <g id="Group">
+                    <text id="a">
+                        <tspan x="0" y="14">a</tspan>
+                    </text>
+                </g>
+            </g>
+            <g id="b" transform="translate(86.000000, 229.000000)" fill="#000000" font-family="Helvetica-Light, Helvetica" font-size="14" font-weight="300">
+                <g id="Group">
+                    <text id="b">
+                        <tspan x="0" y="14">b</tspan>
+                    </text>
+                </g>
+            </g>
+            <g id="Two-output-nodes" transform="translate(636.000000, 254.000000)" fill="#000000" font-family="Helvetica" font-size="12" font-weight="normal">
+                <g id="Two-final" opacity="0.604166667">
+                    <text>
+                        <tspan x="0" y="11">Two final</tspan>
+                    </text>
+                </g>
+                <g id="nodes" transform="translate(0.000000, 17.000000)" opacity="0.601902174">
+                    <text>
+                        <tspan x="0" y="11">nodes</tspan>
+                    </text>
+                </g>
+            </g>
+            <polyline id="Path-4" stroke="#979797" points="603 222.935547 626.252441 222.935547 626.252441 313.005859 603 313.005859"></polyline>
+            <text id="Output-Y-=-[a,-b]" opacity="0.6" font-family="Helvetica" font-size="16" font-weight="normal" fill="#000000">
+                <tspan x="0" y="125">Output</tspan>
+                <tspan x="0" y="144" font-family="STIXGeneral-Italic, STIXGeneral" font-size="18" font-style="italic">Y</tspan>
+                <tspan x="10.008" y="144"> = [a, b]</tspan>
+            </text>
+            <text id="Input,-X" opacity="0.6" font-family="Helvetica" font-size="16" font-weight="normal" fill="#000000">
+                <tspan x="145" y="15">Input, </tspan>
+                <tspan x="189.476562" y="15" font-family="STIXGeneral-Italic, STIXGeneral" font-size="18" font-style="italic">X</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

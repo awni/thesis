@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="260px" height="105px" viewBox="0 0 260 105" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>naive_alignment</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="naive_alignment" transform="translate(-1.000000, -8.000000)">
+            <text id="input-(X)" fill="#000000" opacity="0.6" font-family="Helvetica" font-size="14" font-weight="normal">
+                <tspan x="200" y="22">input (</tspan>
+                <tspan x="238.910156" y="22" font-family="STIXGeneral-Italic, STIXGeneral" font-style="italic" letter-spacing="0.7">X</tspan>
+                <tspan x="248.164156" y="22" letter-spacing="0.7">)</tspan>
+            </text>
+            <text id="alignment" fill="#000000" opacity="0.6" font-family="Helvetica" font-size="14" font-weight="normal">
+                <tspan x="200" y="65">alignment</tspan>
+            </text>
+            <text id="output-(Y)" fill="#000000" opacity="0.6" font-family="Helvetica" font-size="14" font-weight="normal">
+                <tspan x="200" y="105">output (</tspan>
+                <tspan x="247.475586" y="105" font-family="STIXGeneral-Italic, STIXGeneral" font-style="italic" letter-spacing="1">Y</tspan>
+                <tspan x="256.259586" y="105" letter-spacing="1">)</tspan>
+            </text>
+            <g id="g1117" transform="translate(1.000000, 0.000000)">
+                <rect id="rect1109" fill="#D3D3D3" fill-rule="nonzero" opacity="0.5" x="120" y="8" width="22.516821" height="22.516821"></rect>
+                <text id="x" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" font-weight="normal">
+                    <tspan x="124.41947" y="21.273445">x</tspan>
+                </text>
+                <text id="6" fill="#000000" font-family="STIXGeneral-Regular, STIXGeneral" font-size="12" font-weight="normal">
+                    <tspan x="133.29947" y="26">6</tspan>
+                </text>
+                <rect id="rect868" fill="#D3D3D3" fill-rule="nonzero" opacity="0.5" x="96" y="8" width="22.516821" height="22.516821"></rect>
+                <text id="x" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" font-weight="normal">
+                    <tspan x="101.41947" y="21.273445">x</tspan>
+                </text>
+                <text id="5" fill="#000000" font-family="STIXGeneral-Regular, STIXGeneral" font-size="12" font-weight="normal">
+                    <tspan x="110.29947" y="26">5</tspan>
+                </text>
+                <rect id="rect876" fill="#D3D3D3" fill-rule="nonzero" opacity="0.5" x="72" y="8" width="22.516821" height="22.516821"></rect>
+                <text id="x" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" font-weight="normal">
+                    <tspan x="76.41947" y="21.273445">x</tspan>
+                </text>
+                <text id="4" fill="#000000" font-family="STIXGeneral-Regular, STIXGeneral" font-size="12" font-weight="normal">
+                    <tspan x="85.29947" y="26">4</tspan>
+                </text>
+                <rect id="rect884" fill="#D3D3D3" fill-rule="nonzero" opacity="0.5" x="48" y="8" width="22.516821" height="22.516821"></rect>
+                <text id="x" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" font-weight="normal">
+                    <tspan x="53.41947" y="21.273445">x</tspan>
+                </text>
+                <text id="3" fill="#000000" font-family="STIXGeneral-Regular, STIXGeneral" font-size="12" font-weight="normal">
+                    <tspan x="62.29947" y="26">3</tspan>
+                </text>
+                <rect id="rect893" fill="#D3D3D3" fill-rule="nonzero" opacity="0.5" x="24" y="8" width="22.516821" height="22.516821"></rect>
+                <text id="x" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" font-weight="normal">
+                    <tspan x="29.41947" y="21.273445">x</tspan>
+                </text>
+                <text id="2" fill="#000000" font-family="STIXGeneral-Regular, STIXGeneral" font-size="12" font-weight="normal">
+                    <tspan x="38.29947" y="26">2</tspan>
+                </text>
+                <rect id="rect901" fill="#D3D3D3" fill-rule="nonzero" opacity="0.5" x="0" y="8" width="22.516821" height="22.516821"></rect>
+                <text id="x" fill="#000000" font-family="STIXGeneral-Italic, STIXGeneral" font-size="20" font-style="italic" font-weight="normal">
+                    <tspan x="5.41947" y="21.273445">x</tspan>
+                </text>
+                <text id="1" fill="#000000" font-family="STIXGeneral-Regular, STIXGeneral" font-size="12" font-weight="normal">
+                    <tspan x="14.29947" y="26">1</tspan>
+                </text>
+            </g>
+            <g id="g866" transform="translate(1.000000, 46.000000)">
+                <g id="g822">
+                    <rect id="rect6" fill="#D3D3D3" fill-rule="nonzero" x="0" y="3" width="22.516821" height="22.516821"></rect>
+                    <text id="c" fill="#000000" font-family="Helvetica-Light, Helvetica" font-size="20" font-weight="300">
+                        <tspan x="5.74159" y="19.58053">c</tspan>
+                    </text>
+                </g>
+                <g id="g819" transform="translate(24.000000, 0.000000)">
+                    <rect id="rect815" fill="#D3D3D3" fill-rule="nonzero" x="0" y="3" width="22.516821" height="22.516821"></rect>
+                    <g id="text817" transform="translate(5.000000, 0.000000)" fill="#000000" font-family="Helvetica-Light, Helvetica" font-size="20" font-weight="300">
+                        <text id="c">
+                            <tspan x="0.74159" y="19.58053">c</tspan>
+                        </text>
+                    </g>
+                </g>
+                <g id="g825" transform="translate(48.000000, 0.000000)">
+                    <rect id="rect821" fill="#D3D3D3" fill-rule="nonzero" x="0" y="3" width="22.516821" height="22.516821"></rect>
+                    <g id="text823" transform="translate(5.000000, 0.000000)" fill="#000000" font-family="Helvetica-Light, Helvetica" font-size="20" font-weight="300">
+                        <text id="a">
+                            <tspan x="0.74159" y="19.58053">a</tspan>
+                        </text>
+                    </g>
+                </g>
+                <g id="g831" transform="translate(72.000000, 0.000000)">
+                    <rect id="rect827" fill="#D3D3D3" fill-rule="nonzero" x="0" y="3" width="22.516821" height="22.516821"></rect>
+                    <g id="text829" transform="translate(5.000000, 0.000000)" fill="#000000" font-family="Helvetica-Light, Helvetica" font-size="20" font-weight="300">
+                        <text id="a">
+                            <tspan x="0.74159" y="19.58053">a</tspan>
+                        </text>
+                    </g>
+                </g>
+                <g id="g837" transform="translate(96.000000, 0.000000)">
+                    <rect id="rect833" fill="#D3D3D3" fill-rule="nonzero" x="0" y="3" width="22.516821" height="22.516821"></rect>
+                    <g id="text835" transform="translate(5.000000, 0.000000)" fill="#000000" font-family="Helvetica-Light, Helvetica" font-size="20" font-weight="300">
+                        <text id="a">
+                            <tspan x="0.74159" y="19.58053">a</tspan>
+                        </text>
+                    </g>
+                </g>
+                <g id="g843" transform="translate(120.000000, 0.000000)">
+                    <rect id="rect839" fill="#D3D3D3" fill-rule="nonzero" x="0" y="3" width="22.516821" height="22.516821"></rect>
+                    <g id="text841" transform="translate(8.000000, 0.000000)" fill="#000000" font-family="Helvetica-Light, Helvetica" font-size="20" font-weight="300">
+                        <g id="tspan845">
+                            <text id="t">
+                                <tspan x="0.41947" y="19.74159">t</tspan>
+                            </text>
+                        </g>
+                    </g>
+                </g>
+            </g>
+            <g id="g906" transform="translate(0.300000, 87.000000)">
+                <g id="g878">
+                    <rect id="rect874" fill="#D3D3D3" fill-rule="nonzero" x="0.770385819" y="3" width="46.4494548" height="22.516821"></rect>
+                    <text id="c" fill="#000000" font-family="Helvetica-Light, Helvetica" font-size="20" font-weight="300">
+                        <tspan x="18.6244549" y="19.58053">c</tspan>
+                    </text>
+                </g>
+                <g id="g890" transform="translate(48.700000, 0.000000)">
+                    <rect id="rect886" fill="#D3D3D3" fill-rule="nonzero" x="0" y="3" width="70.516823" height="22.516821"></rect>
+                    <g id="text888" transform="translate(29.000000, 0.000000)" fill="#000000" font-family="Helvetica-Light, Helvetica" font-size="20" font-weight="300">
+                        <text id="a">
+                            <tspan x="0.74159" y="19.58053">a</tspan>
+                        </text>
+                    </g>
+                </g>
+                <g id="g904" transform="translate(120.700000, 0.000000)">
+                    <rect id="rect898" fill="#D3D3D3" fill-rule="nonzero" x="0" y="3" width="22.516821" height="22.516821"></rect>
+                    <g id="text902" transform="translate(8.000000, 0.000000)" fill="#000000" font-family="Helvetica-Light, Helvetica" font-size="20" font-weight="300">
+                        <g id="tspan900">
+                            <text id="t">
+                                <tspan x="0.41947" y="19.74159">t</tspan>
+                            </text>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
