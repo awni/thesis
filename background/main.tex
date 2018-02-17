@@ -151,33 +151,12 @@ time-step to the probability of an output sequence.
 %</figure>
 
 To be precise, the CTC objective for a single $(X, Y)$ pair is:
-
-%<figure class="figure-math" style="width:100%;">
-%  <div style="display:grid;grid-template-rows:50% 50%;margin-top: -2.5em;">
-%  <div style="display:grid;grid-template-columns:20% 20% 30%;grid-column-gap:5%">
-%    <div style="line-height:75px;min-width:125px;">
-%      <d-math block>p(Y \mid X) \;\; =$
-%    </div>
-%    <div style="line-height:75px;">
-%      <d-math block>\sum_{A \in \mathcal{A}_{X,Y}}$
-%    </div>
-%    <div style="line-height:75px;">
-%      <d-math block>\prod_{t=1}^T \; p_t(a_t \mid X)$
-%    </div>
-%  </div>
-%  <div style="display:grid;grid-template-columns:20% 20% 30%;grid-column-gap:5%">
-%    <figcaption>
-%    The CTC conditional <strong>probability</strong>
-%    </figcaption>
-%    <figcaption>
-%    <strong>marginalizes</strong> over the set of valid alignments
-%    </figcaption>
-%    <figcaption>
-%    computing the <strong>probability</strong> for a single alignment step-by-step.
-%    </figcaption>
-%  </div>
-%  </div>
-%</figure>
+\begin{align*}
+p(Y \mid X) \;\; = \sum_{A \in \mathcal{A}_{X,Y}}
+      \prod_{t=1}^T \; p_t(a_t \mid X)
+\end{align*}
+The CTC conditional probability marginalizes over the set of valid alignments
+computing the probability for a single alignment step-by-step.
 
 Models trained with CTC typically use a recurrent neural network (RNN) to
 estimate the per time-step probabilities, $p_t(a_t \mid X)$. An RNN usually
@@ -241,26 +220,12 @@ $Y$. We can identify this when $z_s = z_{s-2}$.
 To ensure we do not skip $z_{s-1}$, we can either be there at the previous
 time-step or have already passed through at some earlier time-step. As a result
 there are two positions we can transition from.
-
-%<figure class="figure-math" style="width:100%;">
-%  <div style="max-width:590px;display:grid;grid-template-columns:10% 40% 40%;grid-column-gap:5%">
-%  <div>
-%    $\alpha_{s, t} \; =$
-%  </div>
-%  <div>
-%    $(\alpha_{s-1, t-1} + \alpha_{s, t-1}) \quad\quad \cdot$
-%    <figcaption style="padding-top:10px">
-%    The CTC probability of the two valid subsequences after
-%    $t-1$ input steps.
-%    </figcaption>
-%  </div>
-%  <div>
-%    $p_t(z_{s} \mid X)$
-%    <figcaption style="padding-top:10px">
-%    The probability of the current character at input step $t.$
-%    </figcaption>
-%  </div>
-%</figure>
+\begin{align*}
+\alpha_{s, t} \; = \; (\alpha_{s-1, t-1} + \alpha_{s, t-1}) \cdot p_t(z_{s} \mid X)
+\end{align*}
+In words, the probability of the subsequence $Z_{1:s}$ after $t$ input steps is
+the sum of the probabilities of the two valid subsequences after $t-1$ input
+steps times the probability of the current character at input step $t$.
 
 %<figure style="width:150px;float:right;margin-top:20px;margin-bottom:0px;margin-left:15%;">
 %  <img src="assets/cost_regular.svg" />
@@ -270,26 +235,10 @@ there are two positions we can transition from.
 $Z$. We have this case whenever $z_{s-1}$ is an $\epsilon$ between unique
 characters. As a result there are three positions we could have come from at
 the previous step.
-
-%<figure class="figure-math" style="width:100%;">
-%  <div style="max-width:600px;display:grid;grid-template-columns:10% 50% 30%;grid-column-gap:5%">
-%  <div>
-%    $\alpha_{s, t} \; =$
-%  </div>
-%  <div>
-%    $(\alpha_{s-2, t-1} + \alpha_{s-1, t-1} + \alpha_{s, t-1}) \quad\quad \cdot$
-%    <figcaption style="padding-top:10px">
-%    The CTC probability of the three valid subsequences after
-%    $t-1$ input steps.
-%    </figcaption>
-%  </div>
-%  <div>
-%    $p_t(z_{s} \mid X)$
-%    <figcaption style="padding-top:10px">
-%    The probability of the current character at input step $t.$
-%    </figcaption>
-%  </div>
-%</figure>
+\begin{align*}
+\alpha_{s, t} \; = \; (\alpha_{s-2, t-1} + \alpha_{s-1, t-1} + \alpha_{s, t-1}) \cdot
+    p_t(z_{s} \mid X).
+\end{align*}
 
 Below is an example of the computation performed by the dynamic programming
 algorithm. Every valid alignment has a path in this graph.
@@ -422,32 +371,12 @@ more rigorous description.
 In some problems, such as speech recognition, incorporating a language model
 over the outputs significantly improves accuracy. We can include the language
 model as a factor in the inference problem.
-
-%<figure class="figure-math" style="width:100%;">
-%  <div style="max-width:570px;display:grid;grid-auto-flow:column;grid-auto-columns:auto;grid-column-gap:5%">
-%    <div>
-%      $Y^* \enspace = \enspace {\mathop{\text{argmax}}\limits_{Y}} $
-%    </div>
-%    <div>
-%      $p(Y \mid X) \quad \cdot$
-%      <figcaption style="padding-top:1vw">
-%      The&nbsp;CTC conditional probability.
-%      </figcaption>
-%    </div>
-%    <div>
-%      $p(Y)^\alpha \quad \cdot$
-%      <figcaption style="padding-top:1vw;">
-%      The&nbsp;language model probability.
-%      </figcaption>
-%    </div>
-%    <div>
-%      $L(Y)^\beta$
-%      <figcaption style="padding-top:1vw">
-%      The&nbsp;"word" insertion bonus.
-%      </figcaption>
-%    </div>
-%  </div>
-%</figure>
+\begin{align*}
+Y^* \enspace = \enspace \argmax_Y \enspace
+        p(Y \mid X) \cdot p(Y)^\alpha \cdot L(Y)^\beta
+\end{align*}
+The terms are respectively the CTC conditional probability, the language model
+probability and a ``word" insertion bonus.
 
 The function $L(Y)$ computes the length of $Y$ in terms of the language model
 tokens and acts as a word insertion bonus. With a word-based language model
@@ -578,38 +507,14 @@ p(X \mid Y)\; = \; \sum_{A \in \mathcal{A}} \; p(X, A \mid Y).
 \]
 To simplify notation, we remove the conditioning on $Y$, it will be present in
 every $p(\cdot)$. With two assumptions we can write down the standard HMM.
-
-%<figure class="figure-math" style="width:100%;">
-%  <div style="max-width:530px;display:grid;grid-auto-flow:column;grid-auto-columns:auto;grid-column-gap:5%">
-%    <div>
-%      $p(X) \quad =$
-%      <figcaption style="padding-top:10px">
-%        The probability of the input
-%      </figcaption>
-%    </div>
-%    <div>
-%      $\sum_{A \in \mathcal{A}} \; \prod_{t=1}^T$
-%      <figcaption style="padding-top:10px">
-%        Marginalizes over alignments
-%      </figcaption>
-%    </div>
-%    <div>
-%      $p(x_t \mid a_t) \quad \cdot$
-%      <figcaption style="padding-top:10px">
-%        The emission probability
-%      </figcaption>
-%    </div>
-%    <div>
-%      $p(a_t \mid a_{t-1})$
-%      <figcaption style="padding-top:10px">
-%        The transition probability
-%      </figcaption>
-%    </div>
-%  </div>
-%</figure>
-
-The first assumption is the usual Markov property. The state $a_t$ is
-conditionally independent of all historic states given the previous state
+\begin{align*}
+p(X) \enspace = \enspace \sum_{A \in \mathcal{A}} \; \prod_{t=1}^T \enspace
+                p(x_t \mid a_t) \cdot p(a_t \mid a_{t-1})
+\end{align*}
+The probability of the input marginalizes over alignments the emission
+probability, $p(x_t \mid a_t)$, and the transition probability, $p(a_t \mid
+a_{t-1})$. The first assumption is the usual Markov property. The state $a_t$
+is conditionally independent of all historic states given the previous state
 $a_{t-1}$. The second is that the observation $x_t$ is conditionally
 independent of everything given the current state $a_t$.
 
