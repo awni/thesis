@@ -660,22 +660,17 @@ difficult. The algorithm has several edge cases and a fast implementation
 should be written in a lower-level programming language.  Open-source software
 tools make it much easier to get started:
 
-%<ul>
-%  <li>Baidu Research has open-sourced
-%    <a href="https://github.com/baidu-research/warp-ctc">warp-ctc</a>. The
-%    package is written in C++ and CUDA. The CTC loss function runs on either
-%    the CPU or the GPU. Bindings are available for Torch, TensorFlow and
-%    <a href="https://github.com/awni/warp-ctc">PyTorch</a>.
-%  </li>
-%  <li>TensorFlow has built in
-%    <a href="https://www.tensorflow.org/api_docs/python/tf/nn/ctc_loss">CTC loss</a>
-%    and <a href="https://www.tensorflow.org/api_docs/python/tf/nn/ctc_beam_search_decoder">CTC beam search</a>
-%    functions for the CPU.
-%  </li>
-%  <li>Nvidia also provides a GPU implementation of CTC in
-%    <a href="https://developer.nvidia.com/cudnn">cuDNN</a> versions 7 and up.
-%  </li>
-%</ul>
+\begin{itemize}
+\item Baidu Research has open-sourced
+    \texttt{warp-ctc}\footnote{https://github.com/baidu-research/warp-ctc}. The
+    package is written in \C++ and CUDA. The CTC loss function runs on
+    either the CPU or the GPU. Bindings are available for Torch, TensorFlow
+    and PyTorch.
+\item TensorFlow has built in CTC loss and beam search functions for the
+    CPU.\footnote{https://www.tensorflow.org/api\_docs/python/tf/nn}
+\item Nvidia also provides a GPU implementation of CTC in cuDNN versions 7 and
+    up.\footnote{https://developer.nvidia.com/cudnn}
+\end{itemize}
 
 {\bf Numerical Stability:} Computing the CTC loss naively is numerically
 unstable. One method to avoid this is to normalize the $\alpha$’s at each
