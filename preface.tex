@@ -1,11 +1,19 @@
 
-% this includes the file preface.tex which should include the
-% following commands
-% \beforepreface
-% \prefacesection{preface}
-% body of the preface
-
 \beforepreface
 \prefacesection{Abstract}
 
-Hello!
+Speech recognition and arrhythmia detection from electrocardiograms are
+examples of problems which can be formulated as transcribing real-valued
+sequences. These problems have traditionally been solved with frameworks like
+the Hidden Markov Model. To generalize well, these models rely on carefully
+hand engineered building blocks. More general, end-to-end neural networks
+capable of learning from much larger datasets can achieve lower error rates.
+However, getting these models to work well in practice has other challenges.
+
+In this work, we present end-to-end models for transcribing real-valued
+sequences and discuss two applications of these models. The first is detecting
+abnormal heart activity in electrocardiograms. The second is large vocabulary
+continuous speech recognition. In both cases we show how to scale high capacity
+models to unprecedentedly large datasets. With these techniques we can achieve
+performance comparable to that of human experts for both applications and
+state-of-the-art error rates in speech recognition for multiple languages.

@@ -1,5 +1,120 @@
 \section{Deep Neural Networks}
 
-\subsection{Convolutional Neural Networks}
+In this work we primarily rely on deep neural networks (DNNs) as function
+approximators. A DNN is a multi-layered stack of differentiable computational
+building blocks. In this work we use many standard building blocks such as
+convolutions, linear layers, and several types of nonlinearities. In this
+section we give a brief introduction to recurrent neural networks (RNNs) and
+optimization techniques commonly used for RNNs. Other less standard building
+blocks such as recurrent batch-normalization are introduced in the sections
+where they are used.
+
 \subsection{Recurrent Neural Networks}
+
+In order to incorporate an arbitrary amount of temporal context, we can use a
+recurrent neural network (RNN). An RNN computes the next step hidden state
+based on the current input and the previous hidden state:
+\begin{align*}
+h_t = f(x_t, h_{t-1}).
+\end{align*}
+
+A vanilla RNN models $f$ as
+\begin{align*}
+    h_t = g(W x_t + U h_{t-1} + b) 
+\end{align*}
+where $g$ is a nonlinearity such as the logistic sigmoid function, the
+hyperbolic tangent function or the rectified nonlinear unit.
+
+One problem with vanilla RNNs is that the gradient can vanish over time and
+learning long-term dependencies becomes difficult. The Long Short-term Memory
+(LSTM) cell can avoid this. The LSTM computation is given by
+\begin{align*}
+    i_t &= \sigma(W_i x_t + U_i h_{t-1}) \\
+    f_t &= \sigma(W_f x_t + U_f h_{t-1}) \\
+    o_t &= \sigma(W_o x_t + U_o h_{t-1}) \\
+    \tilde{c}_t &= g(W_c x_t + U_c h_{t-1}) \\
+    c_t &= f_t \circ c_{t-1} + i_t \circ \tilde{c}_t \\
+    h_t &= o_t \circ g(c_t)
+\end{align*}
+Here $g$ is any nonlinear activation function and $\sigma$ is the logistic
+sigmoid function. Note, we have left out the biases for simplicicty; however,
+they are typically included in the first four equations.
+
+Another type of RNN cell which works well in practice is the Gated Recurrent
+Unit (GRU). The GRU is given by
+\begin{align*}
+    r_t &= \sigma(W_r x_t + U_r h_{t-1}) \\
+    z_t &= \sigma(W_z x_t + U_z h_{t-1}) \\
+    \tilde{h}_t &= g(W_h x_t + r_t \circ U_h h_{t-1}) \\
+    h_t &= z_t \circ h_{t-1} + (1 - z_t) \circ \tilde{h}_t
+\end{align*}
+
+An RNN can be either unidirectional or bidirectional. Unidirectinal RNNs
+typically operate forwards in time only influencing the current hidden state
+with past information. Bidirectional RNNs also incorporate future information.
+A bidirectional RNN is given by
+\begin{align*}
+    \overrightarrow{h}_t &= f(x_t, \overrightarrow{h}_{t-1}) \\
+    \overleftarrow{h}_t &= f(x_t, \overleftarrow{h}_{t-1}) \\
+    h_t &= \overrightarrow{h}_t + \overleftarrow{h}_t
+\end{align*}
+Here we sum the forward and backward hidden states, however, concatenating them
+is also common.
+
 \subsection{Optimization}
+
+Throughout this work and in almost all modern applications of DNNs a variation
+of stochastic gradient descent (SGD) is used to optimize the model's
+parameters. We use the backpropagation algorithm to compute a gradient of the
+DNN's weights with respect to the desired objective and then apply the gradient
+based optimization algorithm.
+
+The basic SGD update is given by
+\begin{align*}
+    \theta_{t} = \theta_{t-1} - \alpha_t \nabla_{\theta} \mathcal{L}(X, Y)
+\end{align*}
+where $\mathcal{L}(\mathcal{D})$ is the loss function computed on the training
+pair $(X, Y)$ and $\alpha_t$ is the learning rate used at time $t$. More
+commonly we use a {\it minibatch} of examples to compute each update as this is
+computationally much more efficient.
+
+Momentum augments the plain SGD algorithm with a velocity term and can accelerate
+learning.
+\begin{align*}
+    v_t &= \rho v_{t-1} + \alpha_t \nabla_{\theta} \mathcal{L}(X, Y) \\
+    \theta_t &= \theta_{t-1} - v_t 
+\end{align*}
+Here the parameter $\rho$ dictates the amount of momentum to use and is
+typically set in the range $[0.9, 0.99]$.
+
+Nesterov's accelerated gradient (NAG) in some cases works better than classical
+momentum. The NAG update is given by 
+\begin{align*}
+    \tilde{\theta} &= \theta_t - \rho v_{t-1} \\
+    v_t &= \rho v_{t-1} + \alpha_t \nabla_{\tilde{\theta}} \mathcal{L}(X, Y) \\
+    \theta_t &= \theta_{t-1} - v_t 
+\end{align*}
+Notice, the gradient is evaluated at $\tilde{\theta}$ which include the
+velocity. This update attempts to predict what the gradient is at the future
+location of the parameters including the velocity term.
+
+There are many alternative updates most which attempt to incorporate some
+degree of variance or second order information of the gradient. Another
+alternative we use in this work is Adaptive Moment Estimation
+(Adam)\cite{kingma2014adam}.
+
+\subsubsection{Gradient Clipping}
+
+The gradient of an RNN can be unstable and in some cases explode to very large
+magnitudes. This tends to happen particularly with long sequences with unusual
+dynamics. This results in unstable gradient based optimizers which can diverge
+at any point in the learning process. 
+
+A very effective technique to counter this problem is gradient clipping.
+Gradient clipping simply scales the magnitude of the parameters to be less than
+some preset threshhold
+\[
+\hat{\theta} = \frac{\min\{\|\theta\|, \gamma\}}{\|\theta\|} \theta
+\]
+where $\gamma$ is can be set to something like one standard deviation above the
+mean gradient norm.
