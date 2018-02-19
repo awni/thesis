@@ -1,14 +1,108 @@
 \chapter{Introduction}
 
-\section{Overview}
-\section{Overview of Contributions}
+-TODO Write the intro
 
--high level contributions
+\section{Contributions per Chapter}
 
-\section{Outline}
+We present the following contributions in the chapters of this dissertation:
 
--per chapter outline
+\begin{itemize}
+    \setlength{\itemindent}{3.4em}
+    \item[{\bf Chapter 2:}]{\bf Background.} This chapter provides some
+        background on the models used throughout this work including RNNs and
+        CTC. We start with a brief introduction to RNNs including LSTMs and
+        GRUs. We also discuss various optimization algorithms used for RNNs as
+        well as gradient clipping. We follow this with an in-depth look at CTC.
+        We explain the CTC loss function and how to efficiently compute it as
+        well as how to perform inference with a CTC trained model. The next
+        section discusses properties and limitations of CTC and we follow this
+        by placing CTC in context with HMMs and encoder-decoder models. We also
+        include a short section on practical advice when using CTC. At the end
+        of the background section we give a short bibliography and references
+        for further study of the related material. 
+
+    \item [{\bf Chapter 3:}]{\bf Application to Arrhythmia Detection.} In
+        Chapter 3 we show how to apply deep convolutional networks to the task
+        of arrhythmia detection. We collect a dataset substantially larger than
+        previously studied corpora and with it develop a model which achieves
+        excellent results. The model contains 34 layers, and in order to make
+        such a deep model tractable we use techniques like batch normalization
+        and residual connections. For ten arrhythmias, Sinus rhythm and noise
+        the model achieves performance comparable to that of expert
+        cardiologists when using a committee consensus label as the ground
+        truth.
+
+    \item [{\bf Chapter 4:}]{\bf First-pass Speech Recognition} Here we present
+        a method to perform first-pass large vocabulary continuous speech
+        recognition using only a neural network and language model. Deep neural
+        network acoustic models are now commonplace in HMM-based speech
+        recognition systems, but building such systems is a complex,
+        domain-specific task. Prior work demonstrated the feasibility of
+        discarding the HMM sequence modeling framework by directly predicting
+        transcript text from audio. This chapter extends this approach in two
+        ways. First, we demonstrate that a straightforward recurrent neural
+        network architecture can achieve a high level of accuracy. Second, we
+        propose and evaluate a modified prefix-search decoding algorithm. This
+        approach to decoding enables first-pass speech recognition with a
+        language model, completely unaided by the cumbersome infrastructure of
+        HMM-based systems. Experiments on the Wall Street Journal corpus
+        demonstrate fairly competitive word error rates, and the importance of
+        bi-directional network recurrence. 
+
+    \item [{\bf Chapter 5:}]{\bf Deep Speech: Scaling Up End-to-end Speech
+        Recognition} In Chapter 5, we present a state-of-the-art speech
+        recognition system developed using end-to-end deep learning. Our
+        architecture is significantly simpler than traditional speech systems,
+        which rely on laboriously engineered processing pipelines; these
+        traditional systems also tend to perform poorly when used in noisy
+        environments. In contrast, our system does not need hand-designed
+        components to model background noise, reverberation, or speaker
+        variation, but instead directly learns a function that is robust to
+        such effects. We do not need a phoneme dictionary, nor even the concept
+        of a "phoneme." Key to our approach is a well-optimized RNN training
+        system that uses multiple GPUs, as well as a set of novel data
+        synthesis techniques that allow us to efficiently obtain a large amount
+        of varied data for training. Our system, called Deep Speech,
+        outperforms previously published results on the widely studied
+        Switchboard Hub5'00, achieving 16.0\% error on the full test set. Deep
+        Speech also handles challenging noisy environments better than widely
+        used, state-of-the-art commercial speech systems.
+
+    \item [{\bf Chapter 6:}]{\bf Deep Speech 2: End-to-End Speech Recognition
+        in English and Mandarin} We show that an end-to-end deep learning
+        approach can be used to recognize either English or Mandarin Chinese
+        speech–two vastly different languages. We show how to improve upon the
+        Deep Speech model along three axis: the amount of annotated data, the
+        architecture of the model and the efficiency of computation.  Th
+        application of HPC techniques, enables experiments that previously took
+        weeks to now run in days. This allows us to iterate more quickly to
+        identify superior architectures and algorithms.  As a result, in
+        several cases, our system is competitive with the transcription of
+        human workers when benchmarked on standard datasets.  Finally, using a
+        technique called Batch Dispatch with GPUs in the data center, we show
+        that our system can be inexpensively deployed in an online setting,
+        delivering low latency when serving users at scale.
+
+    \item [{\bf Chapter 7:}]{\bf Keyword Spotting and Voice Activity Detection}
+        In this chapter we show how a single neural network architecture can be
+        used for two tasks: on-line keyword spotting and voice activity
+        detection. We develop novel inference algorithms for an end-to-end RNN
+        trained with the CTC loss function which allow our model to achieve
+        high accuracy on both keyword spotting and voice activity detection
+        without retraining. In contrast to prior voice activity detection
+        models, this architecture does not require aligned training data and
+        uses the same parameters as the keyword spotting model. This allows us
+        to deploy a high quality voice activity detector with no additional
+        memory or maintenance requirements.
+
+\end{itemize}
 
 \section{First Published Appearances}
-
--Cite published works and say which chapters they are.
+Most contributions described in this thesis have first appeared in various
+publications. Much of the background material on CTC in Chapter 2 first
+appeared in~\cite{rajpurkar2017}. The results of Chapter 3 first appeared in
+~\cite{hannun2017sequence}. The results on first-pass speech recognition in
+Chapter 4 were in~\cite{hannun2014firstpass}. Chapters 5 on Deep Speech and 6
+on Deep Speech 2 were previously published in~\cite{hannun2014deepspeech}
+and~\cite{amodei2016deep}. Finally, Chapter 7 on keyword Spotting and voice
+acitivity detection was first appeared in~\cite{lengerich2016}.
