@@ -1,6 +1,101 @@
 \chapter{Introduction}
 
--TODO Write the intro
+Countless problems can be formulated in the framework of transcribing
+real-valued sequences. Some commonly studied examples include automatic speech
+recognition and handwriting recognition. Reading electrocardiograms is another
+example from the medical domain. In this work we develop a general framework
+for building high accuracy models for tasks which can be posed in this way. Our
+framework requires two critical ingredients: a differentiable model based on
+deep neural networks and a sufficiently large annotated dataset. These
+ingredients can also be viewed as our primary generalization knobs. The more
+resources we spend on finding a good model and improving the size and quality
+of our annotated data, the better the overall performance of the model. In many
+cases the amount of computation needed to efficiently train these models
+requires bringing to bear techniques from  high performance computing (HPC) to
+make iteration times tractable.
+
+In this work we exclusively rely on models which fall under the classification
+of deep learning. The advent of deep learning has dramatically improved the
+state-of-the-art in many common machine learning benchmarks. Some examples
+include classifying objects from images, language modeling, transcribing and
+generating speech and machine translation. In some tasks, the progress has been
+so remarkable that the performance of the models now matches or exceeds that of
+human experts.
+
+Deep learning works well for the task of transcribing real-valued sequences as
+this framework falls into the regime of supervised learning. While we put forth
+a framework which when utilized well we believe can solve many sequence
+transcription problems to near human expert levels, not all problems whichn we
+can pose this way can be solved to a high degree of accuracy with todays
+algorithms and technology. Types of problems that can typically be solved with
+these methods include "perception" problems and more broadly speaking problems
+which an expert human can do with a few seconds or less of
+thought.\footnote{Classifying problems which can be solved by deep learning in
+this way is due to Andrew Ng in e.g.
+https://hbr.org/2016/11/what-artificial-intelligence-can-and-cant-do-right-now.}
+Both speech transcription, key word spotting and detecting arrhythmias ini
+electrocardiograms meet this criteria.
+
+Traditional speech recognition systems rely on many hand-engineered components
+all tied together in the hidden markov model framework. Similarly, prior work
+in arrhythmia detection also relies heavily on feature engineering other rules
+based algorithms for beat and rhythm detection. Compared to these previous
+approaches for solving sequence transcription problems, deep learning is much
+more "end-to-end". Deep learning based models can be trained end-to-end
+directly on the input and output pairs in the training set or on inputs after a
+simple preprocessing step. Because of this the model is substantially mored
+general and does not make many of the prior assumptions that come along the the
+hand-engineered components in traditional systems. While these assumptions can
+be useful to achieve generalization in low-resource settings, they also
+introduce bias which is cannot be overcome as we increase the available
+resources and hence introduce a glass-ceiling on performance.
+
+Since deep models are much more general, they can easily fail to perform well
+on unseen data. These models require two ingredients to achieve high
+generalization.l The first ingredient is to a careful tuning of the
+architecture and other constraintsi encoded in the model. Deep learning is
+really a framework for "differentiable computing". This framework consists of
+differentiable modules (e.g. recurrent unity, convolutional units, batch
+normalization, etc.) and a recipe for connecting these modules and efficiently
+learning their parameters. The building blocks are able to introduce useful
+prior information for the problem at hand while also maintaining flexibility
+since the model can learn to overcome these constraints during the learning
+process. However, finding the right set of building blocks, sequencing them
+correctly and tuning their hyperparameters can require considerable
+computational resources and careful human effort. As we show in the following
+applications this effort can yield dramatic improvements to the generalization
+of the model.
+
+The second critical ingredient is the amount and quality of annotated data we
+can use for the problem. We can compensate for data by finding better models
+and vice versa. However on the following applications we achieve the best
+performance by jointly optimizing the two. In the speech recognition
+application we construct datasets as large as 12,000 hours. At the time
+commonly studied academic speech corpora were in the 80-300 hour range. For the
+task of arrhythmia detection we develop a corpus which contains more than 500
+times the number of unique patients as the most commonly used publicly
+available benchmark.
+
+In order to efficiently iterate over model architectures on large annotated
+datasets, we require considerable comptuation. The advent of GPUs in deep
+learning has unlocked what otherwise would be computationally intractable
+problem. Even in the past several years, the performance of these models with
+off-the-shelf hardware and software has improved multiple orders of magnitude.
+However, even with these dramatic improvements in some cases considerable
+effort must still be spent to make these models efficient to train and deploy.
+The scale of the speech transcription problem is such that data parallel
+optimization algorithms are essential. We discuss techniques for efficient
+computation on the GPU and efficient I/O and network bandwidth utilization off
+the GPU.
+
+In summary, we develop end-to-end models for transcribing real-valued sequences
+and discuss three applications of these models. The first is detecting abnormal
+heart activity in electrocardiograms. The second is large vocabulary continuous
+speech recognition and the third is keyword spotting and voice activity
+detection. In all cases we show how to scale high capacity models to
+unprecedentedly large datasets. With these techniques we can achieve
+performance comparable to that of human experts and state-of-the-art error
+rates in speech recognition for multiple languages.
 
 \section{Contributions per Chapter}
 
@@ -32,7 +127,7 @@ We present the following contributions in the chapters of this dissertation:
         cardiologists when using a committee consensus label as the ground
         truth.
 
-    \item [{\bf Chapter 4:}]{\bf First-pass Speech Recognition} Here we present
+    \item [{\bf Chapter 4:}]{\bf First-pass Speech Recognition.} Here we present
         a method to perform first-pass large vocabulary continuous speech
         recognition using only a neural network and language model. Deep neural
         network acoustic models are now commonplace in HMM-based speech
@@ -49,8 +144,8 @@ We present the following contributions in the chapters of this dissertation:
         demonstrate fairly competitive word error rates, and the importance of
         bi-directional network recurrence. 
 
-    \item [{\bf Chapter 5:}]{\bf Deep Speech: Scaling Up End-to-end Speech
-        Recognition} In Chapter 5, we present a state-of-the-art speech
+    \item [{\bf Chapter 5:}]{\bf Deep Speech -- Scaling Up End-to-end Speech
+        Recognition.} In Chapter 5, we present a state-of-the-art speech
         recognition system developed using end-to-end deep learning. Our
         architecture is significantly simpler than traditional speech systems,
         which rely on laboriously engineered processing pipelines; these
@@ -68,8 +163,8 @@ We present the following contributions in the chapters of this dissertation:
         Speech also handles challenging noisy environments better than widely
         used, state-of-the-art commercial speech systems.
 
-    \item [{\bf Chapter 6:}]{\bf Deep Speech 2: End-to-End Speech Recognition
-        in English and Mandarin} We show that an end-to-end deep learning
+    \item [{\bf Chapter 6:}]{\bf Deep Speech 2 -- End-to-End Speech Recognition
+        in English and Mandarin.} We show that an end-to-end deep learning
         approach can be used to recognize either English or Mandarin Chinese
         speech–two vastly different languages. We show how to improve upon the
         Deep Speech model along three axis: the amount of annotated data, the
@@ -83,17 +178,17 @@ We present the following contributions in the chapters of this dissertation:
         that our system can be inexpensively deployed in an online setting,
         delivering low latency when serving users at scale.
 
-    \item [{\bf Chapter 7:}]{\bf Keyword Spotting and Voice Activity Detection}
-        In this chapter we show how a single neural network architecture can be
-        used for two tasks: on-line keyword spotting and voice activity
-        detection. We develop novel inference algorithms for an end-to-end RNN
-        trained with the CTC loss function which allow our model to achieve
-        high accuracy on both keyword spotting and voice activity detection
-        without retraining. In contrast to prior voice activity detection
-        models, this architecture does not require aligned training data and
-        uses the same parameters as the keyword spotting model. This allows us
-        to deploy a high quality voice activity detector with no additional
-        memory or maintenance requirements.
+    \item [{\bf Chapter 7:}]{\bf Keyword Spotting and Voice Activity
+        Detection.} In this chapter we show how a single neural network
+        architecture can be used for two tasks: on-line keyword spotting and
+        voice activity detection. We develop novel inference algorithms for an
+        end-to-end RNN trained with the CTC loss function which allow our model
+        to achieve high accuracy on both keyword spotting and voice activity
+        detection without retraining. In contrast to prior voice activity
+        detection models, this architecture does not require aligned training
+        data and uses the same parameters as the keyword spotting model. This
+        allows us to deploy a high quality voice activity detector with no
+        additional memory or maintenance requirements.
 
 \end{itemize}
 
@@ -105,4 +200,4 @@ appeared in~\cite{rajpurkar2017}. The results of Chapter 3 first appeared in
 Chapter 4 were in~\cite{hannun2014firstpass}. Chapters 5 on Deep Speech and 6
 on Deep Speech 2 were previously published in~\cite{hannun2014deepspeech}
 and~\cite{amodei2016deep}. Finally, Chapter 7 on keyword Spotting and voice
-acitivity detection was first appeared in~\cite{lengerich2016}.
+acitivity detection was first published in~\cite{lengerich2016}.
