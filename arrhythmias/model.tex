@@ -1,29 +1,31 @@
 \section{Model}
 \label{sec:arrhythmias:model}
 
-\subsection*{Problem Formulation}
+\subsection{Problem Formulation}
+
 The ECG arrhythmia detection task is a sequence-to-sequence task which takes as
-input an ECG signal $X=[x_1,.. x_k]$, and outputs a sequence of labels $r=[r_1,
-... r_n],$ such that each $r_i$ can take on one of $m$ different rhythm
+input an ECG signal $X=[x_1,.. x_T]$, and outputs a sequence of labels $Y=[y_1,
+... y_U]$, such that each $y_u$ can take on one of 12 different rhythm
 classes. Each output label corresponds to a segment of the input. Together the
 output labels cover the full sequence.
 
 For a single example in the training set, we optimize the cross-entropy
 objective function
 \[
- \mathcal{L}(X, r) = \frac{1}{n} \sum_{i=1}^n \log p(R = r_i \mid X)
+ \mathcal{L}(X, Y) = \frac{1}{U} \sum_{u=1}^U \log p(y_u \mid X)
 \]
-where $p(\cdot)$ is the probability the network assigns to the $i$-th output
-taking on the value $r_i$.
+where $p(\cdot)$ is the probability that the network assigns to the $u$-th
+output taking on the value $y_u$.
 
-\subsection*{Model Architecture and Training}
+\subsection{Model Architecture and Training}
+
 We use a convolutional neural network for the sequence-to-sequence learning
 task. The high-level architecture of the network is shown in
 Figure~\ref{fig:arrhythmias:net}. The network takes as input a time-series of
 raw ECG signal, and outputs a sequence of label predictions. The 30 second long
 ECG signal is sampled at 200Hz, and the model outputs a new prediction once
-every second. We arrive at an architecture which is 33 layers of convolution
-followed by a fully connected layer and a softmax. 
+every 256 samples. After careful architectur search, arrive at a model which is
+33 layers of convolution followed by a fully connected layer and a softmax. 
 
 \begin{figure}
 \centering
@@ -39,15 +41,14 @@ shortcut connections in a similar manner to those found in the Residual Network
 architecture~\cite{he2016identity}. The shortcut connections between
 neural-network layers optimize training by allowing information to propagate
 well in very deep neural networks. Before the input is fed into the network, it
-is normalized using a robust normalization strategy. The network consists of
-16 residual blocks with 2 convolutional layers per block. The convolutional
-layers all have a filter length of 16 and have 64k filters, where $k$
-starts out as 1 and is incremented every 4-th residual block. Every
-alternate residual block subsamples its inputs by a factor of 2, thus the
-original input is ultimately subsampled by a factor of $2^8$. When a residual
-block subsamples the input, the corresponding shortcut connections also
-subsample their input using a Max Pooling operation with the same subsample
-factor. 
+is normalized using a robust normalization strategy. The network consists of 16
+residual blocks with 2 convolutional layers per block. The convolutional layers
+all have a filter length of 16 and have 64$k$ filters, where $k$ starts out as
+1 and is incremented every 4-th residual block. Every alternate residual block
+subsamples its inputs by a factor of 2, thus the original input is ultimately
+subsampled by a factor of $2^8$. When a residual block subsamples the input,
+the corresponding shortcut connections also subsample their input using a Max
+Pooling operation with the same subsample factor. 
 
 Before each convolutional layer we apply Batch
 Normalization~\cite{ioffe2015batch} and a rectified linear activation, adopting
@@ -55,7 +56,7 @@ the pre-activation block design~\cite{he2016deep}. The first and last layers of
 the network are special-cased due to this pre-activation block structure. We
 also apply Dropout~\cite{srivastava2014dropout} between the convolutional
 layers and after the non-linearity. The final fully connected layer and softmax
-activation produce a distribution over the 14 output classes for each
+activation produce a distribution over the 12 output classes for each
 time-step.
 
 We train the networks from scratch, initializing the weights of the

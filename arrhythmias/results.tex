@@ -16,8 +16,8 @@ Sequence Level Accuracy, does not penalize for time-misalignment within a
 record. We report the F1 score between the unique class labels from the ground
 truth and those from the model prediction.
 
-In both the Sequence and the Set case, we compute the F1 score for each class
-separately. We then compute the overall F1 (and precision and recall) as the
+In both the Sequence and the Set case, we compute the metrics for each class
+separately. We then compute aggregate results for AUC and F1 as the
 class-frequency weighted mean.
 
 \subsection*{Model and Cardiologist Performance}
@@ -26,38 +26,45 @@ We assess the cardiologist performance on the test set. Recall that each of the
 records in the test set has a ground truth label from a committee of three
 cardiologists as well as individual labels from a disjoint set of 6 other
 cardiologists. To assess cardiologist performance for each class, we take the
-average of all the individual cardiologist F1 scores using the group label as
-the ground truth annotation.
+average of all the individual cardiologist scores using the group label as the
+ground truth annotation.
 
 \begin{table}
 \centering
+\begin{small}
 \begin{tabular}{r l l}
 \toprule
-                               & Sequence AUC (95\% CI)   & Set AUC (95\% CI) \\
+                               & Sequence AUC & Set AUC \\
 \midrule
-Atrial Fibrillation \& Flutter & 0.975 (0.968-0.982) & 0.959 (0.924-0.994) \\
-Atrio-ventricular Block        & 0.989 (0.984-0.994) & 0.981 (0.954-1.000) \\
-Bigeminy                       & 0.998 (0.995-1.000) & 0.997 (0.981-1.000) \\
-Ectopic Atrial Rhythm          & 0.908 (0.883-0.932) & 0.935 (0.863-1.000) \\
-Idioventricular Rhythm         & 0.995 (0.987-1.000) & 0.986 (0.958-1.000) \\
-Junctional Rhythm              & 0.985 (0.978-0.992) & 0.980 (0.949-1.000) \\
-Noise                          & 0.985 (0.979-0.992) & 0.958 (0.914-1.000) \\
-Sinus Rhythm                   & 0.976 (0.973-0.980) & 0.981 (0.968-0.994) \\
-Supraventricular Tachycardia   & 0.972 (0.959-0.985) & 0.940 (0.884-0.996) \\
-Trigeminy                      & 0.999 (0.995-1.000) & 0.997 (0.979-1.000) \\
-Ventricular Tachycardia        & 0.995 (0.981-1.000) & 0.981 (0.935-1.000) \\
-Wenckebach                     & 0.982 (0.972-0.991) & 0.981 (0.948-1.000) \\
+Atrial Fibrillation \& Flutter & 0.975 & 0.959 \\
+Atrio-ventricular Block        & 0.989 & 0.981 \\
+Bigeminy                       & 0.998 & 0.997 \\
+Ectopic Atrial Rhythm          & 0.908 & 0.935 \\
+Idioventricular Rhythm         & 0.995 & 0.986 \\
+Junctional Rhythm              & 0.985 & 0.980 \\
+Noise                          & 0.985 & 0.958 \\
+Sinus Rhythm                   & 0.976 & 0.981 \\
+Supraventricular Tachycardia   & 0.972 & 0.940 \\
+Trigeminy                      & 0.999 & 0.997 \\
+Ventricular Tachycardia        & 0.995 & 0.981 \\
+Wenckebach                     & 0.982 & 0.981 \\
 \midrule
    Average                     & 0.979               & 0.974 \\
 \bottomrule
 \end{tabular}
-\caption{The model AUC scores with 95\% confidence intervals for the sequence
-         and set level metrics.}
+\end{small}
+\caption{The model AUC scores for each rhythm class and in aggregate.}
 \label{tab:arrhythmias:model_auc}
 \end{table}
 
+Table~\ref{tab:arrhythmias:model_auc} gives the per class and aggregate AUC
+scores. Our model achieves an AUC of greater than 0.90 for each of the 12
+rhythm diagnoses, with an average AUC of 0.97. We also compute the sensitivity
+at a specifity of 0.9 and vice versa in~\ref{tab:arrhythmias:sens_spec}.
+
 \begin{table}
 \centering
+\begin{small}
 \begin{tabular}{r l l}
 \toprule
              & Sensitivity       & Specificity  \\
@@ -76,6 +83,7 @@ Ventricular Tachycardia        & 1.000 & 0.981 \\
 Wenckebach                     & 0.977 & 0.956 \\
 \bottomrule
 \end{tabular}
+\end{small}
 \caption{The maximum model sensitivity with specificity greater than 0.9 and
          vice versa.}
 \label{tab:arrhythmias:sens_spec}
@@ -83,6 +91,7 @@ Wenckebach                     & 0.977 & 0.956 \\
 
 \begin{table}
 \centering
+\begin{small}
 \begin{tabular}{r c c c c}
 \toprule
     & \multicolumn{2}{c}{Sequence F1} & \multicolumn{2}{c}{Set F1} \\
@@ -105,39 +114,46 @@ Wenckebach                     & 0.714 & 0.593 & 0.806 & 0.736 \\
 Average	                       & 0.808 & 0.750 & 0.809 & 0.778 \\
 \bottomrule
 \end{tabular}
+\end{small}
 \caption{The F1 score for the sequence and set-level metrics comparing the
          model and the average of six individual cardiologist to the committee
          consensus ground truth.}
 \label{tab:arrhythmias:model_cardiologist_f1}
 \end{table}
 
-Table~\ref{tab:HumanVsModel} shows the breakdown of both cardiologist and model
-scores across the different rhythm classes. The model outperforms the average
-cardiologist performance on most rhythms, noticeably outperforming the
-cardiologists in the AV Block set of arrhythmias which includes Mobitz I
-(Wenckebach), Mobitz II (AVB\_Type2) and complete heart block (CHB). This is
-especially useful given the severity of Mobitz II and complete heart block and
-the importance of distinguishing these two from Wenckebach which is usually
-considered benign.
-
-Table~\ref{tab:HumanVsModel} also compares the aggregate precision, recall and
-F1 for both  model and cardiologist compared to the ground truth annotations.
-The aggregate scores for the cardiologist are computed by taking the mean of
-the individual cardiologist scores. The model outperforms the cardiologist
-average in both precision and recall.
+Table~\ref{tab:arrhythmias:model_cardiologist_f1} shows the breakdown of both
+cardiologist and model sequence and set F1 across the different rhythm classes.
+The model outperforms the average cardiologist performance on most rhythms,
+noticeably outperforming the cardiologists in the AV Block set of arrhythmias
+which includes Mobitz I (Wenckebach), Mobitz II and complete heart block (both
+categorized as Atrio-ventricular Block). This is especially useful given the
+severity of second and third degree heart block and the importance of
+distinguishing these two from Wenckebach which is usually considered benign.
+The model also outperforms the cardiologist average accross all rhythm classes
+for both the sequence and set F1 score.
 
 \begin{figure}
 \centering
 \includegraphics[width=1.0\textwidth]{arrhythmias/figures/roc_curve.pdf}
-\caption{Receiver operating characteristic curves at sequence-level for atrial
-         fibrillation (AF), trigeminy and atrioventricular block (AVB).}
+\caption{Receiver operating characteristic curves at the sequence level for
+    atrial fibrillation and flutter (AF), trigeminy and atrioventricular block
+    (AVB).}
 \label{fig:arrhythmias:roc_curve}
 \end{figure}
+
+Figures~\ref{fig:arrhythmias:roc_curve} and
+\ref{fig:arrhythmias:prec_recall_curve} show the models performance at various
+operating thresholds on an ROC and precision-recall curve respectively. We show
+here three arrhythmias taken from one-third of the test set. We also compute
+and plot the operating point for the six individual cardiologists who annotated
+that third of the test set. The model outperforms almost all of the individual
+cardiologists. We see the same behaviour for the other rhythm classes not shown
+here.
 
 \begin{figure}
 \centering
 \includegraphics[width=1.0\textwidth]{arrhythmias/figures/prec_recall_curve.pdf}
-\caption{Precision-Recall curves at sequence-level for atrial fibrillation,
-         trigeminy and atrioventricular block.}
+    \caption{Precision-recall curves at the sequence level for atrial
+    fibrillation and flutter (AF), trigeminy and atrioventricular block (AVB).}
 \label{fig:arrhythmias:prec_recall_curve}
 \end{figure}

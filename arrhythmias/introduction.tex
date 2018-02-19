@@ -27,20 +27,20 @@ them over time. This is difficult due to the variability in wave morphology
 between patients as well as the presence of noise.
 
 We train a 34-layer convolutional neural network (CNN) to detect arrhythmias in
-arbitrary length ECG time-series. Figure~\ref{fig:record} shows an example of
-an input to the model. In addition to classifying noise and the sinus rhythm,
-the network learns to classify and segment twelve arrhythmia types present in
-the time-series. The model is trained end-to-end on a single-lead ECG signal
-sampled at 200Hz and a sequence of annotations for every second of the ECG as
-supervision. To make the optimization of such a deep model tractable, we use
-residual connections and batch-normalization~\cite{he2016deep, ioffe2015batch}.
-The depth increases both the non-linearity of the computation as well as the
-size of the context window for each classification decision.
+arbitrary length ECG time-series. In addition to classifying noise and the
+sinus rhythm, the network learns to classify and segment ten arrhythmia types
+present in the time-series. The model is trained end-to-end on a single-lead
+ECG signal sampled at 200Hz and a sequence of annotations for every second of
+the ECG as supervision. To make the optimization of such a deep model
+tractable, we use residual connections and
+batch-normalization~\cite{he2016deep, ioffe2015batch}.  The depth increases
+both the non-linearity of the computation as well as the size of the context
+window for each classification decision.
 
 We construct a dataset 500 times larger than other datasets of its
 kind~\cite{moody2001impact, goldberger2000physiobank}. One of the most popular
 previous datasets, the MIT-BIH corpus contains ECG recordings from 47 unique
-patients. In contrast, we collect and annotate a dataset of about 30,000 unique
+patients. In contrast, we collect and annotate a dataset of about 54,000 unique
 patients from a pool of nearly 300,000 patients who have used the Zio Patch
 monitor\footnote[1]{iRhythm Technologies, San Francisco,
 California}~\cite{turakhia2013diagnostic}. We intentionally select patients
@@ -49,5 +49,7 @@ more even and thus the likelihood of observing unusual heart-activity high.
 
 We test our model against board-certified cardiologists. A committee of three
 cardiologists serve as gold-standard annotators for the 336 examples in the
-test set. Our model exceeds the individual expert performance on both recall
-(sensitivity), and precision (positive predictive value) on this test set.
+test set. Our model achieves an AUC of greater than 0.90 for each of the 12
+rhythm diagnoses, with an average AUC of 0.97. The model met or exceeded the
+averaged cardiologist performance for all diagnoses. Average F1 scores for the
+model (0.81) exceeded those for averaged cardiologists (0.78).
