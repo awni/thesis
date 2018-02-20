@@ -1,17 +1,17 @@
 \section{Connectionist Temporal Classification}
 
-Consider speech recognition. We have a dataset of audio clips and corresponding
-transcripts. Unfortunately, we do not know how the characters in the transcript
-align to the audio. This makes training a speech recognizer harder than it
-might at first seem.
+In speech recognition, for example, we have a dataset of audio clips and
+corresponding transcripts. Unfortunately, we do not know how the characters in
+the transcript align to the audio. This makes training a speech recognizer
+harder than it might at first seem.
 
 Without this alignment, the simple approaches are not available to us. We could
-devise a rule like ``one character corresponds to ten inputs". But people's
-rates of speech vary, so this type of rule can always be broken.  Another
-alternative is to hand-align each character to its location in the audio. From
-a modeling standpoint this works well -- we would know the ground truth for
-each input time-step. However, for any reasonably sized dataset this is
-prohibitively time consuming.
+devise a rule like ``one character corresponds to ten inputs". However,
+people's rates of speech vary, so this type of rule can always be broken.
+Another alternative is to hand-align each character to its location in the
+audio. From a modeling standpoint this works well -- we would know the ground
+truth for each input time-step. However, for any reasonably sized dataset this
+is prohibitively time consuming.
 
 This problem is not specific to speech recognition. We see it in many other
 places. Handwriting recognition from images or sequences of pen strokes is one
@@ -84,7 +84,7 @@ a, t]}$. One way to align $X$ and $Y$ is to assign an output character to each
 input step and collapse repeats.
 
 \begin{center}
-\includegraphics[width=0.5\textwidth]{background/figures/naive_alignment.pdf}
+\includegraphics[width=0.4\textwidth]{background/figures/naive_alignment.pdf}
 \end{center}
 
 This approach has two problems.
@@ -143,7 +143,7 @@ computing the probability for a single alignment step-by-step.
 
 Models trained with CTC typically use a recurrent neural network (RNN) to
 estimate the per time-step probabilities, $p_t(a_t \mid X)$. An RNN usually
-works well since it accounts for context in the input, but we're free to use
+works well since it accounts for context in the input, but we are free to use
 any learning algorithm which produces a distribution over output classes given
 a fixed-size slice of the input.
 
@@ -177,7 +177,7 @@ the previous time-step, we can compute $\alpha_{s, t}$. There are two cases.
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=0.5\textwidth]{background/figures/cases.pdf}
-\caption{In Case 1 (left) we cannot skip the previous token whereas Case 2
+\caption{In Case 1 (left) we cannot skip the previous token whereas in Case 2
     (right) we can.}
 \end{figure}
 
@@ -210,7 +210,7 @@ the previous step.
 \begin{figure}
 \centering
     \includegraphics[width=\textwidth]{background/figures/ctc_cost.pdf}
-\caption{An example of the computation performed by the dynamic programming
+\caption{An example of the computation performed by CTC's dynamic programming
     algorithm. Every valid alignment has a path in this graph. Node $(s, t)$ in
     the diagram represents $\alpha_{s, t}$ – the CTC score of the subsequence
     $Z_{1:s}$ after $t$ input steps.}
@@ -222,10 +222,10 @@ probability is the sum of the two final nodes.
 
 Now that we can efficiently compute the loss function, the next step is to
 compute a gradient and train the model. The CTC loss function is differentiable
-with respect to the per time-step output probabilities since it's just sums and
-products of them. Given this, we can analytically compute the gradient of the
-loss function with respect to the (unnormalized) output probabilities and from
-there run backpropagation as usual.
+with respect to the per time-step output probabilities since it is just sums
+and products of them. Given this, we can analytically compute the gradient of
+the loss function with respect to the (unnormalized) output probabilities and
+from there run backpropagation as usual.
 
 For a training set $\mathcal{D}$, the model's parameters are tuned to minimize
 the negative log-likelihood
@@ -316,17 +316,16 @@ Y^* \enspace = \enspace \argmax_Y \enspace
         p(Y \mid X) \cdot p(Y)^\alpha \cdot L(Y)^\beta
 \end{align*}
 The terms are respectively the CTC conditional probability, the language model
-probability and a ``word" insertion bonus.
-
-The function $L(Y)$ computes the length of $Y$ in terms of the language model
-tokens and acts as a word insertion bonus. With a word-based language model
-$L(Y)$ counts the number of words in $Y$. If we use a character-based language
-model then $L(Y)$ counts the number of characters in $Y$. The language model
-scores are only included when a prefix is extended by a character (or word) and
-not at every step of the algorithm. This causes the search to favor shorter
-prefixes, as measured by $L(Y)$, since they do not include as many language
-model updates. The word insertion bonus helps with this. The parameters
-$\alpha$ and $\beta$ are usually set by cross-validation.
+probability and a ``word" insertion bonus. The function $L(Y)$ computes the
+length of $Y$ in terms of the language model tokens and acts as a word
+insertion bonus. With a word-based language model $L(Y)$ counts the number of
+words in $Y$. If we use a character-based language model then $L(Y)$ counts the
+number of characters in $Y$. The language model scores are only included when a
+prefix is extended by a character (or word) and not at every step of the
+algorithm. This causes the search to favor shorter prefixes, as measured by
+$L(Y)$, since they do not include as many language model updates. The word
+insertion bonus helps with this. The parameters $\alpha$ and $\beta$ are
+usually set by cross-validation.
 
 The language model scores and word insertion term can be included in the beam
 search. Whenever we propose to extend a prefix by a character, we can include
@@ -460,7 +459,7 @@ given $X$. The second is how the set $\mathcal{A}$ is produced. We deal with
 each in turn.
 
 The HMM can be used with discriminative models which estimate $p(a \mid x)$.
-To do this, we apply Bayes’ rule and rewrite the model as
+To do this, we apply Bayes' Rule and rewrite the model as
 \begin{align*}
 p(X) \enspace &\propto \enspace \sum_{A \in \mathcal{A}} \enspace \prod_{t=1}^T \; \frac{p(a_t \mid x_t)\; p(x_t)}{p(a_t)} \\
     &\propto \enspace \sum_{A \in \mathcal{A}} \enspace \prod_{t=1}^T \; \frac{p(a_t \mid x_t)}{p(a_t)}.
