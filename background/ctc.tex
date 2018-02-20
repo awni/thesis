@@ -308,12 +308,6 @@ probability of all alignments which do not end in $\epsilon$. When we rank the
 hypotheses at each step before pruning the beam, we will use their combined
 scores.
 
-The implementation of this algorithm does not require much code, but it is
-dense and tricky to get right. See Algorithm~\ref{alg:background:decoder} for a
-more rigorous description.
-
-%% TODO, include algorithm here.
-
 In some problems, such as speech recognition, incorporating a language model
 over the outputs significantly improves accuracy. We can include the language
 model as a factor in the inference problem.
@@ -337,6 +331,9 @@ $\alpha$ and $\beta$ are usually set by cross-validation.
 The language model scores and word insertion term can be included in the beam
 search. Whenever we propose to extend a prefix by a character, we can include
 the language model score for the new character given the prefix so far.
+
+The implementation of this decoding algorithm is dense and tricky to get right.
+See Algorithm~\ref{alg:first_pass:decode} for a more detailed description.
 
 \subsection{Properties of CTC}
 

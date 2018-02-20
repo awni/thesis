@@ -1,15 +1,6 @@
 \section{Decoding}
 \label{sec:first_pass:decoding}
 
-%%% NOTATION KEY:
-% \Sigma is extended alphabet including blank
-% S and s_t is sequence and sequence item at time t including blank char
-% T is time, 
-% x_t is input at time t, X is full audio input of length T
-% W is full word output
-% \ell is character label prefix not including blanks
-% p(c; x_t) is output of BDRNN at time t
-
 Assuming an input of length $T$, the output of the neural network will be $p(c;
 x_t)$ for $t = 1,\ldots,T$. Again, $p(c; x_t)$ is a distribution over possible
 characters in the alphabet $\Sigma$, which includes the blank symbol, given
@@ -36,7 +27,7 @@ include a word insertion penalty (or bonus) as
 \begin{equation}\label{eq:amlm}
     p_{\text{net}}(W ; X) p_{\text{lm}}(W)^\alpha |W|^\beta.
 \end{equation}
-Alogrithm \ref{alg:decode} attempts to find a word string $W$ which maximizes
+Alogrithm \ref{alg:first_pass:decode} attempts to find a word string $W$ which maximizes
 equation \ref{eq:amlm}.
 \begin{algorithm}[bt]
   \caption{Prefix Beam Search: The algorithm initializes the previous set of
@@ -48,7 +39,8 @@ constraint. Otherwise we extend the prefix and incorporate the output of the
 network. All new active prefixes are added to $A_\text{next}$. We then set
 $A_\text{prev}$ to include only the $k$ most probable prefixes of $A_\text{next}$.
 The output is the $1$ most probable transcript, although the this can easily
-be extended to return an $n$-best list.}\label{alg:decode}
+be extended to return an $n$-best list.}
+  \label{alg:first_pass:decode}
   \begin{algorithmic}
     \State $p_b(\emptyset; x_{1:0}) \gets 1,\; p_{nb}(\emptyset; x_{1:0}) \gets 0$
     \State $A_{\text{prev}} \gets \{\emptyset\}$ 
