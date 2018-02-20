@@ -1,3 +1,55 @@
 \chapter{Conclusions}
 
-This is the conclusion.
+In this work we have developed a framework for transcribing real-valued
+sequences with high accuracy. This framework has two primary axes for improving
+the generalization of the system. The first is the architecture of the model
+and the second is the amount of annotated data. As we increase the complexity
+of the model and the size of the dataset, efficient computation also becomes an
+essential ingredient.
+
+We have shown how to apply this framework for three applications:
+\begin{itemize}
+\item {\bf Arrhythmia Detection:} We develop a model and dataset which can
+transcribe an ECG sequence into a sequence of arrhythmia predictions. The
+model's performance is comparable to that of board-certified cardiologists.
+Guided by our framework we arrive at an architecture which consists of 34
+layers including techniques like residual connections and batch normalization.
+The dataset collected and annotated for the task contains more than 500 times
+the number of unique patients than other commonly used datasets.
+
+\item {\bf Speech Transcription:} We develop a first-pass speech transcription
+model. By continuing to refine the model's architecture and grow the training
+datasets we arrive at the Deep Speech 2 recognizer. This model has error rates
+comparable to that of human transcribers in both English and Mandarin speech.
+We create novel modules and learning strategies which improve the learning
+behaviour and generalization performance of the model. We also develop a
+sophisticated data construction and augmentation pipeline in order to grow our
+datasets to unprecedentadly large sizes. Finally in order to make the
+optimization and deployment of the model tractable we develop several highly
+effective techniques for efficient computation.
+
+\item {\bf Keyword Spotting and Voice Activity Detection:} By approaching the
+problems of keyword spotting and voice activity detection in an end-to-end
+fashion we are able to leverage most of the data and modeling techniques that
+we developed for the Deep Speech 2 model. With these techniques we develop a
+single model and a custom inference algorithm which is able to achieve high
+true postive rates and low false positive rates for both tasks. We deploy this
+model to a smart phone in real-time without any loss of accuracy.
+
+\end{itemize}
+
+Countless sequence transcription problems can benefit from the application of
+these techniques. However, there is substantial room to improve along many
+fronts. As hardware and software for computing these models continues to
+improve rapidly, the key challenge will be our ability to learn models which
+generalize well. Collecting large annotated datasets is time-consuming, costly
+and in some cases impractical. Sample efficient methods which can still
+generalize well will make the application of these models much more accessible.
+
+Nevertheless, the take home message of this work is that with sufficient
+resources we can achieve high accuracy on a wide range of sequence
+transcription problems. While not all problems can be solved this way, problems
+which do not require substantial high-level reasoning are typically amenable.
+For these problems we can leverage large annotated datasets, efficient
+computation and carefully tuned end-to-end models to match the performance of
+human experts on challenging tasks.
