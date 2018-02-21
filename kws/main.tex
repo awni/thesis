@@ -113,7 +113,7 @@ with a forced-alignment from a large vocabulary ASR system.
 \section{Model}
 \label{sec:kws:model}
 
-For a general keyword spotter we need a model which can give us $p(k | x)$
+For a general keyword spotter we need a model which can give us $p(k \mid x)$
 where $x$ is a window of speech and $k$ is any keyword. For VAD we use the same
 distribution and simply set $k$ to the empty string.
 
@@ -122,24 +122,24 @@ objective function to train an RNN on a corpus of utterance and transcription
 pairs. The CTC objective gives us the probability of any label string for a
 given utterance. We do not need an alignment here because CTC efficiently
 computes the score over all possible alignments. The objective function for an
-utterance $x$ and corresponding transcription $\ell$ is given by
+utterance $X$ and corresponding transcription $Y$ is given by
 \begin{equation}
-p_{\mathrm{CTC}}(\ell | x) = \sum_{s \in \mathrm{align}(\ell, T)} \prod_t^T p(s_t | x).
+p_{\mathrm{ctc}}(Y \mid X) = \sum_{s \in \mathrm{Align}(X, Y)} \prod_t^T p(s_t \mid X).
 \end{equation}
-The $\mathrm{align}(\cdot)$ function computes the set of possible alignments of
-the transcription $\ell$ over the $T$ time-steps of the utterance under the CTC
+The $\mathrm{Align}(\cdot)$ function computes the set of possible alignments of
+the transcription $Y$ over the $T$ time-steps of the utterance under the CTC
 operator. The CTC operator allows for repetitions of any character and
 insertions of the blank character, $\epsilon$, which signifies no output at a
 given time-step.
 
 For the on-line KWS task we must determine with low latency if the keyword has
 been said. Thus, in order to use this model for KWS we score a moving window of
-the audio stream $x$ so that we can find the keyword soon after it occurs. The
-score is computed as $p_{\mathrm{CTC}}(k | x_{t:t+w})$ where $k$ is any keyword
-and $x_{t:t+w}$ is a window of speech $w$ frames long. For the VAD task we
-first compute the probability of no speech by setting $k$ to the empty string.
-From this we can find the probability of speech by taking one minus the
-probability of no speech.
+the audio so that we can find the keyword soon after it occurs. The score is
+computed as $p_{\mathrm{ctc}}(k \mid x_{t:t+w})$ where $k$ is any keyword and
+$x_{t:t+w}$ is a window of speech $w$ frames long. For the VAD task we first
+compute the probability of no speech by setting $k$ to the empty string.  From
+this we can find the probability of speech by taking one minus the probability
+of no speech.
 
 \subsection{Network Architecture}
 \label{sec:kws:architecture}
@@ -167,12 +167,22 @@ experience. Setting the window size parameter can be tricky given that the
 keyword can be realized in many different lengths depending on the rate of
 speech of the user.
 
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{kws/figures/kws_hmm.pdf}
+    \caption{The keyword spotting state transition diagram for the keyword
+             ``hi".}
+    \label{fig:kws:hmm}
+\end{figure}
+
 To alleviate the sensitivity of the algorithm to the window size parameter we
 propose a modification to the CTC scoring algorithm presented above. For a
 given keyword $k$ instead of scoring $k$ under the model we instead score the
 regular expression [\^{}$k_0$]*$k$[\^{}$k_{n-1}$]*, where $k_0$ and $k_{n-1}$
-are the first and last characters of $k$. An implementation for computing this
-modified CTC score is shown in Algorithm \ref{alg:kws:scorekeyword}.
+are the first and last characters of $k$. Figure~\ref{fig:kws:hmm} shows an
+example state transition diagram for this scoring function. An implementation
+for computing this modified CTC score is shown in
+Algorithm~\ref{alg:kws:scorekeyword}.
 
 \begin{algorithm}
 \caption{Computing the score of a keyword, $k$, given the output probabilities
@@ -180,7 +190,7 @@ modified CTC score is shown in Algorithm \ref{alg:kws:scorekeyword}.
          $l$ is the keyword with $\epsilon$ inserted at the beginning, end and
          between every pair of characters of $k$. The matrix $P$ contains the
          distributions over output characters in its columns for each time-step.}
-\label{alg:scorekeyword}
+\label{alg:kws:scorekeyword}
 \begin{algorithmic}
 \Function{ScoreKeyword}{$l$, $P$}
 \State $S$ $\gets$ size($l$)
@@ -219,7 +229,7 @@ worry if other speech is present before or after the keyword.
 Computing the VAD score is efficient as it reduces to summing the log
 probabilities of the blank character over the window of speech frames
 \begin{equation}
-\log p(\mathrm{speech}| x_{t:t+w}) = 1 - \sum_{i=t}^{t + w} \log p_i(\epsilon | x_{t:t+w}).
+\log p(\mathrm{speech} \mid x_{t:t+w}) = 1 - \sum_{i=t}^{t + w} \log p_i(\epsilon \mid x_{t:t+w}).
 \end{equation}
 
 \section{Experiments}
