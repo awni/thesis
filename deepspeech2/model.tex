@@ -26,30 +26,23 @@ system which at its core is similar to the previous DS1
 system~\cite{hannun2014deepspeech}: a recurrent neural network (RNN) trained to
 ingest speech spectrograms and generate text transcriptions. 
 
-Let a single utterance $x^{(i)}$ and label $y^{(i)}$ be sampled from a training
-set $\mathcal{X} = \{(x^{(1)},y^{(1)}),(x^{(2)},y^{(2)}),\ldots\}$. Each
-utterance, $x^{(i)}$, is a time-series of length $T^{(i)}$ where every
-time-slice is a vector of audio features, $x_t^{(i)},  t=0,\ldots,T^{(i)}-1$.
-We use a spectrogram of power normalized audio clips as the features to the
-system, so $x^{(i)}_{t,p}$ denotes the power of the $p$'th frequency bin in the
-audio frame at time $t$. The goal of the RNN is to convert an input sequence
-$x^{(i)}$ into a final transcription $y^{(i)}$. For notational convenience, we
-drop the superscripts and use $x$ to denote a chosen utterance and $y$ the
-corresponding label.
+Let a single utterance $X$ and label $Y$ be sampled from a training set
+$\mathcal{X}$. We use a spectrogram of power normalized audio clips as the
+features to the system, so $x_{t,p}$ denotes the power of the $p$'th frequency
+bin in the audio frame at time $t$. The goal of the RNN is to convert an input
+sequence $X$ into a final transcription $Y$.
 
 The outputs of the network are the graphemes of each language. At each output
-time-step $t$, the RNN makes a prediction over characters, $p(\ell_t | x)$,
+time-step $t$, the RNN makes a prediction over characters, $p(\ell_t \mid x)$,
 where $\ell_t$ is either a character in the alphabet or the blank symbol. In
 English we have $\ell_t \in \{\textrm{a, b, c, }\ldots, \textrm{z},
-\textit{space}, \textit{apostrophe}, \textit{blank}\}$, where we have added the
-\textit{apostrophe} as well as a \textit{space} symbol to denote word
-boundaries. For the Mandarin system the network outputs simplified Chinese
-characters.  We describe this in more detail in
-Section~\ref{sec:deepspeech2:chinesemodel}.
+\textit{space}, \textit{apostrophe}, \textit{blank}\}$. For the Mandarin system
+the network outputs simplified Chinese characters. We describe this in more
+detail in Section~\ref{sec:deepspeech2:chinesemodel}.
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.6\textwidth]{deepspeech2/figures/ds2_architecture.pdf}
+    \includegraphics[width=0.5\textwidth]{deepspeech2/figures/ds2_architecture.pdf}
     \caption{The architecture of the DS2 network used for both English and
              Mandarin speech.}
     \label{fig:deepspeech2:ds2_network}
@@ -103,15 +96,13 @@ After the bidirectional recurrent layers we apply one or more fully connected la
 \begin{equation*}
     h^l_t = f( W^l h^{l-1}_t + b^l )
 \end{equation*}
-The output layer $L$ is a softmax computing a probability distribution over characters given by
-\begin{equation*}
-    p(\ell_t=k \mid x) = \frac{\exp(w^L_k \cdot h^{L-1}_t)}{\sum_j \exp(w^L_j \cdot h^{L-1}_t)}
-\end{equation*}
+The output layer $L$ is a softmax computing a probability distribution over
+characters.
 
 The model is trained using the CTC loss function~\cite{graves2006}. Given an
-input-output pair $(x, y)$ and the current parameters of the network $\theta$,
-we compute the loss function $\mathcal{L}(x, y; \theta)$ and its derivative
-with respect to the parameters of the network $\nabla_\theta \mathcal{L}(x, y;
+input-output pair $(X, Y)$ and the current parameters of the network $\theta$,
+we compute the loss function $\mathcal{L}(X, Y; \theta)$ and its derivative
+with respect to the parameters of the network $\nabla_\theta \mathcal{L}(X, Y;
 \theta)$. This derivative is then used to update the network parameters through
 the backpropagation through time algorithm.
 
@@ -186,6 +177,7 @@ these issues. The recurrent computation is given by
 
 \begin{table}
 \centering
+\begin{small}
 \begin{tabular}{l  c  r r r  r  r r r  r}
 \toprule
 Architecture & Hidden Units & \multicolumn{4}{c}{Train} & \multicolumn{4}{c}{Dev}  \\
@@ -198,13 +190,11 @@ Architecture & Hidden Units & \multicolumn{4}{c}{Train} & \multicolumn{4}{c}{Dev
 7 RNN, 9 total   & 1280 & & 8.76  & & 7.68  & & 10.83 & & 9.52 \\
 \bottomrule
 \end{tabular}
-\caption{Comparison of WER on a training and development set for various depths
-         of RNN, with and without BatchNorm. The number of parameters is kept
-         constant as the depth increases, thus the number of hidden units per layer
-         decreases. All networks have 38 million parameters. The architecture ``M
-         RNN, N total'' implies 1 layer of 1D convolution at the input, M
-         consecutive bidirectional RNN layers, and the rest as fully-connected
-         layers with N total layers in the network.}
+\end{small}
+\caption{A comparison of WER on a training and development set for various
+    depths of RNN, with and without BatchNorm. All networks have 38 million
+    parameters. The architecture ``M RNN, N total'' means M consecutive
+    bidirectional RNN layers with N total layers in the network.}
 \label{table:deepspeech2:batch_norm}
 \end{table}
 
@@ -256,14 +246,14 @@ The CTC cost function that we use implicitly depends on the length of the
 utterance,
 \begin{equation}
 \label{eq:deepspeech2:ctc}
-    \mathcal{L}(x, y; \theta) = -\log \sum_{\ell \in \textrm{Align}(x, y)}
-        \prod_t^{T} p_{\textrm{ctc}}(\ell_t \mid x; \theta).
+    \mathcal{L}(X, Y; \theta) = -\log \sum_{\ell \in \textrm{Align}(X, Y)}
+        \prod_t^{T} p_{\textrm{ctc}}(\ell_t \mid X; \theta).
 \end{equation}
-where $\textrm{Align}(x, y)$ is the set of all possible alignments of the
-characters of the transcription $y$ to frames of input $x$ under the CTC
+where $\textrm{Align}(X, Y)$ is the set of all possible alignments of the
+characters of the transcription $Y$ to frames of input $X$ under the CTC
 operator. In equation~\ref{eq:deepspeech2:ctc}, the inner term is a product
 over time-steps of the sequence, which shrinks with the length of the sequence
-since $p_{\textrm{ctc}}(\ell_t \mid x;\theta)<1$. This motivates a curriculum
+since $p_{\textrm{ctc}}(\ell_t \mid X;\theta)<1$. This motivates a curriculum
 learning strategy we title SortaGrad. SortaGrad uses the length of the
 utterance as a heuristic for difficulty, since long utterances have higher cost
 than short utterances.
@@ -578,14 +568,14 @@ language model is a Kneser-Ney smoothed character level 5-gram model with
 pruning that is trained on an internal text corpus of 8 billion lines of text.
 This produces a language model with about 2 billion \emph{n}-grams.
 
-During inference we search for the transcription $y$ that maximizes $Q(y)$
+During inference we search for the transcription $Y$ that maximizes $Q(Y)$
 shown in Equation~\ref{eq:deepspeech2:decoding}. This is a linear combination
 of $\log$ probabilities from the CTC trained network and language model, along
 with a word insertion term~\cite{hannun2014deepspeech}. 
 
 \begin{equation}
 \label{eq:deepspeech2:decoding}
-Q(y) = \log (p_{\textrm{ctc}}(y|x)) + \alpha \log(p_{\textrm{lm}}(y))  + \beta \: \textrm{word\_count}(y)
+Q(Y) = \log (p_{\textrm{ctc}}(Y \mid X)) + \alpha \log(p_{\textrm{lm}}(Y))  + \beta \: \textrm{word\_count}(Y)
 \end{equation}
 
 The weight $\alpha$ controls the relative contributions of the language model

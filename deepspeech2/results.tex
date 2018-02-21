@@ -84,10 +84,9 @@ $100 \times 10^6$    & RNN &   & 7.73  & &  & 13.06 & \\
     system on both the regular and noisy development sets. We vary the number
     of hidden units in all but the convolutional layers. The GRU model has 3
     layers of bidirectional GRUs with 1 layer of 2D-invariant convolution. The
-    RNN model has 7 layers of bidirectional simple recurrence with 3 layers of
+    RNN model has 7 layers of bidirectional recurrence with 3 layers of
     2D-invariant convolution. Both models output bigrams with a temporal stride
-    of 3. All models contain approximately 35 million parameters and are
-    trained with BatchNorm and SortaGrad.}
+    of 3.}
 \label{table:deepspeech2:modelsize}
 \end{table}
 
@@ -123,8 +122,7 @@ Baidu Test & 24.01  & 13.59 \\
 \bottomrule
 \end{tabular}
 \caption{Comparison of DS1 and DS2 WER on an internal test set of 3,300
-    examples. The test set contains a wide variety of speech including accents,
-    low signal-to-noise speech, spontaneous and conversational speech.}
+         examples.}
 \label{table:deepspeech2:test}
 \end{table}
 

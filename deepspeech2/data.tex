@@ -27,11 +27,10 @@ speech and spontaneous speech, in both standard Mandarin and accented Mandarin.
  Total       &                &  11940 \\
  \bottomrule
 \end{tabular}
-\caption{Summary of the datasets used to train DS2 in English. The Wall Street
-        Journal (WSJ), Switchboard and Fisher~\cite{cieri2004fisher} corpora are
-        all published by the Linguistic Data Consortium. The LibriSpeech
-        dataset~\cite{panayotov2015} is available free on-line. The other datasets
-        are internal Baidu corpora.}
+\caption{Summary of the datasets used to train DS2 in English. The WSJ,
+    Switchboard and Fisher corpora are all published by the Linguistic Data
+    Consortium. The LibriSpeech dataset is available free on-line. The other
+    datasets are internal Baidu corpora.}
 \label{table:deepspeech2:englishdata}
 \end{table}
 
@@ -48,9 +47,9 @@ few erroneous transcriptions.
 
 The first step in the pipeline is to use an existing bidirectional RNN model
 trained with CTC to align the transcription to the frames of audio. For a given
-audio-transcript pair, $(x, y)$, we find the alignment that maximizes
+audio-transcript pair, $(X, Y)$, we find the alignment that maximizes
 \begin{equation*}
-\ell^* = \argmax_{\ell \in \text{Align}(x,y)} \prod_t^T p_{\text{ctc}}(\ell_t | x; \theta).
+\ell^* = \argmax_{\ell \in \text{Align}(X,Y)} \prod_t^T p_{\text{ctc}}(\ell_t \mid X; \theta).
 \end{equation*}
 This is essentially a Viterbi alignment found using a RNN model trained with
 CTC. Since Equation~\ref{eq:deepspeech2:ctc} integrates over the alignment, the
