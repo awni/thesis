@@ -1,14 +1,11 @@
 \section{Model}
 \label{sec:first_pass:model}
 
-We train neural networks using the CTC loss function to do maximum
-likelihood training of letter sequences given acoustic features as
-input. We consider a single utterance as a training example consisting
-of an acoustic feature matrix $X$ and word transcription $Y$. The CTC
-objective function maximizes the log probability $\log p(Y \mid X)$. We
-reserve a full exposition of the loss function here because our
-formulation follows exactly the previous work on using CTC to predict
-the characters of an utterance transcription~\cite{graves2014, graves2006}. 
+We train neural networks using the CTC loss function to do maximum likelihood
+training of letter sequences given acoustic features as input. We consider a
+single utterance as a training example consisting of an acoustic feature matrix
+$X$ and word transcription $Y$. The CTC objective function maximizes the log
+probability $\log p(Y \mid X)$.
 
 \subsection{Deep Neural Networks}
 \label{sec:first_pass:model:dnn}
@@ -17,30 +14,31 @@ With the loss function fixed we must next define how we compute $p(c \mid
 x_t)$, the predicted distribution over output characters $c$ given the audio
 features $x_t$ at time $t$. While many function approximators are possible for
 this task, we choose as our most basic model a DNN. A DNN computes the
-distribution $p(c \mid x_t)$ using a series of hidden layers followed by an output
-layer. Given an input vector $x_t$ the first hidden layer activations are a
-vector computed as,
+distribution $p(c \mid x_t)$ using a series of hidden layers followed by an
+output layer. Given an input vector $x_t$ the first hidden layer activations
+are a vector computed as,
 \begin{align*}
-  h^{(1)} = \sigma(W^{(1)T} x_t + b^{(1)}).
+  h^{(1)} = \sigma(W^{(1)} x_t + b^{(1)}).
 \end{align*}
 The matrix $W^{(1)}$ and vector $b^{(1)}$ are the weight matrix and bias vector
 for the layer. The function $\sigma(\cdot)$ is a point-wise nonlinearity. We
 use rectifier nonlinearities and thus choose, $\sigma(z) = \max (z, 0)$.
 
 DNNs can have arbitrarily many hidden layers. After the first hidden
-layer, the hidden activations $h^{(i)}$ for layer $i$ are computed as,
+layer, the hidden activations $h^{(l)}$ for layer $l$ are computed as,
 \begin{align*}
-  h^{(i)} = \sigma(W^{(i)T} h^{(i-1)} + b^{(i)}).
+  h^{(l)} = \sigma(W^{(l)} h^{(l-1)} + b^{(l)}).
 \end{align*}
 
-To obtain a proper distribution over the set of possible characters $c$ the
+To obtain a proper distribution over the set of possible characters, the
 final layer of the network is a \emph{softmax} output layer of the form,
 \begin{align*}
-  p(c=c_k \mid x_t) = \frac{\exp(- ( W^{(s)T}_k h^{(i-1)} + b^{(s)}_k))}
-  {\sum_j \exp(- ( W^{(s)T}_j h^{(i-1)} + b^{(s)}_j))},
+  p(c=c_k \mid x_t) = \frac{\exp(- ( W^{(s)}_k h^{(L)} + b^{(s)}_k))}
+  {\sum_j \exp(- ( W^{(s)}_j h^{(L)} + b^{(s)}_j))},
 \end{align*}
-where $W^{(s)}_k$ is the $k$'th column of the output weight matrix $W^{(s)}$
-and $b^{(s)}_k$ is a scalar bias term. 
+where $W^{(s)}_k$ is the $k$'th row of the output weight matrix $W^{(s)}$,
+$b^{(s)}_k$ is a scalar bias term and $L$ is the index of the last hidden
+layer.
 
 We can compute a subgradient for all parameters of the DNN given a training
 example and thus utilize gradient-based optimization techniques. Note that this
@@ -53,38 +51,37 @@ A transcription $W$ has many temporal dependencies which a DNN may not
 sufficiently capture. At each timestep $t$ the DNN computes its output using
 only the input features $x_t$, ignoring previous hidden representations and
 output distributions. To enable better modeling of the temporal dependencies
-present in a problem, we use a RDNN. In a RDNN we select one hidden layer $j$
+present in a problem, we use a RNN. We select one hidden layer $l$
 to have a temporally recurrent weight matrix $W^{(f)}$ and compute the layer's
 hidden activations as,
 \begin{align*}
-  h^{(j)}_t = \sigma(W^{(j)T} h^{(j-1)}_t +  W^{(f)T} h^{(j)}_{t-1} + b^{(j)}).
+  h^{(l)}_t = \sigma(W^{(l)} h^{(l-1)}_t +  W^{(f)} h^{(l)}_{t-1} + b^{(l)}).
 \end{align*}
-Note that we now make the distinction $h^{(j)}_t$ for the hidden activation
-vector of layer $j$ at timestep $t$ since it now depends upon the activation
-vector of layer $j$ at time $t-1$.
+Note that we now make the distinction $h^{(l)}_t$ for the hidden activation
+vector of layer $l$ at timestep $t$ since it now depends upon the activation
+vector of layer $l$ at time $t-1$.
 
-When working with RDNNs, we found it important to use a modified version of the
+When working with RNNs, we found it important to use a modified version of the
 rectifier nonlinearity. This modified function selects $\sigma(z) = \min( \max
 (z, 0), 20)$ which clips large activations to prevent divergence during network
 training. Setting the maximum allowed activation to 20 results in the clipped
 rectifier acting as a normal rectifier function in all but the most extreme
 cases.
 
-Aside from these changes, computations for a RDNN are the same as those in a
-DNN as described in \ref{sec:first_pass:model:dnn}. Like the DNN, we can
-compute a subgradient for a RDNN using a method sometimes called
-backpropagation through time. In our experiments we always compute the gradient
-completely through time rather than truncating to obtain an approximate
-subgradient.
+Aside from these changes, computations for a RNN are the same as those in a DNN
+as described in \ref{sec:first_pass:model:dnn}. Like the DNN, we can compute a
+subgradient for a RNN using backpropagation through time. In our experiments we
+always compute the gradient completely through time rather than truncating to
+obtain an approximate subgradient.
 
 \subsection{Bi-Directional Recurrent Deep Neural Networks}
 
 While forward recurrent connections reflect the temporal nature of the audio
-input, a perhaps more powerful sequence transduction model is a BRDNN, which
+input, a more powerful sequence transduction model is a bidirectional RNN (BRNN), which
 maintains state both forwards and backwards in time. Such a model can integrate
 information from the entire temporal extent of the input features when making
-each prediction. We extend the RDNN to form a BRDNN by again choosing a
-temporally recurrent layer $j$. The BRDNN creates both a forward and backward
+each prediction. We extend the RNN to form a BRNN by again choosing a
+temporally recurrent layer $l$. The BRNN creates both a forward and backward
 intermediate hidden representation which we call $h_t^{(f)}$ and $h_t^{(b)}$
 respectively. 
 
@@ -97,16 +94,13 @@ update the forward and backward components via the equations,
 \end{align*}
 
 Note that the recurrent forward and backward hidden representations are
-computed entirely independently from each other. As with the RDNN we use the
+computed entirely independently from each other. As with the RNN we use the
 modified nonlinearity function $\sigma(z) = \min( \max (z,0), 20)$. To obtain
-the final representation $h^{(j)}_t$ for the layer we sum the two temporally
+the final representation $h^{(l)}_t$ for the layer we sum the two temporally
 recurrent components,
-\begin{align}
-\begin{split}
-  h^{(j)}_t = h^{(f)}_t + h^{(b)}_t.
-\end{split}
-\end{align}
-
-Aside from this change to the recurrent layer the BRDNN computes its output
-using the same equations as the RDNN. As for other models, we can compute a
-subgradient for the BRDNN directly to perform gradient-based optimization.
+\begin{align*}
+  h^{(l)}_t = h^{(f)}_t + h^{(b)}_t.
+\end{align*}
+Aside from this change to the recurrent layer the BRNN computes its output
+using the same equations as the RNN. As for other models, we can compute a
+subgradient for the BRNN directly to perform gradient-based optimization.

@@ -55,17 +55,17 @@ rather than the neural network. CTC training of neural networks forces the
 network to model output sequence dependencies rather than reasoning about
 single time frames independently from others. To better handle such temporal
 dependencies previous work with CTC used long short term memory (LSTM)
-networks. LSTM is a neural network architecture was originally designed to
-prevent the vanishing gradient problem of sigmoidal DNNs or temporally
-recurrent deep neural networks (RDNNs)~\cite{hochreiter1997}.
+networks. The LSTM architecture was originally designed to prevent the
+vanishing gradient problem of sigmoidal DNNs or recurrent neural networks
+(RNNs)~\cite{hochreiter1997}.
 
-Our work uses RDNNs instead of LSTMs as a neural network architecture. RDNNs
-are simpler overall, because there are only dense weight matrix connections
-between subsequent layers. This simpler architecture is more amenable to
-graphics processing unit (GPU) computing which can significantly reduce
-training times. Recent work shows that with rectifier nonlinearities DNNs can
-perform well in DNN-HMM systems without suffering from vanishing gradient
-problems during optimization~\cite{dahl2013, zeiler2013, maas2013}. This makes
-us hopeful that RDNNs with rectifier nonlinearities may be able to perform
-comparably to LSTMs which are specially engineered to avoid vanishing
-gradients.
+Our work uses vanilla RNNs instead of LSTMs as a neural network architecture.
+Vanilla RNNs are simpler overall, because there are only dense weight matrix
+connections between subsequent layers. This simpler architecture is more
+amenable to graphics processing unit (GPU) computing which can significantly
+reduce training times. Recent work shows that with rectifier nonlinearities
+DNNs can perform well in DNN-HMM systems without suffering from vanishing
+gradient problems during optimization~\cite{dahl2013, zeiler2013, maas2013}.
+This makes us hopeful that vanilla RNNs with rectifier nonlinearities may be
+able to perform comparably to LSTMs which are specially engineered to avoid
+vanishing gradients.

@@ -5,16 +5,16 @@ language model for CTC-trained neural networks. This decoding approach removes
 the lingering dependence on HMM-based systems found in previous work.
 Furthermore, first-pass decoding demonstrates the capabilities of a CTC-trained
 system without the confounding factor of potential effects from pruning the
-search space via a provided lattice.  While our results do not outperform the
+search space via a provided lattice. While our results do not outperform the
 best HMM-based systems on the WSJ corpus, they demonstrate the promise of
 CTC-based speech recognition systems.
 
-Our experiments with BRDNN further simplify the infrastructure needed to create
-CTC-based speech recognition systems. The BRDNN is overall a less complex
+Our experiments with the BRNN further simplify the infrastructure needed to
+create CTC-based speech recognition systems. The BRNN is overall a less complex
 architecture than LSTMs and can relatively easily be made to run on GPUs since
 large matrix multiplications dominate the computation. However, our experiments
 suggest that recurrent connections are critical for good performance.
-Bi-directional recurrence helps beyond single direction recurrence but could be
+Bi-directional recurrence helps beyond unidirectional recurrence but could be
 sacrificed in cases that require low-latency, online speech recognition. Taken
 together with previous work on CTC-based LVCSR, we believe there is an exciting
 path forward for high quality LVCSR without the complexity of HMM-based
