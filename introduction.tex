@@ -17,7 +17,7 @@ In this work we exclusively rely on models which fall under the classification
 of Deep Learning. The advent of deep learning has dramatically improved the
 state-of-the-art in many common machine learning benchmarks. Some examples
 include classifying objects from images, language modeling, speech
-transcription, speech-to-text, and machine translation. In some tasks, the
+transcription, text-to-speech, and machine translation. In some tasks, the
 progress has been so remarkable that the performance of the models now matches
 or exceeds that of human experts.
 
@@ -32,7 +32,7 @@ which an expert human can do with a few seconds or less of
 thought.\footnote{Classifying problems which can be solved by deep learning in
 this way is due to Andrew Ng in e.g.
 https://hbr.org/2016/11/what-artificial-intelligence-can-and-cant-do-right-now.}
-Both speech transcription, key word spotting and detecting arrhythmias in
+Both speech transcription, keyword spotting and detecting arrhythmias in
 electrocardiograms meet this criteria.
 
 Traditional speech recognition systems rely on many hand-engineered components
@@ -70,8 +70,8 @@ have available. Better models can compensate for less data and vice versa.
 However, in the following applications we achieve the best performance by
 jointly optimizing the two together. In the speech recognition applications, we
 construct datasets as large as 12,000 hours. Prior work on publicly available
-speech corpora typically use datasets in the 80-300 hour range. For the task of
-arrhythmia detection, we develop a corpus which contains more than 500 times
+speech corpora typically used datasets in the 80-300 hour range. For the task
+of arrhythmia detection, we develop a corpus which contains more than 500 times
 the number of unique patients as the most commonly used publicly available
 benchmark.
 
@@ -90,7 +90,7 @@ bandwidth utilization and efficient, low-latency deployments.
 In summary, we develop end-to-end models for transcribing real-valued sequences
 and discuss three applications of these models. The first is detecting abnormal
 heart activity in electrocardiograms. The second is large vocabulary continuous
-speech recognition and the third is keyword spotting and voice activity
+speech recognition, and the third is keyword spotting and voice activity
 detection. In all cases we show how to scale high capacity models to
 unprecedentedly large datasets. With these techniques we can achieve
 performance comparable to that of human experts and state-of-the-art error
@@ -112,8 +112,8 @@ We present the following contributions in the chapters of this dissertation:
         section discusses properties and limitations of CTC and we follow this
         by placing CTC in context with HMMs and encoder-decoder models. We also
         include a short section on practical advice when using CTC. At the end
-        of the background section we give a short bibliography and references
-        for further study of the related material. 
+        of this section, we give a short bibliography and references for
+        further study of the related material.
 
     \item [{\bf Chapter 3:}]{\bf Application to Arrhythmia Detection.} In
         Chapter 3 we develop an algorithm which exceeds the performance of

@@ -55,9 +55,9 @@ et al.  (DNN-GMM sMBR)~\cite{vesely2013} uses a sequence based loss function on
 top of a DNN after using a typical hybrid DNN-HMM system to realign the
 training set.  The performance of this model on the combined Hub5'00 test set
 is the best previously published result. When trained on the combined 2300
-hours of data the Deep Speech system improves upon this baseline by 2.4\%
+hours of data the Deep Speech system improves upon this baseline by 2.4
 absolute WER and 13.0\% relative. The model from Maas et al. (DNN-HMM
-FSH)~\cite{maas2014} achieves 19.9\% WER when trained on the Fisher 2000 hour
+FSH)~\cite{maas2014} achieves 19.9 WER when trained on the Fisher 2000 hour
 corpus. That system was built using Kaldi~\cite{povey2011}, state-of-the-art
 open source speech recognition software. We include this result to demonstrate
 that Deep Speech, when trained on a comparable amount of data is competitive
@@ -81,9 +81,9 @@ Soltau et al. (MLP/CNN+I-Vector)~\cite{soltau2014} & {\bf 10.4 } & n/a & n/a \\
 {\bf Deep Speech SWB + FSH} & 12.6 & {\bf 19.3} & {\bf 16.0} \\
 \bottomrule
 \end{tabular}
-\caption{Published error rates (\%WER) on Switchboard dataset splits. The
-         columns labeled ``SWB'' and ``CH'' are respectively the easy and hard
-         subsets of Hub5'00.}
+\caption{Published error rates (WER) on Switchboard dataset splits. The columns
+    labeled ``SWB'' and ``CH'' are respectively the easy and hard subsets of
+    Hub5'00.}
 \label{table:deepspeech:hub5}
 \end{table}
 
@@ -138,10 +138,10 @@ system on our test files appear in Table~\ref{table:deepspeech:originalaudio}.
 To evaluate the efficacy of the noise synthesis techniques described in
 Section~\ref{sec:deepspeech:noisesynth}, we trained two RNNs, one on 5000 hours
 of raw data and the other trained on the same 5000 hours plus noise. On the 100
-clean utterances both models perform about the same, 9.2\% WER and 9.0\% WER
-for the clean trained model and the noise trained model respectively. However,
-on the 100 noisy utterances the noisy model achieves 22.6\% WER over the clean
-model's 28.7\% WER, a 6.1\% absolute and 21.3\% relative improvement.
+clean utterances both models perform about the same, 9.2 WER and 9.0 WER for
+the clean trained model and the noise trained model respectively. However, on
+the 100 noisy utterances the noisy model achieves 22.6 WER over the clean
+model's 28.7 WER, a 6.1 absolute and 21.3\% relative improvement.
 
 \begin{table}[ht!]
 \centering
@@ -156,7 +156,7 @@ wit.ai           &  7.94   & 35.06  & 19.41 \\
 {\bf Deep Speech}       &  {\bf 6.56}   & {\bf 19.06}  & {\bf 11.85} \\
 \bottomrule
 \end{tabular}
-\caption{Results (\%WER) for 5 systems evaluated on the original audio. Scores
+\caption{Results (WER) for 5 systems evaluated on the original audio. Scores
          are reported {\it only} for utterances with predictions given by all
          systems. The number in parentheses next to each dataset, e.g. Clean (94),
          is the number of utterances scored.}

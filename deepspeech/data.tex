@@ -21,9 +21,9 @@ Table~\ref{table:deepspeech:datasets}.
  Baidu       & read           & 5000 & 9600 \\
  \bottomrule
 \end{tabular}
-\caption{A summary of the datasets used to train Deep Speech. The Wall Street
-         Journal, Switchboard and Fisher~\cite{cieri2004fisher} corpora are all
-         published by the Linguistic Data Consortium.}
+\caption{A summary of the datasets used to train Deep Speech. The WSJ,
+    Switchboard and Fisher corpora are all published by the Linguistic Data
+    Consortium.}
 \label{table:deepspeech:datasets}
 \end{table}
 
@@ -40,11 +40,11 @@ generate such data.
 
 To a first order, audio signals are generated through a process of
 superposition of source signals. We can use this fact to synthesize noisy
-training data. For example, if we have a speech audio track $x^{(i)}$ and a
+training data. For example, if we have a speech audio track $X^{(i)}$ and a
 ``noise'' audio track $\xi^{(i)}$, then we can form the ``noisy speech'' track
-$\hat{x}^{(i)} = x^{(i)}+\xi^{(i)}$ to simulate audio captured in a noisy
+$\hat{X}^{(i)} = X^{(i)}+\xi^{(i)}$ to simulate audio captured in a noisy
 environment. If necessary, we can add reverberations, echoes or other forms of
-damping to the power spectrum of $\xi^{(i)}$ or $x^{(i)}$ and then simply add
+damping to the power spectrum of $\xi^{(i)}$ or $X^{(i)}$ and then simply add
 them together to make fairly realistic audio scenes.
 
 There are, however, some risks in this approach. For example, in order to take
@@ -55,7 +55,7 @@ network to memorize the noise track and ``subtract'' it out of the synthesized
 data. Thus, instead of using a single noise source $\xi^{(i)}$ with a length of
 1000 hours, we use a large number of shorter clips (which are easier to collect
 from public video sources) and treat them as separate sources of noise before
-superimposing all of them: $\hat{x}^{(i)} = x^{(i)} + \xi_1^{(i)} +\xi_2^{(i)}
+superimposing all of them: $\hat{X}^{(i)} = X^{(i)} + \xi_1^{(i)} +\xi_2^{(i)}
 + \ldots$.
 
 When superimposing many signals collected from video clips, we can end up with

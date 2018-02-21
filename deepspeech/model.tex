@@ -3,13 +3,13 @@
 
 The core of our system is a recurrent neural network (RNN) trained to ingest
 speech spectrograms and generate English text transcriptions. Let a single
-utterance $x$ and label $y$ be sampled from a training set $\mathcal{X} =
-\{(x^{(1)},y^{(1)}),(x^{(2)},y^{(2)}),\ldots\}$. Each utterance, $x^{(i)}$, is
+utterance $X$ and label $Y$ be sampled from a training set $\mathcal{X} =
+\{(X^{(1)},Y^{(1)}),(X^{(2)},Y^{(2)}),\ldots\}$. Each utterance, $x^{(i)}$, is
 a time-series of length $T^{(i)}$ where every time-slice is a vector of audio
-features, $x_t^{(i)}, t=1,\ldots,T^{(i)}$. We use spectrograms as our features,
+features, $X_t^{(i)}, t=1,\ldots,T^{(i)}$. We use spectrograms as our features,
 so $x^{(i)}_{t,p}$ denotes the power of the $p$'th frequency bin in the audio
-frame at time $t$. The goal of our RNN is to convert an input sequence $x$ into
-a sequence of character probabilities for the transcription $y$, with
+frame at time $t$. The goal of our RNN is to convert an input sequence $X$ into
+a sequence of character probabilities for the transcription $Y$, with
 $\hat{y_t} = p(c_t \mid x)$, where $c_t \in \{\textrm{a,b,c,}\ldots,\textrm{z},
 \textit{space},\textit{apostrophe},\textit{blank}\}$.
 
@@ -49,19 +49,17 @@ character $k$ in the alphabet:
     h_{t,k}^{(6)} = \hat{y}_{t,k} \equiv p(c_t = k \mid x) =
         \frac{\exp(W_k^{(6)} h_t^{(5)}+b_k^{(6)})}{\sum_j \exp(W_j^{(6)} h_t^{(5)}+b_j^{(6)})}.
 \end{align*}
-Here $W_k^{(6)}$ and $b_k^{(6)}$ denote the $k$'th column of the weight matrix
-and $k$'th bias, respectively.  
+Here $W_k^{(6)}$ and $b_k^{(6)}$ denote the $k$'th row of the weight matrix and
+$k$'th bias, respectively.  
 
 Once we have computed a prediction for $p(c_t \mid x)$, we compute the CTC
-loss~\cite{graves2006} $\mathcal{L}(\hat{y}, y)$ to measure the error in
-prediction. During training, we can evaluate the gradient $\nabla_{\hat{y}}
-\mathcal{L}(\hat{y}, y)$ with respect to the network outputs given the
-ground-truth character sequence $y$. From this point, computing the gradient
-with respect to all of the model parameters may be done via back-propagation
-through the rest of the network. We use Nesterov's Accelerated gradient method
-for training~\cite{sutskever2013}.\footnote{We use momentum of 0.99 and
-anneal the learning rate by a constant factor, chosen to yield the fastest
-convergence, after each epoch through the data.}
+loss~\cite{graves2006} to measure the error in prediction. During training, we
+can evaluate the gradient of the loss with respect to the network outputs. From
+this point, computing the gradient with respect to all of the model parameters
+is done via back-propagation through the rest of the network. We use Nesterov's
+Accelerated gradient method for training~\cite{sutskever2013}.\footnote{We use
+momentum of 0.99 and anneal the learning rate by a constant factor, chosen to
+yield the fastest convergence, after each epoch through the data.}
 
 \begin{figure}[th]
 \centering
@@ -144,13 +142,12 @@ arther n tickets for the game  & are there any tickets for the game \\
 \label{table:deepspeech:max_decoded}
 \end{table}
 
-Given the output $p(c \mid x)$ of our RNN we perform a search to find the
-sequence of characters $c_1,c_2,\ldots$ that is most probable according to both
-the RNN output and the language model (where the language model interprets the
-string of characters as words). Specifically, we aim to find a sequence $c$
-that maximizes the combined objective:
+We perform a search to find the sequence of characters that is most probable
+according to both the RNN output and the language model (where the language
+model interprets the string of characters as words). Specifically, we aim to
+find a sequence $Y$ that maximizes the combined objective:
 \begin{align*}
-    Q(c) = \log(p(c \mid x)) + \alpha \log(p_{\text{lm}}(c)) + \beta \textrm{ word\_count}(c)
+    Q(Y) = \log(p(Y \mid X)) + \alpha \log(p_{\text{lm}}(Y)) + \beta \textrm{ word\_count}(Y)
 \end{align*}
 where $\alpha$ and $\beta$ are tunable parameters (set by cross-validation)
 that control the trade-off between the RNN, the language model constraint and

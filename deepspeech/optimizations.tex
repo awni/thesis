@@ -20,7 +20,7 @@ way by concatenating many examples into a single matrix. For instance, rather
 than performing a single matrix-vector multiplication $W_r h_t$ in the
 recurrent layer, we prefer to do many in parallel by computing $W_r H_t$ where
 $H_t = [ h^{(i)}_{t}, h^{(i+1)}_{t}, \ldots ]$ (where $h_t^{(i)}$ corresponds
-to the $i$'th example $x^{(i)}$ at time $t$). The GPU is most efficient when
+to the $i$'th example $X^{(i)}$ at time $t$). The GPU is most efficient when
 $H_t$ is relatively wide (e.g., 1000 examples or more) and thus we prefer to
 process as many examples on one GPU as possible (up to the limit of GPU
 memory).
