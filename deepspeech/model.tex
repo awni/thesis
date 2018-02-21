@@ -4,9 +4,9 @@
 The core of our system is a recurrent neural network (RNN) trained to ingest
 speech spectrograms and generate English text transcriptions. Let a single
 utterance $X$ and label $Y$ be sampled from a training set $\mathcal{X} =
-\{(X^{(1)},Y^{(1)}),(X^{(2)},Y^{(2)}),\ldots\}$. Each utterance, $x^{(i)}$, is
+\{(X^{(1)},Y^{(1)}),(X^{(2)},Y^{(2)}),\ldots\}$. Each utterance, $X^{(i)}$, is
 a time-series of length $T^{(i)}$ where every time-slice is a vector of audio
-features, $X_t^{(i)}, t=1,\ldots,T^{(i)}$. We use spectrograms as our features,
+features, $x_t^{(i)}, t=1,\ldots,T^{(i)}$. We use spectrograms as our features,
 so $x^{(i)}_{t,p}$ denotes the power of the $p$'th frequency bin in the audio
 frame at time $t$. The goal of our RNN is to convert an input sequence $X$ into
 a sequence of character probabilities for the transcription $Y$, with
@@ -44,13 +44,7 @@ The fifth (non-recurrent) layer takes both the forward and backward units as
 inputs $h^{(5)}_t = g(W^{(5)} h^{(4)}_t + b^{(5)})$ where $h^{(4)}_t =
 h^{(f)}_t + h^{(b)}_t$. The output layer is a standard softmax function that
 yields the predicted character probabilities for each time slice $t$ and
-character $k$ in the alphabet:
-\begin{align*}
-    h_{t,k}^{(6)} = \hat{y}_{t,k} \equiv p(c_t = k \mid x) =
-        \frac{\exp(W_k^{(6)} h_t^{(5)}+b_k^{(6)})}{\sum_j \exp(W_j^{(6)} h_t^{(5)}+b_j^{(6)})}.
-\end{align*}
-Here $W_k^{(6)}$ and $b_k^{(6)}$ denote the $k$'th row of the weight matrix and
-$k$'th bias, respectively.  
+character $k$ in the alphabet.
 
 Once we have computed a prediction for $p(c_t \mid x)$, we compute the CTC
 loss~\cite{graves2006} to measure the error in prediction. During training, we
@@ -112,13 +106,13 @@ words---Table~\ref{table:deepspeech:max_decoded} shows some examples. Many of
 the errors occur on words that rarely or never appear in our training set. In
 practice, this is hard to avoid:  training from enough speech data to
 \emph{hear} all of the words or language constructions we might need to know is
-impractical.  Therefore, we integrate our system with an N-gram language model
+impractical.  Therefore, we integrate our system with an $n$-gram language model
 since these models are easily trained from huge unlabeled text corpora. For
 comparison, while our speech datasets typically include up to 3 million
-utterances, the N-gram language model used for the experiments in
+utterances, the $n$-gram language model used for the experiments in
 Section~\ref{sec:deepspeech:expnoise} is trained from a corpus of 220 million
 phrases, supporting a vocabulary of 495,000 words.\footnote{We use the KenLM
-toolkit~\cite{heafield2013} to train the N-gram language models in our
+toolkit~\cite{heafield2013} to train the $n$-gram language models in our
 experiments.} 
 
 \begin{table}[h]
@@ -147,12 +141,12 @@ according to both the RNN output and the language model (where the language
 model interprets the string of characters as words). Specifically, we aim to
 find a sequence $Y$ that maximizes the combined objective:
 \begin{align*}
-    Q(Y) = \log(p(Y \mid X)) + \alpha \log(p_{\text{lm}}(Y)) + \beta \textrm{ word\_count}(Y)
+    Q(Y) = \log(p_{\text{ctc}}(Y \mid X)) + \alpha \log(p_{\text{lm}}(Y)) + \beta \textrm{ word\_count}(Y)
 \end{align*}
 where $\alpha$ and $\beta$ are tunable parameters (set by cross-validation)
 that control the trade-off between the RNN, the language model constraint and
 the length of the sentence. The term $p_{\text{lm}}$ denotes the
-probability of the sequence $c$ according to the N-gram model. We maximize
+probability of the sequence $Y$ according to the $n$-gram model. We maximize
 this objective using a highly optimized beam search algorithm, with a typical
 beam size in the range 1000-8000---similar to the approach described by Hannun
 et al.~\cite{hannun2014firstpass}.
