@@ -74,12 +74,13 @@ thousand examples. The word level edit distance between the ground truth and
 the aligned transcription is used to produce a \emph{good} or \emph{bad} label.
 The threshold for the word level edit distance is chosen such that the
 resulting WER of the \emph{good} portion of the development set is less than
-5\%. We then train a linear classifier to accurately predict bad examples given
-the input features generated from the speech recognizer. We find the following
-features useful: the raw CTC cost, the CTC cost normalized by the sequence
-length, the CTC cost normalized by the transcript length, the ratio of the
-sequence length to the transcript length, the number of words in the
-transcription and the number of characters in the transcription. For the
+5\%. Initially we thresholded the raw CTC cost (log-likelihood) generated from
+a pretrained model. However, we find that training a linear classifier to
+accurately predict bad examples given several different features yields better
+results. We add the following additional features: the CTC cost normalized by
+the sequence length, the CTC cost normalized by the transcript length, the
+ratio of the sequence length to the transcript length, the number of words in
+the transcription and the number of characters in the transcription. For the
 English dataset, we find that the filtering pipeline reduces the WER from 17\%
 to 5\% while retaining more than 50\% of the examples.
 

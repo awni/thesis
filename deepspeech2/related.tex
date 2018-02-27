@@ -69,6 +69,9 @@ hours of read speech~\cite{panayotov2015}. In another approach, a heavy-weight
 offline speech recognizer is used to generate transcriptions for tens of
 thousands of hours of speech~\cite{kapralova2014}. This is then passed through
 a filter and used to re-train the recognizer, resulting in significant
-performance gains. We draw inspiration from these past approaches in
-bootstrapping larger datasets and data augmentation to increase the effective
-amount of labeled data for our system.
+performance gains. Prior work has explored buildling accurate classifiers to
+estimate the confidence of a proposed transcription~\cite{huang2013,
+wessel2001}. These confidence measures can be used to construct high-quality
+filters for the bootstrapped dataset. We draw inspiration from these past
+approaches in bootstrapping larger datasets and data augmentation to increase
+the effective amount of labeled data for our system.
