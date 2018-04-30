@@ -1,5 +1,5 @@
 # thesis
-Transcribing Real-Valued Sequences with Deep Neural Networks
+Transcribing Real-Valued Sequences with Deep Neural Networks [(pdf)](https://stacks.stanford.edu/file/druid:ft390rb7614/thesis-augmented.pdf)
 
 ## Template Help
 
